@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="extend_im_chat_view_user_form" model="ir.ui.view">
+            <field name="name">extend.im.chat.view.user.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="hr.view_users_form_mail"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//field[@name='display_employees_suggestions']" position="after">
+                         <field name="is_user_allow_portal_im"/>
+                    </xpath>                                   
+                </data>
+            </field>
+        </record>
+
+        <!-- USER Preference -->
+
+        <record id="extend_im_chat_view_users_form_simple_notif" model="ir.ui.view">
+            <field name="name">extend.im.chat.view.user.form.simple.notif</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//group[@string='Email Preferences']" position="after">
+                        <group string="Messaging and Social" groups="base.group_hr_user">
+                            <field name="is_user_allow_portal_im" readonly="0" modifiers="{}"/>
+                        </group>
+                    </xpath>                                   
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Added new place of Birth-->
+        <record id="view_group_form_extend" model="ir.ui.view">
+            <field name="name">mail.group.form.extend</field>
+            <field name="model">mail.group</field>
+            <field name="inherit_id" ref="mail.view_group_form"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//h1" position="replace" >
+                    <field name="full_name"/>
+                </xpath>-->
+                <xpath expr="//sheet/group[1]" position="before" >
+                    <group string="Seafarers Notification">
+                        <field name="data_check_selection"/>
+                        <!--
+                        	<field name="document_ids" attrs="{'invisible': [('data_check_selection','not in',['medical','license'])], 'required': [('data_check_selection','=','documents')]}"  widget="many2many_tags"/>
+                        -->
+                        <field name="document_ids" attrs="{'invisible': ['|',('data_check_selection','in',['medical','license']),
+                        												 ('data_check_selection','=',False)]}"  widget="many2many_tags"/>
+
+                        <field name="medical_ids" attrs="{'invisible': ['|',('data_check_selection','in',['document','license']),
+                        												('data_check_selection','=',False)]}"  widget="many2many_tags"/>
+
+                        <field name="license_ids" attrs="{'invisible': ['|',('data_check_selection','in',['medical','document']),
+                        												('data_check_selection','=',False)]}"  widget="many2many_tags"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,15 @@
+{
+    'name': 'Bahia Extend Application',
+    'category': 'Addons',
+    'sequence': 25,
+    'summary': 'Added new Fields for the Migration in Application to Employee',
+    'description': 'Added new Fields for the Migration in Application to Employee',
+    'author': 'Excode Innovation Solutions. Inc.',
+    'depends': ['base',
+    			'hr', 
+    			'hr_recruitment', 
+    			'hr_recruitment_extend_application', 
+    			'bahia_personnel_management'],
+    'data': ['views/hr_employee.xml',],
+    'application': False,
+}

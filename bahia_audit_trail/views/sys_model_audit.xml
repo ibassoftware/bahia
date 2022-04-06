@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:
+-->
+<openerp>
+    <data>
+
+        <menuitem id="menu_audit" parent="base.menu_custom" name="Audit" sequence="50"/>	
+        <!-- CONFIG -->
+        <record id="view_sys_model_audit_config_from" model="ir.ui.view">
+            <field name="name">sys.model.audit.config.form</field>
+            <field name="model">sys.model.audit.config</field>
+            <field name="arch" type="xml">
+                <form string="Audit Log Configuration">
+                    <sheet>
+                        <group>
+                            <group string = "Audit">
+                                <field name="model_id"/>
+                                <field name="model_fields" domain="[('model_id','=', model_id), ('name', 'not in', ['create_date','write_date','create_uid', 'write_uid'])]"/>
+                                <!--
+                                <field name="model_fields_db_name"/>
+
+                                <field name="model_fields_name"/>
+                                <field name="model_fields_label"/>
+                                <field name="model_fields_type"/>                                
+                                -->
+                            </group>
+                            <group/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sys_model_audit_config_tree" model="ir.ui.view">
+            <field name="name">sys.model.audit.config.tree</field>
+            <field name="model">sys.model.audit.config</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Audit Log Configuration">
+                    <field name="model_id"/>
+                    <field name="model_fields"/>
+                </tree>
+            </field>
+        </record>
+        <record id="open_sys_model_audit_config_main" model="ir.actions.act_window">
+            <field name="name">Configuration</field>
+            <field name="res_model">sys.model.audit.config</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Create a Audit Log Configuration.
+              </p>
+            </field>
+        </record>
+        <menuitem action="open_sys_model_audit_config_main" id="menu_open_sys_model_audit_config_main" parent="menu_audit" string = "Configuration" sequence="1"/>
+
+        <!-- LOG -->
+        <record id="view_sys_audit_log_tree" model="ir.ui.view">
+            <field name="name">sys.audit.log.tree</field>
+            <field name="model">sys.audit.log</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Audit Updated Record Log" create="false" edit="false" delete="false">
+                    <field name="model_id" invisible="1"/>
+                    <field name="create_uid" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="record_id"/>                    
+                    <field name="record_name"/>
+                    <field name="model_fields"/>
+                    <field name="value_from"/>
+                    <field name="new_value"/>               
+                    <field name="create_date"/>     
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sys_audit_log_filter" model="ir.ui.view">
+            <field name="name">sys.audit.log.filter</field>
+            <field name="model">sys.audit.log</field>
+            <field name="arch" type="xml">
+                <search string="Logs">
+                    <field name="model_id"/>
+                    <field name="model_fields"/>
+                    <field name="create_uid"/>                    
+                    <field name="create_date"/>                    
+                    <field name="value_from"/>
+                    <field name="new_value"/>
+                    <field name="record_id"/>
+                    <field name="record_name"/>
+                    <field name="name"/>
+                    <separator string =""/>                 
+                    <group expand="0" string="Group by">
+                          <filter string="User" icon="terp-personal" domain="[]" context="{'group_by':'create_uid'}" name="create_group" />
+                          <filter string="Object" icon="terp-personal" domain="[]" context="{'group_by':'model_id'}" name="model_group"/>
+                          <filter string="Field Name" icon="terp-personal" domain="[]" context="{'group_by':'name'}" name="model_field_group"/>
+                    </group>                                                       
+                </search>
+             </field>
+         </record>        
+
+        <record id="open_sys_audit_log_main" model="ir.actions.act_window">
+            <field name="name">Updated Record Logs</field>
+            <field name="res_model">sys.audit.log</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="view_sys_audit_log_filter"/>
+            <field name="context">{'search_default_create_group': 1,'search_default_model_group': 1,'search_default_model_field_group': 1,}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Create a Audit Log.
+              </p>
+            </field>
+        </record>
+        <menuitem action="open_sys_audit_log_main" id="menu_open_sys_audit_log_main" parent="menu_audit" string = "Logs" sequence="2"/>
+
+
+
+        <!-- Delete LOG -->
+        <record id="view_sys_audit_delete_log_tree" model="ir.ui.view">
+            <field name="name">sys.audit.delete.log.tree</field>
+            <field name="model">sys.audit.delete.log</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Audit Deleted Record Logs" create="false" edit="false" delete="false">
+                    <field name="model_id" invisible="1"/>
+                    <field name="create_uid" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="record_id"/>                    
+                    <field name="record_name"/>
+                    <field name="value_from"/>             
+                    <field name="create_date" string="Date Deleted"/>     
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sys_audit_delete_log_filter" model="ir.ui.view">
+            <field name="name">sys.audit.delete.log.filter</field>
+            <field name="model">sys.audit.delete.log</field>
+            <field name="arch" type="xml">
+                <search string="Logs">
+                    <field name="model_id"/>
+                    <field name="create_uid"/>                    
+                    <field name="create_date" string="Date Deleted"/>                    
+                    <field name="value_from"/>
+                    <field name="record_id"/>
+                    <field name="record_name"/>
+                    <field name="name"/>
+                    <separator string =""/>                 
+                    <group expand="0" string="Group by">
+                          <filter string="User" icon="terp-personal" domain="[]" context="{'group_by':'create_uid'}" name="create_group" />
+                          <filter string="Object" icon="terp-personal" domain="[]" context="{'group_by':'model_id'}" name="model_group"/>
+                    </group>                                                       
+                </search>
+             </field>
+         </record>        
+
+        <record id="open_sys_audit_delete_log_main" model="ir.actions.act_window">
+            <field name="name">Deleted Record Logs</field>
+            <field name="res_model">sys.audit.delete.log</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="view_sys_audit_delete_log_filter"/>
+            <field name="context">{'search_default_create_group': 1,'search_default_model_group': 1}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Create a Audit Log.
+              </p>
+            </field>
+        </record>
+        <menuitem action="open_sys_audit_delete_log_main" id="menu_open_sys_audit_delete_log_main" parent="menu_audit" string = "Logs" sequence="3"/>
+
+
+
+
+    </data>
+</openerp>

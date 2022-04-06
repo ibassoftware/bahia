@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+        id="report_personnel_active_on_board_w_relative_1"
+        model="hr.personnel.withrelative.main"
+        string="Personnel Active on Board with Relatives"
+        report_type="qweb-pdf"
+        name="bahia_personnel_management.report_personnel_active_on_board_w_relative"
+        file="bahia_personnel_management.report_personnel_active_on_board_w_relative"/>
+
+
+        <template id="report_personnel_active_on_board_w_relative">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class ="page">
+                            <div>
+                                <h1> Crewlist Active on Board with Remarks with Relative</h1>
+                            </div>
+                            <div>
+                                <b>Vessel :</b> <span t-field="o.vessel" />
+                            </div>
+                            <t t-if = "o.date_search">
+                                <div>
+                                    <b>Date : </b> <span t-field="o.date_search" />
+                                </div>                                
+                            </t>
+                             <t t-if = "not o.date_search">
+                                <div>
+                                    <b>Search All Vessel</b>
+                                </div>                                
+                            </t>                           
+                            <table class="table table-condensed" style="width:100%;border-collapse:collapse">
+                                <thead style ="border-bottom: 1px solid black;">
+                                    <tr>
+                                        <th>Employee Number</th>
+                                        <th>CCL Number</th>
+                                        <th>Department</th>
+                                        <th>Rank</th>
+                                        <th>Last Name</th>
+                                        <th>First Name</th>                                        
+                                        <th>Birth Date</th>
+                                        <th>Status</th>
+                                        <th>Service from</th>
+                                        <th>Service to</th>
+                                        <th>Remarks</th>
+
+                                        <th>Relative's Name</th>
+                                        <th>Relationship</th>
+                                        <th>City</th>
+                                        <th>Province</th>
+                                        <th>Telephone Number</th>
+                                        <th>Mobile Number</th>
+                                        <th>E-mail</th>
+                                        <th>Beneficiary</th>
+                                        <th>Allottee</th>
+                                    </tr>
+                                </thead>                                
+                                <tbody style ="border-bottom: 1px solid black;">
+                                    <t t-foreach="o.personnel_actived_on_board" t-as="aob">
+                                        <tr >
+                                            <td><span t-field="aob.employee_number"/></td>
+                                            <td><span t-field="aob.ccl_number"/></td>
+                                            <td><span t-field="aob.employment_dept_code"/></td>
+                                            <td><span t-field="aob.employment_rank"/></td>
+                                            <td><span t-field="aob.last_name"/></td>
+                                            <td><span t-field="aob.first_name"/></td>
+                                            <td><span t-field="aob.birth_date"/></td>
+                                            <td><span t-field="aob.employment_status"/></td>
+                                            <td><span t-field="aob.date_servicefrom"/></td>
+                                            <td><span t-field="aob.date_serviceto"/></td>
+                                            <td><span t-field="aob.remarks"/></td>
+
+                                            <td><span t-field="aob.relative_name"/></td>
+                                            <td><span t-field="aob.relationship"/></td>
+                                            <td><span t-field="aob.city"/></td>
+                                            <td><span t-field="aob.province"/></td>
+                                            <td><span t-field="aob.telephone_number"/></td>
+                                            <td><span t-field="aob.mobile_number"/></td>
+                                            <td><span t-field="aob.email_number"/></td>
+                                            <td><span t-field="aob.is_beneficiary"/></td>
+                                            <td><span t-field="aob.is_allottee"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>                            
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

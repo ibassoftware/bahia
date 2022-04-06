@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_form_todo_task_inherited_extension_cons_form" model="ir.ui.view">
+            <field name="name">view.form.todo.task.inherited.extension.cons.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_form_todo_task_inherited"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']/button[1]" position="before">
+                    <!--
+                    <button name="%(bahia_personnel_management.act_hr_employee_checklist_document_button)d" 
+                        string="Consent Form"
+                        class="oe_stat_button disabled" 
+                        icon="fa-check" 
+                        type="action"
+
+                        attrs="{'invisible':[('legacy_doc_4', '=', False)]}"
+                        >
+                    </button>
+                -->
+                    <button name="updateWithConsentForm" 
+                        string="Consent Form"
+                        class="oe_stat_button" 
+                        icon="fa-check" 
+                        type="object"
+
+                        attrs="{'invisible':[('has_consentform', '=', False)]}"
+                        >
+                    </button>  
+
+                    <button name="updateWithConsentForm" 
+                        string="W/O Consent Form"
+                        class="oe_stat_button" 
+                        type="object"
+
+                        attrs="{'invisible':[('has_consentform', '!=', False)]}"
+                        >
+                    </button>                                   
+                </xpath>
+
+                <field name="filename3"  position="after">
+                	<field name="filename4" readonly="1" invisible="1"/>
+                </field>
+                <field name="legacy_doc_3"  position="after">
+                	<field name="legacy_doc_4" filename="filename4"/>
+                    <field name="has_consentform" invisible="1"/>
+                </field>
+            </field>
+        </record>      	
+    </data>
+</openerp>

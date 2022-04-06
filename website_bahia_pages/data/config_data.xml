@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="menu_aboutus" model="website.menu">
+            <field name="name">About Us</field>
+            <field name="url">/aboutus</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">45</field>
+        </record>
+        <record id="action_open_website" model="ir.actions.act_url">
+            <field name="name">About us Form</field>
+            <field name="target">self</field>
+            <field name="url">/aboutus</field>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website"/>
+            <field name="state">open</field>
+        </record>
+
+
+        <record id="menu_services" model="website.menu">
+            <field name="name">Services</field>
+            <field name="url">/services</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">46</field>
+        </record>
+        <record id="action_open_website" model="ir.actions.act_url">
+            <field name="name">Services Form</field>
+            <field name="target">self</field>
+            <field name="url">/services</field>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website"/>
+            <field name="state">open</field>
+        </record>
+
+        <record id="menu_services" model="website.menu">
+            <field name="name">Principal</field>
+            <field name="url">/principal</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">47</field>
+        </record>
+        <record id="action_open_website" model="ir.actions.act_url">
+            <field name="name">Principal Form</field>
+            <field name="target">self</field>
+            <field name="url">/principal</field>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website"/>
+            <field name="state">open</field>
+        </record>
+
+
+
+    </data>
+</openerp>

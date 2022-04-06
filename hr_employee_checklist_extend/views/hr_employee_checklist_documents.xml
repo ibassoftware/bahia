@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="mymodule css assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/bahia_personnel_management/static/src/css/hr.css"/>
+                <script type="text/javascript" src="/hr_employee_checklist_extend/static/src/js/checklist.js"></script>
+            </xpath>
+        </template>
+       <record model="ir.ui.view" id="bahia_personnel_manangement_extend">
+            <field name="name">Employee Checklist Document Extend</field>
+            <field name="model">hr.employee.checklist.documents</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_form_employee_checklist_document"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='contact_number'][2]" position="replace"/>
+                <field name="vessel_information" position="replace"/>
+
+                <field name="position_information" position="replace"/>
+
+                <field name="name" position="after">
+                    <field name="vessel_id" required="1"/>
+                    <field name="position_id" required="1"/>    
+                </field>
+
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='param_name_1']" position="replace">
+                    <field name="param_name_1_related" string = "RECORD BOOKS / VISA/ TRAINING" class = "oe_align_center" readonly="1"/>
+                </xpath>
+                
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='param_name_2']" position="replace">
+                    <field name="param_name_2_related" string="" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='param_name_3']" position="replace">
+                    <field name="param_name_3_related" string="" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='change_date']" position="replace">
+                    <field name="write_date" readonly = "1" attrs="{'invisible': [('has_change_date', '=', False)]}" widget="date"/>
+                </xpath>                
+
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='issued_at']" position="replace"/>
+                <xpath expr="//field[@id = 'BAHIA']/tree/field[@name='date_issued']" position="replace"/>
+                <!--
+                 <xpath expr="//field[@name = 'employee_checklists_documents_list_main']/tree/field[@name='param_name_2']" position="replace"/>
+                -->                 
+                 <xpath expr="//field[@name = 'employee_checklists_documents_list_main']/tree/field[@name='param_name_2']" position="after">
+                    <field name="param_name_2_check" style="width:150px"/>
+                 </xpath>
+                 <xpath expr="//field[@name = 'employee_checklists_documents_list_main']/tree/field[@name='param_name_2_value']" position="replace"/>
+                
+                 <xpath expr="//field[@name = 'employee_checklists_documents_list_main']/tree/field[@name='param_name_3']" position="replace"/>
+                 <xpath expr="//field[@name = 'employee_checklists_documents_list_main']/tree/field[@name='param_name_3_value']" position="replace"/>
+
+
+                <xpath expr="//field[@id = 'BAHIA']/tree" position="attributes">
+                    <attribute name="class"></attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+       <record model="ir.ui.view" id="hr_bahia_view_employee_filter">
+            <field name="name">hr.employee.filter.inherit.bahia</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <field name="employee_rank" position="after">
+                    <field name="ccl_number" groups="base.group_hr_user"/>
+                    <field name="employee_contract_number" groups="base.group_hr_user"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

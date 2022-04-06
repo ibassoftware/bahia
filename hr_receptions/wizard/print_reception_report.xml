@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record id="print_reception_report_view" model="ir.ui.view">
+            <field name="name">Reception Reports</field>
+            <field name="model">print.reception.report</field>
+            <field name="arch" type="xml">
+                <form string="Reception Reports">
+                    <p>Please enter the Dates that you are about to print on.</p>
+                    
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to" invisible="1"/>
+                    </group>
+                    
+                    <footer>
+                        <button name="print_checks" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

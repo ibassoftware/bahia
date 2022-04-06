@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+    <record model="external.file.backup" id="bmis_data">
+        <field name="name">BMIS</field>
+        
+        <field name="dir_file">'/opt/DataFilesBackup/'</field>
+        <field name="dir_original_file">'/opt/DataFiles/'</field>
+        <field name="date_to_be_backup">'01/08/2017'</field>
+    </record>
+</data>
+
+<data noupdate="1">
+    <record id="ir_cron_backupscheduler1" model="ir.cron">
+        <field eval="&quot;&quot;&quot;schedule_backup&quot;&quot;&quot;" name="function"/>
+        <field eval="&quot;&quot;&quot;days&quot;&quot;&quot;" name="interval_type"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field eval="&quot;&quot;&quot;Backup scheduler Documents&quot;&quot;&quot;" name="name"/>
+        <field eval="-1" name="numbercall"/>
+        <field eval="&quot;&quot;&quot;2010-01-07 11:35:28&quot;&quot;&quot;" name="nextcall"/>
+        <field eval="5" name="priority"/>
+        <field eval="0" name="doall"/>
+        <field eval="0" name="active"/>
+        <field eval="1" name="interval_number"/>
+        <field eval="&quot;&quot;&quot;external.file.backup&quot;&quot;&quot;" name="model"/>
+    </record>
+</data>
+</openerp>

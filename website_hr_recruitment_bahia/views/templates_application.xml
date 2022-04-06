@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="apply_add_family_details">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Familly Details</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_family_details_exectute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('relationship') and 'has-error' or ''}">
+                                        <label for="country_id">Relationship</label>
+                                        <span >
+                                            <select name="relationships" required="True" style="margin-left: 20px;">
+                                                <t t-if ="applicant.relationship">
+                                                    <option t-att-value = "applicant.relationship.id" > <span class="" t-field="applicant.relationship.name"/> </option>
+                                                </t>
+
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="relationships"  t-as="relationship">
+                                                    <option t-att-value="relationship.id"> <span class="" t-field="relationship.name"/> </option>
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+
+
+                                    <div t-attf-class="form-group #{error.get('last_name') and 'has-error' or ''}">
+                                        <label for="last_name">Last Name*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('last_name') or applicant.last_name" class="text" name="last_name" required="True" style="margin-left:26px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('first_name') and 'has-error' or ''}">
+                                        <label for="last_name">First Name*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('first_name') or applicant.first_name" class="text" name="first_name" required="True" style="margin-left:26px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('middle_name') and 'has-error' or ''}">
+                                        <label for="maiden_name">Maiden Name</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('middle_name')  or applicant.middle_name" class="text" name="middle_name"  placeholder="For Female Married Applicants" style="margin-left:16px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('gender') and 'has-error' or ''}">
+                                        <label for="gender">Gender</label>
+                                        <span >
+                                            <select name="gender"  style="margin-left: 51px;width:100px;" >
+                                                <t t-if="applicant.gender">
+                                                    <t t-if="applicant.gender == 'male'">
+                                                        <option value = "male" > <span>Male</span> </option>
+                                                    </t>
+                                                    <t t-if="applicant.gender == 'female'">
+                                                        <option value = "female" > <span>Female</span> </option>
+                                                    </t>                                            
+                                                </t>
+                                                <t t-if="not applicant.gender">
+                                                    <option value = "0" > <span> </span> </option>                                           
+                                                </t>                                        
+                                                <option value = "0" > <span> </span> </option>
+                                                <option value = "male" > <span>Male</span> </option>
+                                                <option value = "female" > <span>Female</span> </option>
+                                            </select>   
+                                        </span>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('date_of_birth') and 'has-error' or ''}">
+                                        <label for="date_of_birth">Date of Birth</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_of_birth') or applicant.date_of_birth" class="text" name="date_of_birth" style="margin-left:21px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('placeof_birth') and 'has-error' or ''}">
+                                        <label for="placeof_birth">Place of Birth</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('placeof_birth') or applicant.placeof_birth" class="text" name="placeof_birth" style="margin-left:15px"/>
+                                        </span>
+                                    </div>
+
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>
+
+                                                              
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_back_execute" method="post" enctype="multipart/form-data">
+                                    <!--<input type="hidden" t-att-value="applicant and applicant.id or False" name="new_applicant_id"/>-->
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+
+        <template id="apply_add_educational_background">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Educational Background</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_educ_back_exectute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+
+
+                                    <div t-attf-class="form-group #{error.get('schooltypes') and 'has-error' or ''}">
+                                        <label for="country_id">Level</label>                                
+                                        <span >
+                                            <select name="schooltypes" required="True" style="margin-left: 20px;" >
+                                                <t t-if ="applicant.schooltype">
+                                                    <option t-att-value = "applicant.schooltype.id" > <span class="" t-field="applicant.schooltype.name"/> </option>
+                                                </t>
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="schooltypes"  t-as="schooltype">
+                                                    <t t-if ="schooltype.show_in_website_application == True">
+                                                        <option t-att-value="schooltype.id"> <span class="" t-field="schooltype.name"/> </option> 
+                                                    </t>
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+
+
+                                    <div t-attf-class="form-group #{error.get('name_school') and 'has-error' or ''}">
+                                        <label for="name_school">Name of School*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('name_school') or applicant.name_school" class="text" name="name_school" required="True" style="margin-left:51px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('description') and 'has-error' or ''}">
+                                        <label for="description">Highest Degree Earned</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('description') or applicant.description" class="text" name="description" style="margin-left:15px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('date_from') and 'has-error' or ''}">
+                                        <label for="date_from">Date From</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_from') or applicant.date_from" class="text" name="date_from" style="margin-left:87px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('date_to') and 'has-error' or ''}">
+                                        <label for="date_to">Date To</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_to') or applicant.date_to" class="text" name="date_to" style="margin-left:103px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('school_address') and 'has-error' or ''}">
+                                        <label for="school_address">Place</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('school_address') or applicant.school_address" class="text" name="school_address" style="margin-left:115px"/>
+                                        </span>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_back_execute" method="post" enctype="multipart/form-data">
+                                    <!--<input type="hidden" t-att-value="applicant and applicant.id or False" name="new_applicant_id"/>-->
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+
+
+        <template id="apply_add_documents">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Documents</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_documents_exectute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/> 
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>
+
+                                    <div t-attf-class="form-group #{error.get('documents') and 'has-error' or ''}">
+                                        <label for="document">Documents</label>                                
+                                        <span >
+                                            <select name="documents" required="True" style="margin-left: 20px;" >
+
+                                                <t t-if ="applicant.document">
+                                                    <option t-att-value = "applicant.document.id" > <span class="" t-field="applicant.document.name"/> </option>
+                                                </t>
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="documents"  t-as="document">
+                                                    <option t-att-value="document.id"> <span class="" t-field="document.name"/> </option>              
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+
+
+                                    <div t-attf-class="form-group #{error.get('document_number') and 'has-error' or ''}">
+                                        <label for="document_number">Document No*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('document_number') or applicant.document_number" class="text" name="document_number" required="True" style="margin-left:49px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('date_issued') and 'has-error' or ''}">
+                                        <label for="date_issued">Date Issued</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_issued') or applicant.date_issued" class="text" name="date_issued" required="True" />
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('date_expiry') and 'has-error' or ''}">
+                                        <label for="date_expiry">Date Expiry</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_expiry') or applicant.date_expiry" class="text" name="date_expiry"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('issuing_authority') and 'has-error' or ''}">
+                                        <label for="issuing_authority">Issuing Authority</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('issuing_authority') or applicant.issuing_authority" class="text" name="issuing_authority" style="margin-left:31px"/>
+                                        </span>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_2_back_execute" method="post" enctype="multipart/form-data">
+                                    <!--<input type="hidden" t-att-value="applicant and applicant.id or False" name="new_applicant_id"/>-->
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+
+        <template id="apply_add_denied_visa">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Denied Visa</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_denied_visa_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+
+                                    <div t-attf-class="form-group #{error.get('nationality_id') and 'has-error' or ''}">
+                                        <label for="nationality_id">Country</label>                                
+                                        <span >
+                                            <select name="nationality_id" required="True" style="margin-left: 20px;" >
+
+                                                <t t-if ="applicant.nationality_id">
+                                                    <option t-att-value = "applicant.nationality_id.id" > <span class="" t-field="applicant.nationality_id.name"/> </option>
+                                                </t>
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="nationality_ids"  t-as="nationality_id">
+                                                    <option t-att-value="nationality_id.id"> <span class="" t-field="nationality_id.name"/> </option>              
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+                                    <div t-attf-class="form-group #{error.get('date_denied') and 'has-error' or ''}">
+                                        <label for="date_denied">Date Denied</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_denied') or applicant.date_denied" class="text" name="date_denied" required="True" style="margin-left:39px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('reason') and 'has-error' or ''}">
+                                        <label for="reason">Reason</label>
+                                        <span>
+                                            <textarea t-att-value="default.get('reason') or applicant.reason" class="text" name="reason" />
+                                        </span>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_2_back_execute" method="post" enctype="multipart/form-data">
+                                    <!--<input type="hidden" t-att-value="applicant and applicant.id or False" name="new_applicant_id"/>-->
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+
+        <template id="apply_add_deported">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Deported Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_deported_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+
+                                    <div t-attf-class="form-group #{error.get('nationality_id') and 'has-error' or ''}">
+                                        <label for="nationality_id">Country</label>                                
+                                        <span >
+                                            <select name="nationality_id" required="True" style="margin-left: 20px;" >
+                                                <t t-if ="applicant.nationality_id">
+                                                    <option t-att-value = "applicant.nationality_id.id" > <span class="" t-field="applicant.nationality_id.name"/> </option>
+                                                </t>
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="nationality_ids"  t-as="nationality_id">
+                                                    <option t-att-value="nationality_id.id"> <span class="" t-field="nationality_id.name"/> </option>              
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+                                    <div t-attf-class="form-group #{error.get('date_deported') and 'has-error' or ''}">
+                                        <label for="date_deported">Date Deported</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_deported') or applicant.date_deported" class="text" name="date_deported" required="True" style="margin-left:28px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('reason') and 'has-error' or ''}">
+                                        <label for="reason">Reason</label>
+                                        <span>
+                                            <textarea t-att-value="default.get('reason') or applicant.reason" class="text" name="reason" />
+                                        </span>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_2_back_execute" method="post" enctype="multipart/form-data">
+                                    <!--<input type="hidden" t-att-value="applicant and applicant.id or False" name="new_applicant_id"/>-->
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+
+        <template id="apply_add_training_courses">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Training Courses Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_training_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>
+
+
+                                    <div t-attf-class="form-group #{error.get('training_id') and 'has-error' or ''}">
+                                        <label for="training_id">Training</label>
+                                        <span >
+                                            <select name="training_id" required="True" style="margin-left: 20px;">
+                                                <t t-if ="applicant.training_id">
+                                                    <option t-att-value = "applicant.training_id.id" > <span class="" t-field="applicant.training_id.name"/> </option>
+                                                </t>
+
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="trainings"  t-as="training">
+                                                    <option t-att-value="training.id"> <span class="" t-field="training.name"/> </option>
+                                                </t>
+                                                <option t-att-value="99999"> <span>Other</span></option>
+                                            </select>   
+                                        </span>
+                                    </div> 
+
+
+                                    <div t-attf-class="form-group #{error.get('training_name') and 'has-error' or ''}">
+                                        <label for="training_name">Training Name</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('training_name') or applicant.training_name" class="text" name="training_name" placeholder="For Others Please Specify here.." style="margin-left:25px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('document_no') and 'has-error' or ''}">
+                                        <label for="document_no">Document No*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('document_no') or applicant.document_no" class="text" name="document_no" required="True" style="margin-left:25px"/>
+                                        </span>
+                                    </div>                                    
+
+                                    <div t-attf-class="form-group #{error.get('issue_date') and 'has-error' or ''}">
+                                        <label for="issue_date">Date Issued*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('issue_date') or applicant.issue_date" class="text" name="issue_date" required="True" style="margin-left:35px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('training_centers') and 'has-error' or ''}">
+                                        <label for="training_centers">Training Centers*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('training_centers') or applicant.training_centers" class="text" name="training_centers" required="True" style="margin-left:9px"/>
+                                        </span>
+                                    </div>  
+
+                                    <div t-attf-class="form-group #{error.get('is_with_cop') and 'has-error' or ''}">
+                                        <label for="is_with_cop">With COP?</label>                                
+                                        <span >
+                                            <select name="is_with_cop"  style="margin-left: 45px;" >
+
+
+                                                <t t-if ="applicant.is_with_cop">
+                                                    <t t-if ="applicant.is_with_cop==True">
+                                                        <option t-att-value = "yes" > <span>Yes</span> </option>
+                                                    </t>
+                                                    <t t-if ="applicant.is_with_cop==False">
+                                                        <option t-att-value = "no" > <span>No</span> </option>
+                                                    </t>
+                                                </t>
+
+                                                <option t-att-value = "0" > <span> </span> </option>
+                                                <option t-att-value = "yes" > <span>Yes</span> </option>
+                                                <option t-att-value = "no" > <span>No</span> </option>
+                                            </select>   
+                                        </span>
+                                    </div>     
+
+                                    <div t-attf-class="form-group #{error.get('issue_date_cop') and 'has-error' or ''}">
+                                        <label for="issue_date_cop">Date Issued*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('issue_date_cop') or applicant.issue_date_cop" class="text" name="issue_date_cop" style="margin-left:34px"/>
+                                        </span>
+                                    </div>
+
+
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_2_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+        <template id="apply_add_license">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">License Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_license_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>
+
+                                    <div t-attf-class="form-group #{error.get('training_id') and 'has-error' or ''}">
+                                        <label for="license_id">License</label>
+                                        <span >
+                                            <select name="license_id" required="True" style="margin-left: 20px;">
+                                                <t t-if ="applicant.license_id">
+                                                    <option t-att-value = "applicant.license_id.id" > <span class="" t-field="applicant.license_id.name"/> </option>
+                                                </t>
+
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="trainings"  t-as="training">
+                                                    <option t-att-value="training.id"> <span class="" t-field="training.name"/> </option>
+                                                </t>
+                                                <option t-att-value="99999"> <span>Other</span></option>
+                                            </select>   
+                                        </span>
+                                    </div>
+
+
+
+                                    <div t-attf-class="form-group #{error.get('training_name') and 'has-error' or ''}">
+                                        <label for="training_name">License</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('training_name') or applicant.training_name" class="text" name="training_name" placeholder="For Others Please Specify here.." style="margin-left:103px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('document_no') and 'has-error' or ''}">
+                                        <label for="document_no">Document No*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('document_no') or applicant.document_no" class="text" name="document_no" required="True"/>
+                                        </span>
+                                    </div>                                    
+
+                                    <div t-attf-class="form-group #{error.get('issue_date') and 'has-error' or ''}">
+                                        <label for="issue_date">Date Issued*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('issue_date') or applicant.issue_date" class="text" name="issue_date" required="True" style="margin-left:77px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('expiry_date') and 'has-error' or ''}">
+                                        <label for="expiry_date">Expiry Date</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('expiry_date') or applicant.expiry_date" class="text" name="expiry_date" style="margin-left:83px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('issuing_authority') and 'has-error' or ''}">
+                                        <label for="issuing_authority">Issuing Authority</label>                                
+                                        <span >
+                                            <select name="issuing_authority"  style="margin-left: 50px;" >
+                                                <t t-if ="applicant.issuing_authority">
+                                                    <t t-if ="applicant.issuing_authority=='1'">
+                                                        <option t-att-value = "1" > <span>Marina</span> </option>
+                                                    </t>
+                                                    <t t-if ="applicant.issuing_authority=='2'">
+                                                        <option t-att-value = "2" > <span>Bahamas Maritime</span> </option>
+                                                    </t>
+                                                    <t t-if ="applicant.issuing_authority=='3'">
+                                                        <option t-att-value = "3" > <span>Others</span> </option>
+                                                    </t>                                                    
+                                                </t>
+
+
+
+                                                <option t-att-value = "0" > <span> </span> </option>
+                                                <option t-att-value = "1" > <span>Marina</span> </option>
+                                                <option t-att-value = "2" > <span>Bahamas Maritime</span> </option>
+                                                <option t-att-value = "3" > <span>Others</span> </option>
+                                            </select>   
+                                        </span>
+                                    </div> 
+
+                                    <div t-attf-class="form-group #{error.get('issuing_authority_other') and 'has-error' or ''}">
+                                        <label for="issuing_authority_other">Other Issuing Authority</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('issuing_authority_other') or applicant.issuing_authority_other" class="text" name="issuing_authority_other"  placeholder="If Other Please Specify" style="margin-left:15px"/>
+                                        </span>
+                                    </div>  
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_2_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>  
+
+        <template id="apply_add_medical_history">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Medical History Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_medical_history_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('vessel_name') and 'has-error' or ''}">
+                                        <label for="vessel_name">Vessel Name*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('vessel_name') or applicant.vessel_name" class="text" name="vessel_name" required="True" style="margin-left:43px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('occurence_place') and 'has-error' or ''}">
+                                        <label for="occurence_place">Occurence Place*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('occurence_place') or applicant.occurence_place" class="text" name="occurence_place" required="True" style="margin-left:19px"/>
+                                        </span>
+                                    </div>                                    
+
+                                    <div t-attf-class="form-group #{error.get('occurence_date') and 'has-error' or ''}">
+                                        <label for="occurence_date">Date of Occurence*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('occurence_date') or applicant.occurence_date" class="text" name="occurence_date" required="True" style="margin-left:9px"/>
+                                        </span>
+                                    </div>
+
+
+                                    <div t-attf-class="form-group #{error.get('description') and 'has-error' or ''}">
+                                        <label for="description">Brief description of illness / injury / accident</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('description') or applicant.description" class="text" name="description" style="margin-left:19px"/>
+                                        </span>
+                                    </div>  
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_3_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template> 
+
+        <template id="apply_add_medical_operation">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Medical Operation Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_medical_operation_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('details_of_operation') and 'has-error' or ''}">
+                                        <label for="details_of_operation">Details of Operation*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('details_of_operation') or applicant.details_of_operation" class="text" name="details_of_operation" required="True" style="margin-left:23px"/>
+                                        </span>
+                                    </div>
+                                 
+
+                                    <div t-attf-class="form-group #{error.get('date_of_operation') and 'has-error' or ''}">
+                                        <label for="date_of_operation">Date of Operation*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_of_operation') or applicant.date_of_operation" class="text" name="date_of_operation" required="True" style="margin-left:37px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('period_of_disability') and 'has-error' or ''}">
+                                        <label for="period_of_disability">Period of Disability*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('period_of_disability') or applicant.period_of_disability" class="text" name="period_of_disability" required="True" style="margin-left:27px"/>
+                                        </span>
+                                    </div>   
+
+                                    <div t-attf-class="form-group #{error.get('description') and 'has-error' or ''}">
+                                        <label for="description">Present Condition</label>
+                                        <span>
+                                            <textarea t-att-value="default.get('description') or applicant.description" class="text" name="description" style="margin-left:38px"/>
+                                        </span>
+                                    </div>  
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_3_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>  
+
+        <template id="apply_add_medical_illness">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Medical Illness Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_medical_illness_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('details_of_illness_accident') and 'has-error' or ''}">
+                                        <label for="details_of_illness_accident">Details of Illness/Accident*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('details_of_illness_accident') or applicant.details_of_illness_accident" class="text" name="details_of_illness_accident" required="True" style="margin-left:17px"/>
+                                        </span>
+                                    </div>
+                                 
+
+                                    <div t-attf-class="form-group #{error.get('date_illness_accident') and 'has-error' or ''}">
+                                        <label for="date_illness_accident">Date of Illness*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_illness_accident') or applicant.date_illness_accident" class="text" name="date_illness_accident" required="True" style="margin-left:83px"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('therapy_treatment_description') and 'has-error' or ''}">
+                                        <label for="therapy_treatment_description">Therapy/Treatment Description</label>
+                                        <span>
+                                            <textarea t-att-value="default.get('therapy_treatment_description') or applicant.therapy_treatment_description" class="text" name="therapy_treatment_description" style="margin-left:23px"/>
+                                        </span>
+                                    </div>  
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_3_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>         
+
+        <template id="apply_add_employee_relatives">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Employed Relatives Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_employee_relatives_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('name_of_crew') and 'has-error' or ''}">
+                                        <label for="name_of_crew">Name of Crew*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('name_of_crew') or applicant.name_of_crew" class="text" name="name_of_crew" required="True"/>
+                                        </span>
+                                    </div>
+ 
+                                    <div t-attf-class="form-group #{error.get('position_and_principal') and 'has-error' or ''}">
+                                        <label for="position_and_principal">Position and Principal*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('position_and_principal') or applicant.position_and_principal" class="text" name="position_and_principal" required="True" style="margin-left: 20px;"/>
+                                        </span>
+                                    </div>                                 
+
+                                    <div t-attf-class="form-group #{error.get('relationship') and 'has-error' or ''}">
+                                        <label for="country_id">Relationship</label>                                
+                                        <span >
+                                            <select name="relationships" required="True" style="margin-left: 78px;" >
+                                                <t t-if ="applicant.relationship">
+                                                    <option t-att-value = "applicant.relationship.id" > <span class="" t-field="applicant.relationship.name"/> </option>
+                                                </t>
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="relationships"  t-as="relationship">
+                                                    <option t-att-value="relationship.id"> <span class="" t-field="relationship.name"/> </option>              
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_3_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>
+
+        <template id="apply_add_previous_application">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Previous Application Information</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_previous_application_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('date_applied') and 'has-error' or ''}">
+                                        <label for="date_applied">Date Applied*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_applied') or applicant.date_applied" class="text" name="date_applied" required="True" />
+                                        </span>
+                                    </div>                                
+
+                                    <div t-attf-class="form-group #{error.get('job_applied_id') and 'has-error' or ''}">
+                                        <label for="job_applied_id">Position Applied</label>                                     
+                                        <span >
+                                            <select name="job_applied_id" required="True" style="margin-left: 47px;" >
+                                                <t t-if ="applicant.job_applied_id">
+                                                    <option t-att-value = "applicant.job_applied_id.id" > <span class="" t-field="applicant.job_applied_id.name"/> </option>
+                                                </t>
+
+                                            <!--
+                                                <t t-if ="not applicant.job_applied_id">
+                                                    <option t-att-value = "0" > <span> </span> </option>
+                                                </t>
+                                                <t t-if ="not applicant.job_applied_id">
+                                                    <option t-att-value = "applicant.job_applied_id.id" > <span class="" t-field="applicant.job_applied_id.name"/> </option>
+                                                </t>    
+                                            -->
+                                                <option t-att-value = "0" > <span> </span> </option>                                    
+                                
+                                                <t t-foreach="jobs"  t-as="job">
+                                                    <option t-att-value="job.id"> <span class="" t-field="job.name"/> </option>              
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_3_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                    
+                </div>   
+
+            </t>
+        </template>  
+
+        
+
+        <template id="apply_add_employment_history">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Employment History</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/add_employment_history_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+
+                                    <div t-attf-class="form-group #{error.get('rank_position') and 'has-error' or ''}">
+                                        <label for="rank_position">Rank/Position*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('rank_position') or applicant.rank_position" class="text" name="rank_position" required="True"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('manning_agency') and 'has-error' or ''}">
+                                        <label for="manning_agency">Manning Agency*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('manning_agency') or applicant.manning_agency" class="text" name="manning_agency" 
+                                                   required="True"
+                                                   style="margin-left: 49px;"/>
+                                        </span>
+                                    </div>                                    
+
+
+                                    <div t-attf-class="form-group #{error.get('employer_principal') and 'has-error' or ''}">
+                                        <label for="employer_principal">Employer/Principal*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('employer_principal') or applicant.employer_principal" class="text" name="employer_principal" required="True"
+                                                   style="margin-left: 36px;"/>
+                                        </span>
+                                    </div>   
+
+                                    <div t-attf-class="form-group #{error.get('address_contact_info_manning_agen') and 'has-error' or ''}">
+                                        <label for="address_contact_info_manning_agen">Address and Contact No. of Manning Agency*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('address_contact_info_manning_agen') or applicant.address_contact_info_manning_agen" class="text" name="address_contact_info_manning_agen" required="True"/>
+                                        </span>
+                                    </div>   
+
+                                    <div t-attf-class="form-group #{error.get('vessel_name') and 'has-error' or ''}">
+                                        <label for="vessel_name">Vessel Name*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('vessel_name') or applicant.vessel_name" class="text" name="vessel_name" required="True"
+                                                style="margin-left:70px"/>
+                                        </span>
+                                    </div>   
+
+<!--
+                                    <div t-attf-class="form-group #{error.get('vessel_type') and 'has-error' or ''}">
+                                        <label for="vessel_type">Vessel Type * </label>                                
+                                        <span >
+                                            <select name="vessel_type"  style="margin-left: 72px;" required="True">                                               
+                                                <option t-att-value = "0" > <span> </span> </option>
+                                                <option t-att-value = "gcd" > <span>GCD - General Cargo</span> </option>
+                                                <option t-att-value = "obo" > <span>OBO - Ore/Bulk/Oil Carriers</span> </option>
+                                                <option t-att-value = "gas" > <span>GAS - LPG/LNG Gas Carrier</span> </option>
+                                                <option t-att-value = "osv" > <span>OSV - Offshore Supply Vessel</span> </option>
+                                                <option t-att-value = "b_c" > <span>B/C - Bulk Carrier</span> </option>
+                                                <option t-att-value = "tnc" > <span>TNC - Tanker (Crude)</span> </option>
+                                                <option t-att-value = "chm" > <span>CHM - Chemical Carriers</span> </option>
+                                                <option t-att-value = "drg" > <span>DRG - Dredgers</span> </option>
+                                                <option t-att-value = "con" > <span>CON - Cellular Container</span> </option>
+                                                <option t-att-value = "tnp" > <span>TNP - Tanker(Product)</span> </option>
+                                                <option t-att-value = "pas" > <span>PAS - Passenger Ship</span> </option>
+                                                <option t-att-value = "srv" > <span>SRV - Survey Ship</span> </option>
+                                                <option t-att-value = "mlp" > <span>MLP - Multipurpose</span> </option>
+                                                <option t-att-value = "tnv" > <span>TNV - VLCC/ULCC</span> </option>
+                                                <option t-att-value = "r_o" > <span>Ro/Ro Carriers</span> </option>
+                                                <option t-att-value = "log" > <span>LOG - Log/Timber</span> </option>
+                                                <option t-att-value = "o_o" > <span>O/O - Ore/Oil Carrier</span> </option>
+                                                <option t-att-value = "tns" > <span>TNS - Tanker (Storage)</span> </option>
+                                                <option t-att-value = "c_s" > <span>C/S - Car Ship</span> </option>
+                                                <option t-att-value = "rfr" > <span>RFR - Reefer</span> </option>
+                                            </select>   
+                                        </span>
+                                    </div>  
+-->
+
+                                    <div t-attf-class="form-group #{error.get('grt') and 'has-error' or ''}">
+                                        <label for="grt">GRT*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('grt') or applicant.grt" class="text" name="grt" required="True"
+                                                    style="margin-left:117px"/>
+                                        </span>
+                                    </div>   
+
+
+                                    <div t-attf-class="form-group #{error.get('date_from') and 'has-error' or ''}">
+                                        <label for="date_from">Date From*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_from') or applicant.date_from" class="text" name="date_from" required="True" 
+                                                   style="margin-left:82px"/>
+                                        </span>
+                                    </div> 
+
+                                    <div t-attf-class="form-group #{error.get('date_to') and 'has-error' or ''}">
+                                        <label for="date_to">Date To*</label>
+                                        <span>
+                                            <input type="date" t-att-value="default.get('date_to') or applicant.date_to" class="text" name="date_to" required="True" 
+                                                    style="margin-left:98px;"/>
+                                        </span>
+                                    </div>
+
+                                    <div t-attf-class="form-group #{error.get('duties_and_responsibility') and 'has-error' or ''}">
+                                        <label for="duties_and_responsibility">Duties and Responsibilities</label>
+                                        <span>
+                                            <textarea t-att-value="default.get('duties_and_responsibility') or applicant.duties_and_responsibility" class="text" name="duties_and_responsibility" />
+                                        </span>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>                          
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_4_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>                    
+                </div>   
+            </t>
+        </template>
+        <template id="apply_add_socialmedia_details">
+            <t t-call="website_hr_recruitment_bahia.recruitment_layout">
+                <div class="white_panel" id="application_form">
+                    <h1 class="title">APPLICATION FORM</h1><br/><br/>
+                    <h1 class="title">Social Media Presence Details</h1><br/>        
+                    <div id="div1" class="app_form_panel_recruitment">
+                        <div class="gray_panel_apply_all_2">
+
+                            <form class="form-horizontal mt32" action="/jobs/apply_add_socmedia_details_exectute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="applicant_id"/>
+
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                    
+                                    <p>
+                                        Select from the <b>"Platform/Provider"</b> list below a social media platform you have used within the last five years. In the space next to the <b>"Platform/Provider"</b>. <b>"Social Media Identifier"</b> enter the username or handler you have used in that platform.
+                                    </p>
+                                    <p>
+                                        Please <b>do not provide yor password</b>. Click <b>"Save"</b> button. If you have not used any of the listed social media platforms in the last five years, select <b>"None"</b>.
+                                    </p>
+                                    <p>
+                                        <b>NOTE:</b> Failure to fill-out below information might cause denial of application.
+                                    </p>  
+                                    <br/>                                  
+                                    <div t-attf-class="form-group #{error.get('socialmedia_site') and 'has-error' or ''}">
+                                        <label for="country_id">Platform/Provider</label>
+                                        <span >
+                                            <select name="socialmedia_site" required="True" style="margin-left: 54px;width:150px;">
+                                                <t t-if ="applicant.socialmedia_id">
+                                                    <option t-att-value = "applicant.socialmedia_id.id" > <span class="" t-field="applicant.socialmedia_id.name"/> </option>
+                                                </t>
+
+                                                <option t-att-value = "0" > <span> </span> </option> 
+                                                <t t-foreach="socialmedia"  t-as="socialmedia_site">
+                                                    <option t-att-value="socialmedia_site.id"> <span class="" t-field="socialmedia_site.name"/> </option>
+                                                </t>
+                                            </select>   
+                                        </span>
+                                    </div>   
+
+
+
+                                    <div t-attf-class="form-group #{error.get('name') and 'has-error' or ''}">
+                                        <label for="name">Social Media Identifier*</label>
+                                        <span>
+                                            <input type="text" t-att-value="default.get('name') or applicant.name" class="text" name="name" style="margin-left:26px"/>
+                                        </span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;" href="#">Save</button>
+                                        </div>
+                                    </div>
+                                                              
+                            </form>
+                            <form class="form-horizontal mt32" action="/jobs/apply_all_back_execute" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" t-att-value="new_applicant_id or False" name="new_applicant_id"/>
+                                    <input type="hidden" t-att-value="edit_files or 0" name="edit_file"/>
+                                    <input type="hidden" t-att-value="child_id or False" name="child_id"/>
+                                    <input type="hidden" t-att-value="update_only or 0" name="update_only"/>                                     
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <button type="Next" class="btn btn-default" style="padding:5px;">Back</button>
+                                        </div>
+                                    </div>                          
+                            </form>                  
+                        </div>
+                    </div>
+                </div>   
+            </t>
+        </template>              
+    </data>
+</openerp>

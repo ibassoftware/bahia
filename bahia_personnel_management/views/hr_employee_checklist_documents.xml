@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+      	<template id="assets_backend" name="mymodule css assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/bahia_personnel_management/static/src/css/hr.css"/>
+                <script type="text/javascript" src="/bahia_personnel_management/static/src/js/bahia_widget.js"></script>
+            </xpath>
+        </template>
+
+
+        <record id="act_hr_employee_checklist_document_button" model="ir.actions.act_window">
+            <field name="res_model">hr.employee.checklist.documents</field>
+            <field name="view_type">form</field>
+            <field name="name">Checklist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+        </record>
+
+
+
+        <record id="view_form_employee_checklist_document" model="ir.ui.view">
+            <field name="name">Employee Checklist Document</field>
+            <field name="model">hr.employee.checklist.documents</field>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <header >
+                        <button name="regenerateChecklistDocuments" string="Regenerate Checklist"
+                                class="oe_highlight" type="object"
+                                icon ="partner"
+                                confirm="Regenerate Checklist will remove the  current save list, are you sure you want to proceed?"/>
+                        <button name="updateChecklist"
+                                string="Generate"
+                                class="oe_highlight"
+                                type="object"
+                                icon ="STOCK_EXECUTE"/>
+                    </header>                    
+                    <sheet class ="oe_form_sheet_width_bahia">
+                        <group>
+            				<group>
+                                <field name="employee_id" invisible = "1"/>
+                        		<field name="checklist_no" readonly = "1"/>
+                        		<field name="employee_number" readonly = "1"/>
+                        		<field name="name" readonly = "1"/>
+                        		<field name="vessel_information" readonly = "1"/>
+                        		<field name="position_information" readonly = "1"/>
+                        		<field name="joining_date" />	
+                        		<field name="contact_number" />	
+                        		<field name="signoff_date" />	
+                        		<field name="contact_number" />	
+                        		<field name="reported_date"/>					
+            				</group>
+                            <group>
+                                <!--
+                                <group>
+                                    <field name="us_visa_boolean"/>                                    
+                                </group>
+                                <group>
+                                    <field name="us_visa_latest_document" nolabel="1"/>
+                                </group>    
+                                <group>
+                                    <field name="us_visa_previous_document" string = "Previous"/>
+                                </group>     
+                                <group>
+                                    <field name="us_visa_IssuedAt_document" string = "Issued At"/>
+                                </group>  
+                                -->     
+                                <field name="employee_checklists_documents_list_main" nolabel="1" widget= "FieldOne2ManyRemHeader" sortable="false" >    
+                                        <tree  class = "oe_checklist_bahia"  editable="top/bottom" create = "false"  delete = "false" limit = "500" sortable="false">     
+                                            <field name="param_name_1" string = "" class = "oe_align_center" readonly = "1"/> <!-- widget = "on2manyrem" -->
+                                            <field name="param_name_1_value"   attrs="{'invisible': [('param_name_1_value_visible', '=', False)]}"/>
+                                            <field name="param_name_1_check"  string = "" attrs="{'invisible': [('param_name_1_check_visible', '=', False)]}"/>
+                                            <field name="param_name_1_value_visible" invisible = "1"  />
+                                            <field name="param_name_1_check_visible" invisible = "1"  />
+
+                                            <field name="param_name_2" readonly = "1" string = ""/>
+                                            <field name="param_name_2_value"   attrs="{'invisible': [('param_name_2_value_visible', '=', False)]}"/>
+                                            <field name="param_name_2_value_visible" invisible = "1"  />
+
+                                            <field name="param_name_3" readonly = "1" />
+                                            <field name="param_name_3_value"   attrs="{'invisible': [('param_name_3_value_visible', '=', False)]}"/>   
+                                            <field name="param_name_3_value_visible" invisible = "1"  />
+                                        </tree>
+                                </field>
+                                                                                                                                            
+                            </group>
+                        </group>
+                        <notebook name = "checklist_notebook">
+                            <page name = "checklist_page">
+                                <field id = "BAHIA" name="employee_checklists_documents_list" string ="" widget= "FieldOne2ManyRemHeader" >
+                                    <tree  class = "oe_checklist_bahia"  editable="top/bottom" create = "false" limit = "500" sortable="False"> <!-- class = "oe_checklist_bahia"  string = "" widget = "FieldOne2ManyRemHeader"-->
+                                        <field name="param_name_1" string = "RECORD BOOKS / VISA/ TRAINING" class = "oe_align_center" readonly = "1"/> <!-- widget = "on2manyrem" -->
+                                        <field name="param_name_1_value"   attrs="{'invisible': [('param_name_1_value_visible', '=', False)]}"/>
+                                        <field name="param_name_1_check"  string = "" attrs="{'invisible': [('param_name_1_check_visible', '=', False)]}"/>
+                                        <field name="param_name_1_value_visible" invisible = "1"  />
+                                        <field name="param_name_1_check_visible" invisible = "1"  />
+
+                                        <field name="param_name_2" readonly = "1" string = ""/>
+                                        <field name="param_name_2_value" widget="date"  attrs="{'invisible': [('param_name_2_value_visible', '=', False)]}"/>
+                                        <field name="param_name_2_check" string = ""  attrs="{'invisible': [('param_name_2_check_visible', '=', False)]}"/>
+                                        <field name="param_name_2_value_visible" invisible = "1"  string = ""/>
+                                         <field name="param_name_2_check_visible" invisible = "1"  string = ""/>
+
+
+                                        <field name="param_name_3" readonly = "1" />
+                                        <field name="param_name_3_value"   attrs="{'invisible': [('param_name_3_value_visible', '=', False)]}"/>
+                                        <field name="param_name_3_check" string = "" attrs="{'invisible': [('param_name_3_check_visible', '=', False)]}"/>
+                                        <field name="param_name_3_value_visible" invisible="1" string = ""/>
+                                        <field name="param_name_3_check_visible" invisible = "1"  string = ""/>
+
+
+                                        <!--
+                                        <field name="param_name_4"  readonly = "1" string = ""/>
+                                        <field name="param_name_4_value" string = "" attrs="{'invisible': [('param_name_4_value_visible', '=', False)]}"/>
+                                        <field name="param_name_4_check" string = "" attrs="{'invisible': [('param_name_4_check_visible', '=', False)]}"/>
+                                        <field name="param_name_4_value_visible" invisible="1" string = ""/>
+                                         <field name="param_name_4_check_visible" invisible = "1"  string = ""/>
+                                        -->
+
+                                        <field name="issued_at"  attrs="{'invisible': [('has_issued_at', '=', False)]}"/>
+                                        <field name="date_issued"   attrs="{'invisible': [('has_date_issued', '=', False)]}"/>
+                                        <field name="date_expiry"   attrs="{'invisible': [('has_date_expiry', '=', False)]}"/>
+                                        <field name="change_by" readonly = "1"  attrs="{'invisible': [('has_changed_by', '=', False)]}"/>
+                                        <field name="change_date" readonly = "1" attrs="{'invisible': [('has_change_date', '=', False)]}"/>
+
+
+                                        <field name="has_date_issued" invisible="1" />
+                                        <field name="has_issued_at" invisible="1" />
+                                        <field name="has_date_expiry" invisible="1" />
+                                        <field name="has_changed_by" invisible="1" />
+                                        <field name="has_change_date" invisible="1" />                                                                                
+                                    </tree>
+                                </field>                              
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers" />
+                            <field name="message_ids" widget="mail_thread" />
+                        </div>
+                    </sheet>                    
+                </form>
+            </field>
+        </record>
+
+
+        <record id="hr_employee_checklist_document_view_search" model="ir.ui.view">
+            <field name="name">hr.employee.checklist.documents.search</field>
+            <field name="model">hr.employee.checklist.documents</field>
+            <field name="arch" type="xml">
+                <search string="Search Employee Checklist">
+                   <field name="name"/>
+                   <field name="employee_id"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="hr_employee_checklist_documents_view_tree" model="ir.ui.view">
+            <field name="name">hr.employee.checklist.documents.view.tree</field>
+            <field name="model">hr.employee.checklist.documents</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Checklist">
+	    		<field name="checklist_no"/>
+	    		<field name="joining_date"/>	
+	    		<field name="employee_number"/>
+	    		<field name="employee_id"/>
+	    		<field name="vessel_information"/>
+	    		<field name="position_information"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

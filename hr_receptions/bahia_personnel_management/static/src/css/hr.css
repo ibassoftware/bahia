@@ -1,0 +1,74 @@
+.field_binary {
+    width: 250px;
+}
+
+.openerp .oe_checklist_bahia{
+	border-top: 0px solid #ddd;
+}
+
+.openerp .oe_checklist_bahia .oe_list_content > tbody > tr{
+    height: 27px;
+    border-top: 0px solid #ddd;
+}
+
+.openerp .oe_checklist_bahia .oe_list_content > thead{
+    height: 27px;
+    border-right: 0px solid #ddd;
+    border-left: 0px solid #ddd;
+    background: transparent;
+
+}
+
+.openerp .oe_checklist_bahia .oe_list_content  > thead > tr > th{
+	border-left: 0px solid #dfdfdf;
+}
+
+.openerp .oe_form_sheet_width_bahia {
+  min-width: 1250px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+
+ 
+
+
+.openerp .oe_form_sheetbg .oe_form_sheet_width_bahia_reports {
+  min-width: 1500px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.openerp .oe_form_sheetbg .oe_form_sheet_width_bahia_relatives {
+  min-width: 1800px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+  
+.openerp .oe_form_sheet .oe_form_sheet_width .oe_form_sheet_width_bahia_reports {
+  min-width: 1500px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+
+.openerp .oe_form_sheet .oe_form_sheet_width .oe_form_sheet_width_bahia_relatives {
+  min-width: 1800px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.openerp .oe_form_sheet_width {
+  min-width: 1250px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+
+.openerp .oe_align_center {
+  text-align: center;
+}
+
+
+

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:
+-->
+<openerp>
+    <data>
+
+        <template id="layout_cookie_privacy_policy" inherit_id="website.layout" name="Cookie and Privacy Policy">
+            <xpath expr="//div[@id='wrapwrap']/div[@class='box-container']" position="before">
+                <div id="policy_div" class="box-container" style="margin: 0 auto 9px auto;">
+                    <div class="row" style="color: #fff;background-color: #037f7f;border-color: #fff;">
+                        <div class="col-md-10 text-left mb16" data-snippet-id="colmd" style="margin-left:11px">
+                            <p align="left" style="font: normal 12px arial;">We use our own and third-party cookies to improve our services and to analyze the use of our website. By continuing to browse this website and by sending your application you are agreeing to our terms and conditions, privacy policy and of use of cookies. Read more. 
+                            <a t-attf-href="/page/privacy_policy2" style="color:#f7f361; text-decoration: underline!important">+ info</a>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-center" data-snippet-id="colmd">
+                            <a id= "addFamilyDetails"  class="btn btn-default js_accept_cookies" style="padding:5px;margin-top:15px" t-attf-href="/">
+                                I ACCEPT
+                            </a>
+                        </div>
+                    </div>
+                </div>                
+            </xpath>
+            <xpath expr="//div[@class='box-container']/div[@class='sub_navbar']/ul[@class='sub_navigation_link']/li[5]" position="after">
+                <li><a href="/page/privacy_policy">PRIVACY POLICY</a></li>         
+            </xpath>
+
+            <xpath expr="//script[@t-if='website and website.google_analytics_key']" position="after">
+                <script>
+                    $(document).on('click', 'a.js_accept_cookies', function (ev) {
+                        ev.preventDefault();
+                        $("#policy_div").remove();
+                    });
+                </script>
+            </xpath>
+        </template>
+
+
+        <template id="cookies_privacy_policy_page" name="Cookie and Privacy Policy Page">
+            <t t-call="website.layout">
+                <!--
+                <span class="hidden" id="active_link">0,3</span>
+            -->
+              <div class="white_panel" id="principals">
+                  <h1 class="title">PRIVACY POLICY</h1><br/>
+                  <hr/>
+                  
+                  <span style="color: black;font-size: 11px;font-style: italic;">This is the BAHIA SHIPPING SERVICES, INC. (BAHIA) Data Protection Policy which sets forth how we manages, collects, uses</span><br/>
+                  <span style="color: black;font-size: 11px;font-style: italic;">and discloses your Personal Information, in accordance with the Philippine Data Privacy Act of 2012 (DPA).</span><br/>
+                  <span style="color: black;font-size: 11px;font-style: italic;">This policy is in addition to your crew authorization and consent form to BAHIA in respect of your personal information.</span><br/><br/><br/>
+
+                  <span style="color: black;font-size: 11px;font-style: italic;">In accordance with this issuance, we wish to <b style="font-size:13px">notify</b> you that <b style="font-size:13px">BAHIA</b> will collect your personal information when you sign up on our website, <a href="www.bahiashipping.ph">www.bahiashipping.ph</a> in the course of your employment application. You agree and consent</span><br/>
+
+                  <span style="color: black;font-size: 11px;font-style: italic;">on the collection, use and processing of your personal information in the manner set forth in this Privacy Policy which will be updated from time to time in accordance with the existing regulatory requirement of the Act.</span><br/>
+
+                  <hr/>
+
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 text-left mb16" style="padding-right:0px;padding-left:0px;">
+                            <span style="font-size:11px;color: black;">Personal Information</span><br/>
+                            <span style="font-size:11px;color: black;">Purposes of Personal Information Collected</span><br/>
+                            <span style="font-size:11px;color: black;">Retention of Personal Information</span><br/>
+                            <span style="font-size:11px;color: black;">Data Transfers</span><br/>
+                            <span style="font-size:11px;color: black;">Data Sharing</span><br/>
+                            <span style="font-size:11px;color: black;">Rights to Personal Information</span><br/>
+                            <span style="font-size:11px;color: black;">Cookies</span><br/>
+                            <span style="font-size:11px;color: black;">Contract</span><br/>
+                        </div>
+                        <div class="col-md-3 text-left" style="border-left:1px solid gray">
+                            <b style="font-size:12px;color: black;">Personal Information</b><br/><br/>
+                            <span style="font-size:11px;color: black;">In this policy, personal information refers to any information, whether recorded in
+                                  material form or not, that will directly ascertain the identity of the crew. This may
+                                 include your name, age, date of birth, marital status, address, contact information
+                                 (like telephone number, e-mail address), social security and other government
+                                 identification numbers, and other data not directly taken from the crew but from third
+                                 party thru databases and public sources like job title, skills, resume etc.</span><br/><br/>
+                            <b style="font-size:12px;color: black;">Retention of Personal Information</b><br/><br/>
+                            <span style="font-size:11px;color: black;">That my Personal Information will be stored in BAHIA's crew database (BMIS) and respective Principal's crew database on which you may be assigned. We will store your personal information for as long as it is necessary to fulfill the purpose for which it was collected at a minimum of 5 years from the date of last employment in case of dispute after which it will be destroyed.
+                            </span><br/><br/>
+
+                            <b style="font-size:12px;color: black;">Data Transfers</b><br/><br/>
+                            <span style="font-size:11px;color: black;">We may also transfer your personal data from BAHIA (BMIS) crew databse to any of our direct and indirect parent or subsidiary or associated or affiliated company due to any of the purposes listed below
+                            </span><br/><br/>
+
+                            <span style="font-size:11px;color: black;">Purposes of collecting and processing of personal information shall at least meet one of the following circumstances:
+                            </span>
+                              <ul style="list-style-type:none;font-size:11px;color: black;">
+                                  <li>1. Consent to collect and process personal data as a requirement in administering your employment or your application;</li>
+                                  <li>2. Protect your and another person's vital interest when necessary like in case of medical emergencies;</li>
+                                  <li>3. To comply with legal obligation;</li>
+                                  <li>4. Legitimate interests - processing is necessary for the purposes of the legitimate interest</li>                                                                    
+                              </ul>                            
+
+                            <b style="font-size:12px;color: black;">Data Sharing</b><br/><br/>
+                            <span style="font-size:11px;color: black;">We share your personal information with our third party service providers to the extent
+                                  necessary for them to provide their services such as but not limited to travel - related service partners, training centers and medical service providers.
+                            </span><br/><br/>
+
+                            <b style="font-size:12px;color: black;">Your rights</b><br/><br/>
+                            <span style="font-size:11px;color: black;">You have the right to be informed, access your personal information or restrict or object to our processing of, you may request for a copy of some or all of your personal information thru writing to which you may be asked for the purposes of the request, subject to evaluation of your identity and purposes. You may also have the rights not to allow us to process your personal information if you believe that your personal information is incorrect and in which case, you may withdraw your consent to collect if no longer necessary to process.
+                            </span><br/><br/>
+
+                            <span style="font-size:11px;color: black;">If there's anything about our policies or your information you wish to clarify, or discuss, feel free to reach out to our Data Protection Officer on.
+                            </span><br/><br/>
+
+
+                            <span>Email, <a t-attf-href="mailto:dataprotection@bahiashipping.ph" target="_blank">dataprotection@bahiashipping..ph</a></span><br/>
+                        </div>
+                    </div>
+                  </div>                  
+                  <t t-if ="no_button==0">
+                      <div class="container">
+                        <div class="row">
+                            <div class="col-md-1 text-left mb16" style="padding-right:0px;padding-left:0px;"/>
+                            <div class="col-md-1 text-center mb16" style="padding-right:0px;padding-left:0px;">
+                                <a class="btn btn-default" style="padding:5px;margin-top:25px" t-attf-href="/">
+                                    ACCEPT
+                                </a>
+                            </div>
+                            <div class="col-md-1 text-center mb16" style="padding-right:0px;padding-left:0px;">
+                                <span>
+                                <a class="btn btn-default" style="padding:5px;margin-top:25px" t-attf-href="https://www.google.com" target="_self">
+                                    CANCEL
+                                </a>  
+                                </span>                          
+                            </div>
+                            <div class="col-md-2 text-left mb16" style="padding-right:0px;padding-left:0px;"/>
+                        </div>
+                      </div>                      
+                  </t>
+              </div>
+            </t>
+        </template>
+
+     </data>
+</openerp>

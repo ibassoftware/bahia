@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+                    <!-- %(act_hr_employee_checklist_document_button)d 
+
+                        <div>Start<br/>Interview</div>
+
+                        <field name="checklist_count" widget="statinfo" string="Checklist"/>
+
+                -->        
+        <!-- Applicants -->
+        <record id="view_form_rec_eval_ext" model="ir.ui.view">
+            <field name="name">view.form.rectruitment.evaluation.extension</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment_extend_application.view_form_rec_ext_inherited"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div[@class='oe_right oe_button_box']/button[@name='action_get_attachment_tree_view']" position="before" >
+
+                    <button name="%(act_hr_applicant_evaluation_main)d" 
+                        class="oe_stat_button" 
+                        icon="fa-book"  
+                        type="action">
+                        <field name="interview_count" widget="statinfo" string="Interview"/>
+                    </button>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

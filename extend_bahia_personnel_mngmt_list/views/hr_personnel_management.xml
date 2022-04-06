@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_form_todo_task_inherited" model="ir.ui.view">
+            <field name="name">Employee – User extension</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_form_todo_task_inherited"/>
+            <field name="arch" type="xml">
+            	
+               	<field name="place_ofissue"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload"/>
+               	</field>
+               
+               	<field name="medical_clinic"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload"/>
+               	</field>
+               	<field name="doc_number"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload"/>
+               	</field>               	               	
+           	</field>
+        </record>
+
+        <record id="view_hr_employee_documents_form" model="ir.ui.view">
+            <field name="name">hr.employee_documents.form.extend</field>
+            <field name="model">hr.employee_documents</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_hr_employee_documents_form"/>
+            <field name="arch" type="xml">
+               	<field name="place_ofissue"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload" filename="filename"/>
+                	
+               	</field>       	
+           	</field>
+        </record>        
+
+        <record id="view_hr_employeelicenses_form" model="ir.ui.view">
+            <field name="name">hr.employeelicenses.form.extend</field>
+            <field name="model">hr.employeelicenses</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_hr_employeelicenses_form"/>
+            <field name="arch" type="xml">
+               	<field name="doc_number"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload"/>
+               	</field>       	
+           	</field>
+        </record> 
+
+
+        <record id="view_hr_employee_medical_form" model="ir.ui.view">
+            <field name="name">hr.employee_medical_records.form.extend</field>
+            <field name="model">hr.employee_medical_records</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_hr_employee_medical_form"/>
+            <field name="arch" type="xml">
+               	<field name="medical_clinic"  position="after">
+               		<field name="filename" invisible="1"/>
+                	<field name="file_upload"/>
+               	</field>       	
+           	</field>
+        </record> 
+
+
+        <!-- Seafarers View -->
+        <record id="view_form_todo_task_inherited_seafarer" model="ir.ui.view">
+            <field name="name">view.form.todo_task.inherited.seafarer</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="bahia_personnel_management.view_form_todo_task_inherited"/>
+            <field name="groups_id" eval="[(6,0, [ref('base.group_portal')])]"/>
+
+            <field name="arch" type="xml">
+            	<field name="name" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="work_email" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="work_phone" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="first_name" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="first_name" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="middle_name" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="last_name" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="employee_contract_number" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="department_id" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="job_id" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="ccl_number" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="pcn" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="birthday" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="placeof_birth" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="gender" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="marital" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="religion" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="country_id" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>            	
+
+            	<field name="height" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="weight" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="weight" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="sss_no" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="hdmf_no" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="aa_reg_no" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+
+            	<field name="service_length" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>            	
+
+
+            	<field name="focllength" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="booking_id" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="philhealth_no" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="tin_no" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="incentive_length" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="checklistID" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="bankacctno" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="legacy_doc_1" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="legacy_doc_2" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="legacy_doc_3" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<!--
+            	<field name="legacy_doc_4" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            -->
+            	<field name="user_id" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>            	
+            </field>
+        </record> 
+
+        <record id="view_form_todo_task_inherited_extension_cons_form_seaf" model="ir.ui.view">
+            <field name="name">view.form.todo_task.inherited.seafarer</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="extend_bahia_pm_consent_form.view_form_todo_task_inherited_extension_cons_form"/>
+            <field name="groups_id" eval="[(6,0, [ref('base.group_portal')])]"/>
+
+            <field name="arch" type="xml">            	
+            	<field name="legacy_doc_4" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            
+            </field>
+        </record> 
+
+        <record id="view_employee_seafarer_extend" model="ir.ui.view">
+            <field name="name">view.employee.seafarer.extend</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="extend_bahia_personnel_management.view_employee_extend"/>
+            <field name="groups_id" eval="[(6,0, [ref('base.group_portal')])]"/>
+
+            <field name="arch" type="xml">            	
+            	<field name="employee_e_register_number" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="employee_e_reg_num_username" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>
+            	<field name="employee_e_reg_num_password" position="attributes">
+            		<attribute name="readonly">1</attribute>
+            	</field>            	            
+            </field>
+        </record>         
+
+        
+<!--
+        <record id="view_hr_employee_medical_form" model="ir.ui.view">
+            <field name="name">view.form.employee.checklist.extend</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_recruitment_2_employee_checklist.view_form_employee_checklist"/>
+            <field name="arch" type="xml">
+            	<field name="employee_documents" position="attributes">
+            		<attribute name="readonly">0</attribute>
+            	</field>
+
+            	<field name="emloyee_medical" position="attributes">
+            		<attribute name="readonly">0</attribute>
+            	</field>
+
+            	<field name="employee_licenses" position="attributes">
+            		<attribute name="readonly">0</attribute>
+            	</field>
+
+               	<field name="place_ofissue"  position="after">
+                	<field name="file_upload"/>
+               	</field>    
+
+               	<field name="medical_clinic"  position="after">
+                	<field name="file_upload"/>
+               	</field>
+               	
+               	<field name="doc_number"  position="after">
+                	<field name="file_upload"/>
+               	</field> 
+
+
+               	<xpath expr="//form[1]" position="attributes" >
+               		<attribute name="edit">true</attribute>
+               	</xpath>
+           	</field>
+        </record> 
+-->
+    </data>
+</openerp>

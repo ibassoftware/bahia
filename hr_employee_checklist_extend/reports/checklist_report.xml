@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<report
+            string="Checklist Report"
+            id="action_report_checklist"
+            model="hr.employee.checklist.documents"
+            report_type="qweb-pdf"
+            name="hr_employee_checklist_extend.report_checklist"
+            file="hr_employee_checklist_extend.report_checklist"
+        />
+
+        <template id="style_bahia_setup">
+			    body {
+			        color: #000 !important;
+			        word-wrap: break-word;
+			        background-color:white;
+			    }
+			    .border-black td {
+			        border-top: 1px solid black !important;
+			    }
+			    .table-condensed > thead > tr > th {
+			        border-bottom: 1px solid black !important;
+			    }
+			    .table-condensed > tbody > tr {
+			        page-break-inside: avoid !important;
+			    }
+			    .zero_min_height {
+			        min-height: 0px !important;
+			    }
+        </template>
+
+        <template id="bahia_report_layout" inherit_id="report.layout" name="Bahia Report Layout" primary="True">
+		    <xpath expr="//head/style[@type='text/css']/t[@t-call='report.style']" position="attributes">
+		         <attribute name="t-call">hr_employee_checklist_extend.style_bahia_setup</attribute>
+		    </xpath>
+        </template>
+
+        <template id="bahia_html_container" inherit_id="report.html_container" name="Bahia Html Container" primary="True">
+            <xpath expr="//t[@t-call='report.layout']" position="attributes">
+                <attribute name="t-call">hr_employee_checklist_extend.bahia_report_layout</attribute>
+            </xpath>
+        </template>
+
+
+
+	    <template id="report_checklist">
+	    	<t t-set= "loop" t-value="{}" />
+	    	<t t-foreach="docs" t-as="doc">
+		        <t t-call="hr_employee_checklist_extend.bahia_html_container">
+		                <div class="page" style="background-color:white">
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Checklist Number:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.checklist_no"/>
+		                            </div>     
+		                        </div>
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Employee Number:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.employee_number"/>
+		                            </div>                                
+		                        </div>	
+
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Name:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.name"/>
+		                            </div>                                
+		                        </div>	
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Vessel:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.vessel_id"/>
+		                            </div>                                
+		                        </div>		
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Position:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.position_id"/>
+		                            </div>                                
+		                        </div>		 
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Joining Date:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.joining_date"/>
+		                            </div>                                
+		                        </div>	                          
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Contact Number:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.contact_number"/>
+		                            </div>                                
+		                        </div>
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Date Signoff:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.signoff_date"/>
+		                            </div>                                
+		                        </div>
+		                        <div class="row">
+		                            <div class="col-xs-3">
+		                            	<span><strong>Date Reported:</strong></span>
+		                            </div>
+		                            <div class="col-xs-3">
+		                            	<span t-field="doc.reported_date"/>
+		                            </div>   
+
+		                            <div class="col-xs-3 col-xs-offset-2" style="margin-top:-150px">
+					                    <table class="table table-condensed">
+					                        <tbody>
+					                                <tr t-foreach="doc.employee_checklists_documents_list_main" t-as="line">
+				                                        <td style="width:40%">
+				                                            <text t-field="line.param_name_1"/>
+				                                       </td>
+				                                        <td>
+				                                            <span t-field="line.param_name_1_value"/>
+				                                       </td>
+				                                        <td>
+				                                        	<t t-if="line.param_name_1_check">
+				                                            	<input  type= "checkbox" checked="checked"/>
+				                                        	</t>
+				                                        	<t t-if="not line.param_name_1_check">
+				                                            	<input  type= "checkbox"/>
+				                                        	</t>	                                        	
+				                                       </td>   
+				                                        <td style="width:40%">
+				                                            <text t-field="line.param_name_2"/>
+				                                       </td>
+				                                        <td>
+				                                        	<t t-if="line.param_name_2_check">
+				                                            	<input  type= "checkbox" checked="checked"/>
+				                                        	</t>
+				                                        	<t t-if="not line.param_name_2_check">
+				                                            	<input  type= "checkbox"/>
+				                                        	</t>	                                        	
+				                                       </td>   				                                          	                                       
+					                                </tr>
+					                        </tbody>
+					                    </table>		                            	
+		                            </div>
+
+		                        </div>		                		
+		                    <table class="table table-condensed">
+		                        <thead>
+		                            <tr>
+		                                <th colspan="6" class="text-center">RECORD BOOKS / VISA/ TRAINING</th>
+		                                <th class="text-left">Date Expiry</th>
+		                            </tr>
+		                        </thead>
+		                        <tbody>
+		                                <tr t-foreach="doc.employee_checklists_documents_list" t-as="line">
+	                                        <td style="width:20%">
+	                                            <text t-field="line.param_name_1_related"/>
+	                                       </td>
+	                                        <td>
+	                                            <span t-field="line.param_name_1_value"/>
+	                                       </td>
+	                                        <td>
+	                                        	<t t-if="line.param_name_1_check">
+	                                            	<input  type= "checkbox" checked="checked"/>
+	                                        	</t>
+	                                        	<t t-if="not line.param_name_1_check">
+	                                            	<input  type= "checkbox"/>
+	                                        	</t>	                                        	
+	                                       </td>      
+	                                       <!--
+	                                        <td>
+	                                            <span t-field="line.param_name_2_related"/>
+	                                       </td>
+	                                        <td>
+	                                            <span t-field="line.param_name_2_value"/>
+	                                       </td>
+	                                        <td>
+	                                        	<t t-if="line.param_name_2_check">
+	                                            	<input  type= "checkbox" checked="checked"/>
+	                                        	</t>
+	                                        	<t t-if="not line.param_name_2_check">
+	                                            	<input  type= "checkbox"/>
+	                                        	</t>
+	                                       </td> 
+	                                       -->                               
+	                                        <td>
+	                                            <span type= "checkbox"  t-field="line.param_name_3_related"/>
+	                                       </td>
+	                                        <td>
+	                                            <span t-field="line.param_name_3_value"/>
+	                                       </td>
+	                                        <td>
+	                                        	<t t-if="line.param_name_3_check">
+	                                            	<input  type= "checkbox" checked="checked"/>
+	                                        	</t>
+	                                        	<t t-if="not line.param_name_3_check">
+	                                            	<input  type= "checkbox"/>
+	                                        	</t>	
+	                                       </td> 
+	                                        <td class="text-left">
+	                                            <span t-field="line.date_expiry"/>
+	                                       </td>	                                       
+		                                </tr>
+		                        </tbody>
+		                    </table>	
+
+		                </div>		                			        	
+		         </t>		    		
+            	        
+	    	</t>	
+	    </template>             
+	</data>
+</openerp>

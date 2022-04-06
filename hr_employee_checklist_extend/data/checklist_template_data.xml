@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="default_checklist_template" model="hr.checklist_template.main">
+            <field name="name">Default Template</field>
+        </record>        
+    </data>
+</openerp>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:
+-->
+<openerp>
+    <data>
+        <record id="view_hr_applicant_evaluation_from" model="ir.ui.view">
+            <field name="name">view.hr.applicant.evaluation.from</field>
+            <field name="model">hr.applicant.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="Pre-Hiring Evaluation Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                
+                                
+                                <field name="evaluation_date" required="1"/>
+                                <field name="name" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="job_applied_id" readonly="1"/>
+                                <field name="job_approved_id"/>
+                            </group>
+                            <group/>
+
+                        </group>
+                        
+                        <notebook>
+                            
+                            <page string = "Initial Verification">
+                                <group>
+                                    <group string="Checking Documents">
+                                        <field name="employment_application_id" readonly="1" string ="Employment Application"/>
+
+                                        <label for="photo_copies_doc" string="Photo Copies of Documents"/>
+                                        <div>
+                                            <field name="has_photo_copies_doc" class="oe_inline" style="margin-right:12px"/>    
+                                            <field name="photo_copies_doc" class="oe_inline"/>    
+                                        </div>
+                                        
+                                    </group>
+                                    <group/>
+                                </group>
+
+                                <group>
+                                    <group string="POEA Watchlist">
+                                        <label for="date_verified" string="Verified?"/>
+                                        <div>
+                                            <field name="has_check_poea_wathclist" class="oe_inline" style="margin-right:12px"/>    
+                                            <field name="date_verified" class="oe_inline"/>    
+                                        </div>
+                                    </group>           
+                                    <group/>
+                                </group>
+
+                                <group>
+                                    <group string="Remarks if any">
+                                        <field name="remarks_1" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <!--
+                                <group>
+                                    <group string="Initiated by">
+                                        <field name="interviewed_1_by_id" nolabel="1" domain="[('share','=',False)]"/>
+                                        <field name="interviewed_1_by_date" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                -->
+                            </page> 
+                        
+
+                            <page string = "Past Employment History">
+                                <group>
+                                    <group string="Company References">
+                                        <field name="company_name_1"/>
+                                        <field name="contact_person_1"/>
+                                        <label for="remarks_2" string="Remarks"/>
+                                        <field name="remarks_2" nolabel="1"/>
+                                        
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group string="Company References">
+                                        <field name="company_name_2"/>
+                                        <field name="contact_person_2"/>
+                                        <label for="remarks_3" string="Remarks"/>
+                                        <field name="remarks_3" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <!--
+                                <group>
+                                    <group string="Verified By">
+                                        <field name="verified_by_id" nolabel="1" domain="[('share','=',False)]"/>
+                                        <field name="verified_by_date" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                -->
+                            </page>
+
+                            <page string = "Interview">
+                                <group>
+                                    <group string="Skills Assessment">
+                                        <field name="service_minded"/>
+                                        <field name="safety_awareness"/>
+                                        <field name="job_familiarity"/>
+                                        <!--
+                                        <field name="technical_skills"/> 
+                                        -->
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group string="Personality Assessment">
+                                        <field name="pysical_appearance"/>
+                                        <field name="politeness"/>
+                                        <field name="oral_english"/>
+                                        <!--
+                                        <field name="neatness"/>
+                                        <field name="attentiveness"/>
+                                        -->                                            
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group string="Remarks">
+                                        <field name="interview_remarks" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+
+
+                                <group>
+                                    <group string="Conducted By">
+                                        <field name="interviewed_2_by_id"  nolabel="1" domain="[('share','=',False)]"/>
+                                        <field name="interviewed_2_by_date" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>                                
+                            </page>
+
+                            <page string = "Assesment Tools">
+                                <group>
+                                    <group string="Marlins Proficiency">
+                                        <field name="listening"/>
+                                        <field name="grammar"/>
+                                        <field name="vocabulary"/>
+                                        <field name="time_number"/>
+                                        <field name="readings"/>
+                                        <field name="pronounciation"/>
+                                        <field name="assesment_total"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group string="Marlins TOSE">
+                                        <field name="overall_english_spoken"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group string="CES">
+                                        <data>
+                                            <field name="hr_applicant_evaluation_ces_ids" string ="" >
+                                                <tree editable="bottom">
+                                                    <field name="name"/>
+                                                    <field name="score"/>
+                                                </tree>
+                                            </field> 
+                                        </data>
+                                        <group class="oe_subtotal_footer oe_right" colspan="2" name="overall">
+                                            <field name="overall"/>
+                                        </group>
+                                        
+                                    </group>
+                                    <group/>
+                                </group>
+
+                                <group>
+                                    <group string="Administered By">
+                                        <field name="conducted_2_by_id" nolabel="1" domain="[('share','=',False)]"/>
+                                        <field name="conducted_2_by_date" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>                                  
+                            </page>
+
+                            <page string = "Final Interview">
+                                <group>
+                                    <group>
+                                        <field name="final_interview"/>
+                                    </group>
+                                    <group/>
+                                </group>
+
+                                <group>
+                                    <group>
+                                        <field name="other_remarks" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>
+
+                                <group>
+                                    <group string="Conducted By">
+                                        <field name="conducted_3_by_id" nolabel="1" domain="[('share','=',False)]"/>
+                                        <field name="conducted_3_by_date" nolabel="1"/>
+                                    </group>
+                                    <group/>
+                                </group>                                  
+                            </page>            
+                        </notebook>
+                            
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_applicant_evaluation_tree" model="ir.ui.view">
+            <field name="name">view.hr.applicant.evaluation.tree</field>
+            <field name="model">hr.applicant.evaluation</field>
+            <field name="arch" type="xml">
+
+                    <tree string="Pre-Hiring Evaluation Form">
+                        <field name="name"/>
+                        <field name="evaluation_date"/>
+                        <field name="job_applied_id"/>
+                        <field name="job_approved_id"/>
+                    </tree>
+
+            </field>
+        </record>
+
+        <record id="view_hr_applicant_evaluation_search" model="ir.ui.view">
+            <field name="name">view.hr.applicant.evaluation.search</field>
+            <field name="model">hr.applicant.evaluation</field>
+            <field name="arch" type="xml">
+                <search string="Search Pre-Hiring Evaluation Form">
+                   <field name="name"/>
+                   <field name="employment_application_id"/>
+               </search>
+            </field>
+        </record>        
+        
+        <record id="act_hr_applicant_evaluation_main" model="ir.actions.act_window">
+            <field name="name">Pre-Hiring Evaluation Form</field>
+            <field name="res_model">hr.applicant.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_employment_application_id': [active_id], 
+                                    'default_employment_application_id': active_id}
+            </field>
+            
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to Create Pre-Hiring Evaluation Form
+              </p>
+            </field>
+        
+        </record>
+        
+        <!--
+        <menuitem action="open_external_file_backup_main" id="menu_open_external_file_backup_main" parent="db_backup_ept.db_backup_ept_menu" string = "Document Backup" sequence="20"/>
+    -->
+<!--    
+        <record id="act_hr_employee_checklist_document_button" model="ir.actions.act_window">
+            <field name="res_model">hr.employee.checklist.documents</field>
+            <field name="view_type">form</field>
+            <field name="name">Checklist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+        </record>
+-->
+    </data>
+</openerp>
