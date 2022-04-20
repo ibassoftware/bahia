@@ -1,9 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-__export__.employee_portal,hr.employee.portal,bahia_audit_trail.model_hr_employee,base.group_portal,0,1,0,0
-__export__.employee_docs_portal,hr.employee_documents.portal,bahia_audit_trail.model_hr_employee_documents,base.group_portal,0,1,0,0
-__export__.sys_model_aud_portal,sys.model.audit.config.portal,bahia_audit_trail.model_sys_model_audit_config,base.group_portal,1,1,1,0
-__export__.checklist_tem_portal,hr.checklist_template.portal,bahia_personnel_management.model_hr_checklist_template,base.group_portal,1,1,1,0
-__export__.checklist_portal,hr.employee_checklist.portal,bahia_personnel_management.model_hr_employee_checklist,base.group_portal,1,1,1,0
-__export__.sys_audit_log_portal,sys.audit.log.portal,bahia_audit_trail.model_sys_audit_log,base.group_portal,1,1,1,1
-__export__.hr_employeelicences_portal,hr.employeelicenses.protal,bahia_audit_trail.model_hr_employeelicenses,base.group_portal,1,1,0,0
-__export__.hr_emp_med_rec_portal,hr.employee_medical_records.portal,bahia_audit_trail.model_hr_employee_medical_records,base.group_portal,1,1,0,0

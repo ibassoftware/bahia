@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_form_hr_employee_extend" model="ir.ui.view">
+            <field name="name">view_form_hr_employee_extend</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(act_hr_employee_applicant_document_button)d" 
+                        class="oe_stat_button" 
+                        icon="fa-book" 
+                        type="action"
+                        string="Application" >
+                    </button>
+                    
+                    <button name="updateWithConsentForm" 
+                        string="Consent Form"
+                        class="oe_stat_button" 
+                        icon="fa-check" 
+                        type="object"
+
+                        attrs="{'invisible':[('has_consentform', '=', False)]}"
+                        >
+                    </button>  
+
+                    <button name="updateWithConsentForm" 
+                        string="W/O Consent Form"
+                        class="oe_stat_button" 
+                        type="object"
+
+                        attrs="{'invisible':[('has_consentform', '!=', False)]}"
+                        >
+                    </button>
+
+                    <button name="%(act_hr_employee_checklist_document_button)d" 
+                        class="oe_stat_button" 
+                        icon="fa-book" 
+                        type="action"
+
+                        groups="hr.group_hr_manager,  base.group_portal">
+                        <field name="checklist_count" widget="statinfo" string="Checklist"/>
+                    </button>
+                    <button string="Excel File" 
+                        type="object" 
+                        name="createExcelFile" 
+                        class="oe_stat_button"
+                        icon="fa-table"
+                        groups="hr.group_hr_manager,  base.group_hr_user"
+                        > 
+                    </button>
+
+                    
+                </xpath>
+
+                <xpath expr="//page[@name='public']" position="after" >
+                    <page string="Public Information" name="public_information">
+                        <group>
+                            <group string = "Fullname">
+                                <field name="employee_contract_number"/>
+                                <field name="employee_number" readonly = "1"/>
+                                <field name="first_name"/>
+                                <field name="middle_name"/>
+                                <field name="last_name"/>
+                            </group>
+                            <group string = "Position">
+                                <!-- <field name="department_id" on_change="onchange_department_id(department_id)"/> -->
+                                <field name="department_id"/>
+                                <field name="job_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string = "Identification">
+                                <field name="ccl_number"/>
+                                <field name="pcn"/>
+                            </group>
+                            <group string = "E-Registration">
+                                <field name="employee_e_register_number"/>
+                                <field name="employee_e_reg_num_username"/>
+                                <field name="employee_e_reg_num_password"/>
+                            </group>                            
+                            <group string = "Birth">
+                                <field name="birthday"/>
+                                <field name="placeof_birth"/>
+                            </group>
+                            <group>
+                                <field name="gender"/>
+                                <field name="marital"/>
+                                <field name="religion"/>
+                                <field name="country_id"/>
+                                <field name="height"/>
+                                <field name="weight"/>
+                                <field name="total_years_of_service"   readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+                <xpath expr="//page[@name='personal_information']" position="after" >
+                    <page string="Other information" name="other_info">
+                        <group>
+                            <group string ="">
+                                <field name="sss_no"/>
+                                <field name="hdmf_no"/>
+                                <field name="aa_reg_no"/>
+                                <field name="service_length"/>
+                                <field name="focllength"/>
+                                <field name="booking_id"/>
+
+                            </group>
+                            <group>
+                                <group string ="">
+                                    <field name="philhealth_no"/>
+                                    <field name="tin_no"/>                                                                                                  
+                                    <field name="incentive_length"/>                                    
+                                    <field name="checklistID"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group string ="Bank Information">
+                            <field name="bankacctno"/>
+                        </group>
+                    </page>
+                    <page string="Legacy Documents" name="legacy_docs_page">
+                        <group>
+                            <field name="filename" readonly="1" invisible="1"/>
+                            <field name="filename2" readonly="1" invisible="1"/>
+                            <field name="filename3" readonly="1" invisible="1"/>
+                            <field name="filename4" readonly="1" invisible="1"/>
+                            <field name="legacy_doc_1" filename="filename" groups="base.group_hr_manager,   base.group_hr_user"/>
+                            <field name="legacy_doc_2" filename="filename2"/>
+                            <field name="legacy_doc_3" filename="filename3"/>
+                            <field name="legacy_doc_4" filename="filename4"/>
+                            <field name="has_consentform" invisible="1"/>
+                        </group>
+                    </page>
+                    <page string="Seafarer's Account" name="seafarer_acct">
+                        <group>
+                            <group>
+                                <field name="user_id" string="Employee User name"/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </page>
+                </xpath>
+                <sheet position = "inside" >                            
+                    <notebook>
+                        <page string ="Address" name="address_page">    
+                            <group>
+                                <data>
+                                    <field name="employee_addresses" string ="" >
+                                        <tree>
+                                            <field name="addresstype"/>
+                                            <field name="address_1"/>
+                                            <field name="address_2"/>
+                                            <field name="address_3"/>
+                                            <field name="city"/>
+                                            <field name="province"/>
+                                            <field name="country"/>
+                                            <field name="telephone_number"/>
+                                            <field name="mobile_number"/>
+                                            <field name="email_number"/>
+                                        </tree>
+                                    </field>
+                                </data>
+                            </group>
+                        </page> 
+                        <page string ="Education" name="education_page">  
+                            <group>
+                                <data>
+                                    <field name="employee_education" string ="">
+                                        <tree>
+                                            <field name="schooltype"/>
+                                            <field name="name_school"/>
+                                            <field name="date_from"/>
+                                            <field name="date_to"/>
+                                            <field name="school_address"/>
+                                            <field name="description"/>
+                                        </tree>                                 
+                                    </field>
+                                </data>
+                            </group>
+                        </page>
+                        <page string ="Families" name="families_page">
+                            <group>
+                                <data>
+                                    <field name="employee_families" string ="">
+                                        <tree>
+                                            <field name="relation_level"/>
+                                            <field name="relationship"/>
+                                            <field name="first_name"/>
+                                            <field name="middle_name"/>
+                                            <field name="last_name"/>
+                                            <field name="is_beneficiary"/>
+                                            <field name="is_allottee"/>
+                                            <field name="is_living"/>
+                                        </tree>
+                                    </field>
+                                </data>
+                            </group>
+                        </page>
+
+                        <page string ="Document" name="document_page">
+                            <group>
+                                <data>
+                                    <field name="employee_documents" string ="">
+                                        <tree colors = "red:expired=='EXP'">
+                                            <field name="document"/>
+                                            <field name="document_number"/>
+                                            <field name="date_issued"/>
+                                            <field name="date_expiry"/>
+                                            <field name="issuing_authority"/>
+                                            <field name="place_ofissue"/>
+                                            <field name="expired" invisible="1" />
+                                        </tree>                                 
+                                    </field>
+                                </data>
+                            </group>                            
+                        </page>     
+                        <page string ="Medical" name="medical_page">    
+                            <group>
+                                <data>
+                                    <field name="emloyee_medical" string ="">
+                                        <tree colors = "red:expired=='EXP'">
+                                            <field name="medical_type"/>
+                                            <field name="medical_clinic"/>
+                                            <field name="date_from"/>
+                                            <field name="date_to"/>
+                                            <field name="expired" invisible="1" />
+                                        </tree>                                 
+                                    </field>
+                                </data>
+                            </group>                    
+                        </page>     
+
+                        <page string ="License" name="license_page">    
+                            <group>
+                                <data>
+                                    <field name="employee_licenses" string ="">
+                                        <tree>
+                                            <field name="licensetype"/>
+                                            <field name="license"/>
+                                            <field name="doc_number"/>
+                                            <field name="country"/>
+                                            <field name="date_issued"/>
+                                            <field name="date_expiry"/>
+                                            <field name="place_issue"/>
+                                            <field name="authority_issue"/>
+                                            <field name="remarks"/>
+                                        </tree>                                 
+                                    </field>
+                                </data>
+                            </group>                    
+                        </page>                         
+                        <page string ="Employment" name="employment_page"> 
+                            <group>
+                                <data>
+                                    <field name="employee_employment" string ="">
+                                        <tree>
+                                            <field name="date_departure"/>
+                                            <field name="date_servicefrom"/>
+                                            <field name="date_serviceto"/>                                                  
+                                            <field name="object_code"/>
+                                            <field name="employment_dept_code"/>
+                                            <field name="employment_rank"/>
+                                            <field name="employment_status"/>
+                                            <field name="remarks"/>
+                                            <field name="place_signOn"/>
+                                            <field name="place_signOff"/>
+                                            <field name="service_range"/>
+                                        </tree>                                 
+                                    </field>
+                                </data>
+                            </group>                    
+                        </page>                                                 
+                    </notebook>
+                </sheet>
+
+
+                <xpath expr="//page[@name='public']" position="replace"/>
+                <xpath expr="//page[@name='personal_information']" position="replace"/>                
+            </field>
+        </record>     
+
+
+    </data>
+</odoo>

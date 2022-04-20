@@ -1,2 +1,0 @@
-import res_users
-import im_chat_session

@@ -1,3 +1,0 @@
-"id","name","model_id/id","group_id/id","perm_read","perm_write","perm_create","perm_unlink"
-"__export__.ir_model_access_426","sys.model.audit.config.group_user","bahia_audit_trail.model_sys_model_audit_config","base.group_user","True","True","True","True"
-"__export__.ir_model_access_427","sys.audit.log.group_user","bahia_audit_trail.model_sys_audit_log","base.group_user","True","True","True","True"

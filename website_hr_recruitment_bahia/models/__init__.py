@@ -1,2 +1,0 @@
-import hr_job
-import hr_website_application

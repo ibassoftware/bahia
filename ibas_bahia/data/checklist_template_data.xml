@@ -1,0 +1,8 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<odoo noupdate="0">
+    <data>
+        <record id="default_checklist_template" model="hr.checklist_template.main">
+            <field name="name">Default Template</field>
+        </record>        
+    </data>
+</odoo>

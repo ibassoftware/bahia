@@ -1,1 +1,0 @@
-import hr_recruitment_base_report

@@ -1,0 +1,6 @@
+<odoo>
+	<data noupdate="0">
+		<template id="privacy_policy_content" name="Wizard Checkout">    
+		</template>
+	</data>
+</odoo>

@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_applicant_evaluation_hr_manager,hr.applicant.evaluation.group_hr_manager,model_hr_applicant_evaluation,base.group_hr_manager,1,1,1,1
-access_hr_applicant_evaluation_ces_hr_manager,hr.applicant.evaluation.ces.group_hr_manager,model_hr_applicant_evaluation_ces,base.group_hr_manager,1,1,1,1
-access_hr_applicant_evaluation_officer,hr.applicant.evaluation.group_hr_user,model_hr_applicant_evaluation,base.group_hr_user,1,1,1,0
-access_hr_applicant_evaluation_ces_officer,hr.applicant.evaluation.ces.group_hr_user,model_hr_applicant_evaluation_ces,base.group_hr_user,1,1,1,0
-access_hr_applicant_evaluation_recruiter,hr.applicant.evaluation.recruiter,model_hr_applicant_evaluation,extend_bahia_recruitment_security.group_hr_recruiter,1,1,1,0
-access_hr_applicant_evaluation_ces_recruiter,hr.applicant.evaluation.ces.recruiter,model_hr_applicant_evaluation_ces,extend_bahia_recruitment_security.group_hr_recruiter,1,1,1,0
