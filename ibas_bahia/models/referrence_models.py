@@ -1332,6 +1332,7 @@ class MedicalRecordType(models.Model):
 	code = fields.Char('Code', required =True)
 	name = fields.Char('Medical', required =True)
 	description = fields.Text('Description')
+	ref_rec_id = fields.Char(string='Reference ID')
 
 	_sql_constraints = [
 		('hr_medicalrecord_name',
@@ -1348,6 +1349,7 @@ class LicenseType(models.Model):
 
 	id_name = fields.Char('Class ID', default=_getClassID)
 	name = fields.Char('Class Name', required =True)
+	active = fields.Boolean(default=True)
 
 	_sql_constraints = [
 		('hr_medicalrecord_name_uniq',

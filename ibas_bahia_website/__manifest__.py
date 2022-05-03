@@ -5,7 +5,7 @@
     'summary': 'Bahia Website Content Management',
     'description': 'Personnel Management Information for Bahia Website Management odoo v15',
     'author': 'IBAS and Samuel Salvador',
-    'depends': ['ibas_bahia','website','website_hr_recruitment'],
+    'depends': ['ibas_bahia','website','website_hr_recruitment','website_partner'],
     'data': [
              #'templates/template_init.xml',
              'templates/privacy_policy.xml',
