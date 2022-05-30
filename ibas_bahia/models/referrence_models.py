@@ -1292,10 +1292,11 @@ class AddressType(models.Model):
 	name = fields.Char('Address Type', required = True)
 	description = fields.Text('Description')
 
-	_sql_constraints = [
-		('hr_addresstype_name',
-		'UNIQUE (name)',
-		'Address Type must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_addresstype_name',
+	# 	'UNIQUE (name)',
+	# 	'Address Type must be unique!')]
 
 class EducationType(models.Model):
 	_name = 'hr.educationtype'
@@ -1322,10 +1323,11 @@ class FamilyRelations(models.Model):
 	name = fields.Char('Relationship', required=True)
 	description = fields.Text('Description')
 
-	_sql_constraints = [
-		('hr_familyrelations_name',
-		'UNIQUE (code,name)',
-		'Family relation must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_familyrelations_name',
+	# 	'UNIQUE (code,name)',
+	# 	'Family relation must be unique!')]
 
 class MedicalRecordType(models.Model):
 	_name = 'hr.medicalrecord'
@@ -1334,10 +1336,11 @@ class MedicalRecordType(models.Model):
 	description = fields.Text('Description')
 	ref_rec_id = fields.Char(string='Reference ID')
 
-	_sql_constraints = [
-		('hr_medicalrecord_name',
-		'UNIQUE (code,name)',
-		'Medical record type must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_medicalrecord_name',
+	# 	'UNIQUE (code,name)',
+	# 	'Medical record type must be unique!')]
 
 class LicenseType(models.Model):
 	_name ='hr.licensetype'
@@ -1351,10 +1354,11 @@ class LicenseType(models.Model):
 	name = fields.Char('Class Name', required =True)
 	active = fields.Boolean(default=True)
 
-	_sql_constraints = [
-		('hr_medicalrecord_name_uniq',
-		'UNIQUE (id_name)',
-		'License type must be unique')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_medicalrecord_name_uniq',
+	# 	'UNIQUE (id_name)',
+	# 	'License type must be unique')]
 
 class License(models.Model):
 	_name = 'hr.license'
@@ -1363,14 +1367,16 @@ class License(models.Model):
 	name = fields.Char('Doc Abbreviation', required=True)
 	doc_description = fields.Text('Doc Full Description')
 
-	_sql_constraints = [
-		('hr_license_name_uniq',
-		'UNIQUE (id_class_name,name)',
-		'License must be unique')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_license_name_uniq',
+	# 	'UNIQUE (id_class_name,name)',
+	# 	'License must be unique')]
 
 class MedicalClinic(models.Model):
 	_name = 'hr.clinic'
 	_inherit = 'hr.documenttype'
+
 	# [TMP] - Disable for data mig
 	# _sql_constraints = [
 	# 	('hr_clinic_name_uniq',
@@ -1382,28 +1388,31 @@ class LengthOfExpiration(models.Model):
 	_inherit = 'hr.familyrelations'
 	days = fields.Integer('Days before Expiration')
 
-	_sql_constraints = [
-		('hr_lengthofexp_name_uniq',
-		'UNIQUE (abbreviation,name)',
-		'Length of expiration must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_lengthofexp_name_uniq',
+	# 	'UNIQUE (abbreviation,name)',
+	# 	'Length of expiration must be unique!')]
 
 class PortInformation(models.Model):
 	_name = 'hr.port'
 	_inherit = 'hr.abs.parameter'
 
-	_sql_constraints = [
-		('hr_port_name_uniq',
-		'UNIQUE (code, name)',
-		'Port must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_port_name_uniq',
+	# 	'UNIQUE (code, name)',
+	# 	'Port must be unique!')]
 
 class Companies(models.Model):
 	_name = 'hr.companies'
 	_inherit = 'hr.abs.parameter'
 
-	_sql_constraints = [
-		('hr_company_name_uniq',
-		'UNIQUE (code, name)',
-		'Port must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_company_name_uniq',
+	# 	'UNIQUE (code, name)',
+	# 	'Port must be unique!')]
 
 class VesselCategory(models.Model):
 	_name = 'hr.vesselcategory'
@@ -1411,10 +1420,11 @@ class VesselCategory(models.Model):
 	name = fields.Char('Name', required=True)
 	vessel_cat_ids = fields.Many2many('hr.ship.department','department_vessel_rel', 'vessel_cat_id','department_id', 'Vessel Category')
 
-	_sql_constraints = [
-		('hr_vesselcat_name_uniq',
-		'UNIQUE (category,name)',
-		'Vessel category must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_vesselcat_name_uniq',
+	# 	'UNIQUE (category,name)',
+	# 	'Vessel category must be unique!')]
 
 class Vessel(models.Model):
 	_name = 'hr.vessel'
@@ -1422,20 +1432,22 @@ class Vessel(models.Model):
 	company_code = fields.Many2one('hr.companies', 'Company', required =True)
 	vessel_category = fields.Many2one('hr.vesselcategory','Category', required =True)
 
-	_sql_constraints = [
-		('hr_vessel_name_uniq',
-		'UNIQUE (code,name,vessel_category,company_code)',
-		'Vessel must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_vessel_name_uniq',
+	# 	'UNIQUE (code,name,vessel_category,company_code)',
+	# 	'Vessel must be unique!')]
 
 class RankType(models.Model):
 	_name = 'hr.ranktype'
 	_inherit = 'hr.abs.parameter'
 	rate = fields.Float('Incentive Rate',digits=(18,2))
 
-	_sql_constraints = [
-		('hr_ranktype_name_uniq',
-		'UNIQUE (code,name)',
-		'Rank type must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_ranktype_name_uniq',
+	# 	'UNIQUE (code,name)',
+	# 	'Rank type must be unique!')]
 
 class Rank(models.Model):
 	_name = 'hr.rank'
@@ -1445,10 +1457,11 @@ class Rank(models.Model):
 	rank_type = fields.Many2one('hr.ranktype', 'Rank Type')
 	rank_department_ids = fields.Many2many('hr.ship.department', 'rank_department_table','rank_department_id','department_id','Departments')
 
-	_sql_constraints = [
-		('hr_rank_name_uniq',
-		'UNIQUE (rank_identification,name,rank_type)',
-		'Rank must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_rank_name_uniq',
+	# 	'UNIQUE (rank_identification,name,rank_type)',
+	# 	'Rank must be unique!')]
 
 class ShipDepartment(models.Model):
 	_name = 'hr.ship.department'
@@ -1457,10 +1470,11 @@ class ShipDepartment(models.Model):
 	department = fields.Char('Department', required=True)
 	department_ids = fields.Many2many('hr.vesselcategory','department_vessel_rel', 'department_id','vessel_cat_id', 'Vessel Category')
 
-	_sql_constraints = [
-		('hr_shipdep_name_uniq',
-		'UNIQUE (ship_dept_code,name,department_ids)',
-		'Ship Department must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_shipdep_name_uniq',
+	# 	'UNIQUE (ship_dept_code,name,department_ids)',
+	# 	'Ship Department must be unique!')]
 
 	@api.onchange('department', 'ship_dept_code')
 	def onchangeName(self):
@@ -1501,10 +1515,11 @@ class Status(models.Model):
 	status_id = fields.Char('Status ID')
 	name = fields.Text('Description', required=True)
 
-	_sql_constraints = [
-		('hr_empstat_name_uniq',
-		'UNIQUE (status_id,name)',
-		'Rank must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_empstat_name_uniq',
+	# 	'UNIQUE (status_id,name)',
+	# 	'Rank must be unique!')]
 
 class CheckList(models.Model):
 	_name= 'hr.checklist'
@@ -1516,10 +1531,11 @@ class CheckList(models.Model):
 	link_medical_type = fields.Many2one('hr.medicalrecord', 'Medical Type')
 	retrieve_history_records = fields.Selection(RETRIEVE_RECORD_IN_HISTORY, 'Retrieving of Records', default ='latest_doc')
 
-	_sql_constraints = [
-		('hr_chekclist_name_uniq',
-		'UNIQUE (checklist_code,name)',
-		'Checklist must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_chekclist_name_uniq',
+	# 	'UNIQUE (checklist_code,name)',
+	# 	'Checklist must be unique!')]
 
 
 	@api.onchange('link_selection')
@@ -1536,10 +1552,11 @@ class religion(models.Model):
 	religion_code = fields.Char('Code', required=True)
 	name = fields.Char('Name', required=True)
 
-	_sql_constraints = [
-		('hr_religion_code_uniq',
-		'UNIQUE (religion_code)',
-		'Checklist must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_religion_code_uniq',
+	# 	'UNIQUE (religion_code)',
+	# 	'Checklist must be unique!')]
 
 
 class CheckListTemplate(models.Model):
@@ -1603,7 +1620,8 @@ class ChecklistTemplate(models.Model):
 
 		return new_record
 
-	_sql_constraints = [
-		('hr_chekclist_name_uniq',
-		'UNIQUE (name,name)',
-		'Template name must be unique!')]
+	# [TMP] - Disable for data mig
+	# _sql_constraints = [
+	# 	('hr_chekclist_name_uniq',
+	# 	'UNIQUE (name,name)',
+	# 	'Template name must be unique!')]
