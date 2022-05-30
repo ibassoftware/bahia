@@ -12,6 +12,7 @@ from odoo.exceptions import except_orm, Warning, RedirectWarning,ValidationError
 
 class hrApplicant(models.Model):
 	_name = "hr.applicant"
+	_description = 'HR Applicant'
 	_inherit = 	['hr.applicant', 'avatar.mixin']
 
 	@api.model
@@ -332,6 +333,7 @@ class hrApplicant(models.Model):
 
 class HrApplicantFamilies(models.Model):
 	_name = 'hr.applicant.family_details'
+	_description = 'HR Applicant Family Details'
 	_order = 'applicant_family_relationship_id'
 
 
@@ -364,6 +366,8 @@ class HrApplicantFamilies(models.Model):
 
 class HrApplicantEducation(models.Model):
 	_name = 'hr.applicant.education'
+	_description = 'HR Applicant Education'
+
 	applicant_education_id = fields.Many2one('hr.applicant')
 	schooltype = fields.Many2one('hr.recruitment.degree','Degree')
 	name_school = fields.Char('School/College University')
@@ -379,6 +383,7 @@ class HrApplicantEducation(models.Model):
 
 class HrApplicantDocuments(models.Model):
 	_name = 'hr.applicant.documents'
+	_description = 'HR Applicant Documents'
 	_order = 'date_expiry,date_expiry,document'
 
 	applicant_documents_id = fields.Many2one('hr.applicant')
@@ -396,6 +401,7 @@ class HrApplicantDocuments(models.Model):
 
 class HrApplicantDeniedVisa(models.Model):
 	_name = 'hr.recruitment.denied.visa'
+	_description = 'HR Recruitment Denied Visa'
 
 	applicant_id = fields.Many2one('hr.applicant')
 	nationality_id = fields.Many2one('res.country', 'Country')
@@ -404,6 +410,7 @@ class HrApplicantDeniedVisa(models.Model):
 
 class HrApplicantDeported(models.Model):
 	_name = 'hr.recruitment.deported'
+	_description = 'HR Recruitment Deported'
 
 	applicant_id = fields.Many2one('hr.applicant')
 	nationality_id = fields.Many2one('res.country', 'Country')
@@ -412,6 +419,7 @@ class HrApplicantDeported(models.Model):
 
 class HrApplicantTrainingCourses(models.Model):
 	_name = 'hr.recruitment.training.courses'
+	_description = 'HR Recruitment Training Courses'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -425,6 +433,7 @@ class HrApplicantTrainingCourses(models.Model):
 
 class HrApplicantTrainingCourses(models.Model):
 	_name = 'hr.recruitment.license'
+	_description = 'HR Recruitment Licenses'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -438,6 +447,7 @@ class HrApplicantTrainingCourses(models.Model):
 
 class HrApplicantMedicalHistoryMedInShip(models.Model):
 	_name = 'hr.recruitment.medical.history'
+	_description = 'HR Recruitment Medical History'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -448,6 +458,7 @@ class HrApplicantMedicalHistoryMedInShip(models.Model):
 
 class HrApplicantMedicalHistoryMedOperation(models.Model):
 	_name = 'hr.recruitment.medical.operation'
+	_description = 'HR Recruitment Medical Operation'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -460,6 +471,7 @@ class HrApplicantMedicalHistoryMedOperation(models.Model):
 
 class HrApplicantMedicalHistoryMedIllness(models.Model):
 	_name = 'hr.recruitment.medical.illness'
+	_description = 'HR Recruitment Medical Illness'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -470,6 +482,7 @@ class HrApplicantMedicalHistoryMedIllness(models.Model):
 
 class HrApplicantEmployeeRelative(models.Model):
 	_name = 'hr.recruitment.employee.relative'
+	_description = 'HR Recruitment Employee Relative'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -480,6 +493,7 @@ class HrApplicantEmployeeRelative(models.Model):
 
 class HrApplicantPrevApplication(models.Model):
 	_name = 'hr.recruitment.previous.application'
+	_description = 'HR Recruitment Previous Applicantion'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -489,6 +503,7 @@ class HrApplicantPrevApplication(models.Model):
 
 class HrApplicantPrevApplication(models.Model):
 	_name = 'hr.recruitment.previous.employment'
+	_description = 'HR Recruitment Previous Employment'
 
 	applicant_id = fields.Many2one('hr.applicant')
 
@@ -542,11 +557,15 @@ class HrApplicantPrevApplication(models.Model):
 
 class HrApplicantSocialMedia(models.Model):
 	_name = 'hr.recruitment.socialmedia'
+	_description = 'HR Recruitment Social Media'
+
 	applicant_id = fields.Many2one('hr.applicant')
 	name = fields.Char('Personal Link', required=True)
 	socialmedia_id = fields.Many2one('hr.socialmedia.config', string="Social Media Platform")
 
 class SocialMedia(models.Model):
 	_name = 'hr.socialmedia.config'
+	_description = 'Social Media Configuration'
+
 	name = fields.Char('Social Media', required=True)
 	allow_to_add_in_application  = fields.Boolean('Allow to View in Website', default=False)
