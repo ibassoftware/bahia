@@ -53,6 +53,8 @@ INT_ID_NOW = 0
 #Abstract Implementation
 class ParameterModel(models.AbstractModel):
 	_name ='hr.abs.parameter'
+	_description = 'HR Parameter'
+
 	code = fields.Char('Code', required=True)
 	name = fields.Char('Name', required=True)
 	description = fields.Text('Description')
@@ -60,6 +62,8 @@ class ParameterModel(models.AbstractModel):
 
 class HrEmployeeAddresses(models.Model):
 	_name = 'hr.employeeaddress'
+	_description = 'Employee Addresses'
+
 	employee_address_id = fields.Many2one('hr.employee','Employee Addresses')
 	addresstype = fields.Many2one('hr.addresstype','Address Type')
 	address_1 = fields.Char('Address 1')
@@ -74,6 +78,8 @@ class HrEmployeeAddresses(models.Model):
 
 class HrEmployeeEducation(models.Model):
 	_name = 'hr.employeducation'
+	_description = 'Employee Education'
+
 	employee_education_id = fields.Many2one('hr.employee')
 	schooltype = fields.Many2one('hr.recruitment.degree','Degree')
 	name_school = fields.Char('School/College University')
@@ -96,6 +102,8 @@ class HrEmployeeEducation(models.Model):
 
 class HrEmployeeFamilies(models.Model):
 	_name = 'hr.employee_families'
+	_description = 'Employee Families'
+
 	_order = 'employee_family_relationship_id,relation_level'
 
 	@api.model
@@ -145,6 +153,7 @@ class HrEmployeeFamilies(models.Model):
 
 class HrEmployeeDocuments(models.Model):
 	_name = 'hr.employee_documents'
+	_description = 'Employee Documents'
 
 	_order = 'date_expiry,date_expiry,document'
 
@@ -189,6 +198,8 @@ class HrEmployeeDocuments(models.Model):
 
 class HrEmployeeMedicalRecords(models.Model):
 	_name = 'hr.employee_medical_records'
+	_description = 'Employee Medical Records'
+
 	employee_med_rec_id = fields.Many2one('hr.employee')
 	medical_type = fields.Many2one('hr.medicalrecord','Medical')
 	medical_clinic = fields.Many2one('hr.clinic','Clinic')
@@ -218,6 +229,7 @@ class HrEmployeeMedicalRecords(models.Model):
 
 class HrEmployeeLicenses(models.Model):
 	_name = 'hr.employeelicenses'
+	_description = 'Employee Licenses'
 
 	employee_licenses_id = fields.Many2one('hr.employee')
 	licensetype = fields.Many2one('hr.licensetype','License Type', required=True)
@@ -235,6 +247,7 @@ class HrEmployeeEmployment(models.Model):
 	MONTH = 30
 
 	_name = 'hr.employmenthistory'
+	_description = 'Employment History'
 	_order =  'employee_employment_id, date_servicefrom desc'
 
 	employee_employment_id = fields.Many2one('hr.employee')
@@ -278,6 +291,8 @@ class HrEmployeeEmployment(models.Model):
 #OLD
 class EmployeeCheckList(models.Model):
 	_name = 'hr.employee_checklist'
+	_description = 'Employee Checklist'
+
 	employee_id = fields.Many2one('hr.employee')
 	checklist_template_id = fields.Many2one('hr.checklist_template')
 
@@ -309,6 +324,7 @@ class EmployeeCheckList(models.Model):
 
 class EmployeeChecklist(models.Model):
 	_name = "hr.employee.checklist.documents"
+	_description = 'Employee Checklist Documents'
 	_inherit = 'mail.thread'
 	_order =  'checklist_no, name'
 
@@ -863,6 +879,7 @@ class EmployeeChecklist(models.Model):
 
 class EmployeeChecklist_list(models.Model):
 	_name = "hr.employee.checklist.documents.list"
+	_description = 'Employee Checklist Documents List'
 
 	checklist_template_id = fields.Many2one('hr.checklist_template')
 	employee_checklist_document = fields.Many2one('hr.employee.checklist.documents') 
@@ -1059,6 +1076,7 @@ class EmployeeChecklist_list(models.Model):
 
 class EmployeeChecklist_list(models.Model):
 	_name = "hr.employee.checklist.documents.list.main"
+	_description = 'Employee Checklist Documents List Main'
 
 	checklist_template_id = fields.Many2one('hr.checklist_template')
 	employee_checklist_document = fields.Many2one('hr.employee.checklist.documents')  
@@ -1289,6 +1307,8 @@ class EmployeeChecklist_list(models.Model):
 #Models
 class AddressType(models.Model):
 	_name = 'hr.addresstype'
+	_description = 'Address Type'
+
 	name = fields.Char('Address Type', required = True)
 	description = fields.Text('Description')
 
@@ -1300,11 +1320,15 @@ class AddressType(models.Model):
 
 class EducationType(models.Model):
 	_name = 'hr.educationtype'
+	_description = 'Education Type'
+
 	name = fields.Char('Education')
 	description = fields.Text('Description')
 
 class DocumentType(models.Model):
 	_name = 'hr.documenttype'
+	_description = 'Document Type'
+
 	abbreviation = fields.Char('Code', required =True)
 	name = fields.Char('Document name', required=True)
 	check_for_expiration = fields.Boolean('Check Expiration', default= False)
@@ -1319,6 +1343,8 @@ class DocumentType(models.Model):
 
 class FamilyRelations(models.Model):
 	_name = 'hr.familyrelations'
+	_description = 'Family Relations'
+
 	code = fields.Char('Code', required =True)
 	name = fields.Char('Relationship', required=True)
 	description = fields.Text('Description')
@@ -1331,6 +1357,8 @@ class FamilyRelations(models.Model):
 
 class MedicalRecordType(models.Model):
 	_name = 'hr.medicalrecord'
+	_description = 'Medical Record Type'
+
 	code = fields.Char('Code', required =True)
 	name = fields.Char('Medical', required =True)
 	description = fields.Text('Description')
@@ -1344,6 +1372,7 @@ class MedicalRecordType(models.Model):
 
 class LicenseType(models.Model):
 	_name ='hr.licensetype'
+	_description = 'License Type'
 
 	@api.model
 	def _getClassID(self):
@@ -1362,6 +1391,8 @@ class LicenseType(models.Model):
 
 class License(models.Model):
 	_name = 'hr.license'
+	_description = 'Licenses'
+
 	id_class_name = fields.Integer('Class ID')
 	license_name = fields.Many2one('hr.licensetype','Class Name', required=True)
 	name = fields.Char('Doc Abbreviation', required=True)
@@ -1375,6 +1406,7 @@ class License(models.Model):
 
 class MedicalClinic(models.Model):
 	_name = 'hr.clinic'
+	_description = 'Medical Clinic'
 	_inherit = 'hr.documenttype'
 
 	# [TMP] - Disable for data mig
@@ -1385,7 +1417,9 @@ class MedicalClinic(models.Model):
 
 class LengthOfExpiration(models.Model):
 	_name = 'hr.lengthofexpiration'
+	_description = 'Length Of Expiration'
 	_inherit = 'hr.familyrelations'
+
 	days = fields.Integer('Days before Expiration')
 
 	# [TMP] - Disable for data mig
@@ -1396,6 +1430,7 @@ class LengthOfExpiration(models.Model):
 
 class PortInformation(models.Model):
 	_name = 'hr.port'
+	_description = 'Port'
 	_inherit = 'hr.abs.parameter'
 
 	# [TMP] - Disable for data mig
@@ -1406,6 +1441,7 @@ class PortInformation(models.Model):
 
 class Companies(models.Model):
 	_name = 'hr.companies'
+	_description = 'Companies'
 	_inherit = 'hr.abs.parameter'
 
 	# [TMP] - Disable for data mig
@@ -1416,6 +1452,8 @@ class Companies(models.Model):
 
 class VesselCategory(models.Model):
 	_name = 'hr.vesselcategory'
+	_description = 'Vessel Category'
+
 	category = fields.Char('Category', required=True)
 	name = fields.Char('Name', required=True)
 	vessel_cat_ids = fields.Many2many('hr.ship.department','department_vessel_rel', 'vessel_cat_id','department_id', 'Vessel Category')
@@ -1428,7 +1466,9 @@ class VesselCategory(models.Model):
 
 class Vessel(models.Model):
 	_name = 'hr.vessel'
+	_description = 'Vessel'
 	_inherit ='hr.abs.parameter'
+
 	company_code = fields.Many2one('hr.companies', 'Company', required =True)
 	vessel_category = fields.Many2one('hr.vesselcategory','Category', required =True)
 
@@ -1440,7 +1480,9 @@ class Vessel(models.Model):
 
 class RankType(models.Model):
 	_name = 'hr.ranktype'
+	_description = 'Rank Type'
 	_inherit = 'hr.abs.parameter'
+
 	rate = fields.Float('Incentive Rate',digits=(18,2))
 
 	# [TMP] - Disable for data mig
@@ -1451,6 +1493,8 @@ class RankType(models.Model):
 
 class Rank(models.Model):
 	_name = 'hr.rank'
+	_description = 'Rank'
+
 	rank_identification = fields.Char('Rank ID')
 	rank = fields.Char('Rank')
 	name= fields.Char('Name')
@@ -1465,6 +1509,8 @@ class Rank(models.Model):
 
 class ShipDepartment(models.Model):
 	_name = 'hr.ship.department'
+	_description = 'Ship Department'
+
 	ship_dept_code = fields.Char('Code', required=True)
 	name = fields.Char('Name')
 	department = fields.Char('Department', required=True)
@@ -1512,6 +1558,8 @@ class ShipDepartment(models.Model):
 
 class Status(models.Model):
 	_name = 'hr.employment.status'
+	_description = 'Employment Status'
+
 	status_id = fields.Char('Status ID')
 	name = fields.Text('Description', required=True)
 
@@ -1523,6 +1571,8 @@ class Status(models.Model):
 
 class CheckList(models.Model):
 	_name= 'hr.checklist'
+	_description = 'Checklist'
+
 	checklist_code = fields.Char('Code', required=True)
 	name = fields.Char('Name', required=True)
 	link_selection = fields.Selection(CHECKLIST_DOCUMENT_TYPE, 'Document Link', default ='none')
@@ -1549,6 +1599,8 @@ class CheckList(models.Model):
 
 class religion(models.Model):
 	_name= 'hr.religion'
+	_description = 'Religion'
+
 	religion_code = fields.Char('Code', required=True)
 	name = fields.Char('Name', required=True)
 
@@ -1561,6 +1613,8 @@ class religion(models.Model):
 
 class CheckListTemplate(models.Model):
 	_name='hr.checklist_template.main'
+	_description = 'Checklist Template Main'
+
 	name = fields.Char('Checklist Name')
 	#department_id = fields.Many2one('hr.ship.department', 'Ship Department')
 	department_ids = fields.Many2many('hr.ship.department','checklist_department_rel','checklist_main_id','department_id', 'Ship Department')
@@ -1569,7 +1623,9 @@ class CheckListTemplate(models.Model):
 
 class ChecklistTemplate(models.Model):
 	_name = 'hr.checklist_template'
+	_description = 'Checklist Template'
 	_order =  'csequence'
+
 	checklist_temp_code = fields.Char('Code')
 	name = fields.Char('Name')
 	checklist_temp_param_1 = fields.Many2one('hr.checklist', 'Parameter 1')
