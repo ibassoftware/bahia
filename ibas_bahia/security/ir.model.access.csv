@@ -50,7 +50,7 @@ access_hr_rank,hr.rank.user,model_hr_rank,hr.group_hr_user,1,1,1,1
 access_hr_ship_department,hr.ship.department.emp,model_hr_ship_department,base.group_user,1,1,1,1
 access_hr_ship_department,hr.ship.department.user,model_hr_ship_department,hr.group_hr_user,1,1,1,1
 access_hr_employment_status,hr.employment.status.emp,model_hr_employment_status,base.group_user,1,1,1,1
-access_hr_employment_status,hr.employment.status.user,model_hr_employment_status,hr.group_hr_user,1,1,1,1
+access_hr_religion,hr.employment.religion.user,model_hr_religion,hr.group_hr_user,1,1,1,1
 access_hr_checklist,hr.checklist.emp,model_hr_checklist,base.group_user,1,1,1,1
 access_hr_checklist,hr.checklist.user,model_hr_checklist,hr.group_hr_user,1,1,1,1
 access_hr_checklist_template,hr.checklist_template.emp,model_hr_checklist_template,base.group_user,1,1,1,1
