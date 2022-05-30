@@ -334,7 +334,8 @@ class HrEmployeeExtend(models.Model):
 
 
 	#-------- Attributes/Fields
-	employee_number = fields.Char('Employee Number',select = True, default = _getEmpId)
+	# employee_number = fields.Char('Employee Number',select = True, default = _getEmpId)
+	employee_number = fields.Char('Employee Number', default = _getEmpId)
 	first_name = fields.Char('First name', required = True)
 	last_name = fields.Char('Last name', required = True)
 	middle_name = fields.Char('Middle name')
@@ -355,18 +356,21 @@ class HrEmployeeExtend(models.Model):
 	checklistID = fields.Char('Checklist ID')
 	ccl_number = fields.Char('CCL Number')
 	religion = fields.Many2one('hr.religion', 'Religion')
-	marital =  fields.Selection([('single', 'Single'), 
+	marital =  fields.Selection(selection_add=[('single', 'Single'), 
 	                              ('married', 'Married'), 
 	                              ('widower', 'Widower'), 
 	                              ('divorced', 'Divorced'), 
 	                              ('seperated', 'Seperated'), 
-	                              ('live_in_partner', 'Live-in-partner')], 'Marital Status')
+	                              ('live_in_partner', 'Live-in-partner')], string='Marital Status')
 	employee_rank = fields.Text('Rank',store = False,compute ='_checkLatestEmployment')
 
 	pcn = fields.Char('PCN')
-	legacy_doc_1 = fields.Binary('Confidential Reports', filters='*.pdf,*.docx,*.doc')
-	legacy_doc_2 = fields.Binary('Personal Data', filters='*.pdf,*.docx,*.doc')
-	legacy_doc_3 = fields.Binary('Personal Summary', filters='*.pdf,*.docx,*.doc')
+	# legacy_doc_1 = fields.Binary('Confidential Reports', filters='*.pdf,*.docx,*.doc')
+	# legacy_doc_2 = fields.Binary('Personal Data', filters='*.pdf,*.docx,*.doc')
+	# legacy_doc_3 = fields.Binary('Personal Summary', filters='*.pdf,*.docx,*.doc')
+	legacy_doc_1 = fields.Binary('Confidential Reports')
+	legacy_doc_2 = fields.Binary('Personal Data')
+	legacy_doc_3 = fields.Binary('Personal Summary')
 	employee_addresses = fields.One2many('hr.employeeaddress','employee_address_id', readonly=False,copy=False)
 	employee_education = fields.One2many('hr.employeducation','employee_education_id', readonly=False,copy=False)
 	employee_families = fields.One2many('hr.employee_families','employee_family_relationship_id', readonly=False,copy=False)
@@ -400,7 +404,8 @@ class HrEmployeeExtend(models.Model):
 	employee_e_reg_num_username = fields.Char('User Name')
 	employee_e_reg_num_password = fields.Char('Password')
 
-	legacy_doc_4 = fields.Binary('Consent Form', filters='*.pdf,*.docx,*.doc')
+	# legacy_doc_4 = fields.Binary('Consent Form', filters='*.pdf,*.docx,*.doc')
+	legacy_doc_4 = fields.Binary('Consent Form')
 	filename4 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc4_getFilename')
 	has_consentform = fields.Boolean('With Consent Form', default=False)
 
