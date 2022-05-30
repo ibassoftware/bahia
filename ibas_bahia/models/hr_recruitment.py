@@ -5,6 +5,7 @@ from odoo.exceptions import AccessError, UserError, ValidationError, except_orm,
 
 class hrRecruitment(models.Model):
 	_name = 'hr.recruitment.degree'	
+	_description = 'HR Recruitment Degree'
 	_inherit = 	'hr.recruitment.degree' 
 
 	@api.onchange('abbreviation', 'description')
