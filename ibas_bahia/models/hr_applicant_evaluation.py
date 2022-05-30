@@ -24,6 +24,7 @@ FINAL_INTERVIEW = [('1', 'HIRABLE'),
 
 class HrApplicantEvaluation(models.Model):
 	_name = 'hr.applicant.evaluation'
+	_description = 'HR Applicant Evaluation'
 
 	#fields.Char(related="partner_id.email", string="Email", store=True)
 	#default_stock_location = fields.Many2one('stock.location',related='warehouse_id.lot_stock_id', string='Default Stock Location')
@@ -118,6 +119,7 @@ class HrApplicantEvaluation(models.Model):
 
 class HrCES(models.Model):
 	_name = 'hr.applicant.evaluation.ces'
+	_description = 'HR Applicant Evaluation CES'
 
 
 	hr_applicant_evaluation_id  = fields.Many2one('hr.applicant.evaluation')
