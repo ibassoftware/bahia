@@ -1,0 +1,14 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<odoo noupdate="0">
+    <data>
+
+        <record id="utm_source_word_of_mouth" model="utm.source">
+            <field name="name">Word of Mouth</field>
+        </record>
+
+        <record id="utm_source_company_website" model="utm.source">
+            <field name="name">Company Website</field>
+        </record>
+
+    </data>
+</odoo>
