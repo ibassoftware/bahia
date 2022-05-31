@@ -5,3 +5,4 @@ from . import hr_applicant
 from . import hr_applicant_evaluation
 #from . import hr_checklist_templates
 from . import res_partner
+from . import resource_resource
