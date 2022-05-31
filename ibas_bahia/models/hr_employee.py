@@ -409,6 +409,10 @@ class HrEmployeeExtend(models.Model):
 	filename4 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc4_getFilename')
 	has_consentform = fields.Boolean('With Consent Form', default=False)
 
+	# Missing fields in Version 15
+	message_last_post = fields.Datetime(string='Last Message Date')
+	otherid = fields.Char(string='Other ID')
+
 
 
 	def generateFile(self,vals):
