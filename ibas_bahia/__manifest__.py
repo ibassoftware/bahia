@@ -31,6 +31,7 @@
              'data/checklist_template_data.xml',
              'data/hr.socialmedia.config.csv',
              #'data/hr.checklist_template.csv',
+             'data/utm_source.xml',
              'views/hr_applicant_evaluation.xml',
              'views/hr_employee_checklist.xml',
              'views/hr_recruitment_view.xml',
