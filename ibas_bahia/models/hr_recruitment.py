@@ -3,7 +3,7 @@ from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import AccessError, UserError, ValidationError, except_orm, Warning
 
 
-class hrRecruitment(models.Model):
+class HRRecruitmentDegree(models.Model):
 	_name = 'hr.recruitment.degree'	
 	_description = 'HR Recruitment Degree'
 	_inherit = 	'hr.recruitment.degree' 
@@ -26,3 +26,19 @@ class hrRecruitment(models.Model):
 			vals.update({'name': "[" + vals['abbreviation'] + "]" + " " + vals['description']})                   
 		new_record = super(hrRecruitment, self).create(vals)
 		return new_record  
+
+class HRRecruitmentSource(models.Model):
+	_inherit = 'hr.recruitment.source'	
+
+	name = fields.Char()
+
+class HRRecruitmentStage(models.Model):
+	_inherit = 'hr.recruitment.stage'	
+
+	department_id = fields.Many2one('hr.department', string='Specific to a Department', help="Stages of the recruitment process may be different per department. If this stage is common to all departments, keep this field empty.")
+
+class HRRecruitmentDegree(models.Model):
+	_inherit = 'hr.recruitment.degree'	
+
+	show_in_website_application = fields.Boolean()
+
