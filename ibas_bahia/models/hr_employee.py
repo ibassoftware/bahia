@@ -397,7 +397,7 @@ class HrEmployeeExtend(models.Model):
 	image_file = fields.Char('Image File Summary')
 
 	employee_contract_number = fields.Char('Employee Contract Number', required=True, default='N/A')
-	total_years_of_service = fields.Char('Service Length',store = False,compute ='getYearMonthDay')
+	total_years_of_service = fields.Char('Service Length', store=False, compute='getYearMonthDay')
 
 
 	employee_e_register_number = fields.Char('E-Registration Number')
@@ -463,7 +463,6 @@ class HrEmployeeExtend(models.Model):
 
 
 	def getYearMonthDay(self):
-		self.ensure_one()
 		for rec in self:
 			str_service_range = ''
 			int_year    = 0
@@ -482,9 +481,9 @@ class HrEmployeeExtend(models.Model):
 				str_service_range = employment_history.service_range
 				str_service_range = str_service_range.split()
 				if employment_history.employment_status.status_id == 'ACT':
-					int_year = int(str_service_range[0].replace('Y',''))
-					int_month = int(str_service_range[1].replace('M',''))
-					int_day = int(str_service_range[2].replace('D',''))
+					int_year = int(float(str_service_range[0].replace('Y','')))
+					int_month = int(float(str_service_range[1].replace('M','')))
+					int_day = int(float(str_service_range[2].replace('D','')))
 					int_final_year +=int_year
 					int_final_month +=int_month
 					int_final_day +=int_day
@@ -505,3 +504,25 @@ class HrEmployeeExtend(models.Model):
 					int_final_month = int(round(12 * int_final_month))
 
 			rec.total_years_of_service = str(int_final_year) + 'Y ' + str(int_final_month) + 'M ' +  str(int_final_day).split('.')[0]  + 'D'
+
+	def computeEmployeeName(self):
+		for rec in self:
+			# rec.getFullname()
+			if rec.first_name == False:
+			    rec.first_name=''
+			if rec.middle_name == False:
+			    rec.middle_name=''
+			if rec.last_name == False:
+			    rec.last_name=''
+
+			# resource_id = self.env['resource.resource'].browse(rec.resource_id.id)
+			
+			# if resource_id:
+			# 	rec.name =  rec.last_name + ", " +  rec.first_name + " " + rec.middle_name   
+
+			name = rec.last_name + ", " +  rec.first_name + " " + rec.middle_name
+			args = (name, rec.id)
+			self.env.cr.execute("UPDATE hr_employee SET name=%s WHERE id=%s", args)
+
+
+		return True

@@ -1,0 +1,627 @@
+BAHIA DATA MIGRATION:
+CONFIGURATION:
+	- Employee Tags - NO DATA
+	- Departments - OK
+	- Address Type - OK - DONE
+	- Family Relations - OK - DONE
+	- Document Type - OK - DONE
+	- Medical Type - OK - removed 1 duplicate - DONE
+	- Clinic - OK - Issue with duplicate values - DONE
+	- License Type - OK - DONE
+	- License - DONE
+	- Port - OK
+	- Company - DONE
+	- Vessel Category - DONE
+	- Vessel Information - DONE
+	- Vessel Department Information - DONE
+	- Rank Type - DONE
+	- Rank Information - DONE
+	- Social Media
+	- Employment Status - DONE
+	- Religion - DONE
+
+
+BAHIA DATA MIGRATION FINAL:
+BASE:
+	- Users
+	- Partners
+
+CONFIGURATION:
+	- Address Type - DONE
+	- Family Relations - DONE
+	- Document Type - DONE
+	- Medical Type - DONE
+	- Clinic - DONE
+	- License Type - DONE
+	- License - DONE
+	- Port - DONE
+	- Company - DONE
+	- Vessel Category - DONE
+	- Vessel Information - DONE
+	- Vessel Department Information - DONE
+	- Rank Type - DONE
+	- Rank Information - DONE
+	- Employment Status - DONE
+	- Religion - DONE
+	- Departments - DONE
+	- Checklist - DONE
+	- Checklist Template - DONE
+	- Checklist Template Main - DONE
+	- Recruitment Stages - DONE
+	- Degrees - DONE
+	- Source of Applicants - DONE
+
+EMPLOYEE/DATA MIGRATION:
+	- Resource (Needed for employee) - DONE
+	- Mail Alias (Needed for job) - DONE
+	- Country - DONE
+	- Jobs - DONE
+	- Employees - DONE
+	- Employment History - DONE
+	- Employee Address - DONE
+	- Employee Documents - IN PROGRESS
+	- Employee Education - IN PROGRESS
+	- Employee Families - IN PROGRESS
+	- Employee Licenses - IN PROGRESS
+
+
+CONTACTS:
+	Fields Mapping:
+	- image -> image_1920
+	- image_medium -> image_1024
+	- image_samll -> image_512
+	
+
+create table export_res_partner_table as 
+select id, name, city
+from nyummy.cimory
+where city = 'tokyo'
+
+Export:
+pg_dump --table=hr_licensetype --data-only --column-inserts bck_apr_2020 > licensetype_data.sql
+pg_dump --table=res_partner --data-only --column-inserts bck_apr_2020 > res_partner_data.sql
+pg_dump --table=res_users --data-only --column-inserts bck_apr_2020 > res_users_data.sql
+
+Import:
+psql BAHIA < /opt/odoo/mig/licensetype_data.sql
+
+
+STEP:
+Export sql first;
+Export csv for images
+
+
+*** CHECK CONSTRAINTS ***
+SELECT con.*
+    FROM pg_catalog.pg_constraint con
+        INNER JOIN pg_catalog.pg_class rel ON rel.oid = con.conrelid
+        INNER JOIN pg_catalog.pg_namespace nsp ON nsp.oid = connamespace
+        WHERE nsp.nspname = 'public'
+             AND rel.relname = 'hr_port';
+
+************************************************************************
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! START HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!
+************************************************************************
+========================================================================
+[1] **PARTNER** As of 04/29/2022 - 42512 records
+========================================================================
+
+create table export_table_res_partner as 
+select id, name, company_id, comment, ean13, create_date, color, date, street, city, 
+	display_name, zip, title, function, country_id, parent_id, ref, email, is_company, website, 
+	street2, employee, credit_limit, write_date, active, tz, lang, phone, 
+	mobile, type, user_id, vat, state_id, commercial_partner_id, signup_type, signup_expiration, signup_token, 
+	calendar_last_notif_ack, website_short_description, website_meta_description, website_description,
+	website_meta_keywords
+from res_partner;
+
+pg_dump --table=export_table_res_partner --data-only --column-inserts bck_apr_2020 > export_table_res_partner.sql
+
+psql BAHIA < /opt/odoo/mig/export_table_res_partner.sql
+psql BAHIA < /odoo/mig/export_table_res_partner.sql
+psql BAHIA2 < /odoo/mig/export_table_res_partner.sql
+
+DROP TABLE export_table_res_partner;
+
+NOTE: Replace the following in sql:
+export_table_res_partner -> res_partner:
+
+========================================================================
+** END PARTNER **
+========================================================================
+
+========================================================================
+[2] ** START USER ** As of 04/29/2022 - 12781 records
+========================================================================
+
+create table export_table_res_users as 
+select id, active, login, password, company_id, partner_id, create_date, write_date, signature, action_id, share
+from res_users;
+
+pg_dump --table=export_table_res_users --data-only --column-inserts bck_apr_2020 > export_table_res_users.sql
+
+psql BAHIA < /opt/odoo/mig/export_table_res_users.sql
+psql BAHIA2 < /odoo/mig/export_table_res_users.sql
+
+DROP TABLE export_table_res_users;
+
+NOTE: Replace the following in sql:
+share) -> share, notification_type)
+false); -> false, 'email');
+true); -> true, 'email');
+export_table_res_users -> res_users:
+
+========================================================================
+** END USER **
+========================================================================
+
+========================================================================
+[3] ** START ADDRESS TYPE ** As of 05/03/2022 - 
+========================================================================
+pg_dump --table=hr_addresstype --data-only --column-inserts bck_apr_2020 > hr_addresstype.sql
+
+psql BAHIA < /odoo/mig/hr_addresstype.sql
+psql BAHIA2 < /odoo/mig/hr_addresstype.sql
+
+========================================================================
+** END ADDRESS TYPE **
+========================================================================
+
+========================================================================
+[4] ** START FAMILY RELATIONS ** As of 05/14/2022 - 
+========================================================================
+pg_dump --table=hr_familyrelations --data-only --column-inserts bck_apr_2020 > hr_familyrelations.sql
+
+psql BAHIA < /odoo/mig/hr_familyrelations.sql
+psql BAHIA2 < /odoo/mig/hr_familyrelations.sql
+
+========================================================================
+** END FAMILY RELATIONS **
+========================================================================
+
+========================================================================
+[5] ** START DOCUMENT TYPE ** As of 05/14/2022 - 
+========================================================================
+pg_dump --table=hr_documenttype --data-only --column-inserts bck_apr_2020 > hr_documenttype.sql
+
+psql BAHIA < /odoo/mig/hr_documenttype.sql
+psql BAHIA2 < /odoo/mig/hr_documenttype.sql
+
+========================================================================
+** END DOCUMENT TYPE **
+========================================================================
+
+========================================================================
+[6] ** START MEDICAL RECORD ** As of 05/14/2022 - 
+========================================================================
+pg_dump --table=hr_medicalrecord --data-only --column-inserts bck_apr_2020 > hr_medicalrecord.sql
+
+// Remove Constraint
+sudo su postgres
+psql
+\c BAHIA2
+ALTER TABLE hr_medicalrecord DROP CONSTRAINT hr_medicalrecord_hr_medicalrecord_name; 
+
+psql BAHIA < /odoo/mig/hr_medicalrecord.sql
+psql BAHIA2 < /odoo/mig/hr_medicalrecord.sql
+
+========================================================================
+** END MEDICAL RECORD **
+========================================================================
+
+========================================================================
+[7] ** START CLINIC ** As of 05/30/2022 - 
+========================================================================
+pg_dump --table=hr_clinic --data-only --column-inserts bck_apr_2020 > hr_clinic.sql
+
+// Remove Constraint
+ALTER TABLE hr_clinic DROP CONSTRAINT hr_clinic_hr_clinic_name_uniq; 
+ALTER TABLE hr_clinic DROP CONSTRAINT hr_clinic_hr_documenttype_name; 
+
+psql BAHIA < /odoo/mig/hr_clinic.sql
+psql BAHIA2 < /odoo/mig/hr_clinic.sql
+
+========================================================================
+** END CLINIC **
+========================================================================
+
+========================================================================
+[8] ** START LICENSE TYPE ** As of 05/30/2022 - 
+========================================================================
+pg_dump --table=hr_licensetype --data-only --column-inserts bck_apr_2020 > hr_licensetype.sql
+
+psql BAHIA < /odoo/mig/hr_licensetype.sql
+psql BAHIA2 < /odoo/mig/hr_licensetype.sql
+
+========================================================================
+** END LICENSE TYPE **
+========================================================================
+
+========================================================================
+[9] ** START LICENSE ** As of 05/30/2022 - 
+========================================================================
+pg_dump --table=hr_license --data-only --column-inserts bck_apr_2020 > hr_license.sql 
+
+psql BAHIA < /odoo/mig/hr_license.sql
+psql BAHIA2 < /odoo/mig/hr_license.sql
+
+========================================================================
+** END LICENSE **
+========================================================================
+
+========================================================================
+[10] ** START PORT ** As of 05/30/2022 - 
+========================================================================
+pg_dump --table=hr_port --data-only --column-inserts bck_apr_2020 > hr_port.sql 
+
+ALTER TABLE hr_port DROP CONSTRAINT hr_port_hr_port_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_port.sql
+psql BAHIA2 < /odoo/mig/hr_port.sql
+
+========================================================================
+** END PORT **
+========================================================================
+
+========================================================================
+[11] ** START COMPANIES ** As of 05/30/2022 - 
+========================================================================
+pg_dump --table=hr_companies --data-only --column-inserts bck_apr_2020 > hr_companies.sql 
+
+psql BAHIA < /odoo/mig/hr_companies.sql
+psql BAHIA2 < /odoo/mig/hr_companies.sql
+
+========================================================================
+** END COMPANIES **
+========================================================================
+
+========================================================================
+[12] ** START VESSEL CATEGORY ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_vesselcategory --data-only --column-inserts bck_apr_2020 > hr_vesselcategory.sql 
+
+ALTER TABLE hr_vesselcategory DROP CONSTRAINT hr_vesselcategory_hr_vesselcat_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_vesselcategory.sql
+psql BAHIA2 < /odoo/mig/hr_vesselcategory.sql
+
+========================================================================
+** END VESSEL CATEGORY **
+========================================================================
+
+========================================================================
+[13] ** START VESSEL INFORMATION ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_vessel --data-only --column-inserts bck_apr_2020 > hr_vessel.sql 
+
+ALTER TABLE hr_vessel DROP CONSTRAINT hr_vessel_hr_vessel_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_vessel.sql
+psql BAHIA2 < /odoo/mig/hr_vessel.sql
+
+========================================================================
+** END VESSEL INFORMATION **
+========================================================================
+
+========================================================================
+[14] ** START VESSEL DEPARTMENT INFORMATION ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_ship_department --data-only --column-inserts bck_apr_2020 > hr_ship_department.sql  
+
+psql BAHIA < /odoo/mig/hr_ship_department.sql
+psql BAHIA2 < /odoo/mig/hr_ship_department.sql
+
+========================================================================
+** END VESSEL DEPARTMENT INFORMATION **
+========================================================================
+
+========================================================================
+[15] ** START RANK TYPE ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_ranktype --data-only --column-inserts bck_apr_2020 > hr_ranktype.sql  
+
+ALTER TABLE hr_ranktype DROP CONSTRAINT hr_ranktype_hr_ranktype_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_ranktype.sql
+psql BAHIA2 < /odoo/mig/hr_ranktype.sql
+
+========================================================================
+** END RANK TYPE **
+========================================================================
+
+========================================================================
+[16] ** START RANK INFORMATION ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_rank --data-only --column-inserts bck_apr_2020 > hr_rank.sql  
+
+ALTER TABLE hr_rank DROP CONSTRAINT hr_rank_hr_rank_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_rank.sql
+psql BAHIA2 < /odoo/mig/hr_rank.sql
+
+========================================================================
+** END RANK INFORMATION **
+========================================================================
+
+========================================================================
+[17] ** START EMPLOYMENT STATUS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employment_status --data-only --column-inserts bck_apr_2020 > hr_employment_status.sql  
+
+ALTER TABLE hr_employment_status DROP CONSTRAINT hr_employment_status_hr_empstat_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_employment_status.sql
+psql BAHIA2 < /odoo/mig/hr_employment_status.sql
+
+========================================================================
+** END EMPLOYMENT STATUS **
+========================================================================
+
+========================================================================
+[18] ** START RELIGION ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_religion --data-only --column-inserts bck_apr_2020 > hr_religion.sql  
+
+ALTER TABLE hr_religion DROP CONSTRAINT hr_religion_hr_religion_code_uniq; 
+
+psql BAHIA < /odoo/mig/hr_religion.sql
+psql BAHIA2 < /odoo/mig/hr_religion.sql
+
+========================================================================
+** END RELIGION **
+========================================================================
+
+========================================================================
+[19] ** START DEPARTMENTS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_department --data-only --column-inserts bck_apr_2020 > hr_department.sql  
+
+** Remove Existing Departments
+
+psql BAHIA < /odoo/mig/hr_department.sql
+psql BAHIA2 < /odoo/mig/hr_department.sql
+
+========================================================================
+** END DEPARTMENTS **
+========================================================================
+
+========================================================================
+[20] ** START CHECKLIST ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_checklist --data-only --column-inserts bck_apr_2020 > hr_checklist.sql  
+
+ALTER TABLE hr_checklist DROP CONSTRAINT hr_checklist_hr_chekclist_name_uniq; 
+
+psql BAHIA < /odoo/mig/hr_checklist.sql
+psql BAHIA2 < /odoo/mig/hr_checklist.sql
+
+========================================================================
+** END CHECKLIST **
+========================================================================
+
+========================================================================
+[21] ** START CHECKLIST TEMPLATE ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_checklist_template --data-only --column-inserts bck_apr_2020 > hr_checklist_template.sql  
+
+psql BAHIA < /odoo/mig/hr_checklist_template.sql
+psql BAHIA2 < /odoo/mig/hr_checklist_template.sql
+
+========================================================================
+** END CHECKLIST TEMPLATE **
+========================================================================
+
+========================================================================
+[22] ** START CHECKLIST TEMPLATE MAIN ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_checklist_template_main --data-only --column-inserts bck_apr_2020 > hr_checklist_template_main.sql  
+
+psql BAHIA < /odoo/mig/hr_checklist_template_main.sql
+psql BAHIA2 < /odoo/mig/hr_checklist_template_main.sql
+
+========================================================================
+** END CHECKLIST TEMPLATE MAIN **
+========================================================================
+
+========================================================================
+[23] ** START RECRUITMENT STAGES ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_recruitment_stage --data-only --column-inserts bck_apr_2020 > hr_recruitment_stage.sql  
+
+psql BAHIA < /odoo/mig/hr_recruitment_stage.sql
+psql BAHIA2 < /odoo/mig/hr_recruitment_stage.sql
+
+========================================================================
+** END RECRUITMENT STAGES **
+========================================================================
+
+========================================================================
+[24] ** START RECRUITMENT DEGREES ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_recruitment_degree --data-only --column-inserts bck_apr_2020 > hr_recruitment_degree.sql  
+
+psql BAHIA < /odoo/mig/hr_recruitment_degree.sql
+psql BAHIA2 < /odoo/mig/hr_recruitment_degree.sql
+
+========================================================================
+** END RECRUITMENT DEGREES **
+========================================================================
+
+========================================================================
+[25] ** START RECRUITMENT SOURCE OF APPLICANTS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_recruitment_source --data-only --column-inserts bck_apr_2020 > hr_recruitment_source.sql  
+
+psql BAHIA < /odoo/mig/hr_recruitment_source.sql
+psql BAHIA2 < /odoo/mig/hr_recruitment_source.sql
+
+========================================================================
+** END RECRUITMENT SOURCE OF APPLICANTS **
+========================================================================
+
+========================================================================
+[26] ** START RESOURCE ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=resource_resource --data-only --column-inserts bck_apr_2020 > resource_resource.sql  
+
+** Set value for calendar_id = 1
+** Add value for tz = Asia/Manila
+
+psql BAHIA < /odoo/mig/resource_resource.sql
+psql BAHIA2 < /odoo/mig/resource_resource.sql
+
+========================================================================
+** END RESOURCE **
+========================================================================
+
+========================================================================
+[27] ** START ALIAS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=mail_alias --data-only --column-inserts bck_apr_2020 > mail_alias.sql  
+
+** Fix mapping of model id
+
+psql BAHIA < /odoo/mig/mail_alias.sql
+psql BAHIA2 < /odoo/mig/mail_alias.sql
+
+========================================================================
+** END ALIAS **
+========================================================================
+
+========================================================================
+[28] ** START COUNTRY ** As of 05/31/2022 - 
+========================================================================
+create table export_table_res_country as 
+select id, create_uid, code, create_date, name, write_uid, currency_id, address_format, write_date
+from res_country;
+
+pg_dump --table=export_table_res_country --data-only --column-inserts bck_apr_2020 > export_table_res_country.sql  
+
+psql BAHIA < /odoo/mig/export_table_res_country.sql
+psql BAHIA2 < /odoo/mig/export_table_res_country.sql
+
+========================================================================
+** END COUNTRY **
+========================================================================
+
+========================================================================
+[29] ** START JOB ** As of 05/31/2022 - 
+========================================================================
+create table export_table_hr_job as 
+select id, create_date, write_uid, create_uid, requirements, message_last_post, company_id, state, expected_employees, department_id, description, write_date, name, no_of_recruitment, no_of_hired_employee, no_of_employee, address_id, color, alias_id, manager_id, user_id, website_meta_title, website_published, website_meta_description, website_description, website_meta_keywords
+from hr_job;
+
+pg_dump --table=export_table_hr_job --data-only --column-inserts bck_apr_2020 > export_table_hr_job.sql
+
+psql BAHIA < /odoo/mig/export_table_hr_job.sql
+psql BAHIA2 < /odoo/mig/export_table_hr_job.sql
+
+========================================================================
+** END JOB **
+========================================================================
+
+========================================================================
+[30] ** START COUNTRY ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=res_country --data-only --column-inserts bck_apr_2020 > res_country.sql
+
+psql BAHIA < /odoo/mig/res_country.sql
+psql BAHIA2 < /odoo/mig/res_country.sql
+
+========================================================================
+** END COUNTRY **
+========================================================================
+
+========================================================================
+[31] ** START EMPLOYEES ** As of 05/31/2022 - 
+========================================================================
+create table export_table_hr_employee as 
+select id, active, address_id, create_date, coach_id, resource_id, color, message_last_post, marital, identification_id, bank_account_id, job_id, work_phone, country_id, parent_id, department_id, otherid, mobile_phone, create_uid, birthday, write_date, sinid, write_uid, work_email, gender, ssnid, address_home_id, passport_id, notes, last_name, weight, self_alotte, incentive_length, "checklistID", first_name, ccl_number, religion, pcn, description, service_length, tin_no, focllength, placeof_birth, middle_name, philhealth_no, employee_number, bankacctno, height, booking_id, aa_reg_no, hdmf_no, sss_no, personalsummary_file, confidential_file, personal_file, employee_contract_number, has_consentform, employee_e_register_number, employee_e_reg_num_username, employee_e_reg_num_password
+from hr_employee;
+
+pg_dump --table=export_table_hr_employee --data-only --column-inserts bck_apr_2020 > export_table_hr_employee.sql  
+
+** Replace export_table_hr_employee -> hr_employee
+** Add column for company_id = 1
+** Add column for employee_type = 'employee'
+** Unarchive employees = UPDATE hr_employee SET active = true WHERE active IS NULL;
+
+psql BAHIA < /odoo/mig/export_table_hr_employee.sql
+psql BAHIA2 < /odoo/mig/export_table_hr_employee.sql
+
+========================================================================
+** END EMPLOYEES **
+========================================================================
+
+========================================================================
+[32] ** START EMPLOYMENT HISTORY ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employmenthistory --data-only --column-inserts bck_apr_2020 > hr_employmenthistory.sql  
+
+psql BAHIA < /odoo/mig/hr_employmenthistory.sql
+psql BAHIA2 < /odoo/mig/hr_employmenthistory.sql
+
+========================================================================
+** END EMPLOYMENT HISTORY **
+========================================================================
+
+========================================================================
+[33] ** START EMPLOYEE ADDRESS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employeeaddress --data-only --column-inserts bck_apr_2020 > hr_employeeaddress.sql  
+
+psql BAHIA < /odoo/mig/hr_employeeaddress.sql
+psql BAHIA2 < /odoo/mig/hr_employeeaddress.sql
+
+========================================================================
+** END EMPLOYEE ADDRESS **
+========================================================================
+
+========================================================================
+[30] ** START EMPLOYEE EDUCATION ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employeducation --data-only --column-inserts bck_apr_2020 > hr_employeducation.sql  
+
+psql BAHIA < /odoo/mig/hr_employeducation.sql
+psql BAHIA2 < /odoo/mig/hr_employeducation.sql
+
+========================================================================
+** END EMPLOYEE EDUCATION **
+========================================================================
+
+========================================================================
+[31] ** START EMPLOYEE FAMILIES ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employee_families --data-only --column-inserts bck_apr_2020 > hr_employee_families.sql  
+
+psql BAHIA < /odoo/mig/hr_employee_families.sql
+psql BAHIA2 < /odoo/mig/hr_employee_families.sql
+
+========================================================================
+** END EMPLOYEE FAMILIES **
+========================================================================
+
+========================================================================
+[32] ** START EMPLOYEE LICENSES ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employeelicenses --data-only --column-inserts bck_apr_2020 > hr_employeelicenses.sql  
+
+psql BAHIA < /odoo/mig/hr_employeelicenses.sql
+psql BAHIA2 < /odoo/mig/hr_employeelicenses.sql
+
+========================================================================
+** END EMPLOYEE LICENSES **
+========================================================================
+
+========================================================================
+[27] ** START EMPLOYEE DOCUMENTS ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=hr_employee_documents --data-only --column-inserts bck_apr_2020 > hr_employee_documents.sql  
+
+
+psql BAHIA < /odoo/mig/hr_employee_documents.sql
+psql BAHIA2 < /odoo/mig/hr_employee_documents.sql
+
+========================================================================
+** END EMPLOYEE DOCUMENTS **
+========================================================================

@@ -273,11 +273,21 @@ class HrEmployeeEmployment(models.Model):
 
 	def getYearMonthDay(self):
 		for rec in self:
+			no_of_years = 0
+			no_of_months = 0
+			no_of_day = 0
 			if rec.date_servicefrom == False or rec.date_serviceto == False:
 				rec.service_range = '0Y 0M 0D'
 			else:
-				date_from = datetime.datetime.strptime(rec.date_servicefrom ,"%Y-%m-%d")
-				date_to = datetime.datetime.strptime(rec.date_serviceto ,"%Y-%m-%d")
+				date_from_str = datetime.datetime.strftime(rec.date_servicefrom ,"%Y-%m-%d")
+				date_to_str = datetime.datetime.strftime(rec.date_serviceto ,"%Y-%m-%d")
+				date_from = datetime.datetime.strptime(date_from_str ,"%Y-%m-%d")
+				date_to = datetime.datetime.strptime(date_to_str ,"%Y-%m-%d")
+
+				_logger.info("YOW")
+				_logger.info(date_from)
+				_logger.info(date_to)
+
 				no_of_days = abs((date_to - date_from).days) + 1
 				# Get Years of Service
 				#raise Warning(no_of_days)
@@ -286,6 +296,10 @@ class HrEmployeeEmployment(models.Model):
 				no_of_months = abs(no_of_days/30)
 				no_of_days = no_of_days - (no_of_months * 30)
 				no_of_day = no_of_days
+
+				_logger.info(no_of_years)
+				_logger.info(no_of_days)
+				_logger.info(no_of_months)
 
 			rec.service_range = str(no_of_years) + 'Y ' + str(no_of_months) + 'M ' +  str(no_of_day)  + 'D'
 #OLD
