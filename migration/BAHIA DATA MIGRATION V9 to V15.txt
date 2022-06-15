@@ -59,10 +59,11 @@ EMPLOYEE/DATA MIGRATION:
 	- Employees - DONE
 	- Employment History - DONE
 	- Employee Address - DONE
+	
+	- Employee Education - DONE
+	- Employee Families - DONE
+	- Employee Licenses - DONE
 	- Employee Documents - IN PROGRESS
-	- Employee Education - IN PROGRESS
-	- Employee Families - IN PROGRESS
-	- Employee Licenses - IN PROGRESS
 
 
 CONTACTS:
@@ -578,19 +579,7 @@ psql BAHIA2 < /odoo/mig/hr_employeeaddress.sql
 ========================================================================
 
 ========================================================================
-[30] ** START EMPLOYEE EDUCATION ** As of 05/31/2022 - 
-========================================================================
-pg_dump --table=hr_employeducation --data-only --column-inserts bck_apr_2020 > hr_employeducation.sql  
-
-psql BAHIA < /odoo/mig/hr_employeducation.sql
-psql BAHIA2 < /odoo/mig/hr_employeducation.sql
-
-========================================================================
-** END EMPLOYEE EDUCATION **
-========================================================================
-
-========================================================================
-[31] ** START EMPLOYEE FAMILIES ** As of 05/31/2022 - 
+[34] ** START EMPLOYEE FAMILIES ** As of 05/31/2022 - 
 ========================================================================
 pg_dump --table=hr_employee_families --data-only --column-inserts bck_apr_2020 > hr_employee_families.sql  
 
@@ -602,25 +591,48 @@ psql BAHIA2 < /odoo/mig/hr_employee_families.sql
 ========================================================================
 
 ========================================================================
-[32] ** START EMPLOYEE LICENSES ** As of 05/31/2022 - 
+[35] ** START EMPLOYEE EDUCATION ** As of 05/31/2022 - 
 ========================================================================
-pg_dump --table=hr_employeelicenses --data-only --column-inserts bck_apr_2020 > hr_employeelicenses.sql  
+pg_dump --table=hr_employeducation --data-only --column-inserts bck_apr_2020 > hr_employeducation.sql  
 
-psql BAHIA < /odoo/mig/hr_employeelicenses.sql
-psql BAHIA2 < /odoo/mig/hr_employeelicenses.sql
+//not an option to ALTER TABLE hr_employeducation DROP CONSTRAINT hr_employeducation_employee_education_id_fkey; 
+DELETE FROM hr_employeducation;
+
+psql BAHIA < /odoo/mig/hr_employeducation.sql
+psql BAHIA2 < /odoo/mig/hr_employeducation.sql
+
+========================================================================
+** END EMPLOYEE EDUCATION **
+========================================================================
+
+========================================================================
+[36] ** START EMPLOYEE LICENSES ** As of 05/31/2022 - 
+========================================================================
+create table export_hr_employeelicenses as 
+select id, create_uid, licensetype, create_date, place_issue, license, country, date_issued, doc_number, date_expiry, employee_licenses_id, authority_issue, write_date, remarks, write_uid, filename
+from hr_employeelicenses;
+
+pg_dump --table=export_hr_employeelicenses --data-only --column-inserts bck_apr_2020 > export_hr_employeelicenses.sql  
+
+psql BAHIA < /odoo/mig/export_hr_employeelicenses.sql
+psql BAHIA2 < /odoo/mig/export_hr_employeelicenses.sql
 
 ========================================================================
 ** END EMPLOYEE LICENSES **
 ========================================================================
 
 ========================================================================
-[27] ** START EMPLOYEE DOCUMENTS ** As of 05/31/2022 - 
+[37] ** START EMPLOYEE DOCUMENTS ** As of 05/31/2022 - 
 ========================================================================
-pg_dump --table=hr_employee_documents --data-only --column-inserts bck_apr_2020 > hr_employee_documents.sql  
+create table export_hr_employee_documents as 
+select id, create_date, create_uid, date_expiry, date_issued, document, document_number, employee_doc_id, filename, issuing_authority, place_ofissue, write_date, write_uid
+from hr_employee_documents;
+
+pg_dump --table=export_hr_employee_documents --data-only --column-inserts bck_apr_2020 > export_hr_employee_documents.sql  
 
 
-psql BAHIA < /odoo/mig/hr_employee_documents.sql
-psql BAHIA2 < /odoo/mig/hr_employee_documents.sql
+psql BAHIA < /odoo/mig/export_hr_employee_documents.sql
+psql BAHIA2 < /odoo/mig/export_hr_employee_documents.sql
 
 ========================================================================
 ** END EMPLOYEE DOCUMENTS **
