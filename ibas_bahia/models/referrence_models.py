@@ -166,6 +166,9 @@ class HrEmployeeDocuments(models.Model):
 	place_ofissue = fields.Char('Place of Issue')
 	expired = fields.Char('Expired?',store = False,compute ='checkDocExpiration')
 
+	filename = fields.Char(string='file name')
+	file_upload = fields.Binary('Document File')
+
 	def checkDocExpiration(self):
 		for rec in self:
 			if not isinstance(rec.document, bool):
@@ -241,6 +244,9 @@ class HrEmployeeLicenses(models.Model):
 	place_issue = fields.Char('Place Issue', required=True)
 	authority_issue = fields.Char('Authority Issue')
 	remarks = fields.Text('Remarks')
+
+	filename = fields.Char(string='file name')
+	file_upload = fields.Binary('Document File')
 
 class HrEmployeeEmployment(models.Model):
 	YEAR = 365
