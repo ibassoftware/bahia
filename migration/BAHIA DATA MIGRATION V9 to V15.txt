@@ -23,8 +23,8 @@ CONFIGURATION:
 
 BAHIA DATA MIGRATION FINAL:
 BASE:
-	- Users
-	- Partners
+	- Users - DONE
+	- Partners - DONE
 
 CONFIGURATION:
 	- Address Type - DONE
@@ -59,11 +59,10 @@ EMPLOYEE/DATA MIGRATION:
 	- Employees - DONE
 	- Employment History - DONE
 	- Employee Address - DONE
-	
 	- Employee Education - DONE
 	- Employee Families - DONE
 	- Employee Licenses - DONE
-	- Employee Documents - IN PROGRESS
+	- Employee Documents - DONE
 
 
 CONTACTS:
