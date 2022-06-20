@@ -210,6 +210,8 @@ class HrEmployeeMedicalRecords(models.Model):
 	date_to = fields.Date('Date To') #,required = True
 	expired = fields.Char('Expired?',store = False,compute ='checkDocExpiration')
 
+	document_id = fields.Binary(string="Document File")
+
 	@api.constrains('date_from','date_to')
 	def checkConstrainDate(self):
 		for rec in self:
