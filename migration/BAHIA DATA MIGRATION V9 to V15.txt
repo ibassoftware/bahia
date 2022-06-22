@@ -56,6 +56,7 @@ EMPLOYEE/DATA MIGRATION:
 	- Mail Alias (Needed for job) - DONE
 	- Country - DONE
 	- Jobs - DONE
+	- Interview Furm (Survey) - IN PROGRESS
 	- Employees - DONE
 	- Employment History - DONE
 	- Employee Address - DONE
@@ -502,6 +503,18 @@ psql BAHIA2 < /odoo/mig/export_table_res_country.sql
 
 ========================================================================
 ** END COUNTRY **
+========================================================================
+
+========================================================================
+[29] ** START SURVEY ** As of 05/31/2022 - 
+========================================================================
+pg_dump --table=survey_survey --data-only --column-inserts bck_apr_2020 > survey_survey.sql
+
+psql BAHIA < /odoo/mig/survey_survey.sql
+psql BAHIA2 < /odoo/mig/survey_survey.sql
+
+========================================================================
+** END SURVEY **
 ========================================================================
 
 ========================================================================

@@ -8,7 +8,9 @@
             <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//header/button[@name='archive_applicant']" position="replace"/>
+                <xpath expr="//header/button[@name='archive_applicant']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//header/button[@name='toggle_active']" position="replace"/>
 
                 <xpath expr="//sheet" position="replace" >

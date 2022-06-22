@@ -5,7 +5,7 @@
     'summary': 'Jobs, Recruitment, Applications, Job Interviews, Surveys',
     'description': 'Personnel Management Information for Bahia',
     'author': 'IBAS',
-    'depends': ['hr','mail', 'resource', 'board', 'hr_recruitment'],
+    'depends': ['hr', 'mail', 'resource', 'board', 'hr_recruitment', 'survey'],
     'data': [
 	         #'views/hr_employee_checklist_documents.xml',
 	         #'views/hr_recruitment_view.xml',

@@ -285,7 +285,9 @@
                 </sheet>
 
 
-                <xpath expr="//page[@name='public']" position="replace"/>
+                <xpath expr="//page[@name='public']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//page[@name='personal_information']" position="replace"/>                
             </field>
         </record>     
