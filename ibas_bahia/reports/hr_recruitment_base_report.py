@@ -12,6 +12,7 @@ from odoo.exceptions import except_orm, Warning, RedirectWarning,ValidationError
 #FOR EXCEL FILE
 import xlwt
 from io import StringIO
+from io import BytesIO
 
 PASSPORT_CODE = 'P'
 SSRIB_CODE = 'S'
@@ -172,24 +173,22 @@ class hrPersonnelActiveOnBoardwithRemarksMenu(models.Model):
         return self.env['report'].get_action('bahia_personnel_management.report_personnel_active_on_board_w_remarks')
 
 
-    def GenerateReport(self, cr, uid, ids, context=None):
+    def GenerateReport(self):
         #raise Warning(context)
         context = {}
-        employee = self.pool.get("hr.personnel.withrmks.menu").browse(cr,uid,ids,context=None)  
+        employee = self.env["hr.personnel.withrmks.menu"].browse(self.id)  
         #sraise Warning(employee.vessel)   
-        partial_id = self.pool.get("hr.personnel.withrmks.main").create(
-            cr, uid,  {'attendance_detail_id': 1,
-                        'vessel': employee.vessel.id,
-                        'date_search' : employee.date_search,
-                        'employment_status' : employee.employment_status.id,
-                        'sort_by': employee.sort_by,
-                        'sorting_type': employee.sorting_type,
-                        'is_with_remarks': employee.is_with_remarks,
-                        }, context=context)
+        partial_id = self.env["hr.personnel.withrmks.main"].create({
+            # 'attendance_detail_id': 1,
+            'vessel': employee.vessel.id,
+            'date_search' : employee.date_search,
+            'employment_status' : employee.employment_status.id,
+            'sort_by': employee.sort_by,
+            'sorting_type': employee.sorting_type,
+            'is_with_remarks': employee.is_with_remarks,
+            })
 
-        x = self.pool.get("hr.personnel.withrmks.main").createReport(
-            cr, uid,  {'id_main': partial_id,
-                        }, context=context)
+        x = self.env["hr.personnel.withrmks.main"].createReport({'id_main': partial_id.id,})
 
         
 
@@ -199,7 +198,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenu(models.Model):
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hr.personnel.withrmks.main',
-            'res_id': partial_id,
+            'res_id': partial_id.id,
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'current',
@@ -226,31 +225,28 @@ class hrDisembarkationReportMenu(models.Model):
         model_person_tree.unlink()        
 
 
-    def GenerateReport(self, cr, uid, ids, context=None):
+    def GenerateReport(self):
         context = {}
-        employee = self.pool.get("hr.disembarkation.menu").browse(cr,uid,ids,context=None)  
+        employee = self.env["hr.disembarkation.menu"].browse(self.id)  
         #sraise Warning(employee.vessel)   
-        partial_id = self.pool.get("hr.disembarkation.main").create(
-            cr, uid,  {'attendance_detail_id': 1,
-                        'vessel': employee.vessel.id,
-                        'date_search' : employee.date_search,
-                        'sort_by': employee.sort_by,
-                        'sorting_type': employee.sorting_type,                        
-                        }, context=context)
+        partial_id = self.env["hr.disembarkation.main"].create({
+            # 'attendance_detail_id': 1,
+            'vessel': employee.vessel.id,
+            'date_search' : employee.date_search,
+            'sort_by': employee.sort_by,
+            'sorting_type': employee.sorting_type,                        
+        })
 
-        x = self.pool.get("hr.disembarkation.main").createReport(
-            cr, uid,  {'id_main': partial_id,
-                        }, context=context)
+        x = self.env["hr.disembarkation.main"].createReport({'id_main': partial_id.id,})
 
         
-
         return {
             'name': "Disembarkation Report",
             'view_mode': 'form',
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hr.disembarkation.main',
-            'res_id': partial_id,
+            'res_id': partial_id.id,
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'current', #current
@@ -276,21 +272,19 @@ class hrEmbarkationReportMenu(models.Model):
         model_person_tree.unlink()        
 
 
-    def GenerateReport(self, cr, uid, ids, context=None):
+    def GenerateReport(self):
         context = {}
-        employee = self.pool.get("hr.embarkation.menu").browse(cr,uid,ids,context=None)  
+        employee = self.env["hr.embarkation.menu"].browse(self.id)  
         #sraise Warning(employee.vessel)   
-        partial_id = self.pool.get("hr.embarkation.main").create(
-            cr, uid,  {'attendance_detail_id': 1,
-                        'vessel': employee.vessel.id,
-                        'date_search' : employee.date_search,
-                        'sort_by': employee.sort_by,
-                        'sorting_type': employee.sorting_type,                           
-                        }, context=context)
+        partial_id = self.env["hr.embarkation.main"].create({
+            # 'attendance_detail_id': 1,
+            'vessel': employee.vessel.id,
+            'date_search' : employee.date_search,
+            'sort_by': employee.sort_by,
+            'sorting_type': employee.sorting_type,                           
+        })
 
-        x = self.pool.get("hr.embarkation.main").createReport(
-            cr, uid,  {'id_main': partial_id,
-                        }, context=context)
+        x = self.env["hr.embarkation.main"].createReport({'id_main': partial_id.id,})
 
         
 
@@ -300,7 +294,7 @@ class hrEmbarkationReportMenu(models.Model):
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hr.embarkation.main',
-            'res_id': partial_id,
+            'res_id': partial_id.id,
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'current', #current
@@ -329,27 +323,25 @@ class hrsignonoffReportMenu(models.Model):
         model_person_tree.unlink()        
 
 
-    def GenerateReport(self, cr, uid, ids, context=None):
+    def GenerateReport(self):
 
         context = {}
-        employee = self.pool.get("hr.signonoff.report.menu").browse(cr,uid,ids,context=None)  
+        employee = self.env["hr.signonoff.report.menu"].browse(self.id)  
 
 
-        partial_id = self.pool.get("hr.signonoff.report.main").create(
-            cr, uid,  {'attendance_detail_id': 1,
-                        'vessel': employee.vessel.id,
-                        'date_from_search' : employee.date_from_search,
-                        'date_to_search' : employee.date_to_search,
-                        'signonoff_selection' : employee.signonoff_selection,
-                        'employment_status' : employee.employment_status.id,
-                        'sort_by': employee.sort_by,
-                        'sorting_type': employee.sorting_type,
+        partial_id = self.env["hr.signonoff.report.main"].create({
+            # 'attendance_detail_id': 1,
+            'vessel': employee.vessel.id,
+            'date_from_search' : employee.date_from_search,
+            'date_to_search' : employee.date_to_search,
+            'signonoff_selection' : employee.signonoff_selection,
+            'employment_status' : employee.employment_status.id,
+            'sort_by': employee.sort_by,
+            'sorting_type': employee.sorting_type,
 			'is_with_remarks': employee.is_with_remarks,
-                        }, context=context)
+        })
 
-        x = self.pool.get("hr.signonoff.report.main").createReport(
-            cr, uid,  {'id_main': partial_id,
-                        }, context=context)
+        x = self.env["hr.signonoff.report.main"].createReport({'id_main': partial_id.id,})
 
         str_view_name = 'Sign Off Report'
         if employee.signonoff_selection == "signon":
@@ -361,7 +353,7 @@ class hrsignonoffReportMenu(models.Model):
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hr.signonoff.report.main',
-            'res_id': partial_id,
+            'res_id': partial_id.id,
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'current', #current
@@ -393,23 +385,21 @@ class hrPersonnelActiveOnBoardwithRelativeMenu(models.Model):
         return self.env['report'].get_action('bahia_personnel_management.report_personnel_active_on_board_w_remarks')
 
 
-    def GenerateReport(self, cr, uid, ids, context=None):
+    def GenerateReport(self):
         #raise Warning(context)
         context = {}
-        employee = self.pool.get("hr.personnel.withrelative.menu").browse(cr,uid,ids,context=None)  
+        employee = self.env["hr.personnel.withrelative.menu"].browse(self.id)  
         #sraise Warning(employee.vessel)   
-        partial_id = self.pool.get("hr.personnel.withrelative.main").create(
-            cr, uid,  {'vessel': employee.vessel.id,
-                       'date_search' : employee.date_search,
-                       'employment_status' : employee.employment_status.id,
-                       'sort_by': employee.sort_by,
-                       'sorting_type': employee.sorting_type,       
-                       'is_with_remarks': employee.is_with_remarks,                    
-                        }, context=context)
+        partial_id = self.env["hr.personnel.withrelative.main"].create({
+            'vessel': employee.vessel.id,
+           'date_search' : employee.date_search,
+           'employment_status' : employee.employment_status.id,
+           'sort_by': employee.sort_by,
+           'sorting_type': employee.sorting_type,       
+           'is_with_remarks': employee.is_with_remarks,                    
+        })
 
-        x = self.pool.get("hr.personnel.withrelative.main").createReport(
-            cr, uid,  {'id_main': partial_id,
-                        }, context=context)
+        x = self.env["hr.personnel.withrelative.main"].createReport({'id_main': partial_id.id,})
 
         
         #new
@@ -419,7 +409,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenu(models.Model):
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hr.personnel.withrelative.main',
-            'res_id': partial_id,
+            'res_id': partial_id.id,
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'target': 'current',
@@ -506,8 +496,8 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
 
     ## @api.one
     #def genReport(self):
-    def genReport(self, cr, uid, ids, context=None):
-        return self.pool['report'].get_action(cr, uid, ids, 'bahia_personnel_management.report_personnel_active_on_board_w_remarks', context=context)
+    def genReport(self):
+        return self.pool['report'].get_action('bahia_personnel_management.report_personnel_active_on_board_w_remarks', context=context)
 
     @api.model
     def createReport(self, id_main  = 0):
@@ -534,7 +524,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
             if not isinstance(main_model.vessel.id, bool) and len(str(main_model.vessel.id)) > 0:
                 QUERY += " where object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
 
-            if  not isinstance(main_model.date_search, bool) and len(main_model.date_search) > 0:
+            if  not isinstance(main_model.date_search, bool) and len(str(main_model.date_search)) > 0:
                 if QUERY.find('where') > 0:
                     QUERY += " and ('%(date)s'::DATE) BETWEEN date_servicefrom and COALESCE(date_serviceto,date_servicefrom)"
                 else:
@@ -690,7 +680,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
         sheet.write_merge(intRow+1,intRow+1, 10,11, "Total Record/s")    
         sheet.write(intRow+1, 12, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)            
 
-        fp = StringIO()
+        fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
         data_read = fp.read()
@@ -763,7 +753,7 @@ class hrDisembarkationMenuMainView(models.Model):
             if  isinstance(main_model.date_search, bool):
                 QUERY = "Select * from hr_disembarkation_report where" \
                         " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
-            elif len(main_model.date_search) > 0:
+            elif len(str(main_model.date_search)) > 0:
                 #QUERY = "Select * from hr_disembarkation_report where ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto" \
                 #        " and object_code = %(vessel)d" %{'date': main_model.date_search, 'vessel': main_model.vessel.id}
                 QUERY = "Select * from hr_disembarkation_report where ('%(date)s'::DATE) = date_serviceto" \
@@ -968,7 +958,7 @@ class hrDisembarkationMenuMainView(models.Model):
         sheet.write_merge(intRow+1,intRow+1, 16,17, "Total Record/s")    
         sheet.write(intRow+1, 18, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)     
                 
-        fp = StringIO()
+        fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
         data_read = fp.read()
@@ -1093,7 +1083,7 @@ class hrEmbarkationMenuMainView(models.Model):
             if  isinstance(main_model.date_search, bool):
                 QUERY = "Select * from hr_embarkation_report where" \
                         " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
-            elif len(main_model.date_search) > 0:
+            elif len(str(main_model.date_search)) > 0:
                 #QUERY = "Select * from hr_embarkation_report where ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto" \
                 #        " and object_code = %(vessel)d" %{'date': main_model.date_search, 'vessel': main_model.vessel.id}
                 QUERY = "Select * from hr_embarkation_report where ('%(date)s'::DATE) = date_servicefrom" \
@@ -1259,7 +1249,7 @@ class hrEmbarkationMenuMainView(models.Model):
             intRow +=1
         sheet.write_merge(intRow+1,intRow+1, 16,17, "Total Record/s")    
         sheet.write(intRow+1, 18, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)        
-        fp = StringIO()
+        fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
         data_read = fp.read()
@@ -1574,7 +1564,7 @@ class hrSignOnoffMenuMainView(models.Model):
 
         sheet.write_merge(intRow+1,intRow+1, 8,9, "Total Record/s")    
         sheet.write(intRow+1, 10, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)    
-        fp = StringIO()
+        fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
         data_read = fp.read()
@@ -1644,6 +1634,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
     employment_status = fields.Many2one('hr.employment.status', 'Employment Status')
     sort_by = fields.Selection(WITH_REMARKS_COLUMNS, 'Sorted by')
     sorting_type = fields.Selection(SORTING_TYPE, 'Sorted Type', default= SORTING_TYPE[0][0])  
+    is_with_remarks = fields.Boolean('With Remarks', default = False) 
 
     def genReport(self, cr, uid, ids, context=None):
         return self.pool['report'].get_action(cr, uid, ids, 'bahia_personnel_management.report_personnel_active_on_board_w_relative', context=context)
@@ -1662,7 +1653,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
             if not isinstance(main_model.vessel.id, bool) and len(str(main_model.vessel.id)) > 0:
                 QUERY += " where object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
 
-            if  not isinstance(main_model.date_search, bool) and len(main_model.date_search) > 0:
+            if  not isinstance(main_model.date_search, bool) and len(str(main_model.date_search)) > 0:
                 if QUERY.find('where') > 0:
                     QUERY += " and ('%(date)s'::DATE) BETWEEN date_servicefrom and COALESCE(date_serviceto,date_servicefrom)"
                 else:
@@ -1889,7 +1880,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
         sheet.write_merge(intRow+1,intRow+1, 20,21, "Total Service Length")    
         sheet.write(intRow+1, 22, self.getTotalYearsService(main_id,main_model),styleColumns)                
 
-        fp = StringIO()
+        fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
         data_read = fp.read()

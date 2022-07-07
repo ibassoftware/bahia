@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_active_personnel_with_remarks" model="ir.ui.view">
+            <field name="name">Crew List Active on Board</field>
+            <field name="model">hr.personnel.withrmks.menu</field>
+            <field name="arch" type="xml">
+                <form string="Crew List Active on Board" class="oe_form_configuration">
+                    <separator string="Crew List Active on Board"/>
+                    <group>
+                        <div>
+                            <div name="query1">
+                                <label for="vessel" string="Vessel"/>
+                                <field name="vessel"/>
+                                <label for="date_search" string="Date"/>
+                                <field name="date_search"/>
+                                <label for="employment_status" string="Employment Status"/>
+                                <field name="employment_status"/>      
+                                <label for="sort_by" string="Sorted by"/>
+                                <div>
+                                    <div>
+                                        <field name="sort_by" class="oe_inline"/>      
+                                        <field name="sorting_type" class="oe_inline"/>                                        
+                                    </div>
+                                </div>
+                                <field name="is_with_remarks"/>  
+                            </div>
+                        </div>
+                      
+                    </group>
+                    <group>
+                        <div>
+                            <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
+                        </div>                          
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_active_personnel_with_remarks" model="ir.actions.act_window">
+            <field name="name">Crew List Active on Board</field>
+            <field name="res_model">hr.personnel.withrmks.menu</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem action="action_active_personnel_with_remarks" id="menu_action_active_personnel_with_remarks" parent="hr.hr_menu_hr_reports" sequence="8"/> 
+
+
+        <record id="view_hr_personnel_withrmks_main_form" model="ir.ui.view">
+            <field name="name">hr.personnel.withrmks.main_form</field> 
+            <field name="model">hr.personnel.withrmks.main</field>
+            <field name="arch" type="xml">  
+
+                <form string="Crew List Active on Board" class="oe_form_configuration" create="false" edit="false" delete ="false">
+                    <sheet >
+                        <group>
+                            <field name="vessel"  readonly = "1"/>
+                            <field name="date_search"  readonly = "1"/>
+                            <field name="employment_status" readonly = "1"/>
+                            <field name="is_with_remarks"/>  
+                            <label for="sort_by" string="Sorted by"/>
+                            <div>
+                                <div>
+                                    <field name="sort_by" class="oe_inline"/>      
+                                    <field name="sorting_type" class="oe_inline"/>                                        
+                                </div>
+                            </div>                               
+
+                        </group>
+                        <group>                            
+                            <field name="excel_filename" invisible="1"/>
+                            <field name="excel_document"  filename="excel_filename" readonly = "1"/>                            
+                            <field name="pdf_filename" invisible="1"/>
+                            <field name="pdf_document"  filename="excel_filename" readonly = "1" invisible="1"/>                                  
+                        </group>
+                        <group>
+                            <button string="Create PDF" type="object" name="genReport" class="oe_highlight"/>                         
+                        </group>
+                        <notebook name = "nb_1">
+                            <page name = "pg_1">
+                                <field name="personnel_actived_on_board"> <!-- readonly = "1"-->
+                                    <tree string="" editable="top" create="false" edit="false" delete ="false" limit = "10">                                         
+                                         <field name="employee_contractNumber" />
+                                         <field name="ccl_number" />
+                                         <field name="employment_dept_code"/>
+                                         <field name="employment_rank" />                                        
+                                         <field name="last_name" />
+                                         <field name="first_name" />
+                                         <field name="birth_date" />
+                                         <field name="employment_status" />
+                                         <field name="date_servicefrom" />
+                                         <field name="date_serviceto" />
+                                         <field name="remarks"/>
+                                         <field name="object_code" invisible="1"/>
+                                    </tree>                                       
+                                </field>
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>     
+    </data>
+</openerp>

@@ -41,7 +41,16 @@
              'views/hr_checklist_templates.xml',
              'reports/application_form_report.xml',
              'reports/checklist_report.xml',
-             'reports/hr_applicant_evaluation.xml'
+             'reports/hr_applicant_evaluation.xml',
+             'reports/hr_disembarkation_report.xml',
+             'reports/hr_embarkation_report.xml',
+             'reports/hr_personnel_active_onboard_with_relative.xml',
+             'reports/hr_signonoff_report.xml',
+             'reports/personnel_active_on_board.xml',
+             'reports/hr_personnel_disembarkation_report_menu.xml',
+             'reports/hr_personnel_embarkation_report_menu.xml',
+             'reports/hr_personnel_report_menu.xml',
+             'reports/hr_personnel_signonoff_report_menu.xml',
              ],
     'application': True,
 }
