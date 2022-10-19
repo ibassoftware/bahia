@@ -30,5 +30,27 @@ class WebsitePopUpPrivacyPolicy(http.Controller):
         return request.render("ibas_bahia_website.page_policy_popup", {})
 
 
+class BahiasApplicationForm(http.Controller):
+
+    @http.route('/start-apply', type="http", auth="public", website=True)
+    def customer_registration(self, **kw):
+        job_rec = request.env['res.users'].sudo().search([])
+        nationality_rec = request.env['res.country'].sudo().search([])
+        return http.request.render('ibas_bahia_website.application_form_template', {
+            'job_rec': job_rec,
+            'nationality_rec': nationality_rec,
+        })
+
+    @http.route('/contactus-thank-you', type='http', auth='public', website=True)
+    def create_customer(self, **kw):
+        print("kw>", kw)
+        # if kw.get("customer_password") != kw.get("customer_confirm_password"):
+        #     return request.render('fpa_project.registration_error', {})
+        # else:
+        # request.env['res.partner'].sudo().create(kw)
+        request.env['hr.applicant'].sudo().create(kw)
+        return request.render('ibas_bahia_website.application_thanks', {})
+
+
 
 

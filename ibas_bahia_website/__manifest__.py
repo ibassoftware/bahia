@@ -10,6 +10,7 @@
              #'templates/template_init.xml',
              'templates/privacy_policy.xml',
              'templates/hr_recruitment.xml',
+             'templates/application_form_temp.xml',
              ],
     'assets': {
         'web.assets_frontend': [
