@@ -168,7 +168,7 @@
 
                                 <div class="form-group">
                                     <label for="civil_status" class="control-label"> Civil Status </label>
-                                    <select class="form-control" name="company_type">
+                                    <select class="form-control" name="civil_status">
                                         <option t-attf-value="single">Single</option>
                                         <option t-attf-value="married">Married</option>
                                         <option t-attf-value="widower">Widower</option>
