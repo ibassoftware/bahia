@@ -32,6 +32,24 @@
 <!--                                    </select>-->
 <!--                                </div>-->
 
+<!--                                <div class="form-group">-->
+<!--                                    <t t-if ="not applicant.image">-->
+<!--                                        <img id="applicant_img" src="/website_hr_recruitment_bahia/static/src/img/default_image.png" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>-->
+<!--                                    </t>-->
+
+<!--                                    <t t-if ="applicant.image">-->
+<!--                                        <img id="applicant_img" t-att-src="'data:image/png;base64,%s' % applicant.image" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>-->
+<!--                                    </t>-->
+
+<!--                                    <input type="file" name="image_applicant" style="margin-left:607px" id="image_applicant" onchange="readUrl(this);"/>-->
+<!--                                    <t t-if ="image_error==1">-->
+<!--                                        <div class="text-left" style=";margin-left:607px">-->
+<!--                                            <span style="color:red;"><b>**Please Add a Profile Image.</b></span>-->
+<!--                                        </div>-->
+<!--                                        <br/>-->
+<!--                                    </t>-->
+<!--                                </div>-->
+
                                 <div class="form-group">
                                     <label for="name" class="control-label">Name</label>
                                     <input type="text" name="name" t-att-value="name"
@@ -135,9 +153,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="philheath_no" class="control-label">Philhealth No.</label>
-                                    <input type="number" name="philheath_no" t-att-value="philheath_no"
-                                           id="philheath_no"
+                                    <label for="philhealth_no" class="control-label">Philhealth No.</label>
+                                    <input type="number" name="philhealth_no" t-att-value="philhealth_no"
+                                           id="philhealth_no"
                                            class="form-control"/>
                                 </div>
 

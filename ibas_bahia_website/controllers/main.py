@@ -34,11 +34,16 @@ class BahiasApplicationForm(http.Controller):
 
     @http.route('/start-apply', type="http", auth="public", website=True)
     def customer_registration(self, **kw):
+        # value = {}
+        # value['name'] = 'Applicant'
+        # # value['accept_privacy_policy'] = True
+        # applicant = request.env['hr.applicant'].sudo().create(value)
         job_rec = request.env['res.users'].sudo().search([])
         nationality_rec = request.env['res.country'].sudo().search([])
         return http.request.render('ibas_bahia_website.application_form_template', {
             'job_rec': job_rec,
             'nationality_rec': nationality_rec,
+            # 'applicant': applicant,
         })
 
     @http.route('/contactus-thank-you', type='http', auth='public', website=True)
