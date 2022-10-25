@@ -642,7 +642,6 @@ from hr_employee_documents;
 
 pg_dump --table=export_hr_employee_documents --data-only --column-inserts bck_apr_2020 > export_hr_employee_documents.sql  
 
-
 psql BAHIA < /odoo/mig/export_hr_employee_documents.sql
 psql BAHIA2 < /odoo/mig/export_hr_employee_documents.sql
 
