@@ -62,9 +62,9 @@ class SystemAuditLog(models.Model):
 
     @api.model
     def create_audit(self,model_name='' ,field_name='', old_value='', new_value='', id=0, record_name=''):        
-        model_sys_audit_config = self.env['sys.model.audit.config'].search([('model_fields.name','=', field_name),('model_id.model','=', model_name)])
-
         try:
+            model_sys_audit_config = self.env['sys.model.audit.config'].search([('model_fields.name','=', field_name),('model_id.model','=', model_name)])
+
             if model_sys_audit_config:
                 obj_get = self.env[model_name].search([('id','=', id)])
                 if model_sys_audit_config.model_fields.ttype != 'one2many':   
@@ -98,7 +98,9 @@ class SystemAuditLog(models.Model):
 
                     res = self.create(vals_create)
                     return res
-        return False
+            return False
+        except ValueError:
+            pass
 
 class SystemModelForAudit(models.Model):
     _name = 'sys.model.audit.config'
