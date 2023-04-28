@@ -64,39 +64,40 @@ class SystemAuditLog(models.Model):
     def create_audit(self,model_name='' ,field_name='', old_value='', new_value='', id=0, record_name=''):        
         model_sys_audit_config = self.env['sys.model.audit.config'].search([('model_fields.name','=', field_name),('model_id.model','=', model_name)])
 
-        if model_sys_audit_config:
-            obj_get = self.env[model_name].search([('id','=', id)])
-            if model_sys_audit_config.model_fields.ttype != 'one2many':   
-                vals_create = {
-                            'model_id' : model_sys_audit_config.model_id.id,
-                            'model_fields' : model_sys_audit_config.model_fields.id,
-                            'value_from': obj_get and obj_get[field_name] or False,
-                            'new_value': new_value,
-                            'record_name': record_name,    
-                            'record_id': id,
-                    }
+        try:
+            if model_sys_audit_config:
+                obj_get = self.env[model_name].search([('id','=', id)])
+                if model_sys_audit_config.model_fields.ttype != 'one2many':   
+                    vals_create = {
+                                'model_id' : model_sys_audit_config.model_id.id,
+                                'model_fields' : model_sys_audit_config.model_fields.id,
+                                'value_from': obj_get and obj_get[field_name] or False,
+                                'new_value': new_value,
+                                'record_name': record_name,    
+                                'record_id': id,
+                        }
 
-                if model_sys_audit_config.model_fields.ttype == 'many2one':
-                    #Old Value
-                    obj_get_relation = self.env[model_sys_audit_config.model_fields.relation].search([('id','=', obj_get and obj_get[field_name].id or False)])
-                    vals_create['value_from'] = obj_get_relation and obj_get_relation.name or False
+                    if model_sys_audit_config.model_fields.ttype == 'many2one':
+                        #Old Value
+                        obj_get_relation = self.env[model_sys_audit_config.model_fields.relation].search([('id','=', obj_get and obj_get[field_name].id or False)])
+                        vals_create['value_from'] = obj_get_relation and obj_get_relation.name or False
 
-                    #New Value
-                    obj_get_relation = self.env[model_sys_audit_config.model_fields.relation].search([('id','=', new_value)])
-                    vals_create['new_value'] = obj_get_relation and obj_get_relation.name or False
-                elif model_sys_audit_config.model_fields.ttype == 'binary' and (field_name in ['legacy_doc_1', 'legacy_doc_2', 'legacy_doc_3']):
-                    val_from = False
-                    val_new = False
-                    if obj_get and obj_get[field_name]:
-                        val_from = base64.b64decode(obj_get[field_name])
-                    if new_value:
-                        val_new = base64.b64decode(new_value)
+                        #New Value
+                        obj_get_relation = self.env[model_sys_audit_config.model_fields.relation].search([('id','=', new_value)])
+                        vals_create['new_value'] = obj_get_relation and obj_get_relation.name or False
+                    elif model_sys_audit_config.model_fields.ttype == 'binary' and (field_name in ['legacy_doc_1', 'legacy_doc_2', 'legacy_doc_3']):
+                        val_from = False
+                        val_new = False
+                        if obj_get and obj_get[field_name]:
+                            val_from = base64.b64decode(obj_get[field_name])
+                        if new_value:
+                            val_new = base64.b64decode(new_value)
 
-                    vals_create['value_from'] =   val_from
-                    vals_create['new_value'] = val_new
+                        vals_create['value_from'] =   val_from
+                        vals_create['new_value'] = val_new
 
-                res = self.create(vals_create)
-                return res
+                    res = self.create(vals_create)
+                    return res
         return False
 
 class SystemModelForAudit(models.Model):
