@@ -3,6 +3,9 @@ import importlib
 from openerp import models, fields,api
 from openerp.exceptions import except_orm, Warning, RedirectWarning,ValidationError
 
+import logging
+_logger = logging.getLogger(__name__)
+
 import datetime
 import os
 import sys
@@ -23,6 +26,15 @@ class HrEmployeeExtend(models.Model):
     _name = 'hr.employee'
     _inherit = ['hr.employee']
     _description = 'Extension of Employee Information in Recruitment Process'
+
+    @api.multi 
+    def get_file_personal_data(self):
+        _logger.info("TESST")
+        return {
+            'type' : 'ir.actions.act_url',
+            'url': '/web/binary/download_document?model=hr.employee&field=legacy_doc_2&id=%s&filename=filename2'%(self.id),
+            'target': 'self',
+        }
 
     #---------------- Functions/Methods
     def getCheckListId(self):
