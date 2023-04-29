@@ -19,6 +19,7 @@ class Binary(http.Controller):
         """
 
         _logger.info("HEYYY")
+        _logger.info(field)
         _logger.info(filename)
 
         Model = request.registry[model]
@@ -26,6 +27,7 @@ class Binary(http.Controller):
         fields = [field]
         res = Model.read(cr, uid, [int(id)], fields, context)[0]
         filecontent = base64.b64decode(res.get(field) or '')
+        _logger.info(filecontent)
         if not filecontent:
             return request.not_found()
         else:
