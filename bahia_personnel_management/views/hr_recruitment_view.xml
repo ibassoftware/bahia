@@ -106,6 +106,7 @@
 							<field name="filename3" readonly="1" invisible="1"/>
                             <field name="legacy_doc_1" filename="filename" groups="base.group_hr_manager, 	base.group_hr_user"/>
                             <field name="legacy_doc_2" filename="filename2"/>
+                            <button name="get_file_personal_data" string="" type="object" class="oe_stat_button oe_read_only" icon="fa-download"/>
                             <field name="legacy_doc_3" filename="filename3"/>
                         </group>
                     </page>
