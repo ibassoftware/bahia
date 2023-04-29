@@ -3,6 +3,9 @@ from openerp.http import request
 from openerp.addons.web.controllers.main import serialize_exception,content_disposition
 import base64
 
+import logging
+_logger = logging.getLogger(__name__)
+
 class Binary(http.Controller):
     @http.route('/web/binary/download_document', type='http', auth="public")
     @serialize_exception
@@ -14,6 +17,10 @@ class Binary(http.Controller):
             :param str filename: field holding the file's name, if any
             :returns: :class:`werkzeug.wrappers.Response`
         """
+
+        _logger.info("HEYYY")
+        _logger.info(filename)
+
         Model = request.registry[model]
         cr, uid, context = request.cr, request.uid, request.context
         fields = [field]
