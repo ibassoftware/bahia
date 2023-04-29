@@ -1,8 +1,6 @@
 from openerp import http
 from openerp.http import request
 from openerp.addons.web.controllers.main import serialize_exception,content_disposition
-# import openerp.tools as tools
-
 import base64
 import mimetypes
 
@@ -41,10 +39,7 @@ class Binary(http.Controller):
         else:
             if not filename:
                 filename = '%s_%s' % (model.replace('.', '_'), id)
-
-            FILENAME_DIR = "/opt/DataFiles/"
-            FILE = open(os.path.join(FILENAME_DIR, filecontent),'rb').read()
-            filecontentfile = base64.b64encode(FILE)
+            filecontentfile = base64.b64encode(open("/opt/DataFiles/"+filecontent, "rb").read())
             return request.make_response(filecontentfile,
-                [('Content-Type', 'application/octet-stream'),
+                [('Content-Type', content_type[0] or 'application/octet-stream'),
                 ('Content-Disposition', content_disposition(filename))])
