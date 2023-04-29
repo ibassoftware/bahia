@@ -47,7 +47,7 @@ class Binary(http.Controller):
             # FILE = tools.file_open(FILENAME_DIR+filecontent,'rb')
             # filecontentfile = base64.b64encode(FILE.read())
 
-            file = open(FILENAME_DIR+filecontent, 'rb').read()
+            file = base64.b64encode(open(FILENAME_DIR+filecontent, 'rb').read())
 
             return request.make_response(file,
                 [('Content-Type', content_type[0] or 'application/octet-stream'),
