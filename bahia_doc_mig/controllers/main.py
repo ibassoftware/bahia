@@ -42,12 +42,13 @@ class Binary(http.Controller):
             if not filename:
                 filename = '%s_%s' % (model.replace('.', '_'), id)
 
-            FILENAME_DIR = "/media/bahiaadmin/Bahia_External/DataFiles/"
-            # FILENAME_DIR = "/opt/DataFiles/"
+            # FILENAME_DIR = "/media/bahiaadmin/Bahia_External/DataFiles/"
+            FILENAME_DIR = "/opt/DataFiles/"
             # FILE = tools.file_open(FILENAME_DIR+filecontent,'rb')
             # filecontentfile = base64.b64encode(FILE.read())
-
-            file = base64.b64encode(open(FILENAME_DIR+filecontent,'rb').read())
+            file_path = FILENAME_DIR+filecontent
+            file = base64.b64encode(open(file_path,'rb').read())
+            _logger.info(file_path)
             _logger.info(file)
             # filecontentfile = base64.b64encode(FILE.read())
 
