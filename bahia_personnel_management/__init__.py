@@ -6,7 +6,7 @@ import openerp.http
 sys.modules['openerp.addons.web.http'] = openerp.http
 http = openerp.http
 
-# import controllers
+import controllers
 
 import hr_parameter_model
 import hr_recruitment_seabased
