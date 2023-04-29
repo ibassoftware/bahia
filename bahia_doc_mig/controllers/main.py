@@ -43,8 +43,8 @@ class Binary(http.Controller):
                 filename = '%s_%s' % (model.replace('.', '_'), id)
 
             FILENAME_DIR = "/opt/DataFiles/"
-            filecontentfile = base64.b64encode(os.path.join(FILENAME_DIR, filecontent))
-            FILE = open(filecontentfile,'rb').read()
-            return request.make_response(FILE,
-                [('Content-Type', content_type[0] or 'application/octet-stream'),
+            FILE = open(os.path.join(FILENAME_DIR, filecontent),'rb').read()
+            filecontentfile = base64.b64encode(FILE)
+            return request.make_response(filecontentfile,
+                [('Content-Type', 'application/octet-stream'),
                 ('Content-Disposition', content_disposition(filename))])
