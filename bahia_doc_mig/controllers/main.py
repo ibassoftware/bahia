@@ -35,6 +35,6 @@ class Binary(http.Controller):
         else:
             if not filename:
                 filename = '%s_%s' % (model.replace('.', '_'), id)
-            return request.make_response("/opt/DataFiles/" + filecontent,
+            return request.make_response("/DataFiles/" + filecontent,
                 [('Content-Type', 'application/octet-stream'),
                 ('Content-Disposition', content_disposition(filename))])
