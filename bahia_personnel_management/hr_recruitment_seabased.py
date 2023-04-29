@@ -30,11 +30,18 @@ class HrEmployeeExtend(models.Model):
     @api.multi 
     def get_file_personal_data(self):
         _logger.info("TESST")
+        path = os.path.dirname(os.path.realpath(__file__)) 
+        filecontent = base64.b64decode(self.legacy_doc_2 or '')
         return {
             'type' : 'ir.actions.act_url',
-            'url': '/web/binary/download_document?model=hr.employee&field=legacy_doc_2&id=%s&filename=%s' % (self.id, self.filename2),
+            'url': '/opt/DataFiles/%s' % (filecontent),
             'target': 'self',
         }
+        # return {
+        #     'type' : 'ir.actions.act_url',
+        #     'url': '/web/binary/download_document?model=hr.employee&field=legacy_doc_2&id=%s&filename=%s' % (self.id, self.filename2),
+        #     'target': 'self',
+        # }
 
     #---------------- Functions/Methods
     def getCheckListId(self):

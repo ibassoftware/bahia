@@ -3,6 +3,8 @@ from openerp.http import request
 from openerp.addons.web.controllers.main import serialize_exception,content_disposition
 import base64
 
+import os
+
 import logging
 _logger = logging.getLogger(__name__)
 
