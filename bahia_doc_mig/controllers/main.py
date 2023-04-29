@@ -7,13 +7,13 @@ class Binary(http.Controller):
     @http.route('/web/binary/download_document', type='http', auth="public")
     @serialize_exception
     def download_document(self,model,field,id,filename=None, **kw):
-    """ Download link for files stored as binary fields.
-        :param str model: name of the model to fetch the binary from
-        :param str field: binary field
-        :param str id: id of the record from which to fetch the binary
-        :param str filename: field holding the file's name, if any
-        :returns: :class:`werkzeug.wrappers.Response`
-    """
+        """ Download link for files stored as binary fields.
+            :param str model: name of the model to fetch the binary from
+            :param str field: binary field
+            :param str id: id of the record from which to fetch the binary
+            :param str filename: field holding the file's name, if any
+            :returns: :class:`werkzeug.wrappers.Response`
+        """
         Model = request.registry[model]
         cr, uid, context = request.cr, request.uid, request.context
         fields = [field]
