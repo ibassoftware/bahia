@@ -33,6 +33,8 @@ class Binary(http.Controller):
         content_type = mimetypes.guess_type(filename)
         _logger.info(filecontent)
         _logger.info(content_type)
+        path = os.path.join(config['data_dir'])
+        _logger.info(path)
         if not filecontent:
             return request.not_found()
         else:
