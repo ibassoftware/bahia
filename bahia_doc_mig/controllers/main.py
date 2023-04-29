@@ -39,8 +39,8 @@ class Binary(http.Controller):
         else:
             if not filename:
                 filename = '%s_%s' % (model.replace('.', '_'), id)
-                
+
             filecontentfile = base64.b64encode(open("/opt/DataFiles/"+filecontent, "rb").read())
             return request.make_response(filecontentfile,
-                [('Content-Type', content_type[0] or 'application/octet-stream'),
+                [('Content-Type', 'application/octet-stream'),
                 ('Content-Disposition', content_disposition(filename))])
