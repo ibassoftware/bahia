@@ -1,7 +1,7 @@
 from openerp import http
 from openerp.http import request
 from openerp.addons.web.controllers.main import serialize_exception,content_disposition
-import openerp.tools as tools
+# import openerp.tools as tools
 
 import base64
 import mimetypes
@@ -44,7 +44,7 @@ class Binary(http.Controller):
 
             # FILENAME_DIR = "/media/bahiaadmin/Bahia_External/DataFiles/"
             FILENAME_DIR = "/opt/DataFiles/"
-            FILE = tools.file_open(FILENAME_DIR+filecontent,'rb')
+            FILE = open(FILENAME_DIR+filecontent,'rb')
             filecontentfile = base64.b64encode(FILE.read())
             return request.make_response(filecontentfile,
                 [('Content-Type', content_type[0] or 'application/octet-stream'),
