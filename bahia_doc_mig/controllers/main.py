@@ -45,7 +45,7 @@ class Binary(http.Controller):
             # FILENAME_DIR = "/media/bahiaadmin/Bahia_External/DataFiles/"
             FILENAME_DIR = "/opt/DataFiles/"
             FILE = tools.file_open(FILENAME_DIR+filecontent,'rb')
-            filecontentfile = base64.b64encode(FILE)
+            filecontentfile = base64.b64encode(FILE.read())
             return request.make_response(filecontentfile,
                 [('Content-Type', content_type[0] or 'application/octet-stream'),
                 ('Content-Disposition', content_disposition(filename))])
