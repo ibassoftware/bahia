@@ -10,6 +10,7 @@ import datetime
 import os
 import sys
 import base64
+from openerp.tools import config
 
 #FOR EXCEL FILE
 import xlwt
