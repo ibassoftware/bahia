@@ -45,7 +45,6 @@
 							<page string = "Documents">
 								<group>
 									<field name="legacy_doc_1"/> 
-									<button name="get_file_personal_data" string="" type="object" class="oe_stat_button oe_read_only" icon="fa-download"/>
 									<field name="legacy_doc_2"/>
 									<field name="legacy_doc_3"/>
 								</group>															
