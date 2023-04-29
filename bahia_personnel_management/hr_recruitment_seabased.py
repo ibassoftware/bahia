@@ -38,7 +38,7 @@ class HrEmployeeExtend(models.Model):
 
         return {
             'type' : 'ir.actions.act_url',
-            'url': '/DataFiles/%s' % (filecontent),
+            'url': '/web/DataFiles/%s' % (filecontent),
             'target': 'self',
         }
 
