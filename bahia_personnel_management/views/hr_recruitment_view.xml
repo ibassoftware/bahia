@@ -112,7 +112,7 @@
 								<field name="filename2" readonly="1" invisible="1"/>
 								<label for="legacy_doc_2"/>
 	                            <field name="legacy_doc_2" filename="filename2"/>
-	                            <button name="get_file_personal_data" string="" type="object" class="oe_stat_button oe_read_only" icon="fa-download"/>
+	                            <button name="get_file_personal_data" string="" type="object" icon="fa-download"/>
 							</div>
                         </group>
                         <group>
