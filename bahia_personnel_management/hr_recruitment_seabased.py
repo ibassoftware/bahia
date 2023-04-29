@@ -11,6 +11,7 @@ import os
 import sys
 import base64
 from openerp.tools import config
+import openerp.tools as tools
 
 #FOR EXCEL FILE
 import xlwt
