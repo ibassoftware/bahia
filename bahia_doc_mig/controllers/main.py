@@ -5,6 +5,7 @@ import base64
 import mimetypes
 
 import os
+from openerp.tools import config
 
 import logging
 _logger = logging.getLogger(__name__)
