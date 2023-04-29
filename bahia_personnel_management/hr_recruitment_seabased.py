@@ -36,17 +36,17 @@ class HrEmployeeExtend(models.Model):
         _logger.info("TESST")
         _logger.info(path)
 
-        return {
-            'type' : 'ir.actions.act_url',
-            'url': '/web/DataFiles/%s' % (filecontent),
-            'target': 'self',
-        }
-
         # return {
         #     'type' : 'ir.actions.act_url',
-        #     'url': '/web/binary/download_document?model=hr.employee&field=legacy_doc_2&id=%s&filename=%s' % (self.id, self.filename2),
+        #     'url': '/web/DataFiles/%s' % (filecontent),
         #     'target': 'self',
         # }
+
+        return {
+            'type' : 'ir.actions.act_url',
+            'url': '/web/binary/download_document?model=hr.employee&field=legacy_doc_2&id=%s&filename=%s' % (self.id, self.filename2),
+            'target': 'self',
+        }
 
     #---------------- Functions/Methods
     def getCheckListId(self):
