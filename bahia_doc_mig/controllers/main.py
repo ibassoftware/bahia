@@ -1,6 +1,8 @@
 from openerp import http
 from openerp.http import request
 from openerp.addons.web.controllers.main import serialize_exception,content_disposition
+import openerp.tools as tools
+
 import base64
 import mimetypes
 
