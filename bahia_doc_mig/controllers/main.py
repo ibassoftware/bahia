@@ -29,9 +29,10 @@ class Binary(http.Controller):
         cr, uid, context = request.cr, request.uid, request.context
         fields = [field]
         res = Model.read(cr, uid, [int(id)], fields, context)[0]
-        filecontent = base64.b64decode("/opt/DataFiles/" + res.get(field) or '')
+        filecontent = base64.b64decode(res.get(field) or '')
         content_type = mimetypes.guess_type(filename)
         _logger.info(filecontent)
+        _logger.info(content_type)
         if not filecontent:
             return request.not_found()
         else:
