@@ -23,7 +23,7 @@ class Binary(http.Controller):
             :returns: :class:`werkzeug.wrappers.Response`
         """
 
-        _logger.info("HEYYY")
+        _logger.info("HEYYY222")
         _logger.info(field)
         _logger.info(filename)
 
@@ -49,11 +49,12 @@ class Binary(http.Controller):
             file_path = FILENAME_DIR+filecontent
             
             # filecontentfile = base64.b64encode(FILE.read())
-            # file = base64.b64encode(open(file_path, "rb").read())
-            file = open(file_path, "rb").read()
+            file = base64.b64encode(open(file_path, "rb").read())
+            file2 = open(file_path, "rb").read()
 
             _logger.info(file_path)
             _logger.info(file)
+            _logger.info(file2)
 
             return request.make_response(file,
                 [('Content-Type', content_type[0] or 'application/octet-stream'),
