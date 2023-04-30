@@ -100,7 +100,7 @@
                         </group>
                     </page>
                     <page string="Legacy Documents">
-                        <group>
+                        <group name="legacy_doc_1">
                         	<div class="o_row">
                         		<field name="filename" readonly="1" invisible="1"/>
                         		<label for="legacy_doc_1"/>
@@ -108,7 +108,7 @@
                         		<button name="download_file_conf_report" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico" attrs="{'invisible':[('legacy_doc_1', '=', False)]}"/>
                         	</div>
                         </group>
-                        <group>
+                        <group name="legacy_doc_2">
                         	<div class="o_row">
 								<field name="filename2" readonly="1" invisible="1"/>
 								<label for="legacy_doc_2"/>
@@ -116,7 +116,7 @@
 	                            <button name="download_file_personal_data" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico" attrs="{'invisible':[('legacy_doc_2', '=', False)]}"/>
 							</div>
                         </group>
-                        <group>
+                        <group name="legacy_doc_3">
                         	<div class="o_row">
 								<field name="filename3" readonly="1" invisible="1"/>
 								<label for="legacy_doc_3"/>

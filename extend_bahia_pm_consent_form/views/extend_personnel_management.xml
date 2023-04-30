@@ -38,13 +38,25 @@
                     </button>                                   
                 </xpath>
 
-                <field name="filename3"  position="after">
+                <!-- <field name="filename3"  position="after">
                 	<field name="filename4" readonly="1" invisible="1"/>
                 </field>
                 <field name="legacy_doc_3"  position="after">
                 	<field name="legacy_doc_4" filename="filename4"/>
                     <field name="has_consentform" invisible="1"/>
-                </field>
+                </field> -->
+
+                <xpath expr="//group[@name='legacy_doc_3']" position="after">
+                    <group name="legacy_doc_4">
+                        <div class="o_row">
+                            <field name="filename4" readonly="1" invisible="1"/>
+                            <field name="has_consentform" invisible="1"/>
+                            <label for="legacy_doc_4"/>
+                            <field name="legacy_doc_4" filename="filename4"/>
+                            <button name="download_file_consent_form" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico" attrs="{'invisible':[('legacy_doc_4', '=', False)]}"/>
+                        </div>
+                    </group>
+                </xpath>
             </field>
         </record>      	
     </data>
