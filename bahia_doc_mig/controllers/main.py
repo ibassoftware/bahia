@@ -12,9 +12,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class Binary(http.Controller):
-    @http.route('/web/binary/download_document', type='http', auth="public")
+    @http.route('/web/binary/download_doc_pdf', type='http', auth="public")
     @serialize_exception
-    def download_document(self,model,field,id,filename=None, **kw):
+    def download_doc_pdf(self,model,field,id,filename=None, **kw):
         """ Download link for files stored as binary fields.
             :param str model: name of the model to fetch the binary from
             :param str field: binary field
