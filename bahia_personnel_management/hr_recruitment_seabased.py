@@ -29,7 +29,7 @@ class HrEmployeeExtend(models.Model):
     _description = 'Extension of Employee Information in Recruitment Process'
 
     @api.multi 
-    def get_file_personal_data(self):
+    def download_file_personal_data(self):
         path = os.path.join(os.path.join(config['data_dir'], "filestore", self.env.cr.dbname))
         filecontent = base64.b64decode(self.legacy_doc_2 or '')
 
