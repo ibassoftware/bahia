@@ -49,7 +49,8 @@ class Binary(http.Controller):
             file_path = FILENAME_DIR+filecontent
             
             # filecontentfile = base64.b64encode(FILE.read())
-            file = base64.b64encode(open(file_path, "rb").read())
+            # file = base64.b64encode(open(file_path, "rb").read())
+            file = open(file_path, "rb").read()
 
             _logger.info(file_path)
             _logger.info(file)
