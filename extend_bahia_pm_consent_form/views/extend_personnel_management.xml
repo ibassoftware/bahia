@@ -53,7 +53,7 @@
                             <field name="has_consentform" invisible="1"/>
                             <label for="legacy_doc_4"/>
                             <field name="legacy_doc_4" filename="filename4"/>
-                            <button name="download_file_consent_form" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico" attrs="{'invisible':[('legacy_doc_4', '=', False)]}"/>
+                            <button name="download_file_consent_form" string="" type="object" class="oe_button" icon="/bahia_doc_mig/static/src/img/download.ico" attrs="{'invisible':[('legacy_doc_4', '=', False)]}"/>
                         </div>
                     </group>
                 </xpath>
