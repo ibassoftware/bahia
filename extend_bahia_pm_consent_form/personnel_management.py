@@ -23,12 +23,12 @@ class HrEmployeeExtend(models.Model):
 	_inherit = ['hr.employee']
 
 	@api.multi 
-    def download_file_consent_form(self):
-        return {
-            'type' : 'ir.actions.act_url',
-            'url': '/web/binary/download_doc_pdf?model=hr.employee&field=legacy_doc_4&id=%s&filename=%s' % (self.id, self.filename4),
-            'target': 'self',
-        }
+	def download_file_consent_form(self):
+		return {
+			'type' : 'ir.actions.act_url',
+			'url': '/web/binary/download_doc_pdf?model=hr.employee&field=legacy_doc_4&id=%s&filename=%s' % (self.id, self.filename4),
+			'target': 'self',
+		}
 
 	def generateFile(self,vals):
 		dt_tm_filename = DATE_NOW.strftime("%m%d%Y%H%M%S")
