@@ -105,6 +105,7 @@
                         		<field name="filename" readonly="1" invisible="1"/>
                         		<label for="legacy_doc_1"/>
                         		<field name="legacy_doc_1" filename="filename" groups="base.group_hr_manager, 	base.group_hr_user"/>
+                        		<button name="download_file_conf_report" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico"/>
                         	</div>
                         </group>
                         <group>
@@ -120,6 +121,7 @@
 								<field name="filename3" readonly="1" invisible="1"/>
 								<label for="legacy_doc_3"/>
 								<field name="legacy_doc_3" filename="filename3"/>
+								<button name="download_file_personal_summary" string="" type="object" class="oe_button oe_read_only" icon="/bahia_doc_mig/static/src/img/download.ico"/>
 							</div>
                         </group>
                     </page>
