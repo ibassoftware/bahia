@@ -30,12 +30,6 @@ class HrEmployeeExtend(models.Model):
 
     @api.multi 
     def download_file_conf_report(self):
-        path = os.path.join(os.path.join(config['data_dir'], "filestore", self.env.cr.dbname))
-        filecontent = base64.b64decode(self.legacy_doc_2 or '')
-
-        _logger.info("TESST123")
-        _logger.info(path)
-
         return {
             'type' : 'ir.actions.act_url',
             'url': '/web/binary/download_doc_pdf?model=hr.employee&field=legacy_doc_1&id=%s&filename=%s' % (self.id, self.filename),
@@ -44,12 +38,6 @@ class HrEmployeeExtend(models.Model):
 
     @api.multi 
     def download_file_personal_data(self):
-        path = os.path.join(os.path.join(config['data_dir'], "filestore", self.env.cr.dbname))
-        filecontent = base64.b64decode(self.legacy_doc_2 or '')
-
-        _logger.info("TESST123")
-        _logger.info(path)
-
         return {
             'type' : 'ir.actions.act_url',
             'url': '/web/binary/download_doc_pdf?model=hr.employee&field=legacy_doc_2&id=%s&filename=%s' % (self.id, self.filename2),
@@ -58,12 +46,6 @@ class HrEmployeeExtend(models.Model):
 
     @api.multi 
     def download_file_personal_summary(self):
-        path = os.path.join(os.path.join(config['data_dir'], "filestore", self.env.cr.dbname))
-        filecontent = base64.b64decode(self.legacy_doc_2 or '')
-
-        _logger.info("TESST123")
-        _logger.info(path)
-
         return {
             'type' : 'ir.actions.act_url',
             'url': '/web/binary/download_doc_pdf?model=hr.employee&field=legacy_doc_3&id=%s&filename=%s' % (self.id, self.filename3),
