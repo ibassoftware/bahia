@@ -1,6 +1,6 @@
 <odoo>
 	<data noupdate="0">
-		<template id="ibas_bahia_recruitment_index" name="Privacy Popup" inherit_id="website_hr_recruitment.index">
+		<!-- <template id="ibas_bahia_recruitment_index" name="Privacy Popup" inherit_id="website_hr_recruitment.index">
 			<xpath expr="//div[@id='wrap']/div[@class='oe_structure'][1]" position="replace">
 	            <div class="oe_structure">
 	                <section class="pt48 pb32 bg-200">
@@ -24,7 +24,7 @@
 	            </div>
 
 			</xpath>
-		</template>
+		</template> -->
 
 		<template id="default_website_description">
 		    <!-- Description text and ratings -->
