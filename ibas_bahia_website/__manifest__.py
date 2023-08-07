@@ -8,10 +8,11 @@
     'depends': ['ibas_bahia','website','website_hr_recruitment','website_partner'],
     'data': [
              #'templates/template_init.xml',
-             'templates/privacy_policy.xml',
-             'templates/hr_recruitment.xml',
-             'templates/application_form_temp.xml',
-             ],
+             'views/privacy_policy.xml',
+             'views/hr_recruitment.xml',
+             'views/application_form_temp.xml',
+             'views/menu_views.xml',
+    ],
     'assets': {
         'web.assets_frontend': [
             'ibas_bahia_website/static/src/js/BAHIA_MAIN.js',
