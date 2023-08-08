@@ -1,6 +1,6 @@
 <odoo>
 	<data noupdate="0">
-		<template id="ibas_bahia_recruitment_index" name="Privacy Popup" inherit_id="website_hr_recruitment.index">
+		<template id="ibas_bahia_recruitment_index" name="Jobs" inherit_id="website_hr_recruitment.index">
 			<xpath expr="//div[@id='wrap']/div[@class='oe_structure'][1]" position="replace">
 	            <div class="oe_structure">
 	                <section class="pt48 pb32 bg-200">
@@ -15,7 +15,102 @@
 						                and Office Personnel vacancies and for job opportunities not listed below, REGISTER your 
 						                CV prospectively by clicking “CV Registration” and fill out the online registration form.<br/><br/>
 	                                </p>
-	                                <h3 class="text-muted">For Careers and Job Opportunities –>. <a t-attf-href="/jobs/start_privacy_policy" class="orange_text">CV Registration</a></h3>
+	                                <h3 class="text-muted">For Careers and Job Opportunities –>. <a t-attf-href="/page/privacy_policy" class="orange_text">CV Registration</a></h3>
+
+	                                <div class="article_text" style="color: ##003366;">
+						                <br/>
+						                <p>
+						                    <strong>
+						                        <span style="color: #000080;">OFFICE PERSONNEL/S</span>
+						                    </strong>
+						                </p>
+						            </div>
+
+						            <div t-if="not jobs_bahia">
+						                <div class="text-center text-muted">
+						                    <h4 class="css_editable_display">No job offer found</h4>
+						                </div>
+						            </div>
+						            <ul class="media-list" t-if="jobs_bahia">
+						                <li t-foreach="jobs_bahia" t-as="job_bahia" class="media">
+						                    <span class="" t-field="job_bahia.name"/>
+						                                        (
+						                        
+						                    <span class="" t-field="job_bahia.no_of_recruitment"></span>)                            
+						                    
+						                    
+						                    <a class="pull-right orange_text_title_small_link" t-attf-href="/jobs/start_privacy_policy/#{ slug(job_bahia) }">Apply</a>
+						                </li>
+						            </ul>
+
+						            <div class="article_text" style="color: ##003366;">
+						                <br/>
+						                <p>
+						                    <strong>
+						                        <span style="color: #000080;">FOR SHIPBOARD EMPLOYMENT — QUALIFICATIONS:</span>
+						                    </strong>
+						                </p>
+						            </div>
+						            <div style="display: inline-block; text-align: left;">
+						            	<ul style="color: #555555;">
+							                <li>
+							                    <span style="color: #003366;">Must be able to confidently communicate in English</span>
+							                </li>
+							                <li>
+							                    <span style="color: #003366;">Has at least 12 months of recent employment gained from an international or local vessel or extensive land-based experience gained from a reputable establishment.</span>
+							                </li>
+							                <li>
+							                    <span style="color: #003366;">OTHER REQUIREMENTS:</span>
+							                </li>
+							                <li>
+							                    <span style="color: #003366;">Has valid Seaman’s Book</span>
+							                </li>
+							                <li>
+							                    <span style="color: #003366;">Has valid Passport</span>
+							                </li>
+							                <li>
+							                    <span style="color: #003366;">Has valid Basic Training Certificate</span>
+							                </li>
+							            </ul>
+						            </div>
+					            
+					            <br/>
+
+					            <div t-foreach="principals" t-as="principal" class="article_text" style="color: ##003366;">
+					                <t t-set= "loop" t-value="0" />
+					                <!-- Filter to not Loop the Office Personnel/s due the said partner was already in the above page -->
+					                <t t-if = "principal.name != 'OFFICE PERSONNEL/S'" >
+					                    <br/>
+					                    <p>
+					                        <strong>
+					                            <span t-field="principal.name" style="color: #000080;"/>
+					                        </strong>
+					                    </p>
+					                    
+					                    <ul class="media-list" t-if="jobs">
+					                        <t t-foreach="jobs"  t-as="job">
+					                            <t t-if = "job.address_id.id == principal.id">
+					                               <t t-set= "loop" t-value="1" > </t> 
+					                               <li  class="media"> 
+					                                    <span class="" t-field="job.name"/>
+					                                    (<span class="" t-field="job.no_of_recruitment"></span>)                                       
+					                                    <a  class="pull-right orange_text_title_small_link" t-attf-href="/jobs/start_privacy_policy/#{ slug(job) }">Apply</a> 
+					                                    <!--<a  t-field="job.name" class="pull-left blue_text_title_small_link" t-attf-href="/jobs/apply/#{ slug(job) }">Apply</a>  -->
+					                               </li>
+					                            </t>                      
+					                        </t>
+					                    </ul>   
+					                    <!--<a class="pull-right orange_text_title_small_link" t-attf-href="/jobs/apply_all">Apply</a> -->
+
+
+					                    <t t-if="loop == 0">
+					                        <b class="pull-left blue_text_title_small_link" >No Vacancy </b> 
+					                    </t>                    
+
+
+					                    <br/>
+					                </t>
+					            </div>
 
 	                            </div>
 	                        </div>
@@ -252,6 +347,50 @@
 		            </div>
 		        </div>
 		    </section>
+		</template>
+
+		<template id="detail" name='Job Detail'>
+		    <t t-call="website.layout">
+		    <t t-set="additional_title">Job Detail</t>
+		    <div id="wrap" class="js_hr_recruitment">
+		        <!-- Breadcrumb -->
+	            <section class="bg-200">
+	                <div class="container">
+	                    <nav aria-label="breadcrumb">
+	                        <ol class="breadcrumb pl-0">
+	                            <li class="breadcrumb-item"><a href="/jobs" class="text-secondary font-weight-bold">Jobs</a></li>
+	                            <li class="breadcrumb-item active" aria-current="page"><span t-field="job.name"/></li>
+	                        </ol>
+	                    </nav>
+	                </div>
+	            </section>
+
+		        <div class="oe_structure" style="clear:both;">
+		            <h1 class="text-center" t-field="job.name"/>
+		            <h5 class="text-center" t-field="job.address_id" t-field-options='{
+		                "widget": "contact",
+		                "fields": ["address"],
+		                "no_tag_br": true
+		                }'/>
+		           <h5 class="text-center text-muted">
+		                <i class="fa fa-clock-o"/> <span t-field="job.write_date"/>
+		            </h5>
+		        </div>
+		        <div t-field="job.website_description"/>
+
+		        <div class="oe_structure">
+		            <section data-snippet-id="cta" class="mt16 mb16">
+		                <div class="container">
+		                    <div class="row">
+		                        <div class="col-md-12 text-center mt16 mb16">
+		                            <a t-attf-href="/jobs/apply/#{ job.id }" class="btn btn-primary btn-lg">Apply</a>
+		                        </div>
+		                    </div>
+		                </div>
+		            </section>
+		        </div>
+		    </div>
+		    </t>
 		</template>
 
 
