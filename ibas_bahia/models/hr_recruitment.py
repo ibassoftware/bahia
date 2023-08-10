@@ -20,7 +20,7 @@ class HRRecruitmentDegree(models.Model):
 
 	@api.model
 	def create(self, vals):
-		if vals.has_key('name'):
+		if 'name' in vals:
 			vals['name'] =  "[" + vals['abbreviation'] + "]" + " " + vals['description']
 		else: 
 			vals.update({'name': "[" + vals['abbreviation'] + "]" + " " + vals['description']})                   

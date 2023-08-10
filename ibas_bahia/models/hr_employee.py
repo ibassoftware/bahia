@@ -91,7 +91,7 @@ class HrEmployeeExtend(models.Model):
 			if employee_model:
 				for employee in employee_model:
 					str_employee_with_contract_number += employee.name + '\n'
-				raise Warning("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
+				raise UserError("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
 
 		new_id = super(HrEmployeeExtend, self).create(vals)
 		#After Creation of Personnel create a User
@@ -124,7 +124,7 @@ class HrEmployeeExtend(models.Model):
 			if employee_model:
 				for employee in employee_model:
 					str_employee_with_contract_number += employee.name + '\n'
-				raise Warning("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
+				raise UserError("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
 
 		self.generateFile(vals)
 		super(HrEmployeeExtend, self).write(vals)
@@ -233,8 +233,8 @@ class HrEmployeeExtend(models.Model):
 			for getEmployment in getEmployments:
 				if isinstance(getEmployment.id, models.NewId):
 					if getEmployment.date_servicefrom != False and getEmployment.date_serviceto != False:
-						date_from = datetime.datetime.strptime(getEmployment.date_servicefrom ,"%Y-%m-%d")
-						date_to = datetime.datetime.strptime(getEmployment.date_serviceto ,"%Y-%m-%d")
+						date_from = datetime.datetime.strptime(getEmployment.date_servicefrom.strftime("%Y-%m-%d"),"%Y-%m-%d")
+						date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
 						no_of_days =(((abs((date_to - date_from).days) * 24) * 60) * 60)
 						rec.service_length = rec.service_length + no_of_days
 
