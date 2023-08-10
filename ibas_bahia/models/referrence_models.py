@@ -91,14 +91,16 @@ class HrEmployeeEducation(models.Model):
 	@api.onchange('date_to')
 	def checkDate(self):
 		for rec in self:
-			if rec.date_to < rec.date_from:
-				raise ValidationError('Date to is less than the Date from.')
+			if rec.date_to and rec.date_from:
+				if rec.date_to < rec.date_from:
+					raise ValidationError('Date to is less than the Date from.')
 
 	@api.constrains('date_to','date_from')
 	def checkConstrainDate(self):
 		for rec in self:
-			if rec.date_to < rec.date_from:
-				raise ValidationError('Date to is less than the Date from.')
+			if rec.date_to and rec.date_from:
+				if rec.date_to < rec.date_from:
+					raise ValidationError('Date to is less than the Date from.')
 
 class HrEmployeeFamilies(models.Model):
 	_name = 'hr.employee_families'
@@ -177,7 +179,7 @@ class HrEmployeeDocuments(models.Model):
 					if (rec.date_expiry == False):
 						rec.expired = 'NOT'
 					else:
-						dt_date_expiry = datetime.datetime.strptime(rec.date_expiry ,"%Y-%m-%d")
+						dt_date_expiry = datetime.datetime.strptime(rec.date_expiry.strftime("%Y-%m-%d"),"%Y-%m-%d")
 						if dt_date_expiry < server_date:
 							rec.expired = 'EXP'
 						else:
@@ -190,14 +192,16 @@ class HrEmployeeDocuments(models.Model):
 	@api.onchange('date_expiry')
 	def checkDate(self):
 		for rec in self:
-			if rec.date_expiry < rec.date_issued:
-				raise ValidationError('Date expiry is less than the Date issued.')
+			if rec.date_expiry and rec.date_issued:
+				if rec.date_expiry < rec.date_issued:
+					raise ValidationError('Date expiry is less than the Date issued.')
 
 	@api.constrains('date_issued','date_expiry' )
 	def checkConstrainDate(self):
 		for rec in self:
-			if rec.date_expiry < rec.date_issued:
-				raise ValidationError('Date expiry is less than the Date issued.')
+			if rec.date_expiry and rec.date_issued:
+				if rec.date_expiry < rec.date_issued:
+					raise ValidationError('Date expiry is less than the Date issued.')
 
 class HrEmployeeMedicalRecords(models.Model):
 	_name = 'hr.employee_medical_records'
@@ -215,10 +219,9 @@ class HrEmployeeMedicalRecords(models.Model):
 	@api.constrains('date_from','date_to')
 	def checkConstrainDate(self):
 		for rec in self:
-			if not isinstance(rec.date_from,bool):
-				if len(rec.date_from) > 0:
-					if rec.date_to < rec.date_from:
-						pass
+			if rec.date_from and rec.date_to:
+				if rec.date_to < rec.date_from:
+					pass
 
 	def checkDocExpiration(self):
 		for rec in self:
@@ -227,10 +230,9 @@ class HrEmployeeMedicalRecords(models.Model):
 	@api.onchange('date_to')
 	def checkDate(self):
 		for rec in self:
-			if not isinstance(rec.date_from,bool):
-				if len(rec.date_from) > 0:
-					if rec.date_to < rec.date_from:
-						raise ValidationError('Date to is less than the Date from.')
+			if rec.date_from and rec.date_to:
+				if rec.date_to < rec.date_from:
+					raise ValidationError('Date to is less than the Date from.')
 
 class HrEmployeeLicenses(models.Model):
 	_name = 'hr.employeelicenses'
@@ -341,8 +343,9 @@ class EmployeeCheckList(models.Model):
 	@api.onchange('date_expiry')
 	def checkDate(self):
 		for rec in self:
-			if self.date_expiry < self.date_issued:
-				raise ValidationError('Date expiry is less than the Date issued.')
+			if self.date_expiry and self.date_issued: 
+				if self.date_expiry < self.date_issued:
+					raise ValidationError('Date expiry is less than the Date issued.')
 
 class EmployeeChecklist(models.Model):
 	_name = "hr.employee.checklist.documents"
@@ -887,7 +890,7 @@ class EmployeeChecklist(models.Model):
 	def write(self, vals):
 		server_date = DATE_NOW.strftime("%d/%m/%Y")
 		super(EmployeeChecklist, self).write(vals)
-		if vals.has_key('employee_checklists_documents_list'):
+		if 'employee_checklists_documents_list' in vals:
 			checklist_documents = vals['employee_checklists_documents_list']
 			for checklist_document in checklist_documents:
 				#To Check if Row is being Updated
@@ -1553,7 +1556,7 @@ class ShipDepartment(models.Model):
 	# Overrides
 	@api.model
 	def create(self, vals):
-		if vals.has_key('name'):
+		if 'name' in vals:
 			vals['name'] =  "[" + vals['ship_dept_code'] + "]" + " " + vals['department']
 		else: 
 			vals.update({'name': "[" + vals['ship_dept_code'] + "]" + " " + vals['department']})                   
@@ -1564,12 +1567,12 @@ class ShipDepartment(models.Model):
 	def write(self, vals):
 		for rec in self:
 			name_value = ''
-			if not vals.has_key('name'):
-				if vals.has_key('ship_dept_code'):
+			if 'name' not in vals:
+				if 'ship_dept_code' in vals:
 					name_value = "[" + vals['ship_dept_code']  + "]" + " "
 				else:
 					name_value = "[" + self.ship_dept_code  + "]" + " "
-				if vals.has_key('department'):
+				if 'department' in vals:
 					name_value += vals['department']
 				else:
 					name_value += self.department

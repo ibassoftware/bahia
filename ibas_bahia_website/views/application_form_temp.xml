@@ -8,15 +8,272 @@
         <!--            <field name="sequence">50</field>-->
         <!--        </record>-->
 
+        <template id="apply">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Apply Job</t>
+
+                <div id="wrap"  class="container">
+                    <h1 class="text-center mt-2">
+                        Job Application Form
+                    </h1>
+                    <h2 t-if="job" class="text-center text-muted">
+                        <span t-field="job.name"/>
+                    </h2>
+                    <span class="hidden" data-for="hr_recruitment_form" t-att-data-values="{'department_id': job and job.department_id.id or '', 'job_id': job and job.id or ''}" />
+                    <div id="jobs_section">
+                        <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                            <div class="container">
+                                <form id="hr_recruitment_form" action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
+                                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                                        <div class="form-group">
+                                            <label for="name" class="control-label">Name</label>
+                                            <input type="text" name="name" t-att-value="name"
+                                                   id="name"
+                                                   class="form-control" readonly="readonly"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="first_name" class="control-label">First Name</label>
+                                            <input type="text" name="first_name" t-att-value="first_name"
+                                                   id="first_name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="last_name" class="control-label">Last Name</label>
+                                            <input type="text" name="last_name" t-att-value="last_name"
+                                                   id="last_name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="middle_name" class="control-label">Middle Name</label>
+                                            <input type="text" name="middle_name" t-att-value="middle_name"
+                                                   id="middle_name"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nationality_id" class="control-label">Nationality</label>
+                                            <select class="form-control link-style" name="nationality_id">
+                                                <t t-foreach="nationality_rec" t-as="nationality">
+                                                    <option t-esc="nationality.name" t-att-value="nationality.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="date_of_birth" class="control-label">Date of birth</label>
+                                            <input id="date_of_birth" type="date" name="date_of_birth"
+                                                   class="form-control o_website_form_input o_website_form_date"
+                                                   required="required"
+                                            />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="placeof_birth" class="control-label">Place of Birth</label>
+                                            <input type="text" name="placeof_birth" t-att-value="placeof_birth"
+                                                   id="placeof_birth"
+                                                   class="form-control" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="height" class="control-label"> Height (cm.)</label>
+                                            <input type="number" name="height" t-att-value="height"
+                                                   id="height"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="weight" class="control-label">Weight (kg.)</label>
+                                            <input type="number" name="weight" t-att-value="weight"
+                                                   id="weight"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="preffered_nickname" class="control-label"> Preferred Nickname</label>
+                                            <input type="text" name="preffered_nickname" t-att-value="preffered_nickname"
+                                                   id="preffered_nickname"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="shoe_size" class="control-label">Shoe size</label>
+                                            <input type="number" name="shoe_size" t-att-value="shoe_size"
+                                                   id="shoe_size"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email_from" class="control-label"> Email Address</label>
+                                            <input type="text" name="email_from" t-att-value="email_from"
+                                                   id="email_from"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="partner_mobile" class="control-label"> Contact Number </label>
+                                            <input type="number" name="partner_mobile" t-att-value="partner_mobile"
+                                                   id="partner_mobile"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sss_no" class="control-label">SSS No.</label>
+                                            <input type="number" name="sss_no" t-att-value="sss_no"
+                                                   id="sss_no"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="philhealth_no" class="control-label">Philhealth No.</label>
+                                            <input type="number" name="philhealth_no" t-att-value="philhealth_no"
+                                                   id="philhealth_no"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pagibig_no" class="control-label"> PAGIBIG No. </label>
+                                            <input type="number" name="pagibig_no" t-att-value="pagibig_no"
+                                                   id="pagibig_no"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="civil_status" class="control-label"> Civil Status </label>
+                                            <select class="form-control" name="civil_status">
+                                                <option t-attf-value="single">Single</option>
+                                                <option t-attf-value="married">Married</option>
+                                                <option t-attf-value="widower">Widower</option>
+                                                <option t-attf-value="divorced">Divorced</option>
+                                                <option t-attf-value="seperated">Separated</option>
+                                                <option t-attf-value="live_in_partner">Live-in-partner</option>
+                                                <option t-attf-value="annuled">Annulled</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="gender" class="control-label">Gender</label>
+                                            <select class="form-control" name="gender">
+                                                <option t-attf-value="male">Male</option>
+                                                <option t-attf-value="female">Female</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5>Permanent Address</h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_adress" class="control-label">Address</label>
+                                            <input type="text" name="permanent_address_adress" t-att-value="permanent_address_adress"
+                                                   id="permanent_address_adress"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_city" class="control-label">City</label>
+                                            <input type="text" name="permanent_address_city" t-att-value="permanent_address_city"
+                                                   id="permanent_address_city"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_zipcode" class="control-label"> Zip Code </label>
+                                            <input type="text" name="permanent_address_zipcode" t-att-value="permanent_address_zipcode"
+                                                   id="permanent_address_zipcode"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_contact_no" class="control-label">Contact No</label>
+                                            <input type="text" name="permanent_address_contact_no" t-att-value="permanent_address_contact_no"
+                                                   id="permanent_address_contact_no"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Alternative Address </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_adress" class="control-label">Address</label>
+                                            <input type="text" name="alternative_address_adress" t-att-value="alternative_address_adress"
+                                                   id="alternative_address_adress"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_city" class="control-label">City</label>
+                                            <input type="text" name="alternative_address_city" t-att-value="alternative_address_city"
+                                                   id="alternative_address_city"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_zipcode" class="control-label"> Zip Code </label>
+                                            <input type="text" name="alternative_address_zipcode" t-att-value="alternative_address_zipcode"
+                                                   id="alternative_address_zipcode"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_contact_no" class="control-label">Contact No</label>
+                                            <input type="text" name="alternative_address_contact_no" t-att-value="alternative_address_contact_no"
+                                                   id="alternative_address_contact_no"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Family Details </h5>
+                                        </div>
+
+
+
+                                        <script>
+                                            function concatenate()
+                                            {
+                                            var last_name = document.getElementById("last_name").value;
+                                            var middle_name = document.getElementById("middle_name").value;
+                                            var first_name = document.getElementById("first_name").value;
+                                            var name = last_name + ", " + first_name + " " + middle_name;
+                                            document.getElementById("name").value = name;
+                                            }
+
+                                            document.getElementById("last_name").onchange = concatenate;
+                                            document.getElementById("middle_name").onchange = concatenate;
+                                            document.getElementById("first_name").onchange = concatenate;
+                                        </script>
+                                        <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                            <div style="width: 200px;" class="s_website_form_label"/>
+                                            <a href="#" role="button" class="btn btn-primary btn-lg s_website_form_send">Submit</a>
+                                            <span id="s_website_form_result"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="oe_structure mt-2"/>
+                </div>
+            </t>
+        </template>
+
         <template id="application_form_template" name="Customer Registration">
             <t t-call="website.layout">
                 <div id="wrap">
-                    <div class="oe_structure">
-                    </div>
-                    <div class="text-center">
-                        <h1>Application Form</h1>
-                        <h3>Personal Data</h3>
-                    </div>
+                    <h1 class="text-center mt-2">
+                         Application Form
+                    </h1>
+                    <h3 class="text-center text-muted">
+                        Personal Data
+                    </h3>
+                    <h2 t-if="job" class="text-center text-muted">
+                        <span t-field="job.name"/>
+                    </h2>
+                    <span class="hidden" data-for="hr_recruitment_form" t-att-data-values="{'department_id': job and job.department_id.id or '', 'job_id': job and job.id or ''}" />
                     <div class="container">
                         <!--                        <div class="col-xs-6 col-md-8 col-lg-8 text-center mt16">-->
                         <div class="col-sm-7">
