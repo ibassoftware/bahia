@@ -9,6 +9,7 @@
     'data': [
              #'templates/template_init.xml',
              'security/ir.model.access.csv',
+             # 'views/assets.xml',
              'views/privacy_policy.xml',
              'views/hr_recruitment.xml',
              'views/application_form_temp.xml',
