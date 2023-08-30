@@ -344,7 +344,7 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="data_family_line_ids">
+                                                            name="family_line_ids">
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_family button-color"
@@ -550,10 +550,112 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="data_line_ids">
+                                                            name="education_line_ids">
                                                     </textarea>
                                                     <button type="button"
-                                                            class="btn btn-info add_total_project button-color"
+                                                            class="btn btn-info add_education button-color"
+                                                            style="float: right; margin-right: -15px;">
+                                                        <i class="fa fa-plus"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Social Media </h5>
+                                            <p>Do you have a social media presence?</p> <br/>
+                                            <p>
+                                                Select from the list below each social media platform you have used within the last five years. 
+                                            </p>
+                                            <p>
+                                               Click <b>+Add Social Media Presense</b> button to list each one separately.
+                                            </p>
+
+                                            <p>                                    
+                                                <b>Note:</b> Failure to fill-out below information may result to denied visa application.
+                                            </p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='row ml-1'
+                                                style="width:99%;">
+                                                <div class="form-group col-12 show_total_project">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <table class="table table-bordered mt-3 applicant_social_media">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Platform/Provider *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Social Media Identifier *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td width="5%"></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <div class="collapse">
+                                                                <tbody>
+                                                                    <tr class="social_media_line">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="socialmedia_ids" id="socialmedia_ids">
+                                                                                <t t-foreach="social_media_rec" t-as="socialmedia">
+                                                                                    <option value="socialmedia.id"><t t-esc="socialmedia.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="name"
+                                                                                placeholder="Enter Personal Link"
+                                                                                id="name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr class="add_extra_social_media d-none">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="socialmedia_ids" id="socialmedia_ids">
+                                                                                <t t-foreach="social_media_rec" t-as="socialmedia">
+                                                                                    <option value="socialmedia.id"><t t-esc="socialmedia.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="name"
+                                                                                placeholder="Enter Personal Link"
+                                                                                id="name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </div>
+                                                        </table>
+                                                    </div>
+                                                    <textarea class="d-none"
+                                                            name="social_media_line_ids">
+                                                    </textarea>
+                                                    <button type="button"
+                                                            class="btn btn-info add_social_media button-color"
                                                             style="float: right; margin-right: -15px;">
                                                         <i class="fa fa-plus"/>
                                                     </button>

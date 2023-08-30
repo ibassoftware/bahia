@@ -45,11 +45,13 @@ class BahiasApplicationForm(http.Controller):
         nationality_rec = request.env['res.country'].sudo().search([])
         familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
         level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+        social_media_rec = request.env['hr.recruitment.socialmedia'].sudo().search([])
         return http.request.render('ibas_bahia_website.apply_template', {
             'job_rec': job_rec,
             'nationality_rec': nationality_rec,
             'familyrelation_rec': familyrelation_rec,
             'level_rec': level_rec,
+            'social_media_rec': social_media_rec,
         })
 
     @http.route('/job/apply/execute', type='http', auth='public', website=True)
