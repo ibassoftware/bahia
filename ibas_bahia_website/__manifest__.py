@@ -19,6 +19,7 @@
     'assets': {
         'web.assets_frontend': [
             'ibas_bahia_website/static/src/js/BAHIA_MAIN.js',
+            'ibas_bahia_website/static/src/js/bahia_application_form.js',
         ],
     },
     'license': 'LGPL-3',

@@ -43,17 +43,17 @@ class BahiasApplicationForm(http.Controller):
         # applicant = request.env['hr.applicant'].sudo().create(value)
         job_rec = request.env['res.users'].sudo().search([])
         nationality_rec = request.env['res.country'].sudo().search([])
+        familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
+        level_rec = request.env['hr.recruitment.degree'].sudo().search([])
         return http.request.render('ibas_bahia_website.apply_template', {
             'job_rec': job_rec,
             'nationality_rec': nationality_rec,
-            # 'applicant': applicant,
+            'familyrelation_rec': familyrelation_rec,
+            'level_rec': level_rec,
         })
 
     @http.route('/job/apply/execute', type='http', auth='public', website=True)
     def apply_execute(self, **kw):
-        _logger.info("WOOW")
-        
-
         Applicant = request.env['hr.applicant']
 
         image_applicant = kw.get('image_1920')
@@ -62,18 +62,15 @@ class BahiasApplicationForm(http.Controller):
 
         image_value = False
         if image_applicant:
-            _logger.info("image_applicant")
-            _logger.info(image_filename)
             image_value = base64.b64encode(image_data)
             kw['image_1920'] = image_value.decode('ascii')
 
-        # _logger.info(image_applicant)
-        # _logger.info(image_value)
-
-        _logger.info(kw)
-        
         request.env['hr.applicant'].sudo().create(kw)
         return request.render('ibas_bahia_website.application_thanks', {})
+
+    @http.route('/job/apply/add-family', type='http', auth='public', website=True)
+    def apply_add_family(self, **kw):
+        return
 
     @http.route('/contactus-thank-you', type='http', auth='public', website=True)
     def contactus_thank_you(self, **kw):

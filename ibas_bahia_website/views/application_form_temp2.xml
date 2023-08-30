@@ -1,0 +1,132 @@
+<template id="form_template" name="Form fill">
+        	<t t-call="website.layout">
+            	<div id="form_temp">
+                	<div id="wrap" class="oe_structure oe_empty">
+                    	<div class="container">
+                        	<form method="post" action="/create/web_form_record">
+                            	<div id="form_template">
+                                	<input type="hidden" name="csrf_token"
+                                       	t-att-value="request.csrf_token()"/>
+                                	<div class="form-group">
+                                    	<label class="control-label"
+                                           	for="name">Name
+                                    	</label>
+                                    	<input type="text" name="name"
+                                           	id="name"
+                                           	class="form-control"
+                                           	placeholder="Mitchel Admin"
+                                           	required="required"/>
+                                	</div>
+                                	<div class="form-group">
+                                    	<div class='row ml-1'
+                                         	style="width:99%;">
+                                        	<div class="form-group col-12 show_total_project">
+                                            	<div class="row s_col_no_resize s_col_no_bgcolor">
+                                                	<table class="table table-bordered mt-3 total_project_costs">
+                                                    	<thead>
+                                                        	<tr>
+                                                            	<td>
+                                                                	<strong>
+                                                                    	Code *
+                                                                	</strong>
+                                                            	</td>
+                                                            	<td>
+                                                                	<strong>Cost *
+                                                                	</strong>
+                                                            	</td>
+                                                            	<td width="5%"></td>
+                                                        	</tr>
+                                                    	</thead>
+                                                    	<div class="collapse">
+                                                        	<tbody>
+                                                            	<tr class="project_cost_line">
+                                                                	<td>
+                                                                    	<input required="True"
+                                                                           	type="text"
+                                                                           	class="form-control"
+                                                                           	name="expenditure"
+                                                                           	placeholder="Enter Code"
+                                                                           	id="expenditure"/>
+                                                                	</td>
+                                                                	<td>
+                                                                    	<div class="d-flex">
+                                                                        	<span class="mt-2"
+                                                                              	style="margin-right: 0.5rem !important;"
+                                                                              	t-esc="request.env.company.currency_id.symbol"/>
+
+                                                                        	<input required="True"
+                                                                               	placeholder="Enter Cost"
+                                                                               	type="number"
+                                                                               	class="form-control total_cost"
+                                                                               	name="total_cost"
+                                                                               	id="total_cost"/>
+                                                                    	</div>
+
+                                                                	</td>
+                                                                	<td>
+                                                                    	<button class="btn fa fa-trash-o remove_line"
+                                                                            	style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                            	name="delete"
+                                                                            	aria-label="Delete row 1"></button>
+                                                                	</td>
+                                                            	</tr>
+
+
+                                                            	<tr class="add_extra_project d-none">
+                                                                	<td>
+                                                                    	<input type="text"
+                                                                           	class="form-control"
+                                                                           	name="expenditure"
+                                                                           	placeholder="Enter Code"
+                                                                           	id="expenditure"/>
+                                                                	</td>
+                                                                	<td>
+                                                                    	<div class="d-flex">
+                                                                        	<span class="mt-2"
+                                                                              	style="margin-right: 0.5rem !important;"
+                                                                              	t-esc="request.env.company.currency_id.symbol"/>
+                                                                        	<input placeholder="Enter Cost"
+                                                                               	type="number"
+                                                                               	class="form-control total_cost"
+                                                                               	name="total_cost"
+                                                                               	id="total_cost"/>
+                                                                        	<!--                                                                	<span style="display: block;" class="mt-2">£</span>-->
+                                                                    	</div>
+
+
+                                                                	</td>
+                                                                	<td>
+                                                                    	<button class="btn fa fa-trash-o remove_line"
+                                                                            	style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                            	name="delete"
+                                                                            	aria-label="Delete row 1"></button>
+                                                                	</td>
+                                                            	</tr>
+                                                        	</tbody>
+                                                    	</div>
+                                                	</table>
+                                            	</div>
+                                            	<textarea class="d-none"
+                                                      	name="data_line_ids">
+                                            	</textarea>
+                                            	<button type="button"
+                                                    	class="btn btn-info add_total_project button-color"
+                                                    	style="float: right; margin-right: -15px;">
+                                                	<i class="fa fa-plus"/>
+                                            	</button>
+                                        	</div>
+                                    	</div>
+                                	</div>
+                                	<div class="clearfix oe_login_buttons">
+                                    	<button type="submit"
+                                            	class="custom_create btn btn-primary btn-block">
+                                        	Create
+                                    	</button>
+                                	</div>
+                            	</div>
+                        	</form>
+                    	</div>
+                	</div>
+            	</div>
+        	</t>
+    	</template>
