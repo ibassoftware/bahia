@@ -24,20 +24,20 @@
                         <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
                             <div class="container">
                                 <!-- <form role="form" action="/contactus-thank-you" method="POST"> -->
-                                <form id="hr_recruitment_form" action="/job/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
+                                <form id="hr_recruitment_form" action="/jobs/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
                                     <div id="application_form_template">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 
                                         <div class="form-group">
                                             <t t-if ="not image_1920">
-                                                <img id="applicant_img" src="/ibas_bahia_website/static/src/images/default_image.png" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
+                                                <img id="applicant_img" src="/ibas_bahia_website/static/src/images/default_image.png" alt="Applicant" width="200" height="200" style="margin-left:707px" /> <br/>
                                             </t>
 
                                             <t t-if ="image_1920">
-                                                <img id="image_1920" t-att-src="'data:image/png;base64,%s' % image_1920" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
+                                                <img id="applicant_img" t-att-src="'data:image/png;base64,%s' % image_1920" alt="Applicant" width="200" height="200" style="margin-left:707px" /> <br/>
                                             </t>
 
-                                            <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:607px" required="required"/>
+                                            <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:707px" required="required" onchange="readUrl(this);"/>
                                         </div>
 
                                         <div class="form-group">
@@ -243,42 +243,36 @@
                                                                 <tbody>
                                                                     <tr class="family_line">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="relationship" id="relationship">
+                                                                            <select class="form-control" id="relationship">
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation">
                                                                                     <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="full_name"
                                                                                 placeholder="Enter Name"
                                                                                 id="full_name"/>
                                                                         </td>
                                                                         <td>
-                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
+                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex">
                                                                                 <option value="male">Male</option>
                                                                                 <option value="female">Female</option>
                                                                             </select>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date of Birth"
+                                                                            <input placeholder="Enter Date of Birth"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_of_birth"
                                                                                     id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Place of Birth"
+                                                                            <input placeholder="Enter Place of Birth"
                                                                                     type="text"
                                                                                     class="form-control total_cost"
-                                                                                    name="placeof_birth"
                                                                                     id="family_placeof_birth"/>
 
                                                                         </td>
@@ -293,42 +287,36 @@
 
                                                                     <tr class="add_extra_family d-none">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="relationship" id="relationship">
+                                                                            <select class="form-control" id="relationship">
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation">
                                                                                     <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="full_name"
                                                                                 placeholder="Enter Name"
                                                                                 id="full_name"/>
                                                                         </td>
                                                                         <td>
-                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
+                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex">
                                                                                 <option value="male">Male</option>
                                                                                 <option value="female">Female</option>
                                                                             </select>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date of Birth"
+                                                                            <input placeholder="Enter Date of Birth"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_of_birth"
                                                                                     id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Place of Birth"
+                                                                            <input placeholder="Enter Place of Birth"
                                                                                     type="text"
                                                                                     class="form-control total_cost"
-                                                                                    name="placeof_birth"
                                                                                     id="placeof_birth"/>
 
                                                                         </td>
@@ -344,7 +332,7 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="family_line_ids">
+                                                            name="applicant_families">
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_family button-color"
@@ -429,52 +417,42 @@
                                                                 <tbody>
                                                                     <tr class="education_line">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="schooltype" id="schooltype">
+                                                                            <select class="form-control" id="schooltype">
                                                                                 <t t-foreach="level_rec" t-as="level">
                                                                                     <option value="level.id"><t t-esc="level.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="name_school"
                                                                                 placeholder="Enter School Name"
                                                                                 id="name_school"/>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="description"
                                                                                 placeholder="Enter Description"
                                                                                 id="description"/>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date From"
+                                                                            <input placeholder="Enter Date From"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_from"
                                                                                     id="date_from"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date To"
+                                                                            <input placeholder="Enter Date To"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_to"
                                                                                     id="date_to"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Place"
+                                                                            <input placeholder="Enter Place"
                                                                                     type="text"
                                                                                     class="form-control total_cost"
-                                                                                    name="school_address"
                                                                                     id="school_address"/>
 
                                                                         </td>
@@ -489,52 +467,42 @@
 
                                                                     <tr class="add_extra_education d-none">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="schooltype" id="schooltype">
+                                                                            <select class="form-control" id="schooltype">
                                                                                 <t t-foreach="level_rec" t-as="level">
                                                                                     <option value="level.id"><t t-esc="level.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="name_school"
                                                                                 placeholder="Enter School Name"
                                                                                 id="name_school"/>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="description"
                                                                                 placeholder="Enter Description"
                                                                                 id="description"/>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date From"
+                                                                            <input placeholder="Enter Date From"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_from"
                                                                                     id="date_from"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Date To"
+                                                                            <input placeholder="Enter Date To"
                                                                                     type="date"
                                                                                     class="form-control total_cost"
-                                                                                    name="date_to"
                                                                                     id="date_to"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                    placeholder="Enter Place"
+                                                                            <input placeholder="Enter Place"
                                                                                     type="text"
                                                                                     class="form-control total_cost"
-                                                                                    name="school_address"
                                                                                     id="school_address"/>
 
                                                                         </td>
@@ -550,7 +518,7 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="education_line_ids">
+                                                            name="applicant_education">
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_education button-color"
@@ -601,17 +569,15 @@
                                                                 <tbody>
                                                                     <tr class="social_media_line">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="socialmedia_ids" id="socialmedia_ids">
+                                                                            <select class="form-control" id="socialmedia_ids">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
                                                                                     <option value="socialmedia.id"><t t-esc="socialmedia.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="name"
                                                                                 placeholder="Enter Personal Link"
                                                                                 id="name"/>
                                                                         </td>
@@ -626,17 +592,15 @@
 
                                                                     <tr class="add_extra_social_media d-none">
                                                                         <td>
-                                                                            <select required="required" class="form-control" name="socialmedia_ids" id="socialmedia_ids">
+                                                                            <select class="form-control" id="socialmedia_ids">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
                                                                                     <option value="socialmedia.id"><t t-esc="socialmedia.name"/></option>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input required="required"
-                                                                                type="text"
+                                                                            <input type="text"
                                                                                 class="form-control"
-                                                                                name="name"
                                                                                 placeholder="Enter Personal Link"
                                                                                 id="name"/>
                                                                         </td>
@@ -652,7 +616,7 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="social_media_line_ids">
+                                                            name="applicant_socialmedia_ids">
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_social_media button-color"
@@ -691,7 +655,7 @@
                                         </script>
 
                                         <div class="clearfix oe_login_buttons">
-                                            <button type="submit" class="btn btn-info pull-left">Submit</button>
+                                            <button type="submit" class="btn btn-info pull-left custom_create">Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -714,7 +678,7 @@
                                     <div class="alert alert-success" role="status">
                                         Thank you for your Application!
                                     </div>
-                                    <a href="/job/apply" class="btn btn-info" role="button">Click to go
+                                    <a href="/jobs/apply" class="btn btn-info" role="button">Click to go
                                         back
                                     </a>
                                 </div>

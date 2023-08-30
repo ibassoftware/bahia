@@ -15,25 +15,69 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			'click .add_education': '_onClickAdd_education',
 			'click .add_social_media': '_onClickAdd_social_media',
 			'click .remove_family_line': '_onClickRemove_family_line',
-			//'click .custom_create': '_onClickSubmit',
+			'click .custom_create': '_onClickSubmit',
 		},
 
-		// _onClickSubmit: async function(ev){
-		// 	var self = this; 
-		// 	var cost_data = [];
-		// 	var rows = $('.total_project_costs > tbody > tr.project_cost_line');
-		// 	_.each(rows, function(row) {
-		// 		let expenditure = $(row).find('input[name="expenditure"]').val();
-		// 		let total_cost = $(row).find('input[name="total_cost"]').val();
-		// 		console.log(expenditure, total_cost)
-		// 		cost_data.push({
-		// 			'code': expenditure,
-		// 			'cost': total_cost,
-		// 		});
-		// 	});
-		// 	$('textarea[name="family_line_ids"]').val(JSON.stringify(cost_data));
+		_onClickSubmit: async function(ev){
+			var self = this; 
+			var family_data = [];
+			var education_data = [];
+			var social_media_data = [];
 
-		// },
+			// Family
+			var family_rows = $('.applicant_families > tbody > tr.family_line');
+			_.each(family_rows, function(row) {
+				let relationship = $(row).find('input[id="relationship"]').val();
+				let full_name = $(row).find('input[id="full_name"]').val();
+				let applicant_gender = $(row).find('input[id="applicant_gender"]').val();
+				let date_of_birth = $(row).find('input[id="date_of_birth"]').val();
+				let placeof_birth = $(row).find('input[id="family_placeof_birth"]').val();
+				console.log(relationship, full_name)
+				family_data.push({
+					'relationship': relationship,
+					'full_name': full_name,
+					'applicant_gender': applicant_gender,
+					'date_of_birth': date_of_birth,
+					'placeof_birth': placeof_birth
+				});
+			});
+			$('textarea[name="applicant_families"]').val(JSON.stringify(family_data));
+
+			// Education
+			var education_rows = $('.applicant_education > tbody > tr.education_line');
+			_.each(education_rows, function(row) {
+				let schooltype = $(row).find('input[id="schooltype"]').val();
+				let name_school = $(row).find('input[id="name_school"]').val();
+				let description = $(row).find('input[id="description"]').val();
+				let date_from = $(row).find('input[id="date_from"]').val();
+				let date_to = $(row).find('input[id="date_to"]').val();
+				let school_address = $(row).find('input[id="school_address"]').val();
+				console.log(schooltype, name_school)
+				education_data.push({
+					'schooltype': schooltype,
+					'name_school': name_school,
+					'description': description,
+					'date_from': date_from,
+					'date_to': date_to,
+					'school_address': school_address
+				});
+			});
+			$('textarea[name="applicant_education"]').val(JSON.stringify(education_data));
+
+			// Social Media
+			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
+			_.each(social_media_rows, function(row) {
+				let socialmedia_ids = $(row).find('input[id="socialmedia_ids"]').val();
+				let name = $(row).find('input[id="name"]').val();
+				console.log(socialmedia_ids, name)
+				social_media_data.push({
+					'socialmedia_ids': socialmedia_ids,
+					'name': name,
+				});
+			});
+			$('textarea[name="applicant_socialmedia_ids"]').val(JSON.stringify(social_media_data));
+
+		},
 
 		_onClickRemove_family_line: function(ev){
 			$(this).parent().parent().remove();

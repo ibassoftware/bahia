@@ -18,6 +18,7 @@ from collections import OrderedDict
 
 
 import pytz
+import json
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -35,7 +36,7 @@ class WebsitePopUpPrivacyPolicy(http.Controller):
 
 class BahiasApplicationForm(http.Controller):
 
-    @http.route('/job/apply', type="http", auth="public", website=True)
+    @http.route('/jobs/apply', type="http", auth="public", website=True)
     def start_apply(self, **kw):
         # value = {}
         # value['name'] = 'Applicant'
@@ -45,7 +46,7 @@ class BahiasApplicationForm(http.Controller):
         nationality_rec = request.env['res.country'].sudo().search([])
         familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
         level_rec = request.env['hr.recruitment.degree'].sudo().search([])
-        social_media_rec = request.env['hr.recruitment.socialmedia'].sudo().search([])
+        social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
         return http.request.render('ibas_bahia_website.apply_template', {
             'job_rec': job_rec,
             'nationality_rec': nationality_rec,
@@ -54,23 +55,38 @@ class BahiasApplicationForm(http.Controller):
             'social_media_rec': social_media_rec,
         })
 
-    @http.route('/job/apply/execute', type='http', auth='public', website=True)
+    @http.route('/jobs/apply/execute', type='http', auth='public', website=True)
     def apply_execute(self, **kw):
         Applicant = request.env['hr.applicant']
 
+        # Applicant Image
         image_applicant = kw.get('image_1920')
         image_filename = kw.get('image_1920').filename
         image_data = image_applicant.read()
-
         image_value = False
         if image_applicant:
             image_value = base64.b64encode(image_data)
             kw['image_1920'] = image_value.decode('ascii')
 
+        # Applicant Family
+        family_data = json.loads(kw['applicant_families'])
+        family_val = [(0, 0, family_line) for family_line in family_data]
+        kw['applicant_families'] = family_val
+
+        # Applicant Education
+        education_data = json.loads(kw['applicant_education'])
+        education_val = [(0, 0, education_line) for education_line in education_data]
+        kw['applicant_education'] = education_val
+
+        # Applicant Social Media
+        socialmedia_data = json.loads(kw['applicant_socialmedia_ids'])
+        socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
+        kw['applicant_socialmedia_ids'] = socialmedia_val
+
         request.env['hr.applicant'].sudo().create(kw)
         return request.render('ibas_bahia_website.application_thanks', {})
 
-    @http.route('/job/apply/add-family', type='http', auth='public', website=True)
+    @http.route('/jobs/apply/add-family', type='http', auth='public', website=True)
     def apply_add_family(self, **kw):
         return
 
