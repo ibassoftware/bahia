@@ -25,572 +25,573 @@
                             <div class="container">
                                 <!-- <form role="form" action="/contactus-thank-you" method="POST"> -->
                                 <form id="hr_recruitment_form" action="/job/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
-                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            
-                                    <div class="form-group">
-                                        <!-- <t t-if ="not applicant.image">
-                                            <img id="applicant_img" src="/website_hr_recruitment_bahia/static/src/img/default_image.png" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
-                                        </t> -->
-
-                                        <!-- <t t-if ="applicant.image">
-                                            <img id="applicant_img" t-att-src="'data:image/png;base64,%s' % applicant.image" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
-                                        </t> -->
-
-                                        <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:607px" required="required"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="name" class="control-label">Name</label>
-                                        <input type="text" name="name" t-att-value="name"
-                                               id="name"
-                                               class="form-control" readonly="readonly"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="first_name" class="control-label">First Name</label>
-                                        <input type="text" name="first_name" t-att-value="first_name"
-                                               id="first_name"
-                                               class="form-control" required="required"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="last_name" class="control-label">Last Name</label>
-                                        <input type="text" name="last_name" t-att-value="last_name"
-                                               id="last_name"
-                                               class="form-control" required="required"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="middle_name" class="control-label">Middle Name</label>
-                                        <input type="text" name="middle_name" t-att-value="middle_name"
-                                               id="middle_name"
-                                               class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="nationality_id" class="control-label">Nationality</label>
-                                        <select class="form-control link-style" name="nationality_id">
-                                            <t t-foreach="nationality_rec" t-as="nationality">
-                                                <option t-esc="nationality.name" t-att-value="nationality.id"/>
-                                            </t>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="date_of_birth" class="control-label">Date of birth</label>
-                                        <input id="date_of_birth" type="date" name="date_of_birth" class="form-control o_website_form_input o_website_form_date" required="required"
-                                        />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="placeof_birth" class="control-label">Place of Birth</label>
-                                        <input type="text" name="placeof_birth" t-att-value="placeof_birth" id="placeof_birth" class="form-control" required="required"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="height" class="control-label"> Height (cm.)</label>
-                                        <input type="number" name="height" t-att-value="height" id="height" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="weight" class="control-label">Weight (kg.)</label>
-                                        <input type="number" name="weight" t-att-value="weight" id="weight" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="preffered_nickname" class="control-label"> Preferred Nickname</label>
-                                        <input type="text" name="preffered_nickname" t-att-value="preffered_nickname" id="preffered_nickname" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="shoe_size" class="control-label">Shoe size</label>
-                                        <input type="number" name="shoe_size" t-att-value="shoe_size" id="shoe_size" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="email_from" class="control-label"> Email Address</label>
-                                        <input type="text" name="email_from" t-att-value="email_from" id="email_from" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="partner_mobile" class="control-label"> Contact Number </label>
-                                        <input type="number" name="partner_mobile" t-att-value="partner_mobile" id="partner_mobile" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="sss_no" class="control-label">SSS No.</label>
-                                        <input type="number" name="sss_no" t-att-value="sss_no" id="sss_no" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="philhealth_no" class="control-label">Philhealth No.</label>
-                                        <input type="number" name="philhealth_no" t-att-value="philhealth_no" id="philhealth_no" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="pagibig_no" class="control-label"> PAGIBIG No. </label>
-                                        <input type="number" name="pagibig_no" t-att-value="pagibig_no" id="pagibig_no" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="civil_status" class="control-label"> Civil Status </label>
-                                        <select class="form-control" name="civil_status">
-                                            <option t-attf-value="single">Single</option>
-                                            <option t-attf-value="married">Married</option>
-                                            <option t-attf-value="widower">Widower</option>
-                                            <option t-attf-value="divorced">Divorced</option>
-                                            <option t-attf-value="seperated">Separated</option>
-                                            <option t-attf-value="live_in_partner">Live-in-partner</option>
-                                            <option t-attf-value="annuled">Annulled</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="gender" class="control-label">Gender</label>
-                                        <select class="form-control" name="gender">
-                                            <option t-attf-value="male">Male</option>
-                                            <option t-attf-value="female">Female</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <h5>Permanent Address</h5>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="permanent_address_adress" class="control-label">Address</label>
-                                        <input type="text" name="permanent_address_adress" t-att-value="permanent_address_adress" id="permanent_address_adress" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="permanent_address_city" class="control-label">City</label>
-                                        <input type="text" name="permanent_address_city" t-att-value="permanent_address_city" id="permanent_address_city" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="permanent_address_zipcode" class="control-label"> Zip Code </label>
-                                        <input type="text" name="permanent_address_zipcode" t-att-value="permanent_address_zipcode" id="permanent_address_zipcode" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="permanent_address_contact_no" class="control-label">Contact No</label>
-                                        <input type="text" name="permanent_address_contact_no" t-att-value="permanent_address_contact_no" id="permanent_address_contact_no" class="form-control"/>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <h5> Alternative Address </h5>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="alternative_address_adress" class="control-label">Address</label>
-                                        <input type="text" name="alternative_address_adress" t-att-value="alternative_address_adress" id="alternative_address_adress" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="alternative_address_city" class="control-label">City</label>
-                                        <input type="text" name="alternative_address_city" t-att-value="alternative_address_city" id="alternative_address_city" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="alternative_address_zipcode" class="control-label"> Zip Code </label>
-                                        <input type="text" name="alternative_address_zipcode" t-att-value="alternative_address_zipcode" id="alternative_address_zipcode" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="alternative_address_contact_no" class="control-label">Contact No</label>
-                                        <input type="text" name="alternative_address_contact_no" t-att-value="alternative_address_contact_no" id="alternative_address_contact_no" class="form-control"/>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <h5> Family Details </h5>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class='row ml-1'
-                                            style="width:99%;">
-                                            <div class="form-group col-12 show_total_project">
-                                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                    <table class="table table-bordered mt-3 applicant_families">
-                                                        <thead>
-                                                            <tr>
-                                                                <td>
-                                                                    <strong>
-                                                                        Relationship *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>
-                                                                        Name *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Sex *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Date of Birth *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Place of Birth *
-                                                                    </strong>
-                                                                </td>
-                                                                <td width="5%"></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <div class="collapse">
-                                                            <tbody>
-                                                                <tr class="family_line">
-                                                                    <td>
-                                                                        <select required="required" class="form-control" name="relationship" id="relationship">
-                                                                            <t t-foreach="familyrelation_rec" t-as="familyrelation">
-                                                                                <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
-                                                                            </t>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="full_name"
-                                                                            placeholder="Enter Name"
-                                                                            id="full_name"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="female">Female</option>
-                                                                        </select>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date of Birth"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_of_birth"
-                                                                                id="date_of_birth"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Place of Birth"
-                                                                                type="text"
-                                                                                class="form-control total_cost"
-                                                                                name="placeof_birth"
-                                                                                id="family_placeof_birth"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                    </td>
-                                                                </tr>
-
-
-                                                                <tr class="add_extra_family d-none">
-                                                                    <td>
-                                                                        <select required="required" class="form-control" name="relationship" id="relationship">
-                                                                            <t t-foreach="familyrelation_rec" t-as="familyrelation">
-                                                                                <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
-                                                                            </t>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="full_name"
-                                                                            placeholder="Enter Name"
-                                                                            id="full_name"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
-                                                                            <option value="male">Male</option>
-                                                                            <option value="female">Female</option>
-                                                                        </select>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date of Birth"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_of_birth"
-                                                                                id="date_of_birth"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Place of Birth"
-                                                                                type="text"
-                                                                                class="form-control total_cost"
-                                                                                name="placeof_birth"
-                                                                                id="placeof_birth"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn fa fa-trash-o remove_family_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </div>
-                                                    </table>
-                                                </div>
-                                                <textarea class="d-none"
-                                                        name="data_family_line_ids">
-                                                </textarea>
-                                                <button type="button"
-                                                        class="btn btn-info add_family button-color"
-                                                        style="float: right; margin-right: -15px;">
-                                                    <i class="fa fa-plus"/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <h5>Person to Notify in case of Emergency</h5>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emergency_person_name" class="control-label">Name</label>
-                                        <input type="text" name="emergency_person_name" t-att-value="emergency_person_name" id="emergency_person_name" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emergency_relationship_1" class="control-label">Relationship</label>
-                                        <input type="text" name="emergency_relationship_1" t-att-value="emergency_relationship_1" id="emergency_relationship_1" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emergency_address" class="control-label">Address</label>
-                                        <input type="text" name="emergency_address" t-att-value="emergency_address" id="emergency_address" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emergency_zipcode" class="control-label">Zip Code</label>
-                                        <input type="text" name="emergency_zipcode" t-att-value="emergency_zipcode" id="emergency_zipcode" class="form-control"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="emergency_contactno" class="control-label">Contact No</label>
-                                        <input type="text" name="emergency_contactno" t-att-value="emergency_contactno" id="emergency_contactno" class="form-control"/>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <h5> Educational Background </h5>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class='row ml-1'
-                                            style="width:99%;">
-                                            <div class="form-group col-12 show_total_project">
-                                                <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                    <table class="table table-bordered mt-3 applicant_education">
-                                                        <thead>
-                                                            <tr>
-                                                                <td>
-                                                                    <strong>
-                                                                        Level *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>
-                                                                        School *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Highest Degree Earned *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Date From *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Date To *
-                                                                    </strong>
-                                                                </td>
-                                                                <td>
-                                                                    <strong>Place *
-                                                                    </strong>
-                                                                </td>
-                                                                <td width="5%"></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <div class="collapse">
-                                                            <tbody>
-                                                                <tr class="education_line">
-                                                                    <td>
-                                                                        <select required="required" class="form-control" name="schooltype" id="schooltype">
-                                                                            <t t-foreach="level_rec" t-as="level">
-                                                                                <option value="level.id"><t t-esc="level.name"/></option>
-                                                                            </t>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="name_school"
-                                                                            placeholder="Enter School Name"
-                                                                            id="name_school"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="description"
-                                                                            placeholder="Enter Description"
-                                                                            id="description"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date From"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_from"
-                                                                                id="date_from"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date To"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_to"
-                                                                                id="date_to"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Place"
-                                                                                type="text"
-                                                                                class="form-control total_cost"
-                                                                                name="school_address"
-                                                                                id="school_address"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                    </td>
-                                                                </tr>
-
-
-                                                                <tr class="add_extra_education d-none">
-                                                                    <td>
-                                                                        <select required="required" class="form-control" name="schooltype" id="schooltype">
-                                                                            <t t-foreach="level_rec" t-as="level">
-                                                                                <option value="level.id"><t t-esc="level.name"/></option>
-                                                                            </t>
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="name_school"
-                                                                            placeholder="Enter School Name"
-                                                                            id="name_school"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            name="description"
-                                                                            placeholder="Enter Description"
-                                                                            id="description"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date From"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_from"
-                                                                                id="date_from"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Date To"
-                                                                                type="date"
-                                                                                class="form-control total_cost"
-                                                                                name="date_to"
-                                                                                id="date_to"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <input required="required"
-                                                                                placeholder="Enter Place"
-                                                                                type="text"
-                                                                                class="form-control total_cost"
-                                                                                name="school_address"
-                                                                                id="school_address"/>
-
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </div>
-                                                    </table>
-                                                </div>
-                                                <textarea class="d-none"
-                                                        name="data_line_ids">
-                                                </textarea>
-                                                <button type="button"
-                                                        class="btn btn-info add_total_project button-color"
-                                                        style="float: right; margin-right: -15px;">
-                                                    <i class="fa fa-plus"/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script>
-                                        function concatenate()
-                                        {
-                                            var last_name = document.getElementById("last_name").value;
-                                            var middle_name = document.getElementById("middle_name").value;
-                                            var first_name = document.getElementById("first_name").value;
-                                            var name = last_name + ", " + first_name + " " + middle_name;
-                                            document.getElementById("name").value = name;
-                                        }
-
-                                        document.getElementById("last_name").onchange = concatenate;
-                                        document.getElementById("middle_name").onchange = concatenate;
-                                        document.getElementById("first_name").onchange = concatenate;
-
-                                        function readUrl(input){
-                                            if (input.files &amp;&amp; input.files[0]){
-
-                                                var reader = new FileReader();
-
-                                                reader.onload = function(e){
-                                                    $('#applicant_img').attr('src', e.target.result);
-                                                };
-                                                reader.readAsDataURL(input.files[0]);
-                                            }
-                                        }
-                                    </script>
-
-                                    <div class="clearfix oe_login_buttons">
-                                        <button type="submit" class="btn btn-info pull-left">Submit</button>
-                                    </div>
+                                    <div id="application_form_template">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 
+                                        <div class="form-group">
+                                            <t t-if ="not image_1920">
+                                                <img id="applicant_img" src="/ibas_bahia_website/static/src/images/default_image.png" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
+                                            </t>
+
+                                            <t t-if ="image_1920">
+                                                <img id="image_1920" t-att-src="'data:image/png;base64,%s' % image_1920" alt="Applicant" width="200" height="200" style="margin-left:607px" /> <br/>
+                                            </t>
+
+                                            <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:607px" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="name" class="control-label">Name</label>
+                                            <input type="text" name="name" t-att-value="name"
+                                                   id="name"
+                                                   class="form-control" readonly="readonly"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="first_name" class="control-label">First Name</label>
+                                            <input type="text" name="first_name" t-att-value="first_name"
+                                                   id="first_name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="last_name" class="control-label">Last Name</label>
+                                            <input type="text" name="last_name" t-att-value="last_name"
+                                                   id="last_name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="middle_name" class="control-label">Middle Name</label>
+                                            <input type="text" name="middle_name" t-att-value="middle_name"
+                                                   id="middle_name"
+                                                   class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nationality_id" class="control-label">Nationality</label>
+                                            <select class="form-control link-style" name="nationality_id">
+                                                <t t-foreach="nationality_rec" t-as="nationality">
+                                                    <option t-esc="nationality.name" t-att-value="nationality.id"/>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="date_of_birth" class="control-label">Date of birth</label>
+                                            <input id="date_of_birth" type="date" name="date_of_birth" class="form-control o_website_form_input o_website_form_date" required="required"
+                                            />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="placeof_birth" class="control-label">Place of Birth</label>
+                                            <input type="text" name="placeof_birth" t-att-value="placeof_birth" id="placeof_birth" class="form-control" required="required"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="height" class="control-label"> Height (cm.)</label>
+                                            <input type="number" name="height" t-att-value="height" id="height" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="weight" class="control-label">Weight (kg.)</label>
+                                            <input type="number" name="weight" t-att-value="weight" id="weight" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="preffered_nickname" class="control-label"> Preferred Nickname</label>
+                                            <input type="text" name="preffered_nickname" t-att-value="preffered_nickname" id="preffered_nickname" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="shoe_size" class="control-label">Shoe size</label>
+                                            <input type="number" name="shoe_size" t-att-value="shoe_size" id="shoe_size" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email_from" class="control-label"> Email Address</label>
+                                            <input type="text" name="email_from" t-att-value="email_from" id="email_from" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="partner_mobile" class="control-label"> Contact Number </label>
+                                            <input type="number" name="partner_mobile" t-att-value="partner_mobile" id="partner_mobile" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sss_no" class="control-label">SSS No.</label>
+                                            <input type="number" name="sss_no" t-att-value="sss_no" id="sss_no" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="philhealth_no" class="control-label">Philhealth No.</label>
+                                            <input type="number" name="philhealth_no" t-att-value="philhealth_no" id="philhealth_no" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pagibig_no" class="control-label"> PAGIBIG No. </label>
+                                            <input type="number" name="pagibig_no" t-att-value="pagibig_no" id="pagibig_no" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="civil_status" class="control-label"> Civil Status </label>
+                                            <select class="form-control" name="civil_status">
+                                                <option t-attf-value="single">Single</option>
+                                                <option t-attf-value="married">Married</option>
+                                                <option t-attf-value="widower">Widower</option>
+                                                <option t-attf-value="divorced">Divorced</option>
+                                                <option t-attf-value="seperated">Separated</option>
+                                                <option t-attf-value="live_in_partner">Live-in-partner</option>
+                                                <option t-attf-value="annuled">Annulled</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="gender" class="control-label">Gender</label>
+                                            <select class="form-control" name="gender">
+                                                <option t-attf-value="male">Male</option>
+                                                <option t-attf-value="female">Female</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5>Permanent Address</h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_adress" class="control-label">Address</label>
+                                            <input type="text" name="permanent_address_adress" t-att-value="permanent_address_adress" id="permanent_address_adress" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_city" class="control-label">City</label>
+                                            <input type="text" name="permanent_address_city" t-att-value="permanent_address_city" id="permanent_address_city" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_zipcode" class="control-label"> Zip Code </label>
+                                            <input type="text" name="permanent_address_zipcode" t-att-value="permanent_address_zipcode" id="permanent_address_zipcode" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="permanent_address_contact_no" class="control-label">Contact No</label>
+                                            <input type="text" name="permanent_address_contact_no" t-att-value="permanent_address_contact_no" id="permanent_address_contact_no" class="form-control"/>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Alternative Address </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_adress" class="control-label">Address</label>
+                                            <input type="text" name="alternative_address_adress" t-att-value="alternative_address_adress" id="alternative_address_adress" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_city" class="control-label">City</label>
+                                            <input type="text" name="alternative_address_city" t-att-value="alternative_address_city" id="alternative_address_city" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_zipcode" class="control-label"> Zip Code </label>
+                                            <input type="text" name="alternative_address_zipcode" t-att-value="alternative_address_zipcode" id="alternative_address_zipcode" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alternative_address_contact_no" class="control-label">Contact No</label>
+                                            <input type="text" name="alternative_address_contact_no" t-att-value="alternative_address_contact_no" id="alternative_address_contact_no" class="form-control"/>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Family Details </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='row ml-1'
+                                                style="width:99%;">
+                                                <div class="form-group col-12 show_total_project">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <table class="table table-bordered mt-3 applicant_families">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Relationship *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Name *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Sex *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Date of Birth *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Place of Birth *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td width="5%"></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <div class="collapse">
+                                                                <tbody>
+                                                                    <tr class="family_line">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="relationship" id="relationship">
+                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation">
+                                                                                    <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="full_name"
+                                                                                placeholder="Enter Name"
+                                                                                id="full_name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            </select>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date of Birth"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_of_birth"
+                                                                                    id="date_of_birth"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Place of Birth"
+                                                                                    type="text"
+                                                                                    class="form-control total_cost"
+                                                                                    name="placeof_birth"
+                                                                                    id="family_placeof_birth"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                    name="delete"
+                                                                                    aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr class="add_extra_family d-none">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="relationship" id="relationship">
+                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation">
+                                                                                    <option value="familyrelation.id"><t t-esc="familyrelation.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="full_name"
+                                                                                placeholder="Enter Name"
+                                                                                id="full_name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select id="applicant_gender" class="form-control" placeholder="Select Sex" required="required">
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            </select>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date of Birth"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_of_birth"
+                                                                                    id="date_of_birth"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Place of Birth"
+                                                                                    type="text"
+                                                                                    class="form-control total_cost"
+                                                                                    name="placeof_birth"
+                                                                                    id="placeof_birth"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_family_line"
+                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                    name="delete"
+                                                                                    aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </div>
+                                                        </table>
+                                                    </div>
+                                                    <textarea class="d-none"
+                                                            name="data_family_line_ids">
+                                                    </textarea>
+                                                    <button type="button"
+                                                            class="btn btn-info add_family button-color"
+                                                            style="float: right; margin-right: -15px;">
+                                                        <i class="fa fa-plus"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5>Person to Notify in case of Emergency</h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="emergency_person_name" class="control-label">Name</label>
+                                            <input type="text" name="emergency_person_name" t-att-value="emergency_person_name" id="emergency_person_name" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="emergency_relationship_1" class="control-label">Relationship</label>
+                                            <input type="text" name="emergency_relationship_1" t-att-value="emergency_relationship_1" id="emergency_relationship_1" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="emergency_address" class="control-label">Address</label>
+                                            <input type="text" name="emergency_address" t-att-value="emergency_address" id="emergency_address" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="emergency_zipcode" class="control-label">Zip Code</label>
+                                            <input type="text" name="emergency_zipcode" t-att-value="emergency_zipcode" id="emergency_zipcode" class="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="emergency_contactno" class="control-label">Contact No</label>
+                                            <input type="text" name="emergency_contactno" t-att-value="emergency_contactno" id="emergency_contactno" class="form-control"/>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Educational Background </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='row ml-1'
+                                                style="width:99%;">
+                                                <div class="form-group col-12 show_total_project">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <table class="table table-bordered mt-3 applicant_education">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Level *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            School *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Highest Degree Earned *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Date From *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Date To *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Place *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td width="5%"></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <div class="collapse">
+                                                                <tbody>
+                                                                    <tr class="education_line">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="schooltype" id="schooltype">
+                                                                                <t t-foreach="level_rec" t-as="level">
+                                                                                    <option value="level.id"><t t-esc="level.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="name_school"
+                                                                                placeholder="Enter School Name"
+                                                                                id="name_school"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="description"
+                                                                                placeholder="Enter Description"
+                                                                                id="description"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date From"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_from"
+                                                                                    id="date_from"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date To"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_to"
+                                                                                    id="date_to"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Place"
+                                                                                    type="text"
+                                                                                    class="form-control total_cost"
+                                                                                    name="school_address"
+                                                                                    id="school_address"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                    name="delete"
+                                                                                    aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr class="add_extra_education d-none">
+                                                                        <td>
+                                                                            <select required="required" class="form-control" name="schooltype" id="schooltype">
+                                                                                <t t-foreach="level_rec" t-as="level">
+                                                                                    <option value="level.id"><t t-esc="level.name"/></option>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="name_school"
+                                                                                placeholder="Enter School Name"
+                                                                                id="name_school"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                name="description"
+                                                                                placeholder="Enter Description"
+                                                                                id="description"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date From"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_from"
+                                                                                    id="date_from"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Date To"
+                                                                                    type="date"
+                                                                                    class="form-control total_cost"
+                                                                                    name="date_to"
+                                                                                    id="date_to"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input required="required"
+                                                                                    placeholder="Enter Place"
+                                                                                    type="text"
+                                                                                    class="form-control total_cost"
+                                                                                    name="school_address"
+                                                                                    id="school_address"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                    name="delete"
+                                                                                    aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </div>
+                                                        </table>
+                                                    </div>
+                                                    <textarea class="d-none"
+                                                            name="data_line_ids">
+                                                    </textarea>
+                                                    <button type="button"
+                                                            class="btn btn-info add_total_project button-color"
+                                                            style="float: right; margin-right: -15px;">
+                                                        <i class="fa fa-plus"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <script>
+                                            function concatenate()
+                                            {
+                                                var last_name = document.getElementById("last_name").value;
+                                                var middle_name = document.getElementById("middle_name").value;
+                                                var first_name = document.getElementById("first_name").value;
+                                                var name = last_name + ", " + first_name + " " + middle_name;
+                                                document.getElementById("name").value = name;
+                                            }
+
+                                            document.getElementById("last_name").onchange = concatenate;
+                                            document.getElementById("middle_name").onchange = concatenate;
+                                            document.getElementById("first_name").onchange = concatenate;
+
+                                            function readUrl(input){
+                                                if (input.files &amp;&amp; input.files[0]){
+
+                                                    var reader = new FileReader();
+
+                                                    reader.onload = function(e){
+                                                        $('#applicant_img').attr('src', e.target.result);
+                                                    };
+                                                    reader.readAsDataURL(input.files[0]);
+                                                }
+                                            }
+                                        </script>
+
+                                        <div class="clearfix oe_login_buttons">
+                                            <button type="submit" class="btn btn-info pull-left">Submit</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </section>

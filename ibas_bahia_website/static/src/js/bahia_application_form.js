@@ -9,7 +9,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 	var _t = core._t;
 
 	publicWidget.registry.generic_form_data = publicWidget.Widget.extend({
-		selector: '#apply_template',
+		selector: '#application_form_template',
 		events: {
 		'click .add_family': '_onClickAdd_family',
 		'click .remove_family_line': '_onClickRemove_family_line',
