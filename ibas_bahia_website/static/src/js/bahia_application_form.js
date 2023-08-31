@@ -27,16 +27,16 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			// Family
 			var family_rows = $('.applicant_families > tbody > tr.family_line');
 			_.each(family_rows, function(row) {
-				let relationship = $(row).find('input[id="relationship"]').val();
+				let relationship = $(row).find('select[id="relationship"]').val();
 				let full_name = $(row).find('input[id="full_name"]').val();
-				let applicant_gender = $(row).find('input[id="applicant_gender"]').val();
+				let applicant_gender = $(row).find('select[id="applicant_gender"]').val();
 				let date_of_birth = $(row).find('input[id="date_of_birth"]').val();
 				let placeof_birth = $(row).find('input[id="family_placeof_birth"]').val();
 				console.log(relationship, full_name)
 				family_data.push({
 					'relationship': relationship,
 					'full_name': full_name,
-					'applicant_gender': applicant_gender,
+					'gender': applicant_gender,
 					'date_of_birth': date_of_birth,
 					'placeof_birth': placeof_birth
 				});
@@ -46,7 +46,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			// Education
 			var education_rows = $('.applicant_education > tbody > tr.education_line');
 			_.each(education_rows, function(row) {
-				let schooltype = $(row).find('input[id="schooltype"]').val();
+				let schooltype = $(row).find('select[id="schooltype"]').val();
 				let name_school = $(row).find('input[id="name_school"]').val();
 				let description = $(row).find('input[id="description"]').val();
 				let date_from = $(row).find('input[id="date_from"]').val();
@@ -67,7 +67,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
 			_.each(social_media_rows, function(row) {
-				let socialmedia_ids = $(row).find('input[id="socialmedia_ids"]').val();
+				let socialmedia_ids = $(row).find('select[id="socialmedia_ids"]').val();
 				let name = $(row).find('input[id="name"]').val();
 				console.log(socialmedia_ids, name)
 				social_media_data.push({
