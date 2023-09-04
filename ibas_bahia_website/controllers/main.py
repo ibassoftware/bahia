@@ -59,38 +59,51 @@ class BahiasApplicationForm(http.Controller):
 	def apply_execute(self, **kw):
 		Applicant = request.env['hr.applicant']
 
-		# Applicant Image
-		image_applicant = kw.get('image_1920')
-		image_filename = kw.get('image_1920').filename
-		image_data = image_applicant.read()
-		image_value = False
-		if image_applicant:
-			image_value = base64.b64encode(image_data)
-			kw['image_1920'] = image_value.decode('ascii')
+		# Validation: Check for Name, Birthdate and Email Address
+		applicant_name = kw.get('name')
+		applicant_date_of_birth = kw.get('date_of_birth')
+		applicant_email_from = kw.get('email_from')
 
-		# Applicant Family
-		applicant_families = kw.get('applicant_families')
-		if applicant_families:
-			family_data = json.loads(applicant_families)
-			family_val = [(0, 0, family_line) for family_line in family_data]
-			kw['applicant_families'] = family_val
+		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth)])
+		
+		if applicant_email_from:
+			duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
+		
+		if duplicate_applicant_id:
+			return request.render('ibas_bahia_website.application_duplicate', {})
+		else:
+			# Applicant Image
+			image_applicant = kw.get('image_1920')
+			image_filename = kw.get('image_1920').filename
+			image_data = image_applicant.read()
+			image_value = False
+			if image_applicant:
+				image_value = base64.b64encode(image_data)
+				kw['image_1920'] = image_value.decode('ascii')
 
-		# Applicant Education
-		applicant_education = kw.get('applicant_education')
-		if applicant_education:
-			education_data = json.loads(applicant_education)
-			education_val = [(0, 0, education_line) for education_line in education_data]
-			kw['applicant_education'] = education_val
+			# Applicant Family
+			applicant_families = kw.get('applicant_families')
+			if applicant_families:
+				family_data = json.loads(applicant_families)
+				family_val = [(0, 0, family_line) for family_line in family_data]
+				kw['applicant_families'] = family_val
 
-		# Applicant Social Media 
-		applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
-		if applicant_socialmedia_ids:
-			socialmedia_data = json.loads(kw['applicant_socialmedia_ids'])
-			socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
-			kw['applicant_socialmedia_ids'] = socialmedia_val
+			# Applicant Education
+			applicant_education = kw.get('applicant_education')
+			if applicant_education:
+				education_data = json.loads(applicant_education)
+				education_val = [(0, 0, education_line) for education_line in education_data]
+				kw['applicant_education'] = education_val
 
-		request.env['hr.applicant'].sudo().create(kw)
-		return request.render('ibas_bahia_website.application_thanks', {})
+			# Applicant Social Media 
+			applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
+			if applicant_socialmedia_ids:
+				socialmedia_data = json.loads(kw['applicant_socialmedia_ids'])
+				socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
+				kw['applicant_socialmedia_ids'] = socialmedia_val
+
+			request.env['hr.applicant'].sudo().create(kw)
+			return request.render('ibas_bahia_website.application_thanks', {})
 
 	@http.route('/jobs/apply/add-family', type='http', auth='public', website=True)
 	def apply_add_family(self, **kw):
