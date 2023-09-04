@@ -67,11 +67,11 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
 			_.each(social_media_rows, function(row) {
-				let socialmedia_ids = $(row).find('select[id="socialmedia_ids"]').val();
+				let socialmedia_id = $(row).find('select[id="socialmedia_id"]').val();
 				let name = $(row).find('input[id="name"]').val();
-				console.log(socialmedia_ids, name)
+				console.log(socialmedia_id, name)
 				social_media_data.push({
-					'socialmedia_ids': socialmedia_ids,
+					'socialmedia_id': socialmedia_id,
 					'name': name,
 				});
 			});

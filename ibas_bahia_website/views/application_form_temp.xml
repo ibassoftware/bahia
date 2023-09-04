@@ -23,7 +23,6 @@
                     <div id="jobs_section">
                         <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
                             <div class="container">
-                                <!-- <form role="form" action="/contactus-thank-you" method="POST"> -->
                                 <form id="hr_recruitment_form" action="/jobs/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
                                     <div id="application_form_template">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -215,26 +214,19 @@
                                                             <thead>
                                                                 <tr>
                                                                     <td>
-                                                                        <strong>
-                                                                            Relationship *
-                                                                        </strong>
+                                                                        <strong>Relationship *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>
-                                                                            Name *
-                                                                        </strong>
+                                                                        <strong>Name *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Sex *
-                                                                        </strong>
+                                                                        <strong>Sex *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Date of Birth *
-                                                                        </strong>
+                                                                        <strong>Date of Birth *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Place of Birth *
-                                                                        </strong>
+                                                                        <strong>Place of Birth *</strong>
                                                                     </td>
                                                                     <td width="5%"></td>
                                                                 </tr>
@@ -243,38 +235,27 @@
                                                                 <tbody>
                                                                     <tr class="family_line">
                                                                         <td>
-                                                                            <select class="form-control" id="relationship">
-                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation">
+                                                                            <select class="form-control" id="relationship"> 
+                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation"> 
                                                                                     <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Name"
-                                                                                id="full_name"/>
+                                                                            <input type="text" class="form-control" placeholder="Enter Name" id="full_name"/>
                                                                         </td>
                                                                         <td>
                                                                             <select id="applicant_gender" class="form-control" placeholder="Select Sex">
                                                                                 <option t-attf-value="male">Male</option>
                                                                                 <option t-attf-value="female">Female</option>
                                                                             </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date of Birth" type="date" class="form-control" id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Date of Birth"
-                                                                                    type="date"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_of_birth"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Place of Birth"
-                                                                                    type="text"
-                                                                                    class="form-control total_cost"
-                                                                                    id="family_placeof_birth"/>
-
+                                                                            <input placeholder="Enter Place of Birth" type="text" class="form-control" id="family_placeof_birth"/>
                                                                         </td>
                                                                         <td>
                                                                             <button class="btn fa fa-trash-o remove_line"
@@ -294,10 +275,7 @@
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Name"
-                                                                                id="full_name"/>
+                                                                            <input type="text" class="form-control" placeholder="Enter Name" id="full_name"/>
                                                                         </td>
                                                                         <td>
                                                                             <select id="applicant_gender" class="form-control" placeholder="Select Sex">
@@ -307,33 +285,26 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Date of Birth"
-                                                                                    type="date"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_of_birth"/>
+                                                                            <input placeholder="Enter Date of Birth" type="date" class="form-control" id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Place of Birth"
-                                                                                    type="text"
-                                                                                    class="form-control total_cost"
-                                                                                    id="placeof_birth"/>
-
+                                                                            <input placeholder="Enter Place of Birth" type="text" class="form-control total_cost" id="placeof_birth"/>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_family_line"
-                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                    name="delete"
-                                                                                    aria-label="Delete row 1"></button>
+                                                                            <button class="btn fa fa-trash-o remove_family_line" 
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;" 
+                                                                                name="delete" 
+                                                                                aria-label="Delete row 1"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </div>
                                                         </table>
                                                     </div>
-                                                    <textarea class="d-none"
-                                                            name="applicant_families">
-                                                    </textarea>
+
+                                                    <textarea class="d-none" name="applicant_families"></textarea>
+                                                    
                                                     <button type="button"
                                                             class="btn btn-info add_family button-color"
                                                             style="float: right; margin-right: -15px;">
@@ -569,7 +540,7 @@
                                                                 <tbody>
                                                                     <tr class="social_media_line">
                                                                         <td>
-                                                                            <select class="form-control" id="socialmedia_ids">
+                                                                            <select class="form-control" id="socialmedia_id">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
                                                                                     <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
                                                                                 </t>
@@ -592,7 +563,7 @@
 
                                                                     <tr class="add_extra_social_media d-none">
                                                                         <td>
-                                                                            <select class="form-control" id="socialmedia_ids">
+                                                                            <select class="form-control" id="socialmedia_id">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
                                                                                     <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
                                                                                 </t>
