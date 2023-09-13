@@ -36,13 +36,24 @@ class WebsitePopUpPrivacyPolicy(http.Controller):
 
 class BahiasApplicationForm(http.Controller):
 
-	@http.route('/jobs/apply', type="http", auth="public", website=True)
+	@http.route('/start-apply', type="http", auth="public", website=True)
 	def start_apply(self, **kw):
-		# value = {}
-		# value['name'] = 'Applicant'
-		# # value['accept_privacy_policy'] = True
-		# applicant = request.env['hr.applicant'].sudo().create(value)
-		job_rec = request.env['res.users'].sudo().search([])
+		job_rec = request.env['hr.job'].sudo().search([])
+		nationality_rec = request.env['res.country'].sudo().search([])
+		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
+		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+		social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
+		return http.request.render('ibas_bahia_website.apply_template', {
+			'job_rec': job_rec,
+			'nationality_rec': nationality_rec,
+			'familyrelation_rec': familyrelation_rec,
+			'level_rec': level_rec,
+			'social_media_rec': social_media_rec,
+		})
+
+	@http.route('/jobs/apply', type="http", auth="public", website=True)
+	def jobs_apply(self, **kw):
+		job_rec = request.env['hr.job'].sudo().search([])
 		nationality_rec = request.env['res.country'].sudo().search([])
 		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
 		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
@@ -102,6 +113,17 @@ class BahiasApplicationForm(http.Controller):
 				socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
 				kw['applicant_socialmedia_ids'] = socialmedia_val
 
+			# Job ID
+			job_id = kw.get('job_id')
+			_logger.info("HEYY")
+			_logger.info(job_id)
+			if job_id:
+				job_rec = request.env['hr.job'].sudo().search([('id','=',job_id)])
+				if job_rec:
+					_logger.info(job_rec)
+					kw['job_id'] = job_rec.id
+					kw['department_id'] = False
+
 			request.env['hr.applicant'].sudo().create(kw)
 			return request.render('ibas_bahia_website.application_thanks', {})
 
@@ -121,7 +143,12 @@ class BahiasApplicationForm(http.Controller):
 		default = {}
 		attachment = http.request.env['ir.attachment'].sudo().search([('name', '=', 'Application-Form-rev2.docx')])
 
-		model_jobs = http.request.env['hr.job'].sudo().search([])
+		model_jobs = request.env['hr.job'].sudo().search([])
+		job_rec = request.env['hr.job'].sudo().search([])
+		nationality_rec = request.env['res.country'].sudo().search([])
+		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
+		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+		social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
 
 		str_url =""
 
@@ -129,12 +156,17 @@ class BahiasApplicationForm(http.Controller):
 			error = request.session.pop('ibas_bahia_website_error')
 			default = request.session.pop('ibas_bahia_website_default')
 
-		return request.render("ibas_bahia_website.application_form_template", {
+		return request.render("ibas_bahia_website.apply_template", {
 			'job': job,
 			'error': error,
 			'default': default,
 			'jobs':model_jobs,
 			'url_link': str_url,
+			'job_rec': job_rec,
+			'nationality_rec': nationality_rec,
+			'familyrelation_rec': familyrelation_rec,
+			'level_rec': level_rec,
+			'social_media_rec': social_media_rec,
 		})
 
 

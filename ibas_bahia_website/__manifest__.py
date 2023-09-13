@@ -11,7 +11,6 @@
              'views/privacy_policy.xml',
              'views/hr_recruitment.xml',
              'views/application_form_temp.xml',
-             # 'views/templates.xml',
              'views/menu_views.xml',
     ],
     'assets': {
