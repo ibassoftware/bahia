@@ -6,9 +6,8 @@ from odoo.tools.translate import _
 from odoo import SUPERUSER_ID
 from odoo import tools
 from odoo.modules.module import get_module_resource
-#from odoo.osv import fields as osv_fields, osv as osv_osv
 
-from odoo.exceptions import except_orm, Warning, RedirectWarning,ValidationError
+from odoo.exceptions import UserError, ValidationError
 
 class hrApplicant(models.Model):
 	_name = "hr.applicant"

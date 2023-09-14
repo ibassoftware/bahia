@@ -90,7 +90,13 @@ class HrEmployeeExtend(models.Model):
 			employee_model = self.env['hr.employee'].search([('employee_contract_number', '=',vals['employee_contract_number'])])
 			if employee_model:
 				for employee in employee_model:
-					str_employee_with_contract_number += employee.name + '\n'
+					employee_name = ""
+					if employee.name:
+						employee_name = employee.name
+					else:
+						if employee.first_name or employee.last_name:
+							employee_name = employee.last_name or '' + ', ' + employee.first_name or '' + ' ' + employee.middle_name or ''
+					str_employee_with_contract_number += employee_name + '\n'
 				raise UserError("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
 
 		new_id = super(HrEmployeeExtend, self).create(vals)
@@ -123,7 +129,13 @@ class HrEmployeeExtend(models.Model):
 			employee_model = self.env['hr.employee'].search([('employee_contract_number', '=',vals['employee_contract_number'])])
 			if employee_model:
 				for employee in employee_model:
-					str_employee_with_contract_number += employee.name + '\n'
+					employee_name = ""
+					if employee.name:
+						employee_name = employee.name
+					else:
+						if employee.first_name or employee.last_name:
+							employee_name = employee.last_name or '' + ', ' + employee.first_name or '' + ' ' + employee.middle_name or ''
+					str_employee_with_contract_number += employee_name + '\n'
 				raise UserError("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
 
 		self.generateFile(vals)

@@ -115,12 +115,10 @@
 
                             </group>
                             <group>
-                                <group string ="">
-                                    <field name="philhealth_no"/>
-                                    <field name="tin_no"/>                                                                                                  
-                                    <field name="incentive_length"/>                                    
-                                    <field name="checklistID"/>
-                                </group>
+                                <field name="philhealth_no"/>
+                                <field name="tin_no"/>
+                                <field name="incentive_length"/>                                    
+                                <field name="checklistID"/>
                             </group>
                         </group>
                         <group string ="Bank Information">
