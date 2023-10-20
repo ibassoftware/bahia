@@ -13,6 +13,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 		events: {
 			'click .add_family': '_onClickAdd_family',
 			'click .add_education': '_onClickAdd_education',
+			'click .add_record_books': '_onClickAdd_record_books',
 			'click .add_social_media': '_onClickAdd_social_media',
 			'click .remove_family_line': '_onClickRemove_family_line',
 			'click .custom_create': '_onClickSubmit',
@@ -64,6 +65,27 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			});
 			$('textarea[name="applicant_education"]').val(JSON.stringify(education_data));
 
+			// Record Books
+			var record_books_rows = $('.applicant_record_books > tbody > tr.record_books_line');
+			_.each(record_books_rows, function(row) {
+				let document = $(row).find('select[id="document"]').val();
+				let document_number = $(row).find('input[id="document_number"]').val();
+				let date_issued = $(row).find('input[id="date_issued"]').val();
+				let date_expiry = $(row).find('input[id="date_expiry"]').val();
+				let issuing_authority = $(row).find('input[id="issuing_authority"]').val();
+				let place_ofissue = $(row).find('input[id="place_ofissue"]').val();
+				console.log(schooltype, name_school)
+				record_books_data.push({
+					'document': document,
+					'document_number': document_number,
+					'date_issued': date_issued,
+					'date_expiry': date_expiry,
+					'issuing_authority': issuing_authority,
+					'place_ofissue': place_ofissue
+				});
+			});
+			$('textarea[name="applicant_record_books"]').val(JSON.stringify(record_books_data));
+
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
 			_.each(social_media_rows, function(row) {
@@ -102,6 +124,18 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$new_row.removeClass('add_extra_education');
 			$new_row.addClass('education_line');
 			$new_row.insertBefore($('.add_extra_education'));
+			_.each($new_row.find('td'), function(val) {
+				$(val).find('input').attr('required', 'required');
+			});
+		},
+
+		_onClickAdd_record_books: function(ev){
+			console.log("add_record_books")
+			var $new_row = $('.add_extra_record_books').clone(true);
+			$new_row.removeClass('d-none');
+			$new_row.removeClass('add_extra_record_books');
+			$new_row.addClass('record_books_line');
+			$new_row.insertBefore($('.add_extra_record_books'));
 			_.each($new_row.find('td'), function(val) {
 				$(val).find('input').attr('required', 'required');
 			});

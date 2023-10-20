@@ -42,12 +42,14 @@ class BahiasApplicationForm(http.Controller):
 		nationality_rec = request.env['res.country'].sudo().search([])
 		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
 		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+		documenttype_rec = request.env['hr.documenttype'].sudo().search([])
 		social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
 		return http.request.render('ibas_bahia_website.apply_template', {
 			'job_rec': job_rec,
 			'nationality_rec': nationality_rec,
 			'familyrelation_rec': familyrelation_rec,
 			'level_rec': level_rec,
+			'documenttype_rec': documenttype_rec,
 			'social_media_rec': social_media_rec,
 		})
 
@@ -106,6 +108,13 @@ class BahiasApplicationForm(http.Controller):
 				education_val = [(0, 0, education_line) for education_line in education_data]
 				kw['applicant_education'] = education_val
 
+			# Applicant Record Books
+			applicant_record_books = kw.get('applicant_record_books')
+			if applicant_record_books:
+				record_books_data = json.loads(applicant_record_books)
+				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
+				kw['applicant_record_books'] = record_books_val
+
 			# Applicant Social Media 
 			applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
 			if applicant_socialmedia_ids:
@@ -148,6 +157,7 @@ class BahiasApplicationForm(http.Controller):
 		nationality_rec = request.env['res.country'].sudo().search([])
 		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
 		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+		documenttype_rec = request.env['hr.documenttype'].sudo().search([])
 		social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
 
 		str_url =""

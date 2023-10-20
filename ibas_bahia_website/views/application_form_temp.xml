@@ -515,6 +515,167 @@
                                         </div>
 
                                         <div class="text-center">
+                                            <h5> Record Books </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='row ml-1'
+                                                style="width:99%;">
+                                                <div class="form-group col-12 show_total_project">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <table class="table table-bordered mt-3 applicant_record_books">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Document Type *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Document No *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Date Issued *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Date Expiry *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Issuing Authority *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Place of Issue *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td width="5%"></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <div class="collapse">
+                                                                <tbody>
+                                                                    <tr class="record_books_line">
+                                                                        <td>
+                                                                            <select class="form-control" id="document">
+                                                                                <t t-foreach="documenttype_rec" t-as="documenttype">
+                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Document No."
+                                                                                id="document_number"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date Issued"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_issued"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date Expiry"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_expiry"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Issuing Authority"
+                                                                                id="issuing_authority"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Place of Issue"
+                                                                                type="text"
+                                                                                class="form-control total_cost"
+                                                                                id="place_ofissue"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr class="add_extra_record_books d-none">
+                                                                        <td>
+                                                                            <select class="form-control" id="document">
+                                                                                <t t-foreach="documenttype_rec" t-as="documenttype">
+                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
+                                                                                </t>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Document No."
+                                                                                id="document_number"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date Issued"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_issued"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date Expiry"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_expiry"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Issuing Authority"
+                                                                                id="issuing_authority"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Place of Issue"
+                                                                                type="text"
+                                                                                class="form-control total_cost"
+                                                                                id="place_ofissue"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </div>
+                                                        </table>
+                                                    </div>
+                                                    <textarea class="d-none"
+                                                            name="applicant_record_books">
+                                                    </textarea>
+                                                    <button type="button"
+                                                            class="btn btn-info add_record_books button-color"
+                                                            style="float: right; margin-right: -15px;">
+                                                        <i class="fa fa-plus"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
                                             <h5> Social Media </h5>
                                             <p>Do you have a social media presence?</p> <br/>
                                             <p>
