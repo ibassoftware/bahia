@@ -14,6 +14,8 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			'click .add_family': '_onClickAdd_family',
 			'click .add_education': '_onClickAdd_education',
 			'click .add_record_books': '_onClickAdd_record_books',
+			'click .add_employed_relative': '_onClickAdd_employed_relative',
+			'click .add_previous_application': '_onClickAdd_previous_application',
 			'click .add_social_media': '_onClickAdd_social_media',
 			'click .remove_family_line': '_onClickRemove_family_line',
 			'click .custom_create': '_onClickSubmit',
@@ -23,6 +25,9 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			var self = this; 
 			var family_data = [];
 			var education_data = [];
+			var record_books_data = [];
+			var employed_relative_data = [];
+			var previous_application_data = [];
 			var social_media_data = [];
 
 			// Family
@@ -74,7 +79,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 				let date_expiry = $(row).find('input[id="date_expiry"]').val();
 				let issuing_authority = $(row).find('input[id="issuing_authority"]').val();
 				let place_ofissue = $(row).find('input[id="place_ofissue"]').val();
-				console.log(schooltype, name_school)
+				console.log(document, document_number)
 				record_books_data.push({
 					'document': document,
 					'document_number': document_number,
@@ -85,6 +90,34 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 				});
 			});
 			$('textarea[name="applicant_document_ids"]').val(JSON.stringify(record_books_data));
+
+			// References - Employed Relatives
+			var employed_relative_rows = $('.applicant_employed_relative_ids > tbody > tr.employed_relative_line');
+			_.each(employed_relative_rows, function(row) {
+				let name_of_crew = $(row).find('input[id="name_of_crew"]').val();
+				let position_and_principal = $(row).find('input[id="position_and_principal"]').val();
+				let relationship = $(row).find('select[id="relationship"]').val();
+				console.log(name_of_crew, position_and_principal)
+				employed_relative_data.push({
+					'name_of_crew': name_of_crew,
+					'position_and_principal': position_and_principal,
+					'relationship': relationship
+				});
+			});
+			$('textarea[name="applicant_employed_relative_ids"]').val(JSON.stringify(employed_relative_data));
+
+			// References - Previous Application
+			var previous_application_rows = $('.applicant_previous_application_ids > tbody > tr.previous_application_line');
+			_.each(previous_application_rows, function(row) {
+				let date_applied = $(row).find('input[id="date_applied"]').val();
+				let job_applied_id = $(row).find('select[id="job_applied_id"]').val();
+				console.log(date_applied, job_applied_id)
+				previous_application_data.push({
+					'date_applied': date_applied,
+					'job_applied_id': job_applied_id
+				});
+			});
+			$('textarea[name="applicant_previous_application_ids"]').val(JSON.stringify(previous_application_data));
 
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
@@ -136,6 +169,30 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$new_row.removeClass('add_extra_record_books');
 			$new_row.addClass('record_books_line');
 			$new_row.insertBefore($('.add_extra_record_books'));
+			_.each($new_row.find('td'), function(val) {
+				$(val).find('input').attr('required', 'required');
+			});
+		},
+
+		_onClickAdd_employed_relative: function(ev){
+			console.log("add_employed_relative")
+			var $new_row = $('.add_extra_employed_relative').clone(true);
+			$new_row.removeClass('d-none');
+			$new_row.removeClass('add_extra_employed_relative');
+			$new_row.addClass('employeed_relative_line');
+			$new_row.insertBefore($('.add_extra_employed_relative'));
+			_.each($new_row.find('td'), function(val) {
+				$(val).find('input').attr('required', 'required');
+			});
+		},
+
+		_onClickAdd_previous_application: function(ev){
+			console.log("add_previous_application")
+			var $new_row = $('.add_extra_previous_application').clone(true);
+			$new_row.removeClass('d-none');
+			$new_row.removeClass('add_extra_previous_application');
+			$new_row.addClass('previous_application_line');
+			$new_row.insertBefore($('.add_extra_previous_application'));
 			_.each($new_row.find('td'), function(val) {
 				$(val).find('input').attr('required', 'required');
 			});
