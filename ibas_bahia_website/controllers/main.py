@@ -109,11 +109,11 @@ class BahiasApplicationForm(http.Controller):
 				kw['applicant_education'] = education_val
 
 			# Applicant Record Books
-			applicant_record_books = kw.get('applicant_record_books')
-			if applicant_record_books:
-				record_books_data = json.loads(applicant_record_books)
+			applicant_document_ids = kw.get('applicant_document_ids')
+			if applicant_document_ids:
+				record_books_data = json.loads(applicant_document_ids)
 				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
-				kw['applicant_record_books'] = record_books_val
+				kw['applicant_document_ids'] = record_books_val
 
 			# Applicant Social Media 
 			applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')

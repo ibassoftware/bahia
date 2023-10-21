@@ -66,7 +66,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$('textarea[name="applicant_education"]').val(JSON.stringify(education_data));
 
 			// Record Books
-			var record_books_rows = $('.applicant_record_books > tbody > tr.record_books_line');
+			var record_books_rows = $('.applicant_document_ids > tbody > tr.record_books_line');
 			_.each(record_books_rows, function(row) {
 				let document = $(row).find('select[id="document"]').val();
 				let document_number = $(row).find('input[id="document_number"]').val();
@@ -84,7 +84,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 					'place_ofissue': place_ofissue
 				});
 			});
-			$('textarea[name="applicant_record_books"]').val(JSON.stringify(record_books_data));
+			$('textarea[name="applicant_document_ids"]').val(JSON.stringify(record_books_data));
 
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
