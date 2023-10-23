@@ -723,7 +723,7 @@
                                                     <input type="checkbox" id="has_relative_employee"/>
                                                     <br/>
                                                     <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                        <table class="table table-bordered mt-3 applicant_employed_relative_ids">
+                                                        <table class="table table-bordered mt-3 applicant_employed_relatives_ids">
                                                             <thead>
                                                                 <tr>
                                                                     <td>
@@ -746,7 +746,7 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <tr class="employeed_relative_line">
+                                                                    <tr class="employed_relative_line">
                                                                         <td>
                                                                             <input type="text"
                                                                                 class="form-control"
@@ -807,7 +807,7 @@
                                                         </table>
                                                     </div>
                                                     <textarea class="d-none"
-                                                            name="applicant_employed_relative_ids">
+                                                            name="applicant_employed_relatives_ids">
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_employed_relative button-color"
@@ -846,7 +846,7 @@
                                                                 <tbody>
                                                                     <tr class="previous_application_line">
                                                                         <td>
-                                                                            <input type="text"
+                                                                            <input type="date"
                                                                                 class="form-control"
                                                                                 placeholder="Enter Date"
                                                                                 id="date_applied"/>
@@ -869,7 +869,7 @@
 
                                                                     <tr class="add_extra_previous_application d-none">
                                                                         <td>
-                                                                            <input type="text"
+                                                                            <input type="date"
                                                                                 class="form-control"
                                                                                 placeholder="Enter Date"
                                                                                 id="date_applied"/>
@@ -897,6 +897,295 @@
                                                     </textarea>
                                                     <button type="button"
                                                             class="btn btn-info add_previous_application button-color"
+                                                            style="float: right; margin-right: -15px;">
+                                                        <i class="fa fa-plus"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h5> Employment History </h5>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='row ml-1'
+                                                style="width:99%;">
+                                                <div class="form-group col-12 show_total_project">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <table class="table table-bordered mt-3 applicant_previous_employment_ids">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Rank / Position *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Manning Agency *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Employer / Principal *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Address and Contact No. of Manning Agency *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Vessel Name *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Vessel Type *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            GRT *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Date From *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Date To *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>
+                                                                            Duties and Responsibilities *
+                                                                        </strong>
+                                                                    </td>
+                                                                    <td width="5%"></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <div class="collapse">
+                                                                <tbody>
+                                                                    <tr class="previous_employment_line">
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Rank/Position"
+                                                                                id="rank_position"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Manning Agency"
+                                                                                id="manning_agency"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Employer/Principal"
+                                                                                id="employer_principal"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Address/Contact of Manning Agency"
+                                                                                id="address_contact_info_manning_agen"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Vessel Name"
+                                                                                id="vessel_name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select class="form-control" id="vessel_type">
+                                                                                <option value="false" style=""></option>
+                                                                                <option value="gcd" style="">GCD - General Cargo</option>
+                                                                                <option value="obo" style="">OBO - Ore/Bulk/Oil Carriers</option>
+                                                                                <option value="gas" style="">GAS - LPG/LNG Gas Carrier</option>
+                                                                                <option value="osv" style="">OSV - Offshore Supply Vessel</option>
+                                                                                <option value="b_c" style="">B/C - Bulk Carrier</option>
+                                                                                <option value="tnc" style="">TNC - Tanker (Crude)</option>
+                                                                                <option value="chm" style="">CHM - Chemical Carriers</option>
+                                                                                <option value="drg" style="">DRG - Dredgers</option>
+                                                                                <option value="con" style="">CON - Cellular Container</option>
+                                                                                <option value="tnp" style="">TNP - Tanker(Product)</option>
+                                                                                <option value="pas" style="">PAS - Passenger Ship</option>
+                                                                                <option value="srv" style="">SRV - Survey Ship</option>
+                                                                                <option value="mlp" style="">MLP - Multipurpose</option>
+                                                                                <option value="tnv" style="">TNV - VLCC/ULCC</option>
+                                                                                <option value="r_o" style="">R/O - Ro/Ro Carriers</option>
+                                                                                <option value="log" style="">LOG - Log/Timber</option>
+                                                                                <option value="o_o" style="">O/O - Ore/Oil Carrier</option>
+                                                                                <option value="tns" style="">TNS - Tanker (Storage)</option>
+                                                                                <option value="c_s" style="">C/S - Car Ship</option>
+                                                                                <option value="rfr" style="">RFR - Reefer</option>
+                                                                                <option value="psv_smc" style="">SEI - Seismic</option>
+                                                                                <option value="psv_pltsprt" style="">PSV - Platform Support</option>
+                                                                                <option value="psv_subsea" style="">SUB - Subsea</option>
+                                                                                <option value="psv_drill" style="">DRL - Drill</option>
+                                                                                <option value="dsv_dsprt" style="">DSV - Diving Support</option>
+                                                                                <option value="dsv_accmd" style="">ACV - Accomodation</option>
+                                                                                <option value="plv_pplying" style="">PLV - Pipe Laying</option>
+                                                                                <option value="ahtv_anchundlingtug" style="">AHTV - Anchor Handling Tug Vessel</option>
+                                                                                <option value="dsv_dpwcons" style="">DCV - Deep Water Construction</option>
+                                                                                <option value="clv_cbllayingvsl" style="">CLV - Cable Laying Vessel</option>
+                                                                                <option value="csv_conssupvessl" style="">CSV - Construction Support Vessels</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter GRT"
+                                                                                id="grt"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date From"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_from"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date To"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_to"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Duties/Responsibilities"
+                                                                                id="duties_and_responsibility"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr class="add_extra_previous_employment d-none">
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Rank/Position"
+                                                                                id="rank_position"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Manning Agency"
+                                                                                id="manning_agency"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Employer/Principal"
+                                                                                id="employer_principal"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Address/Contact of Manning Agency"
+                                                                                id="address_contact_info_manning_agen"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Vessel Name"
+                                                                                id="vessel_name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <select class="form-control" id="vessel_type">
+                                                                                <option value="false" style=""></option>
+                                                                                <option value="gcd" style="">GCD - General Cargo</option>
+                                                                                <option value="obo" style="">OBO - Ore/Bulk/Oil Carriers</option>
+                                                                                <option value="gas" style="">GAS - LPG/LNG Gas Carrier</option>
+                                                                                <option value="osv" style="">OSV - Offshore Supply Vessel</option>
+                                                                                <option value="b_c" style="">B/C - Bulk Carrier</option>
+                                                                                <option value="tnc" style="">TNC - Tanker (Crude)</option>
+                                                                                <option value="chm" style="">CHM - Chemical Carriers</option>
+                                                                                <option value="drg" style="">DRG - Dredgers</option>
+                                                                                <option value="con" style="">CON - Cellular Container</option>
+                                                                                <option value="tnp" style="">TNP - Tanker(Product)</option>
+                                                                                <option value="pas" style="">PAS - Passenger Ship</option>
+                                                                                <option value="srv" style="">SRV - Survey Ship</option>
+                                                                                <option value="mlp" style="">MLP - Multipurpose</option>
+                                                                                <option value="tnv" style="">TNV - VLCC/ULCC</option>
+                                                                                <option value="r_o" style="">R/O - Ro/Ro Carriers</option>
+                                                                                <option value="log" style="">LOG - Log/Timber</option>
+                                                                                <option value="o_o" style="">O/O - Ore/Oil Carrier</option>
+                                                                                <option value="tns" style="">TNS - Tanker (Storage)</option>
+                                                                                <option value="c_s" style="">C/S - Car Ship</option>
+                                                                                <option value="rfr" style="">RFR - Reefer</option>
+                                                                                <option value="psv_smc" style="">SEI - Seismic</option>
+                                                                                <option value="psv_pltsprt" style="">PSV - Platform Support</option>
+                                                                                <option value="psv_subsea" style="">SUB - Subsea</option>
+                                                                                <option value="psv_drill" style="">DRL - Drill</option>
+                                                                                <option value="dsv_dsprt" style="">DSV - Diving Support</option>
+                                                                                <option value="dsv_accmd" style="">ACV - Accomodation</option>
+                                                                                <option value="plv_pplying" style="">PLV - Pipe Laying</option>
+                                                                                <option value="ahtv_anchundlingtug" style="">AHTV - Anchor Handling Tug Vessel</option>
+                                                                                <option value="dsv_dpwcons" style="">DCV - Deep Water Construction</option>
+                                                                                <option value="clv_cbllayingvsl" style="">CLV - Cable Laying Vessel</option>
+                                                                                <option value="csv_conssupvessl" style="">CSV - Construction Support Vessels</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter GRT"
+                                                                                id="grt"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date From"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_from"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input placeholder="Enter Date To"
+                                                                                type="date"
+                                                                                class="form-control total_cost"
+                                                                                id="date_to"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                class="form-control"
+                                                                                placeholder="Enter Duties/Responsibilities"
+                                                                                id="duties_and_responsibility"/>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
+                                                                                name="delete"
+                                                                                aria-label="Delete row 1"></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </div>
+                                                        </table>
+                                                    </div>
+                                                    <textarea class="d-none"
+                                                            name="applicant_previous_employment_ids">
+                                                    </textarea>
+                                                    <button type="button"
+                                                            class="btn btn-info add_previous_employment button-color"
                                                             style="float: right; margin-right: -15px;">
                                                         <i class="fa fa-plus"/>
                                                     </button>

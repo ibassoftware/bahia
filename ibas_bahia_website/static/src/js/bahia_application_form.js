@@ -16,6 +16,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			'click .add_record_books': '_onClickAdd_record_books',
 			'click .add_employed_relative': '_onClickAdd_employed_relative',
 			'click .add_previous_application': '_onClickAdd_previous_application',
+			'click .add_previous_employment': '_onClickAdd_previous_employment',
 			'click .add_social_media': '_onClickAdd_social_media',
 			'click .remove_family_line': '_onClickRemove_family_line',
 			'click .custom_create': '_onClickSubmit',
@@ -28,6 +29,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			var record_books_data = [];
 			var employed_relative_data = [];
 			var previous_application_data = [];
+			var previous_employment_data = [];
 			var social_media_data = [];
 
 			// Family
@@ -92,7 +94,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$('textarea[name="applicant_document_ids"]').val(JSON.stringify(record_books_data));
 
 			// References - Employed Relatives
-			var employed_relative_rows = $('.applicant_employed_relative_ids > tbody > tr.employed_relative_line');
+			var employed_relative_rows = $('.applicant_employed_relatives_ids > tbody > tr.employed_relative_line');
 			_.each(employed_relative_rows, function(row) {
 				let name_of_crew = $(row).find('input[id="name_of_crew"]').val();
 				let position_and_principal = $(row).find('input[id="position_and_principal"]').val();
@@ -104,7 +106,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 					'relationship': relationship
 				});
 			});
-			$('textarea[name="applicant_employed_relative_ids"]').val(JSON.stringify(employed_relative_data));
+			$('textarea[name="applicant_employed_relatives_ids"]').val(JSON.stringify(employed_relative_data));
 
 			// References - Previous Application
 			var previous_application_rows = $('.applicant_previous_application_ids > tbody > tr.previous_application_line');
@@ -118,6 +120,35 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 				});
 			});
 			$('textarea[name="applicant_previous_application_ids"]').val(JSON.stringify(previous_application_data));
+
+			// References - Previous Employment
+			var previous_employment_rows = $('.applicant_previous_employment_ids > tbody > tr.previous_employment_line');
+			_.each(previous_employment_rows, function(row) {
+				let rank_position = $(row).find('input[id="rank_position"]').val();
+				let manning_agency = $(row).find('input[id="manning_agency"]').val();
+				let employer_principal = $(row).find('input[id="employer_principal"]').val();
+				let address_contact_info_manning_agen = $(row).find('input[id="address_contact_info_manning_agen"]').val();
+				let vessel_name = $(row).find('input[id="vessel_name"]').val();
+				let vessel_type = $(row).find('select[id="vessel_type"]').val();
+				let grt = $(row).find('input[id="grt"]').val();
+				let date_from = $(row).find('input[id="date_from"]').val();
+				let date_to = $(row).find('input[id="date_to"]').val();
+				let duties_and_responsibility = $(row).find('input[id="duties_and_responsibility"]').val();
+				console.log(date_applied, job_applied_id)
+				previous_employment_data.push({
+					'rank_position': rank_position,
+					'manning_agency': manning_agency,
+					'employer_principal': employer_principal,
+					'address_contact_info_manning_agen': address_contact_info_manning_agen,
+					'vessel_name': vessel_name,
+					'vessel_type': vessel_type,
+					'grt': grt,
+					'date_from': date_from,
+					'date_to': date_to,
+					'duties_and_responsibility': duties_and_responsibility
+				});
+			});
+			$('textarea[name="applicant_previous_employment_ids"]').val(JSON.stringify(previous_employment_data));
 
 			// Social Media
 			var social_media_rows = $('.applicant_social_media > tbody > tr.social_media_line');
@@ -193,6 +224,18 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$new_row.removeClass('add_extra_previous_application');
 			$new_row.addClass('previous_application_line');
 			$new_row.insertBefore($('.add_extra_previous_application'));
+			_.each($new_row.find('td'), function(val) {
+				$(val).find('input').attr('required', 'required');
+			});
+		},
+
+		_onClickAdd_previous_employment: function(ev){
+			console.log("add_previous_employment")
+			var $new_row = $('.add_extra_previous_employment').clone(true);
+			$new_row.removeClass('d-none');
+			$new_row.removeClass('add_extra_previous_employment');
+			$new_row.addClass('previous_employment_line');
+			$new_row.insertBefore($('.add_extra_previous_employment'));
 			_.each($new_row.find('td'), function(val) {
 				$(val).find('input').attr('required', 'required');
 			});
