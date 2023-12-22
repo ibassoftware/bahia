@@ -499,7 +499,5 @@
 		
 		<menuitem action="open_hr_employee_medical_records_main" id="menu_open_hr_employee_medical_records_main" parent="menu_data_migration" string = "Employee Medical Records" sequence="6"/>
 
-
-
 	</data>
 </odoo>
