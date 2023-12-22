@@ -28,7 +28,6 @@
 		<record id="view_migration_employee_document_tree" model="ir.ui.view">
 			<field name="name">migrate.hr.employee_documents.tree</field>
 			<field name="model">hr.employee_documents</field>
-			<!-- <field name="field_parent">child_ids</field> -->
 			<field name="arch" type="xml">
 				<tree string="Data Migration">
 				<field name="employee_doc_id" readonly="1"/>
@@ -61,7 +60,7 @@
 		<record id="open_migration_employee_document_main" model="ir.actions.act_window">
 			<field name="name">Employee Documents</field>
 			<field name="res_model">hr.employee_documents</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="search_view_id" ref="view_migration_employee_document_filter"/>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
@@ -128,7 +127,7 @@
 		<record id="open_hr_employmenthistory_main" model="ir.actions.act_window">
 			<field name="name">Employment History</field>
 			<field name="res_model">hr.employmenthistory</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -191,7 +190,7 @@
 		<record id="open_hr_employeeaddress_main" model="ir.actions.act_window">
 			<field name="name">Employee Address</field>
 			<field name="res_model">hr.employeeaddress</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -245,7 +244,7 @@
 		<record id="open_hr_employeducation_main" model="ir.actions.act_window">
 			<field name="name">Employee Education</field>
 			<field name="res_model">hr.employeducation</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -328,7 +327,7 @@
 		<record id="open_hr_employee_families_main" model="ir.actions.act_window">
 			<field name="name">Employee Families</field>
 			<field name="res_model">hr.employee_families</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -378,7 +377,7 @@
 		<record id="open_hr_employee_medical_records_main" model="ir.actions.act_window">
 			<field name="name">Employee Medical Records</field>
 			<field name="res_model">hr.employee_medical_records</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -439,7 +438,7 @@
 		<record id="open_hr_employeelicenses_main" model="ir.actions.act_window">
 			<field name="name">Employee Licenses</field>
 			<field name="res_model">hr.employeelicenses</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
@@ -490,7 +489,7 @@
 		<record id="open_hr_employee_medical_records_main" model="ir.actions.act_window">
 			<field name="name">Employee Medical Records</field>
 			<field name="res_model">hr.employee_medical_records</field>
-			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
 			  <p class="oe_view_nocontent_create">
 				Click to Create a Migration.
