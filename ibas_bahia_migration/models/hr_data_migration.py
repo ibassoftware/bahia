@@ -16,4 +16,4 @@ class DataMigration(models.TransientModel):
 				employee.middle_name=''
 			if employee.last_name == False:
 				employee.last_name=''			
-			employee.name =  employee.last_name + ", " +  employee.first_name + " " + employee.middle_name   
+			employee.name =  "[" + employee.employee_number +"] " + employee.last_name + ", " +  employee.first_name + " " + employee.middle_name
