@@ -3,8 +3,8 @@
 import sys, os
 import base64
 
-# import xmlrpc
-import xmlrpclib
+# import xmlrpclib
+from xmlrpc import client
 
 from datetime import datetime
 import time
@@ -26,9 +26,9 @@ dest_USER = 'admin'
 dest_PASS = 'admin'
 
 # STAGING CONNECTION
-dest_common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(dest_URL))
+dest_common = client.ServerProxy('{}/xmlrpc/2/common'.format(dest_URL))
 dest_uid = dest_common.authenticate(dest_DB, dest_USER, dest_PASS, {})
-dest_models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(dest_URL))
+dest_models = client.ServerProxy('{}/xmlrpc/2/object'.format(dest_URL))
 
 
 # UPDATE EMPLOYEE NAME
