@@ -44,19 +44,17 @@ def update_employee_name():
 	args = [('id', '=', 50543)]
 	get_employee_name = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', args)
 
-	# print len(get_sale)
-
 	if get_employee_name:
 		for employee_name in get_employee_name:
 			count += 1
 			# UPDATE employee name
-			print "UPDATING employee name: " + str(employee_name)
+			print("UPDATING employee name: " + str(employee_name))
 			update_employee_name = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'updateEmployeeName', employee_name)
 			if update_employee_name:
-				print "employee name UPDATED: " + str(employee_name)
+				print("employee name UPDATED: " + str(employee_name))
 				count_update += 1
 
-	print"DONE! PROCESSED # OF RECORDS: " + str(count_update)
+	print("DONE! PROCESSED # OF RECORDS: " + str(count_update))
 	end = time.time()
 	execution_time = end - start
 	log = "[DONE] Total number of records updated: " + str(count_update) + " OVER: " + str(count) + ". EXECUTION TIME (seconds): " + str(execution_time)
