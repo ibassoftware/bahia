@@ -3,6 +3,44 @@
 	<data>
 
 		<menuitem id="menu_data_migration" parent="hr.menu_human_resources_configuration" name="Data Migration" sequence="80"/>
-		
+
+		<record id="view_migration_employee_document_form" model="ir.ui.view">
+			<field name="name">migrate.hr.employee_documents.form</field>
+			<field name="model">hr.employee_documents</field>
+			<field name="arch" type="xml">
+				<form string="Data Migration">
+					<sheet>
+						<group>
+							<group>
+								<field name="employee_doc_id" readonly="1"/>
+								<field name="document"  readonly="1"/>
+								<field name="document_number" readonly="1"/>
+								<field name="date_issued" readonly="1"/>
+								<field name="date_expiry" readonly="1"/>
+								<field name="issuing_authority" readonly="1"/>
+								<field name="place_ofissue" readonly="1"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_migration_employee_document_tree" model="ir.ui.view">
+			<field name="name">migrate.hr.employee_documents.tree</field>
+			<field name="model">hr.employee_documents</field>
+			<field name="arch" type="xml">
+				<tree string="Data Migration">
+					<field name="employee_doc_id" readonly="1"/>
+					<field name="document"  readonly="1"/>
+					<field name="document_number" readonly="1"/>
+					<field name="date_issued" readonly="1"/>
+					<field name="date_expiry" readonly="1"/>
+					<field name="issuing_authority" readonly="1"/>
+					<field name="place_ofissue" readonly="1"/>
+				</tree>
+			</field>
+		</record>
+
 	</data>
 </odoo>
