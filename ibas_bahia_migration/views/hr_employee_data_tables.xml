@@ -447,7 +447,7 @@
 			</field>
 		</record>
 
-		<menuitem action="ibas_bahia_migration.open_hr_employeelicenses_main" id="menu_open_hr_employeelicenses_main" parent="ibas_bahia_migration.menu_data_migration" name="Employee Address" sequence="5"/>
+		<menuitem action="ibas_bahia_migration.open_hr_employeelicenses_main" id="menu_open_hr_employeelicenses_main" parent="ibas_bahia_migration.menu_data_migration" name="Employee Licenses" sequence="5"/>
 
 
 		<!--Employee Medical -->
