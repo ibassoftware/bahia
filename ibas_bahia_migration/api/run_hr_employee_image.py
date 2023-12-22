@@ -47,18 +47,18 @@ def update_employee_image():
 			employee_fields = [
 				'id',
 				'name',
-				# 'image',
+				'image',
 			]
 			employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
 			print(employee)
-			print(employee_data)
-			# employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-			# 	'image_1920': employee_data[0]['image'],
-			# }])
+			# print(employee_data)
+			employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+				'image_1920': employee_data[0]['image'],
+			}])
 
-			# if employee_insert:
-			# 	count += 1
-			# 	print("[" + str(count) + "]" + "UPDATED employee: " + str(product))
+			if employee_insert:
+				count += 1
+				print("[" + str(count) + "]" + "UPDATED employee: " + str(product))
 
 update_employee_image()
