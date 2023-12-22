@@ -49,7 +49,7 @@ def update_employee_image():
 				'name',
 				'image',
 			]
-			employee_data = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'read', employee, employee_fields)
+			employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
 			print(employee_data)
 			employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [{
