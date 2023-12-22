@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
 	<data>
-		<menuitem id="menu_data_migration" parent="hr.menu_human_resources_configuration" name="Data Migration" sequence="200"/>	
+		<menuitem id="menu_data_migration" parent="hr.menu_human_resources_configuration" name="Data Migration" sequence="900"/>	
 
 		<record id="view_migration_employee_document_form" model="ir.ui.view">
 			<field name="name">migrate.hr.employee_documents.form</field>
