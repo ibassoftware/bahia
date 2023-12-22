@@ -60,6 +60,6 @@ def update_employee_image():
 
 			if employee_insert:
 				count += 1
-				print("[" + str(count) + "]" + "UPDATED employee: " + str(product))
+				print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 
 update_employee_image()
