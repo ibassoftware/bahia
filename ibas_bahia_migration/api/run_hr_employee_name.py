@@ -9,10 +9,6 @@ from xmlrpc import client
 from datetime import datetime
 import time
 
-import pandas as pd
-
-# from random import randint
-
 # ODOO SERVER CONNECTION
 # PROD
 # dest_URL = 'https://indigotest.odoo.com'
