@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
 	<data>
-		<menuitem id="menu_data_migration" parent="hr.menu_human_resources_configuration" name="Data Migration" sequence="80"/>	
+		<menuitem id="menu_data_migration" parent="hr.menu_human_resources_configuration" name="Data Migration" sequence="200"/>	
 
 		<record id="view_migration_employee_document_form" model="ir.ui.view">
 			<field name="name">migrate.hr.employee_documents.form</field>
@@ -336,7 +336,7 @@
 			</field>
 		</record>
 
-		<menuitem action="ibas_bahia_migration.open_hr_employee_families_main" id="menu_open_hr_employee_families_main" parent="ibas_bahia_migration.menu_data_migration" name="Employee Address" sequence="5"/>
+		<menuitem action="ibas_bahia_migration.open_hr_employee_families_main" id="menu_open_hr_employee_families_main" parent="ibas_bahia_migration.menu_data_migration" name="Employee Families" sequence="5"/>
 
 		<!--Employee Medical -->
 		<record id="view_migration_hr_employee_medical_records_form" model="ir.ui.view">
