@@ -47,13 +47,13 @@
 			<field name="model">hr.employee_documents</field>
 			<field name="arch" type="xml">
 				<search string="Data Migration">
-				<field name="employee_doc_id" readonly="1"/>
-				<field name="document"  readonly="1"/>
-				<field name="document_number" readonly="1"/>
-				<field name="date_issued" readonly="1"/>
-				<field name="date_expiry" readonly="1"/>
-				<field name="issuing_authority" readonly="1"/>
-				<field name="place_ofissue" readonly="1"/>
+					<field name="employee_doc_id" readonly="1"/>
+					<field name="document"  readonly="1"/>
+					<field name="document_number" readonly="1"/>
+					<field name="date_issued" readonly="1"/>
+					<field name="date_expiry" readonly="1"/>
+					<field name="issuing_authority" readonly="1"/>
+					<field name="place_ofissue" readonly="1"/>
 				</search>
 			 </field>
 		</record>
