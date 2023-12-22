@@ -52,9 +52,10 @@ def update_employee_image():
 			employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
 			print(employee)
-			# print(employee_data)
+			print(employee_data['id'])
+			print(employee_data['name'])
 			employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-				'image_1920': employee_data[0]['image'],
+				'image_1920': employee_data['image'],
 			}])
 
 			if employee_insert:
