@@ -15,7 +15,7 @@ import time
 # dest_DB = 'indigo-prodnewrrd2-1833891'
 
 # PROD TRIAL MIG 2023
-dest_URL = 'https://158.220.98.233:8069'
+dest_URL = 'http://158.220.98.233:8069'
 dest_DB = 'BAHIA'
 
 dest_USER = 'admin'
