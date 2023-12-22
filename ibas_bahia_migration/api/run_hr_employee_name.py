@@ -40,6 +40,8 @@ def update_employee_name():
 	args = [('id', '=', 50543)]
 	get_employee_name = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', args)
 
+	print(get_employee_name)
+	
 	if get_employee_name:
 		for employee_name in get_employee_name:
 			count += 1
