@@ -40,7 +40,8 @@ def update_employee_name():
 	count_update = 0
 
 	
-	args = [('name', 'ilike', '')]
+	# args = [('name', 'ilike', '')]
+	args = [('id', '=', 50543)]
 	get_employee_name = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', args)
 
 	# print len(get_sale)
