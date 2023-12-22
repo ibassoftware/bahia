@@ -39,8 +39,8 @@ def update_employee_image():
 	count = 0
 	count_update = 0
 
-	# args = [('id', '=', 54049)]
-	args = [('name', 'ilike', '')]
+	args = [('id', '=', 54062)]
+	# args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
 	if get_employee:
@@ -55,12 +55,15 @@ def update_employee_image():
 			print(employee)
 			print(employee_data['id'])
 			print(employee_data['name'])
-			employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-				'image_1920': employee_data['image'],
-			}])
+			check_args = [('id', '=', employee	)]
+			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
+			if check_dest_employee:
+				employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+					'image_1920': employee_data['image'],
+				}])
 
-			if employee_insert:
-				count += 1
-				print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+				if employee_insert:
+					count += 1
+					print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 
 update_employee_image()
