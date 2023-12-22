@@ -47,14 +47,14 @@ def update_employee_image():
 			employee_fields = [
 				'id',
 				'name',
-				'image_medium',
+				'image',
 			]
 			employee_data = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'read', employee, employee_fields)
 
 			print(employee_data)
 			employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [{
 				'id': employee_data[0]['id'],
-				'image_1920': employee_data[0]['image_medium'],
+				'image_1920': employee_data[0]['image'],
 			}])
 
 			if employee_insert:
