@@ -8,7 +8,7 @@
     'author': 'IBAS',
     'depends': ['hr', 'ibas_bahia'],
     'data': [
-    	     # 'security/ir.model.access.csv',             
+    	     'security/ir.model.access.csv',             
              'views/hr_employee_data_tables.xml',
              'views/hr_data_migration.xml',
              ],
