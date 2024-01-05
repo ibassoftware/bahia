@@ -6,7 +6,7 @@
     'description': 'New Custumizations for Bahia odoo v15',
     'author': 'rvcsdev',
     'website': 'https://github.com/rvcsdev',
-    'depends': ['base'],
+    'depends': ['base', 'ibas_bahia'],
     'data': [
          # 'security/ir.model.access.csv',
          'views/res_country_view.xml',
