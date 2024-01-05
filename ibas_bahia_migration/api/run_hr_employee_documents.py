@@ -39,39 +39,33 @@ def update_employee_documents():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 52611)]
+	args = [('id', '=', 156952)]
 	# args = [('name', 'ilike', '')]
-	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
+	get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'search', employee_doc_args)
+	
+	for employee_doc in get_employee_doc:
+		employee_doc_fields = [
+			'id',
+			'employee_doc_id',
+			'document',
+			'filename',
+			'file_upload',
+		]
+		employee_doc_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'read', employee_doc, employee_doc_fields)
 
-	if get_employee:
-		for employee in get_employee:
-			# Search Employee Document
-			employee_doc_args = [('employee_doc_id', '=', employee)]
-			get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'search', employee_doc_args)
-			
-			for employee_doc in get_employee_doc:
-				employee_doc_fields = [
-					'id',
-					'document',
-					'filename',
-					'file_upload',
-				]
-				employee_doc_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'read', employee_doc, employee_doc_fields)
+		print(employee_doc_data['employee_doc_id'])
+		print(employee_doc_data['document'])
+		print(employee_doc_data['filename'])
 
-				print(employee)
-				print(employee_doc_data['document'])
-				print(employee_doc_data['filename'])
-				print(employee_doc_data['file_upload'])
+		check_args = [('id', '=', employee_doc)]
+		check_dest_employee_doc = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee_documents', 'search', check_args)
+		if check_dest_employee_doc:
+			employee_update_doc = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee_documents', 'write', [employee_doc, {
+				'file_upload': employee_doc_data['file_upload'],
+			}])
 
-				check_args = [('id', '=', employee_doc)]
-				check_dest_employee_doc = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee_documents', 'search', check_args)
-				if check_dest_employee_doc:
-					employee_update_doc = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee_documents', 'write', [employee_doc, {
-						'file_upload': employee_doc_data['file_upload'],
-					}])
-
-					if employee_update_doc:
-						count += 1
-						print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+			if employee_update_doc:
+				count += 1
+				print("[" + str(count) + "]" + "UPDATED employee: " + str(employee_doc_data['employee_doc_id']))
 
 update_employee_documents()
