@@ -52,6 +52,7 @@
              'reports/hr_personnel_report_menu.xml',
              'reports/hr_personnel_signonoff_report_menu.xml',
              ],
+    'license': 'LGPL-3',
     'application': True,
 }
 

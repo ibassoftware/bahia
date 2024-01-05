@@ -12,6 +12,7 @@
              'views/hr_employee_data_tables.xml',
              # 'views/hr_data_migration.xml',
              ],
+    'license': 'LGPL-3',
     'application': False,
 }
 
