@@ -40,7 +40,7 @@ def update_employee_documents():
 	count_update = 0
 
 	# args = [('id', '=', 156952)]
-	args = [('filename', 'ilike', '')]
+	args = [('file_upload', '!=', False)]
 	get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'search', args)
 	
 	for employee_doc in get_employee_doc:
