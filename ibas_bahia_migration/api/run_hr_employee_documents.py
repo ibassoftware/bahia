@@ -41,7 +41,7 @@ def update_employee_documents():
 
 	args = [('id', '=', 156952)]
 	# args = [('name', 'ilike', '')]
-	get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'search', employee_doc_args)
+	get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'search', args)
 	
 	for employee_doc in get_employee_doc:
 		employee_doc_fields = [
