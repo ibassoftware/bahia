@@ -36,6 +36,7 @@
              'views/hr_employee_checklist.xml',
              'views/hr_recruitment_view.xml',
              'views/hr_views.xml',
+             'views/hr_dialog_views.xml',
              'views/reference_views.xml',
              'views/socialmedia.xml',             
              'views/hr_checklist_templates.xml',
