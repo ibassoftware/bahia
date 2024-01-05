@@ -9,7 +9,8 @@
     'depends': ['base'],
     'data': [
          # 'security/ir.model.access.csv',
-         'views/res_country_view.xml'
+         'views/res_country_view.xml',
+         'views/hr_dialog_views.xml',
     ],
     'license': 'LGPL-3',
     'application': True,

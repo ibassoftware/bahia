@@ -209,6 +209,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenu(models.Model):
 #--- Disembarkation Report
 class hrDisembarkationReportMenu(models.Model):
     _name = 'hr.disembarkation.menu'
+    _description = 'Disembarkation Report'
 
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
     date_search = fields.Date('Date')
@@ -257,6 +258,7 @@ class hrDisembarkationReportMenu(models.Model):
 #--- Embarkation Report
 class hrEmbarkationReportMenu(models.Model):
     _name = 'hr.embarkation.menu'
+    _description = 'Embarkation Report'
 
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
     date_search = fields.Date('Date')
@@ -305,6 +307,7 @@ class hrEmbarkationReportMenu(models.Model):
 #--- SignOn Report
 class hrsignonoffReportMenu(models.Model):
     _name = 'hr.signonoff.report.menu'
+    _description = 'SignOn Report'
 
     signonoff_selection = fields.Selection([('signon', 'Sign On'), ('signoff', 'Sign Off')], string ='Report Type', default = 'signon', required=True)
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
@@ -364,6 +367,7 @@ class hrsignonoffReportMenu(models.Model):
 #--- Personnel Active on Board With Relative
 class hrPersonnelActiveOnBoardwithRelativeMenu(models.Model):
     _name = 'hr.personnel.withrelative.menu'
+    _description = 'Personnel Active on Board With Relative'
 
     vessel = fields.Many2one('hr.vessel','Vessel')
     date_search = fields.Date('Date')
@@ -691,6 +695,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
 
 class hrPersonnelActiveOnBoardwithRemarksMenuTreeView(models.Model):
     _name = 'hr.personnel.withrmks.tree'
+    _description = 'Personnel Active On Board With Remarks'
 
     active_id = fields.Many2one('hr.personnel.withrmks.main', 'Employee')
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -721,6 +726,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuTreeView(models.Model):
 #--- Disembarkation Report
 class hrDisembarkationMenuMainView(models.Model):
     _name = 'hr.disembarkation.main'
+    _description = 'Disembarkation Report Main View'
 
     def _getExcelFilename(self):
             self.excel_filename = 'Disembarkation.xls'     
@@ -981,6 +987,7 @@ class hrDisembarkationMenuMainView(models.Model):
 
 class hrDisembarkationMenuTreeView(models.Model):
     _name = 'hr.disembarkation.tree'
+    _description = 'Disembarkation Report Tree View'
 
     # # @api.one
     def getPassportNumber(self):
@@ -1050,6 +1057,7 @@ class hrDisembarkationMenuTreeView(models.Model):
 #--- Embarkation Report
 class hrEmbarkationMenuMainView(models.Model):
     _name = 'hr.embarkation.main'
+    _description = 'Embarkation Report Main'
 
     def _getExcelFilename(self):
             self.excel_filename = 'Embarkation.xls'     
@@ -1272,6 +1280,7 @@ class hrEmbarkationMenuMainView(models.Model):
 
 class hrEmbarkationMenuTreeView(models.Model):
     _name = 'hr.embarkation.tree'
+    _description = 'Embarkation Report Tree View'
 
     # # @api.one
     def getPassportNumber(self):
@@ -1340,6 +1349,7 @@ class hrEmbarkationMenuTreeView(models.Model):
 #--- SignOnOff Report
 class hrSignOnoffMenuMainView(models.Model):
     _name = 'hr.signonoff.report.main'
+    _description = 'SignOnOff Report Main'
 
     def _getExcelFilename(self):
         if self.signonoff_selection == 'signon':
@@ -1587,6 +1597,7 @@ class hrSignOnoffMenuMainView(models.Model):
 
 class hrSignOnoffMenuTreeView(models.Model):
     _name = 'hr.signonoff.report.tree'
+    _description = 'SignOnOff Report Tree'
 
     active_id = fields.Many2one('hr.signonoff.report.main', 'Employee')
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -1616,6 +1627,7 @@ class hrSignOnoffMenuTreeView(models.Model):
 #--- Active Personnel with Relative Report
 class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
     _name = 'hr.personnel.withrelative.main'
+    _description = 'Active Personnel with Relative Report'
 
     def _getExcelFilename(self):
             self.excel_filename = 'Crew List Active on Board with Relative.xls'     
