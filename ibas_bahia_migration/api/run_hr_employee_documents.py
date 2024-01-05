@@ -61,6 +61,7 @@ def update_employee_documents():
 				print(employee)
 				print(employee_doc_data['document'])
 				print(employee_doc_data['filename'])
+				print(employee_doc_data['file_upload'])
 
 				check_args = [('id', '=', employee_doc)]
 				check_dest_employee_doc = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee_documents', 'search', check_args)
