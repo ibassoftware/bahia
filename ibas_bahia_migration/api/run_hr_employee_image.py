@@ -58,11 +58,11 @@ def update_employee_image():
 			check_args = [('id', '=', employee	)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
-				employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+				employee_update = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
 					'image_1920': employee_data['image'],
 				}])
 
-				if employee_insert:
+				if employee_update:
 					count += 1
 					print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 
