@@ -39,7 +39,7 @@ def update_employee_documents():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 50382)]
+	args = [('id', '=', 52611)]
 	# args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
