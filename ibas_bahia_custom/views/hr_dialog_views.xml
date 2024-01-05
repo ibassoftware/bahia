@@ -65,6 +65,8 @@
                                 <field name="date_expiry"/>
                                 <field name="issuing_authority"/>
                                 <field name="place_ofissue"/>
+                                <field name="filename" invisible="1"/>
+                                <field name="file_upload" filename="filename"/>
                             </group>
                             <group></group>
                         </group>
@@ -85,6 +87,8 @@
                                 <field name="medical_clinic"/>
                                 <field name="date_from"/>
                                 <field name="date_to"/>
+                                <field name="filename" invisible="1"/>
+                                <field name="file_upload" filename="filename"/>
                             </group>
                             <group></group>
                         </group>
@@ -138,26 +142,6 @@
             </field>
         </record>
 
-        <record id="view_hr_employee_medical_form" model="ir.ui.view">
-            <field name="name">hr.employee_medical_records.form</field>
-            <field name="model">hr.employee_medical_records</field>
-            <field name="arch" type="xml">
-                <form string="Add Medical Records">
-                    <sheet>
-                        <group>
-                            <group string = "Information">
-                                <field name="medical_type"/>
-                                <field name="medical_clinic"/>
-                                <field name="date_from"/>
-                                <field name="date_to"/>
-                            </group>
-                            <group></group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
         <record id="view_hr_employeelicenses_form" model="ir.ui.view">
             <field name="name">hr.employeelicenses.form</field>
             <field name="model">hr.employeelicenses</field>
@@ -175,6 +159,8 @@
                                 <field name="place_issue"/>
                                 <field name="authority_issue"/>
                                 <field name="remarks"/>
+                                <field name="filename" invisible="1"/>
+                                <field name="file_upload" filename="filename"/>
                             </group>
                             <group></group>
                         </group>
