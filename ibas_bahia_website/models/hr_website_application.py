@@ -5,6 +5,7 @@ from odoo.exceptions import except_orm, Warning, RedirectWarning,ValidationError
 
 class recruitment_application(models.Model):
     _name = 'website.recruitment.application'
+    _description = 'Recruitment Application'
 
     name = fields.Char('Application Title')
     job_applied_id = fields.Many2one('hr.job', 'Applied Jobs')
@@ -99,6 +100,7 @@ class recruitment_application(models.Model):
 
 class HrApplicantFamilies(models.Model):
     _name = 'website.recruitment.application.family_details'
+    _description = 'Applicant Families'
     _order = 'applicant_family_relationship_id'
 
 
@@ -140,6 +142,8 @@ class HrApplicantFamilies(models.Model):
 
 class HrApplicantEducation(models.Model):
     _name = 'website.recruitment.application.education'
+    _description = 'Applicant Education'
+
     applicant_education_id = fields.Many2one('website.recruitment.application')
     schooltype = fields.Many2one('hr.recruitment.degree','Degree')
     name_school = fields.Char('School/College University')
@@ -161,7 +165,7 @@ class HrApplicantEducation(models.Model):
 
 class HrApplicantDocuments(models.Model):
     _name = 'website.recruitment.application.documents'
-    
+    _description = 'Applicant Documents'
     _order = 'date_expiry,date_expiry,document'
 
     applicant_documents_id = fields.Many2one('website.recruitment.application')
@@ -192,6 +196,7 @@ class HrApplicantDocuments(models.Model):
 
 class HrApplicantDeniedVisa(models.Model):
     _name = 'website.recruitment.denied.visa'
+    _description = 'Applicant Denied Visa'
 
     applicant_id = fields.Many2one('website.recruitment.application')
     nationality_id = fields.Many2one('res.country', 'Country')
@@ -201,6 +206,7 @@ class HrApplicantDeniedVisa(models.Model):
 
 class HrApplicantDeported(models.Model):
     _name = 'website.recruitment.deported'
+    _description = 'Applicant Deported'
 
     applicant_id = fields.Many2one('website.recruitment.application')
     nationality_id = fields.Many2one('res.country', 'Country')
@@ -210,6 +216,7 @@ class HrApplicantDeported(models.Model):
 
 class HrApplicantTrainingCourses(models.Model):
     _name = 'website.recruitment.training.courses'
+    _description = 'Applicant Training Courses'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -223,8 +230,9 @@ class HrApplicantTrainingCourses(models.Model):
     issue_date_cop = fields.Date('Issued Date of COP')
     allow_delete = fields.Boolean('Allowed to Delete', default = True)
 
-class HrApplicantTrainingCourses(models.Model):
+class HrApplicantLicense(models.Model):
     _name = 'website.recruitment.license'
+    _description = 'Applicant License'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -240,6 +248,7 @@ class HrApplicantTrainingCourses(models.Model):
 
 class HrApplicantMedicalHistoryMedInShip(models.Model):
     _name = 'website.recruitment.medical.history'
+    _description = 'Applicant Medical History'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -251,6 +260,7 @@ class HrApplicantMedicalHistoryMedInShip(models.Model):
 
 class HrApplicantMedicalHistoryMedOperation(models.Model):
     _name = 'website.recruitment.medical.operation'
+    _description = 'Applicant Medical Operation'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -264,6 +274,7 @@ class HrApplicantMedicalHistoryMedOperation(models.Model):
 
 class HrApplicantMedicalHistoryMedIllness(models.Model):
     _name = 'website.recruitment.medical.illness'
+    _description = 'Applicant Medical Illness'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -275,6 +286,7 @@ class HrApplicantMedicalHistoryMedIllness(models.Model):
 
 class HrApplicantEmployeeRelative(models.Model):
     _name = 'website.recruitment.employee.relative'
+    _description = 'Applicant Employee Relative'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -286,6 +298,7 @@ class HrApplicantEmployeeRelative(models.Model):
 
 class HrApplicantPrevApplication(models.Model):
     _name = 'website.recruitment.previous.application'
+    _description = 'Applicant Previous Application'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -294,8 +307,9 @@ class HrApplicantPrevApplication(models.Model):
     allow_delete = fields.Boolean('Allowed to Delete', default = True)
 
 
-class HrApplicantPrevApplication(models.Model):
+class HrApplicantPrevEmployment(models.Model):
     _name = 'website.recruitment.previous.employment'
+    _description = 'Applicant Previous Employment'
 
     applicant_id = fields.Many2one('website.recruitment.application')
 
@@ -339,6 +353,7 @@ class HrApplicantPrevApplication(models.Model):
 
 class HrApplicantSocialMedia(models.Model):
     _name = 'website.recruitment.socialmedia'
+    _description = 'Applicant Social Media'
 
     applicant_id = fields.Many2one('website.recruitment.application')
     name = fields.Char('Personal Link', required=True)
