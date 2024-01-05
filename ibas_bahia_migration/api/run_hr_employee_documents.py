@@ -56,7 +56,7 @@ def update_employee_documents():
 					'filename',
 					'file_upload',
 				]
-				employee_doc_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'read', employee, employee_doc_fields)
+				employee_doc_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_documents', 'read', employee_doc, employee_doc_fields)
 
 				print(employee)
 				print(employee_doc_data['document'])
