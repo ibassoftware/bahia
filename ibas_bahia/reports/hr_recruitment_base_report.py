@@ -1908,6 +1908,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
 
 class hrPersonnelActiveOnBoardwithRelativeMenuTreeView(models.Model):
     _name = 'hr.personnel.withrelative.tree'
+    _description = 'Personnel With Relative Tree'
 
     active_id = fields.Many2one('hr.personnel.withrelative.main', 'Employee')
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -1958,6 +1959,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuTreeView(models.Model):
 
 class hrPersonnelActiveOnBoardwithRemarks(models.Model):
     _name = "hr.personnel.withremrks.report"
+    _description = 'Personnel With Remarks Report'
     _auto = False
 
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -2015,6 +2017,7 @@ class hrPersonnelActiveOnBoardwithRemarks(models.Model):
 
 class hrPersonnelActiveonBoardwithRelatives(models.Model):
     _name = "hr.personnel.withrelative.report"
+    _description = 'Personnel Active On Board With Relative Report'
     _auto = False
 
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -2126,6 +2129,7 @@ class hrPersonnelActiveonBoardwithRelatives(models.Model):
 
 class hrCrewlistperDepartment(models.Model):
     _name = 'hr.crewlist.report'
+    _description = 'Crewlist Report'
     _auto = False
 
     # @api.one
@@ -2190,6 +2194,7 @@ class hrCrewlistperDepartment(models.Model):
 
 class hrServiceRecordperDepartment(models.Model):
     _name = "hr.service.record.report"
+    _description = 'Service Record per Department'
     _auto = False
 
     # @api.one
@@ -2370,10 +2375,12 @@ class hrServiceRecordperDepartment(models.Model):
 
 class hrFoclServiceBoard(models.Model):
     _name = "hr.focl.record.report"
+    _description = 'FOCL Record Report'
     _auto = False
 
 class hrSignOn(models.Model):
     _name = 'hr.signonoff.report'
+    _description = 'SignOn Report'
     _auto = False
 
     employee_number = fields.Char("Employee Number", readonly=True)
@@ -2434,6 +2441,7 @@ class hrSignOn(models.Model):
 
 class hrDisembarkationReport(models.Model):
     _name = 'hr.disembarkation.report'
+    _description = 'Disembarkation Report'
     _auto = False
 
     # @api.one
@@ -2540,6 +2548,7 @@ class hrDisembarkationReport(models.Model):
 
 class hrEmbarkationReport(models.Model):
     _name = 'hr.embarkation.report'
+    _description = 'Embarkation Report'
     _auto = False
 
     # @api.one
@@ -2645,6 +2654,7 @@ class hrEmbarkationReport(models.Model):
 
 class hrBeneficiaryList(models.Model):
     _name = 'hr.beneficiary.report'
+    _description = 'Beneficiary Report'
     _auto = False
 
     # @api.one
@@ -2691,6 +2701,7 @@ class hrBeneficiaryList(models.Model):
 
 class hrAllotteeList(models.Model):
     _name = 'hr.allottee.report'
+    _description = 'Alottee Report'
     _auto = False
 
     # @api.one
