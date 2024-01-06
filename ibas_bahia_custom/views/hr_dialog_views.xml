@@ -87,7 +87,9 @@
                                 <field name="medical_clinic"/>
                                 <field name="date_from"/>
                                 <field name="date_to"/>
-                                <field name="document_id"/>
+                                <!-- <field name="document_id"/> -->
+                                <field name="filename" invisible="1"/>
+                                <field name="file_upload" filename="filename"/>
                             </group>
                             <group></group>
                         </group>
