@@ -1437,10 +1437,10 @@ class MedicalClinic(models.Model):
 	_inherit = 'hr.documenttype'
 
 	# [TMP] - Disable for data mig
-	_sql_constraints = [
-		('hr_clinic_name_uniq',
-		'UNIQUE (abbreviation,name)',
-		'Clinic name must be unique!')]
+	# _sql_constraints = [
+	# 	('hr_clinic_name_uniq',
+	# 	'UNIQUE (abbreviation,name)',
+	# 	'Clinic name must be unique!')]
 
 class LengthOfExpiration(models.Model):
 	_name = 'hr.lengthofexpiration'
@@ -1486,10 +1486,10 @@ class VesselCategory(models.Model):
 	vessel_cat_ids = fields.Many2many('hr.ship.department','department_vessel_rel', 'vessel_cat_id','department_id', 'Vessel Category')
 
 	# [TMP] - Disable for data mig
-	_sql_constraints = [
-		('hr_vesselcat_name_uniq',
-		'UNIQUE (category,name)',
-		'Vessel category must be unique!')]
+	# _sql_constraints = [
+	# 	('hr_vesselcat_name_uniq',
+	# 	'UNIQUE (category,name)',
+	# 	'Vessel category must be unique!')]
 
 class Vessel(models.Model):
 	_name = 'hr.vessel'
@@ -1544,10 +1544,10 @@ class ShipDepartment(models.Model):
 	department_ids = fields.Many2many('hr.vesselcategory','department_vessel_rel', 'department_id','vessel_cat_id', 'Vessel Category')
 
 	# [TMP] - Disable for data mig
-	_sql_constraints = [
-		('hr_shipdep_name_uniq',
-		'UNIQUE (ship_dept_code,name,department_ids)',
-		'Ship Department must be unique!')]
+	# _sql_constraints = [
+	# 	('hr_shipdep_name_uniq',
+	# 	'UNIQUE (ship_dept_code,name,department_ids)',
+	# 	'Ship Department must be unique!')]
 
 	@api.onchange('department', 'ship_dept_code')
 	def onchangeName(self):
@@ -1704,7 +1704,7 @@ class ChecklistTemplate(models.Model):
 		return new_record
 
 	# [TMP] - Disable for data mig
-	_sql_constraints = [
-		('hr_chekclist_name_uniq',
-		'UNIQUE (name,name)',
-		'Template name must be unique!')]
+	# _sql_constraints = [
+	# 	('hr_chekclist_name_uniq',
+	# 	'UNIQUE (name,name)',
+	# 	'Template name must be unique!')]
