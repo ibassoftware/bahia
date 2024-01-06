@@ -48,7 +48,7 @@ def update_employee_medical_records():
 			'id',
 			'employee_med_rec_id',
 			'medical_type',
-			'document_id',
+			'file_upload',
 		]
 		employee_doc_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_medical_records', 'read', employee_doc, employee_doc_fields)
 
@@ -59,7 +59,7 @@ def update_employee_medical_records():
 		check_dest_employee_doc = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee_medical_records', 'search', check_args)
 		if check_dest_employee_doc:
 			employee_update_doc = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee_medical_records', 'write', [employee_doc, {
-				'document_id': employee_doc_data['document_id'],
+				'file_upload': employee_doc_data['file_upload'],
 			}])
 
 			if employee_update_doc:
