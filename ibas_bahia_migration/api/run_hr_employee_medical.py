@@ -39,8 +39,8 @@ def update_employee_medical_records():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 53025)]
-	# args = [('document_id', '!=', False)]
+	# args = [('id', '=', 53025)]
+	args = [('file_upload', '!=', False)]
 	get_employee_doc = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee_medical_records', 'search', args)
 	
 	for employee_doc in get_employee_doc:
