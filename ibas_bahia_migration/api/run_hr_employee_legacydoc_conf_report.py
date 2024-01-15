@@ -39,7 +39,7 @@ def update_employee_legacydoc_conf_report():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 50382)]
+	args = [('id', '=', 54067)]
 	# args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
@@ -58,12 +58,22 @@ def update_employee_legacydoc_conf_report():
 			check_args = [('id', '=', employee	)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
-				employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-					'legacy_doc_1': employee_data['legacy_doc_1'],
-				}])
+				# Get binary data
+				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '')
 
-				if employee_insert:
-					count += 1
-					print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+				if filecontent:
+					FILENAME_DIR = "/opt/DataFiles/"
+					file_path = FILENAME_DIR+filecontent
+
+					# file = base64.b64encode(open(file_path, "rb").read())
+					file = open(file_path, "rb").read()
+
+					employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+						'legacy_doc_1': file,
+					}])
+
+					if employee_insert:
+						count += 1
+						print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 
 update_employee_legacydoc_conf_report()
