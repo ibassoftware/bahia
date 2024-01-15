@@ -11,7 +11,8 @@ import time
 
 # ODOO SERVER CONNECTION
 # SOURCE - PROD
-src_URL = 'http://bahiashipping.ph'
+# src_URL = 'http://bahiashipping.ph'
+src_URL = 'http://192.168.88.253:8069'
 src_DB = 'bck_apr_2020'
 src_USER = 'admin'
 src_PASS = 'P@5word'
@@ -67,10 +68,13 @@ def update_employee_legacydoc_conf_report():
 					print(file_path)
 
 					# file = base64.b64encode(open(file_path, "rb").read())
-					file = open(file_path, "rb").read()
+					# file = open(file_path, "r").read()
+					file = open(file_path, "rb")
+					fileout = file.read()
+					file.close()
 
 					employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-						'legacy_doc_1': file,
+						'legacy_doc_1': base64.b64encode(fileout),
 					}])
 
 					if employee_insert:
