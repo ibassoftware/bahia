@@ -39,7 +39,7 @@ def update_employee_legacydoc_conf_report():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 54067)]
+	args = [('id', '=', 50462)]
 	# args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
@@ -59,11 +59,12 @@ def update_employee_legacydoc_conf_report():
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
 				# Get binary data
-				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '')
+				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '').decode('utf-8')
 
 				if filecontent:
 					FILENAME_DIR = "/opt/DataFiles/"
-					file_path = FILENAME_DIR+filecontent
+					file_path = FILENAME_DIR+str(filecontent)
+					print(file_path)
 
 					# file = base64.b64encode(open(file_path, "rb").read())
 					file = open(file_path, "rb").read()
