@@ -32,8 +32,8 @@ dest_uid = dest_common.authenticate(dest_DB, dest_USER, dest_PASS, {})
 dest_models = client.ServerProxy('{}/xmlrpc/2/object'.format(dest_URL))
 
 
-# UPDATE employee legacy documents: Confidential Report
-def update_employee_legacydoc_conf_report():
+# UPDATE employee legacy documents: consent_form
+def update_employee_legacydoc_consent_form():
 	print("MIGRATION OF employee legacy doc ON GOING...")
 	start = time.time()
 
@@ -49,7 +49,7 @@ def update_employee_legacydoc_conf_report():
 			employee_fields = [
 				'id',
 				'name',
-				'legacy_doc_1',
+				'legacy_doc_4',
 			]
 			employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
@@ -60,7 +60,7 @@ def update_employee_legacydoc_conf_report():
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
 				# Get binary data
-				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '').decode('utf-8')
+				filecontent = base64.b64decode(employee_data['legacy_doc_4'] or '').decode('utf-8')
 
 				if filecontent:
 					FILENAME_DIR = "/opt/DataFiles/"
@@ -73,11 +73,11 @@ def update_employee_legacydoc_conf_report():
 
 					if content:
 						employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-							'legacy_doc_1': content.decode(),
+							'legacy_doc_4': content.decode(),
 						}])
 
 						if employee_insert:
 							count += 1
 							print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 
-update_employee_legacydoc_conf_report()
+update_employee_legacydoc_consent_form()
