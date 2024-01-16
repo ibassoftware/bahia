@@ -138,7 +138,7 @@ class HrEmployeeExtend(models.Model):
 					str_employee_with_contract_number += employee_name + '\n'
 				raise UserError("Contract number already exists. \n Employee/s: \n" + str_employee_with_contract_number)
 
-		self.generateFile(vals)
+		# self.generateFile(vals)
 		super(HrEmployeeExtend, self).write(vals)
 		checklistTemplates = self.env['hr.checklist_template'].search([])
 		employeeChecklist = self.env['hr.employee_checklist'].search([])
