@@ -131,12 +131,11 @@
                             <field name="filename2" readonly="1" invisible="1"/>
                             <field name="filename3" readonly="1" invisible="1"/>
                             <field name="filename4" readonly="1" invisible="1"/>
-                            <field name="legacy_doc_1" filename="filename" groups="hr.group_hr_user,   hr.group_hr_manager"/>
+                            <field name="legacy_doc_1" filename="filename" groups="hr.group_hr_user,   hr.group_hr_manager" widget="binary" options="{'accepted_file_extensions': '.pdf,.doc,.docx'}"/>
                             <field name="legacy_doc_2" filename="filename2"/>
                             <field name="legacy_doc_3" filename="filename3"/>
                             <field name="legacy_doc_4" filename="filename4"/>
                             <field name="has_consentform" invisible="1"/>
-                            <field name="legacy_conf_report" filename="filename" groups="hr.group_hr_user,   hr.group_hr_manager"/>
                         </group>
                     </page>
                     <page string="Seafarer's Account" name="seafarer_acct">
