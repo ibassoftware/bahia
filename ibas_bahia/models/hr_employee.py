@@ -383,6 +383,7 @@ class HrEmployeeExtend(models.Model):
 	legacy_doc_1 = fields.Binary('Confidential Reports')
 	legacy_doc_2 = fields.Binary('Personal Data')
 	legacy_doc_3 = fields.Binary('Personal Summary')
+	legacy_conf_report = fields.Binary(string='Confidential Reports')
 	employee_addresses = fields.One2many('hr.employeeaddress','employee_address_id', readonly=False,copy=False)
 	employee_education = fields.One2many('hr.employeducation','employee_education_id', readonly=False,copy=False)
 	employee_families = fields.One2many('hr.employee_families','employee_family_relationship_id', readonly=False,copy=False)
