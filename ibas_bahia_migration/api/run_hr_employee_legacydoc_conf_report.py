@@ -42,8 +42,8 @@ def update_employee_legacydoc_conf_report():
 
 	# args = [('id', '=', 32416)]
 	# args = [('id', '=', 50462)]
-	args = [('id', '=', 50835)]
-	# args = [('name', 'ilike', '')]
+	# args = [('id', '=', 50835)]
+	args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
 	if get_employee:
