@@ -46,19 +46,21 @@ def update_employee_legacydoc_personal_summary():
 
 	if get_employee:
 		for employee in get_employee:
-			employee_fields = [
-				'id',
-				'name',
-				'legacy_doc_3',
-			]
-			employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
-
-			print(employee)
-			print(employee_data['id'])
-			print(employee_data['name'])
-			check_args = [('id', '=', employee	)]
+			check_args = [('id', '=', employee),('is_legacy_doc_mig_3', '=', False)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
+				# Read Data
+				employee_fields = [
+					'id',
+					'name',
+					'legacy_doc_3',
+				]
+				employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
+
+				print(employee)
+				print(employee_data['id'])
+				print(employee_data['name'])
+
 				# Get binary data
 				filecontent = base64.b64decode(employee_data['legacy_doc_3'] or '')
 
@@ -82,6 +84,7 @@ def update_employee_legacydoc_personal_summary():
 						if content:
 							employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
 								'legacy_doc_3': content.decode(),
+								'is_legacy_doc_mig_3': True,
 							}])
 
 							if employee_insert:
@@ -90,6 +93,7 @@ def update_employee_legacydoc_personal_summary():
 					else:
 						employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
 							'legacy_doc_3': employee_data['legacy_doc_3'],
+							'is_legacy_doc_mig_3': True,
 						}])
 
 						if employee_insert:

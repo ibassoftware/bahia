@@ -136,6 +136,10 @@
                             <field name="legacy_doc_3" filename="filename3" widget="binary" options="{'accepted_file_extensions': '.pdf,.doc,.docx'}"/>
                             <field name="legacy_doc_4" filename="filename4" widget="binary" options="{'accepted_file_extensions': '.pdf,.doc,.docx'}"/>
                             <field name="has_consentform" invisible="1"/>
+                            <field name="is_legacy_doc_mig_1" groups="base.group_no_one"/>
+                            <field name="is_legacy_doc_mig_2" groups="base.group_no_one"/>
+                            <field name="is_legacy_doc_mig_3" groups="base.group_no_one"/>
+                            <field name="is_legacy_doc_mig_4" groups="base.group_no_one"/>
                         </group>
                     </page>
                     <page string="Seafarer's Account" name="seafarer_acct">

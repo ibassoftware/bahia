@@ -377,12 +377,17 @@ class HrEmployeeExtend(models.Model):
 	employee_rank = fields.Text('Rank',store = False,compute ='_checkLatestEmployment')
 
 	pcn = fields.Char('PCN')
-	# legacy_doc_1 = fields.Binary('Confidential Reports', filters='*.pdf,*.docx,*.doc')
-	# legacy_doc_2 = fields.Binary('Personal Data', filters='*.pdf,*.docx,*.doc')
-	# legacy_doc_3 = fields.Binary('Personal Summary', filters='*.pdf,*.docx,*.doc')
 	legacy_doc_1 = fields.Binary('Confidential Reports')
 	legacy_doc_2 = fields.Binary('Personal Data')
 	legacy_doc_3 = fields.Binary('Personal Summary')
+	legacy_doc_4 = fields.Binary('Consent Form')
+	has_consentform = fields.Boolean('With Consent Form', default=False)
+
+	is_legacy_doc_mig_1 = fields.Boolean(string="Is Confidential Reports Migrated?")
+	is_legacy_doc_mig_2 = fields.Boolean(string="Is Personal Data Migrated?")
+	is_legacy_doc_mig_3 = fields.Boolean(string="Is Personal Summary Migrated?")
+	is_legacy_doc_mig_4 = fields.Boolean(string="Is Consent Form Migrated?")
+	
 	employee_addresses = fields.One2many('hr.employeeaddress','employee_address_id', readonly=False,copy=False)
 	employee_education = fields.One2many('hr.employeducation','employee_education_id', readonly=False,copy=False)
 	employee_families = fields.One2many('hr.employee_families','employee_family_relationship_id', readonly=False,copy=False)
@@ -397,9 +402,12 @@ class HrEmployeeExtend(models.Model):
 	employee_id = fields.Integer('employee_id', readonly=False,copy=False,store =False, compute='getEmployeeID')
 	documents_status = fields.Boolean('Document status', readonly = True,store = False,compute ='getdocumentStatus')
 	medical_status = fields.Boolean('Medical documents', readonly = True,store = False,compute ='getMedicalStatus')
+	
 	filename = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc1_getFilename')
 	filename2 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc2_getFilename')
 	filename3 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc3_getFilename')
+	filename4 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc4_getFilename')
+
 	description = fields.Text('Description')
 	checklist_count =  fields.Integer('Checklist', store = False, compute = "_checklist_count")
 
@@ -415,11 +423,6 @@ class HrEmployeeExtend(models.Model):
 	employee_e_register_number = fields.Char('E-Registration Number')
 	employee_e_reg_num_username = fields.Char('User Name')
 	employee_e_reg_num_password = fields.Char('Password')
-
-	# legacy_doc_4 = fields.Binary('Consent Form', filters='*.pdf,*.docx,*.doc')
-	legacy_doc_4 = fields.Binary('Consent Form')
-	filename4 = fields.Char('file name', readonly = True,store = False,compute ='legacy_doc4_getFilename')
-	has_consentform = fields.Boolean('With Consent Form', default=False)
 
 	# Missing fields in Version 15
 	message_last_post = fields.Datetime(string='Last Message Date')
