@@ -40,8 +40,10 @@ def update_employee_legacydoc_conf_report():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 50462)]
-	# args = [('name', 'ilike', '')]
+	# args = [('id', '=', 32416)]
+	# args = [('id', '=', 50462)]
+	# args = [('id', '=', 50835)]
+	args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
 	if get_employee:
@@ -56,24 +58,47 @@ def update_employee_legacydoc_conf_report():
 			print(employee)
 			print(employee_data['id'])
 			print(employee_data['name'])
+			# print(employee_data['legacy_doc_1'])
 			check_args = [('id', '=', employee	)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
 				# Get binary data
-				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '').decode('utf-8')
+				filecontent = base64.b64decode(employee_data['legacy_doc_1'] or '')
 
 				if filecontent:
 					FILENAME_DIR = "/opt/DataFiles/"
-					file_path = FILENAME_DIR+str(filecontent)
-					print(file_path)
+					FILENAME = False
 
-					content = False
-					with open(file_path, 'rb') as f:
-						content = base64.b64encode(f.read())
+					try:
+						FILENAME = filecontent.decode('utf-8')
+					except:
+						print("Cannot decode")
 
-					if content:
+					if FILENAME:
+						file_path = FILENAME_DIR+str(FILENAME)
+						print(file_path)
+
+						# Check if file exists
+						isFileExist = os.path.exists(file_path)
+
+						print("File Exists?: " + str(isFileExist))
+						if isFileExist:
+
+							content = False
+							with open(file_path, 'rb') as f:
+								content = base64.b64encode(f.read())
+
+							if content:
+								employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+									'legacy_doc_1': content.decode(),
+								}])
+
+								if employee_insert:
+									count += 1
+									print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+					else:
 						employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-							'legacy_doc_1': content.decode(),
+							'legacy_doc_1': employee_data['legacy_doc_1'],
 						}])
 
 						if employee_insert:

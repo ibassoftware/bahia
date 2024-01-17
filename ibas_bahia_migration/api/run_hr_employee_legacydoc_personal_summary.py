@@ -60,20 +60,36 @@ def update_employee_legacydoc_personal_summary():
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
 				# Get binary data
-				filecontent = base64.b64decode(employee_data['legacy_doc_3'] or '').decode('utf-8')
+				filecontent = base64.b64decode(employee_data['legacy_doc_3'] or '')
 
 				if filecontent:
 					FILENAME_DIR = "/opt/DataFiles/"
-					file_path = FILENAME_DIR+str(filecontent)
-					print(file_path)
+					FILENAME = False
 
-					content = False
-					with open(file_path, 'rb') as f:
-						content = base64.b64encode(f.read())
+					try:
+						FILENAME = filecontent.decode('utf-8')
+					except:
+						print("Cannot decode")
 
-					if content:
+					if FILENAME:
+						file_path = FILENAME_DIR+str(FILENAME)
+						print(file_path)
+
+						content = False
+						with open(file_path, 'rb') as f:
+							content = base64.b64encode(f.read())
+
+						if content:
+							employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+								'legacy_doc_3': content.decode(),
+							}])
+
+							if employee_insert:
+								count += 1
+								print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+					else:
 						employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-							'legacy_doc_3': content.decode(),
+							'legacy_doc_3': employee_data['legacy_doc_3'],
 						}])
 
 						if employee_insert:
