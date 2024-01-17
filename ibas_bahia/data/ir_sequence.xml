@@ -12,7 +12,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">860</field>
+            <field name="number_next">2295</field>
             <field name="implementation">standard</field>
         </record>
 
@@ -28,7 +28,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">1</field>
+            <field name="number_next">62</field>
             <field name="implementation">standard</field>
         </record>
 
@@ -39,7 +39,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">1</field>
+            <field name="number_next">29559</field>
             <field name="padding">5</field>
             <field name="implementation">standard</field>
         </record>
