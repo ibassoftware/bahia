@@ -1450,10 +1450,10 @@ class LengthOfExpiration(models.Model):
 	days = fields.Integer('Days before Expiration')
 
 	# [TMP] - Disable for data mig
-	_sql_constraints = [
-		('hr_lengthofexp_name_uniq',
-		'UNIQUE (abbreviation,name)',
-		'Length of expiration must be unique!')]
+	# _sql_constraints = [
+	# 	('hr_lengthofexp_name_uniq',
+	# 	'UNIQUE (abbreviation,name)',
+	# 	'Length of expiration must be unique!')]
 
 class PortInformation(models.Model):
 	_name = 'hr.port'
