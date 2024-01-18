@@ -60,7 +60,6 @@ def update_employee_legacydoc_conf_report():
 				]
 				employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
-				print(employee)
 				print(employee_data['id'])
 				print(employee_data['name'])
 
