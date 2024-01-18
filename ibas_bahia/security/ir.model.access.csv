@@ -67,7 +67,7 @@ access_hr_employee_checklist_person,hr.employee_checklist.person,model_hr_employ
 access_hr_abs_parameter_person,hr.abs.parameter.person,model_hr_abs_parameter,base.group_portal,0,0,0,0
 access_hr_addresstype_person,hr.addresstype.person,model_hr_addresstype,base.group_portal,0,0,0,0
 access_hr_educationtype_person,hr.educationtype.person,model_hr_educationtype,base.group_portal,0,0,0,0
-access_hr_documenttype_person,hr.documenttype.person,model_hr_documenttype,base.group_portal,0,0,0,0
+access_hr_documenttype_person,hr.documenttype.person,model_hr_documenttype,base.group_portal,1,0,0,0
 access_hr_familyrelations_person,hr.familyrelations.person,model_hr_familyrelations,base.group_portal,0,0,0,0
 access_hr_medicalrecord_person,hr.medicalrecord.person,model_hr_medicalrecord,base.group_portal,0,0,0,0
 access_hr_licensetype_person,hr.licensetype.person,model_hr_licensetype,base.group_portal,0,0,0,0
