@@ -48,6 +48,7 @@ def update_employee_legacydoc_conf_report():
 
 	if get_employee:
 		for employee in get_employee:
+			print(employee)
 			check_args = [('id', '=', employee),('is_legacy_doc_mig_1', '=', False)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
