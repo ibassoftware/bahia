@@ -1646,8 +1646,8 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
     sorting_type = fields.Selection(SORTING_TYPE, 'Sorted Type', default= SORTING_TYPE[0][0])  
     is_with_remarks = fields.Boolean('With Remarks', default = False) 
 
-    def genReport(self, cr, uid, ids, context=None):
-        return self.pool['report'].get_action(cr, uid, ids, 'bahia_personnel_management.report_personnel_active_on_board_w_relative', context=context)
+    def genReport(self):
+        return self.env.ref('ibas_bahia.report_personnel_active_on_board_w_relative').report_action(self)
 
     @api.model
     def createReport(self, id_main  = 0):

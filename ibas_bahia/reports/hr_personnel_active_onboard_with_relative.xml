@@ -7,31 +7,27 @@
             <field name="model">hr.personnel.withrelative.menu</field>
             <field name="arch" type="xml">
                 <form string="Crewlist Active on Board with Relative Report" class="oe_form_configuration">
-                    <separator string="Crewlist Active on Board with Relative Report"/>
-                    <group>
-                        <div>
-                            <div name="query1">
-                                <label for="vessel" string="Vessel"/>
-                                <field name="vessel"/>
-                                <label for="date_search" string="Date"/>
+                    <sheet>
+                        <group string="Crewlist Active on Board with Relative Report">
+                            <group>
+                                <field name="vessel" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                                <field name="employment_status" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
                                 <field name="date_search"/>
-                                <label for="employment_status" string="Employment Status"/>
-                                <field name="employment_status"/>                                   
-                            </div>
-                            <label for="sort_by" string="Sorted by"/>
-                            <div>
+                                <label for="sort_by" string="Sorted by"/>
                                 <div>
-                                    <field name="sort_by" class="oe_inline" />      
-                                    <field name="sorting_type" class="oe_inline"/>                                        
-                                </div>
-                            </div>                            
-                        </div>                      
-                    </group>
-                    <group>
-                        <div>
-                            <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
-                        </div>                          
-                    </group>
+                                    <div>
+                                        <field name="sort_by" class="oe_inline" />      
+                                        <field name="sorting_type" class="oe_inline"/>
+                                    </div>
+                                </div>                            
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
+                            </group>                          
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
