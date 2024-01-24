@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!--
-        <report
-        id="personnel_active_on_board_w_remarks"
-        model="hr.personnel.withrmks.main"
-        string="Personnel Active on Board with Remarks"
-        report_type="qweb-pdf"
-        name="bahia_personnel_management.report_personnel_active_on_board_w_remarks"
-        file="bahia_personnel_management.report_personnel_active_on_board_w_remarks"
-        attachment_use="True"
-        attachment="object.name+'.pdf'"/>
-        -->
 
         <report
             id="report_personnel_active_on_board_with_remarks"
             model="hr.personnel.withrmks.main"
             string="Personnel Active on Board with Remarks"
             report_type="qweb-pdf"
-            name="bahia_personnel_management.report_personnel_active_on_board_w_remarks_document"
-            file="bahia_personnel_management.report_personnel_active_on_board_w_remarks_document"/>
+            name="ibas_bahia.report_personnel_active_on_board_w_remarks_document"
+            file="ibas_bahia.report_personnel_active_on_board_w_remarks_document"/>
 
 
         <template id="report_personnel_active_on_board_w_remarks_document">
