@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
         <!--
         <report
@@ -14,12 +14,12 @@
         -->
 
         <report
-        id="report_personnel_active_on_board_w_remarks_1"
-        model="hr.personnel.withrmks.main"
-        string="Personnel Active on Board with Remarks"
-        report_type="qweb-pdf"
-        name="bahia_personnel_management.report_personnel_active_on_board_w_remarks"
-        file="bahia_personnel_management.report_personnel_active_on_board_w_remarks"/>
+            id="report_personnel_active_on_board_w_remarks"
+            model="hr.personnel.withrmks.main"
+            string="Personnel Active on Board with Remarks"
+            report_type="qweb-pdf"
+            name="bahia_personnel_management.report_personnel_active_on_board_w_remarks"
+            file="bahia_personnel_management.report_personnel_active_on_board_w_remarks"/>
 
 
         <template id="report_personnel_active_on_board_w_remarks">
@@ -108,4 +108,4 @@
         </template>
 -->
     </data>
-</openerp>
+</odoo>
