@@ -14,7 +14,7 @@
         -->
 
         <report
-            id="report_personnel_active_on_board_w_remarks"
+            id="report_personnel_active_on_board_with_remarks"
             model="hr.personnel.withrmks.main"
             string="Personnel Active on Board with Remarks"
             report_type="qweb-pdf"
