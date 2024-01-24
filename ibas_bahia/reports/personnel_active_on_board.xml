@@ -6,12 +6,20 @@
             <field name="name">Personnel Active on Board with Remarks</field>
             <field name="model">hr.personnel.withrmks.main</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">ibas_bahia.report_personnel_active_on_board_w_remarks_document</field>
-            <field name="report_file">ibas_bahia.report_personnel_active_on_board_w_remarks_document</field>
+            <field name="report_name">ibas_bahia.report_personnel_active_on_board_w_remarks</field>
+            <field name="report_file">ibas_bahia.report_personnel_active_on_board_w_remarks</field>
             <field name="print_report_name">('Personnel Active on Board with Remarks')</field>
             <field name="binding_model_id" ref="model_hr_personnel_withrmks_main"/>
             <field name="binding_type">report</field>
         </record>
+
+        <template id="report_personnel_active_on_board_w_remarks">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="ibas_bahia.report_personnel_active_on_board_w_remarks_document" />
+                </t>
+            </t>
+        </template>
 
         <template id="report_personnel_active_on_board_w_remarks_document">
             <t t-set="o" t-value="doc"/>
