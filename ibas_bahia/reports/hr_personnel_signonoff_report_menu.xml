@@ -24,12 +24,12 @@
 				                <field name="is_with_remarks"/>                    
                             </group>
                         </group>
-                    </sheet>
-                    <group>
                         <group>
-                            <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
-                        </group>                          
-                    </group>
+                            <group>
+                                <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
+                            </group>                          
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
