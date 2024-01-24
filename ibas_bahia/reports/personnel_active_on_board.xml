@@ -2,14 +2,16 @@
 <odoo>
     <data>
 
-        <report
-            id="report_personnel_active_on_board_with_remarks"
-            model="hr.personnel.withrmks.main"
-            string="Personnel Active on Board with Remarks"
-            report_type="qweb-pdf"
-            name="ibas_bahia.report_personnel_active_on_board_w_remarks_document"
-            file="ibas_bahia.report_personnel_active_on_board_w_remarks_document"/>
-
+        <record id="action_report_personnel_active_on_board_with_remarks" model="ir.actions.report">
+            <field name="name">Personnel Active on Board with Remarks</field>
+            <field name="model">hr.personnel.withrmks.main</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ibas_bahia.report_personnel_active_on_board_w_remarks_document</field>
+            <field name="report_file">ibas_bahia.report_personnel_active_on_board_w_remarks_document</field>
+            <field name="print_report_name">('Personnel Active on Board with Remarks')</field>
+            <field name="binding_model_id" ref="model_hr_personnel_withrmks_main"/>
+            <field name="binding_type">report</field>
+        </record>
 
         <template id="report_personnel_active_on_board_w_remarks_document">
             <t t-call="report.html_container">
