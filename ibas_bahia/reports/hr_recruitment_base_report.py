@@ -1930,7 +1930,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuTreeView(models.Model):
     is_beneficiary = fields.Boolean("Beneficiary", readonly=True)
     is_allottee = fields.Boolean("Alottee", readonly=True)
     employee_id = fields.Many2one("hr.employee", readonly=True, string="Employee ID")
-    total_years_of_service = fields.Char('Service Length',store = False,compute ='getYearMonthDay')
+    total_years_of_service = fields.Char('Service Length', store=False, compute='getYearMonthDay')
     employee_contractNumber =  fields.Char("Employee Number", readonly=True, compute ='getContractNumber')
 
     def getContractNumber(self):
