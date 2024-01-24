@@ -502,7 +502,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
     #def genReport(self):
     def genReport(self):
         # return self.pool['report'].get_action('bahia_personnel_management.report_personnel_active_on_board_w_remarks', context=context)
-        return self.env.ref['ibas_bahia.report_personnel_active_on_board_w_remarks'].report_action(self, context=context)
+        return self.env.ref['ibas_bahia.report_personnel_active_on_board_with_remarks'].report_action(self, context=context)
 
     @api.model
     def createReport(self, id_main  = 0):
