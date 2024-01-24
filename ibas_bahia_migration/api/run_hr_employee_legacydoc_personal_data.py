@@ -40,12 +40,13 @@ def update_employee_legacydoc_personal_data():
 	count = 0
 	count_update = 0
 
-	args = [('id', '=', 50462)]
-	# args = [('name', 'ilike', '')]
+	# args = [('id', '=', 50462)]
+	args = [('name', 'ilike', '')]
 	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
 
 	if get_employee:
 		for employee in get_employee:
+			print(employee)
 			check_args = [('id', '=', employee),('is_legacy_doc_mig_2', '=', False)]
 			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
 			if check_dest_employee:
@@ -57,7 +58,6 @@ def update_employee_legacydoc_personal_data():
 				]
 				employee_data = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'read', employee, employee_fields)
 
-				print(employee)
 				print(employee_data['id'])
 				print(employee_data['name'])
 
@@ -77,19 +77,25 @@ def update_employee_legacydoc_personal_data():
 						file_path = FILENAME_DIR+str(FILENAME)
 						print(file_path)
 
-						content = False
-						with open(file_path, 'rb') as f:
-							content = base64.b64encode(f.read())
+						# Check if file exists
+						isFileExist = os.path.exists(file_path)
 
-						if content:
-							employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
-								'legacy_doc_2': content.decode(),
-								'is_legacy_doc_mig_2': True,
-							}])
+						print("File Exists?: " + str(isFileExist))
+						if isFileExist:
+							
+							content = False
+							with open(file_path, 'rb') as f:
+								content = base64.b64encode(f.read())
 
-							if employee_insert:
-								count += 1
-								print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
+							if content:
+								employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
+									'legacy_doc_2': content.decode(),
+									'is_legacy_doc_mig_2': True,
+								}])
+
+								if employee_insert:
+									count += 1
+									print("[" + str(count) + "]" + "UPDATED employee: " + str(employee))
 					else:
 						employee_insert = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'write', [employee, {
 							'legacy_doc_2': employee_data['legacy_doc_2'],
