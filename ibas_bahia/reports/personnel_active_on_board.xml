@@ -18,11 +18,11 @@
             model="hr.personnel.withrmks.main"
             string="Personnel Active on Board with Remarks"
             report_type="qweb-pdf"
-            name="bahia_personnel_management.report_personnel_active_on_board_w_remarks"
-            file="bahia_personnel_management.report_personnel_active_on_board_w_remarks"/>
+            name="bahia_personnel_management.report_personnel_active_on_board_w_remarks_document"
+            file="bahia_personnel_management.report_personnel_active_on_board_w_remarks_document"/>
 
 
-        <template id="report_personnel_active_on_board_w_remarks">
+        <template id="report_personnel_active_on_board_w_remarks_document">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="report.external_layout">
