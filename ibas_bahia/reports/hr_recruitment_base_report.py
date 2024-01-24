@@ -1330,11 +1330,10 @@ class hrEmbarkationMenuTreeView(models.Model):
     employee_id = fields.Integer('Employee ID',readonly=True)
     employee_contractNumber =  fields.Char("Employee Number", readonly=True, compute ='getContractNumber')
 
-
-    # # @api.one
     def getContractNumber(self):
-        model_employee =self.env['hr.employee'].search([('id', '=', self.employee_id)])
-        self.employee_contractNumber = model_employee.employee_contract_number  
+        for record in self:
+            model_employee = self.env['hr.employee'].search([('id', '=', record.employee_id)])
+            record.employee_contractNumber = model_employee.employee_contract_number  
 
     # # @api.one
     def genReport(self):
