@@ -499,7 +499,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
         return intTotal
 
     def genReport(self):
-        return self.env.ref['ibas_bahia.action_report_personnel_active_on_board_with_remarks'].report_action(self)
+        return self.env.ref('ibas_bahia.action_report_personnel_active_on_board_with_remarks').report_action(self)
 
     @api.model
     def createReport(self, id_main  = 0):
