@@ -1647,7 +1647,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
     is_with_remarks = fields.Boolean('With Remarks', default = False) 
 
     def genReport(self):
-        return self.env.ref('ibas_bahia.report_personnel_active_on_board_w_relative').report_action(self)
+        return self.env.ref('ibas_bahia.action_report_personnel_active_on_board_w_relative').report_action(self)
 
     @api.model
     def createReport(self, id_main  = 0):
