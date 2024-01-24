@@ -43,15 +43,16 @@ def update_employee_legacydoc_conf_report():
 	# args = [('id', '=', 32416)]
 	# args = [('id', '=', 50462)]
 	# args = [('id', '=', 50835)]
-	args = [('name', 'ilike', '')]
-	get_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', args)
+	# args = [('name', 'ilike', '')]
+	args = [('is_legacy_doc_mig_1', '=', False)]
+	get_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', args)
 
 	if get_employee:
 		for employee in get_employee:
 			print(employee)
-			check_args = [('id', '=', employee),('is_legacy_doc_mig_1', '=', False)]
-			check_dest_employee = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', check_args)
-			if check_dest_employee:
+			check_args = [('id', '=', employee)]
+			check_src_employee = src_models.execute(src_DB, src_uid, src_PASS, 'hr.employee', 'search', check_args)
+			if check_src_employee:
 				# Read Data
 				employee_fields = [
 					'id',
