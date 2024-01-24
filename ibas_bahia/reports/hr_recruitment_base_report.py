@@ -727,10 +727,10 @@ class hrDisembarkationMenuMainView(models.Model):
     _description = 'Disembarkation Report Main View'
 
     def _getExcelFilename(self):
-            self.excel_filename = 'Disembarkation.xls'     
+        self.excel_filename = 'Disembarkation.xls'     
 
     def _getPDFfilename(self):
-            self.pdf_filename = 'Disembarkation.pdf'   
+        self.pdf_filename = 'Disembarkation.pdf'   
 
     name = fields.Char('Name')
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
@@ -989,14 +989,22 @@ class hrDisembarkationMenuTreeView(models.Model):
 
     def getPassportNumber(self):
         for record in self:
+            passport = ""
+            passport_date_issued = False
+            passport_date_expiry = False
+
             date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
             query = SQL_QUERY %{'my_date': date, 'employee_id': record.employee_id, 'my_abbrv': PASSPORT_CODE}
             self.env.cr.execute(query)
             passportInfos = self.env.cr.fetchall()
             if len(passportInfos) > 0:
-                record.passport = passportInfos[0][0]
-                record.passport_date_issued = passportInfos[0][1]
-                record.passport_date_expiry = passportInfos[0][2]
+                passport = passportInfos[0][0]
+                passport_date_issued = passportInfos[0][1]
+                passport_date_expiry = passportInfos[0][2]
+
+            record.passport = passport
+            record.passport_date_issued = passport_date_issued
+            record.passport_date_expiry = passport_date_expiry
 
     # # @api.one
     def getSsribNumber(self):
