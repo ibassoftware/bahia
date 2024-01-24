@@ -1058,10 +1058,10 @@ class hrEmbarkationMenuMainView(models.Model):
     _description = 'Embarkation Report Main'
 
     def _getExcelFilename(self):
-            self.excel_filename = 'Embarkation.xls'     
+        self.excel_filename = 'Embarkation.xls'     
 
     def _getPDFfilename(self):
-            self.pdf_filename = 'Embarkation.pdf'   
+        self.pdf_filename = 'Embarkation.pdf'   
 
     name = fields.Char('Name')
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
@@ -1377,8 +1377,8 @@ class hrSignOnoffMenuMainView(models.Model):
     detail_id = fields.One2many('hr.signonoff.report.tree','active_id', readonly=False,copy=False)
     is_with_remarks = fields.Boolean('With Remarks', default = False)
 
-    def genReport(self, cr, uid, ids, context=None):
-        return self.pool['report'].get_action(cr, uid, ids, 'bahia_personnel_management.report_signonoff', context=context)
+    def genReport(self):
+        return self.env.ref('ibas_bahia.action_report_signonoff').report_action(self)
 
     @api.model
     def createReport(self, id_main  = 0):
