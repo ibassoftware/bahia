@@ -1937,14 +1937,13 @@ class hrPersonnelActiveOnBoardwithRelativeMenuTreeView(models.Model):
     total_years_of_service = fields.Char('Service Length',store = False,compute ='getYearMonthDay')
     employee_contractNumber =  fields.Char("Employee Number", readonly=True, compute ='getContractNumber')
 
-
-    # # @api.one
     def getContractNumber(self):
-        self.employee_contractNumber = self.employee_id.employee_contract_number  
+        for record in self:
+            record.employee_contractNumber = record.employee_id.employee_contract_number  
 
-    # # @api.one
     def getYearMonthDay(self):
-        self.total_years_of_service = self.employee_id.total_years_of_service
+        for record in self:
+            record.total_years_of_service = record.employee_id.total_years_of_service
 
         #model_employee= self.env['hr.employee'].search([('employee_number', '=', self.employee_number)])
         #if model_employee:
