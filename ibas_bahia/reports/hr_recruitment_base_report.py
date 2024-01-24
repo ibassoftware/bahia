@@ -987,16 +987,16 @@ class hrDisembarkationMenuTreeView(models.Model):
     _name = 'hr.disembarkation.tree'
     _description = 'Disembarkation Report Tree View'
 
-    # # @api.one
     def getPassportNumber(self):
-        date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
-        query = SQL_QUERY %{'my_date': date, 'employee_id': self.employee_id, 'my_abbrv': PASSPORT_CODE}
-        self.env.cr.execute(query)
-        passportInfos = self.env.cr.fetchall()
-        if len(passportInfos) > 0:
-            self.passport = passportInfos[0][0]
-            self.passport_date_issued = passportInfos[0][1]
-            self.passport_date_expiry = passportInfos[0][2]
+        for record in self:
+            date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
+            query = SQL_QUERY %{'my_date': date, 'employee_id': record.employee_id, 'my_abbrv': PASSPORT_CODE}
+            self.env.cr.execute(query)
+            passportInfos = self.env.cr.fetchall()
+            if len(passportInfos) > 0:
+                record.passport = passportInfos[0][0]
+                record.passport_date_issued = passportInfos[0][1]
+                record.passport_date_expiry = passportInfos[0][2]
 
     # # @api.one
     def getSsribNumber(self):
