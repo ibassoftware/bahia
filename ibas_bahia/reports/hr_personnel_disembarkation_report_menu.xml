@@ -7,20 +7,10 @@
             <field name="model">hr.disembarkation.menu</field>
             <field name="arch" type="xml">
                 <form string="Disembarkation Report" class="oe_form_configuration">
-                    <!--
-                    <div>
-                        <p>
-                            <label string="Disembarkation Report"/>
-                        </p>
-                    </div>
-                -->
-                    <separator string="Disembarkation Report"/>
-                    <group>
-                        <div>
-                            <div name="query1">
-                                <label for="vessel" string="Vessel"/>
+                    <sheet>
+                        <group string="Disembarkation Report">
+                            <group>
                                 <field name="vessel"/>
-                                <label for="date_search" string="Date"/>
                                 <field name="date_search"/>
                                 <label for="sort_by" string="Sorted by"/>
                                 <div>
@@ -29,14 +19,16 @@
                                         <field name="sorting_type" class="oe_inline"/>                                        
                                     </div>
                                 </div>                                
-                            </div>
-                        </div>                      
-                    </group>
-                    <group>
-                        <div>
-                            <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>                            
-                        </div>                          
-                    </group>
+                            </group>  
+                            <group>       
+                            </group>       
+                        </group>
+                        <group>
+                            <group>
+                                <button string="Generate" type="object" name="GenerateReport" class="oe_highlight"/>
+                            </group>                         
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
