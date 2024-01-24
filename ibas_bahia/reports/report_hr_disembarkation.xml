@@ -20,7 +20,6 @@
             </t>
         </template>
 
-
         <template id="report_disembarkation_document">
             <t t-set="o" t-value="doc"/>
             <t t-call="web.external_layout">

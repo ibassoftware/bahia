@@ -16,7 +16,7 @@
                                 <div>
                                     <div>
                                         <field name="sort_by" class="oe_inline"/>      
-                                        <field name="sorting_type" class="oe_inline"/>                                        
+                                        <field name="sorting_type" class="oe_inline"/>
                                     </div>
                                 </div>                                
                             </group>  
