@@ -16,7 +16,7 @@
         <template id="report_personnel_active_on_board_w_remarks_document">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="report.external_layout">
+                    <t t-call="web.external_layout">
                         <div class ="page">
                             <div>
                                 <h1> Crewlist Active on Board with Remarks</h1>
