@@ -1075,8 +1075,8 @@ class hrEmbarkationMenuMainView(models.Model):
     sorting_type = fields.Selection(SORTING_TYPE, 'Sorted Type', default= SORTING_TYPE[0][0])    
 
 
-    def genReport(self, cr, uid, ids, context=None):
-        return self.pool['report'].get_action(cr, uid, ids, 'bahia_personnel_management.report_embarkation', context=context)
+    def genReport(self):
+        return self.env.ref('ibas_bahia.action_report_embarkation').report_action(self)
 
     @api.model
     def createReport(self, id_main  = 0):
