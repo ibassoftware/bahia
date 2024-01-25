@@ -28,7 +28,7 @@
                                                 <img id="applicant_img" t-att-src="'data:image/png;base64,%s' % image_1920" alt="Applicant" width="200" height="200" style="margin-left:707px" /> <br/>
                                             </t>
 
-                                            <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:707px" required="required" onchange="readUrl(this);"/>
+                                            <input type="file" class="o_forum_file_upload" name="image_1920" accept="image/*" style="margin-left:707px" onchange="readUrl(this);"/>
                                         </div>
 
                                         <t t-if="not job">
