@@ -205,7 +205,7 @@
 
                         <page string ="Document" name="document_page">
                             <field name="employee_documents" string ="">
-                                <tree colors = "red:expired=='EXP'">
+                                <tree decoration-danger="expired == 'EXP'">
                                     <field name="document"/>
                                     <field name="document_number"/>
                                     <field name="date_issued"/>
@@ -221,7 +221,7 @@
                         </page>     
                         <page string ="Medical" name="medical_page">    
                             <field name="emloyee_medical" string ="">
-                                <tree colors = "red:expired=='EXP'">
+                                <tree decoration-danger="expired == 'EXP'">
                                     <field name="medical_type"/>
                                     <field name="medical_clinic"/>
                                     <field name="date_from"/>
