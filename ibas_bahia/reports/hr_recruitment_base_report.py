@@ -327,10 +327,8 @@ class hrsignonoffReportMenu(models.Model):
 
 
     def GenerateReport(self):
-
         context = {}
         employee = self.env["hr.signonoff.report.menu"].browse(self.id)  
-
 
         partial_id = self.env["hr.signonoff.report.main"].create({
             # 'attendance_detail_id': 1,
@@ -1317,7 +1315,7 @@ class hrEmbarkationMenuTreeView(models.Model):
             ssrib = ""
             ssrib_date_issued = False
             ssrib_date_expiry = False
-            
+
             date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
             query = SQL_QUERY %{'my_date': date, 'employee_id': record.employee_id, 'my_abbrv': SSRIB_CODE}
             self.env.cr.execute(query)
