@@ -73,7 +73,7 @@ class BahiasApplicationForm(http.Controller):
 	@http.route('/jobs/apply/execute', type='http', auth='public', website=True)
 	def apply_execute(self, **kw):
 		_logger.info("Apply execute")
-		
+
 		Applicant = request.env['hr.applicant']
 
 		# Validation: Check for Name, Birthdate and Email Address
@@ -81,10 +81,7 @@ class BahiasApplicationForm(http.Controller):
 		applicant_date_of_birth = kw.get('date_of_birth')
 		applicant_email_from = kw.get('email_from')
 
-		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth)])
-		
-		if applicant_email_from:
-			duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
+		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
 		
 		if duplicate_applicant_id:
 			return request.render('ibas_bahia_website.application_duplicate', {})
