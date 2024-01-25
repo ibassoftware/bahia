@@ -54,22 +54,26 @@ class BahiasApplicationForm(http.Controller):
 		})
 
 	@http.route('/jobs/apply', type="http", auth="public", website=True)
-	def jobs_apply(self, **kw):
+	def jobs_start_apply(self, **kw):
 		job_rec = request.env['hr.job'].sudo().search([])
 		nationality_rec = request.env['res.country'].sudo().search([])
 		familyrelation_rec = request.env['hr.familyrelations'].sudo().search([])
 		level_rec = request.env['hr.recruitment.degree'].sudo().search([])
+		documenttype_rec = request.env['hr.documenttype'].sudo().search([])
 		social_media_rec = request.env['hr.socialmedia.config'].sudo().search([])
 		return http.request.render('ibas_bahia_website.apply_template', {
 			'job_rec': job_rec,
 			'nationality_rec': nationality_rec,
 			'familyrelation_rec': familyrelation_rec,
 			'level_rec': level_rec,
+			'documenttype_rec': documenttype_rec,
 			'social_media_rec': social_media_rec,
 		})
 
 	@http.route('/jobs/apply/execute', type='http', auth='public', website=True)
 	def apply_execute(self, **kw):
+		_logger.info("Apply execute")
+		
 		Applicant = request.env['hr.applicant']
 
 		# Validation: Check for Name, Birthdate and Email Address
