@@ -8,15 +8,9 @@
     'depends': ['hr', 'mail', 'resource', 'board', 'hr_recruitment', 'survey'],
     'data': [
 	         #'views/hr_employee_checklist_documents.xml',
-	         #'views/hr_recruitment_view.xml',
              #'views/hr_recruitment_seabased_menu.xml',
              #'views/hr_recruitment_dialog.xml',
              #'reports/hr_recruitment_base_report.xml',##
-             #'reports/hr_personnel_report_menu.xml',
-             #'reports/hr_personnel_disembarkation_report_menu.xml',
-             #'reports/hr_personnel_embarkation_report_menu.xml',
-             #'reports/hr_personnel_signonoff_report_menu.xml',
-             #'reports/hr_personnel_active_onboard_with_relative.xml',
              #'views/hr_recruitment_degree.xml',
 
              'security/security.xml',
