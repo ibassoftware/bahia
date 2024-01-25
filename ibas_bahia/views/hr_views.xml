@@ -6,6 +6,13 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='image_1920']" position="attributes">
+                    <attribute name="class"></attribute>
+                    <attribute name="options"></attribute>
+                    <attribute name="height">250</attribute>
+                    <attribute name="width">250</attribute>
+                </xpath>
+
                 <xpath expr="//field[@name='active']" position="replace"/>
                         
                 <xpath expr="//field[@name='user_id']" position="before">
