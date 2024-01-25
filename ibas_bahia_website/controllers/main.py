@@ -95,54 +95,54 @@ class BahiasApplicationForm(http.Controller):
 				image_value = base64.b64encode(image_data)
 				kw['image_1920'] = image_value.decode('ascii')
 
-			# Applicant Family
-			applicant_families = kw.get('applicant_families')
-			if applicant_families:
-				family_data = json.loads(applicant_families)
-				family_val = [(0, 0, family_line) for family_line in family_data]
-				kw['applicant_families'] = family_val
+			# # Applicant Family
+			# applicant_families = kw.get('applicant_families')
+			# if applicant_families:
+			# 	family_data = json.loads(applicant_families)
+			# 	family_val = [(0, 0, family_line) for family_line in family_data]
+			# 	kw['applicant_families'] = family_val
 
-			# Applicant Education
-			applicant_education = kw.get('applicant_education')
-			if applicant_education:
-				education_data = json.loads(applicant_education)
-				education_val = [(0, 0, education_line) for education_line in education_data]
-				kw['applicant_education'] = education_val
+			# # Applicant Education
+			# applicant_education = kw.get('applicant_education')
+			# if applicant_education:
+			# 	education_data = json.loads(applicant_education)
+			# 	education_val = [(0, 0, education_line) for education_line in education_data]
+			# 	kw['applicant_education'] = education_val
 
-			# Applicant Record Books
-			applicant_document_ids = kw.get('applicant_document_ids')
-			if applicant_document_ids:
-				record_books_data = json.loads(applicant_document_ids)
-				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
-				kw['applicant_document_ids'] = record_books_val
+			# # Applicant Record Books
+			# applicant_document_ids = kw.get('applicant_document_ids')
+			# if applicant_document_ids:
+			# 	record_books_data = json.loads(applicant_document_ids)
+			# 	record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
+			# 	kw['applicant_document_ids'] = record_books_val
 
-			# References - Employed Relatives
-			applicant_employed_relatives_ids = kw.get('applicant_employed_relatives_ids')
-			if applicant_employed_relatives_ids:
-				employed_relatives_data = json.loads(applicant_employed_relatives_ids)
-				employed_relatives_val = [(0, 0, employed_relatives_line) for employed_relatives_line in employed_relatives_data]
-				kw['applicant_employed_relatives_ids'] = employed_relatives_val
+			# # References - Employed Relatives
+			# applicant_employed_relatives_ids = kw.get('applicant_employed_relatives_ids')
+			# if applicant_employed_relatives_ids:
+			# 	employed_relatives_data = json.loads(applicant_employed_relatives_ids)
+			# 	employed_relatives_val = [(0, 0, employed_relatives_line) for employed_relatives_line in employed_relatives_data]
+			# 	kw['applicant_employed_relatives_ids'] = employed_relatives_val
 
-			# References - Previouse Application
-			applicant_previous_application_ids = kw.get('applicant_previous_application_ids')
-			if applicant_previous_application_ids:
-				applicant_previous_application_data = json.loads(applicant_previous_application_ids)
-				applicant_previous_application_val = [(0, 0, applicant_previous_application_line) for applicant_previous_application_line in applicant_previous_application_data]
-				kw['applicant_previous_application_ids'] = applicant_previous_application_val
+			# # References - Previouse Application
+			# applicant_previous_application_ids = kw.get('applicant_previous_application_ids')
+			# if applicant_previous_application_ids:
+			# 	applicant_previous_application_data = json.loads(applicant_previous_application_ids)
+			# 	applicant_previous_application_val = [(0, 0, applicant_previous_application_line) for applicant_previous_application_line in applicant_previous_application_data]
+			# 	kw['applicant_previous_application_ids'] = applicant_previous_application_val
 
-			# References - Previouse Employment
-			applicant_previous_employment_ids = kw.get('applicant_previous_employment_ids')
-			if applicant_previous_employment_ids:
-				applicant_previous_employment_data = json.loads(applicant_previous_employment_ids)
-				applicant_previous_employment_val = [(0, 0, applicant_previous_employment_line) for applicant_previous_employment_line in applicant_previous_employment_data]
-				kw['applicant_previous_employment_ids'] = applicant_previous_employment_val
+			# # References - Previouse Employment
+			# applicant_previous_employment_ids = kw.get('applicant_previous_employment_ids')
+			# if applicant_previous_employment_ids:
+			# 	applicant_previous_employment_data = json.loads(applicant_previous_employment_ids)
+			# 	applicant_previous_employment_val = [(0, 0, applicant_previous_employment_line) for applicant_previous_employment_line in applicant_previous_employment_data]
+			# 	kw['applicant_previous_employment_ids'] = applicant_previous_employment_val
 
-			# Applicant Social Media 
-			applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
-			if applicant_socialmedia_ids:
-				socialmedia_data = json.loads(kw['applicant_socialmedia_ids'])
-				socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
-				kw['applicant_socialmedia_ids'] = socialmedia_val
+			# # Applicant Social Media 
+			# applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
+			# if applicant_socialmedia_ids:
+			# 	socialmedia_data = json.loads(kw['applicant_socialmedia_ids'])
+			# 	socialmedia_val = [(0, 0, socialmedia_line) for socialmedia_line in socialmedia_data]
+			# 	kw['applicant_socialmedia_ids'] = socialmedia_val
 
 			# Job ID
 			job_id = kw.get('job_id')
