@@ -44,7 +44,7 @@ def update_hr_department():
 
 	if get_department:
 		for department in get_department:
-			department_update = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.department', 'compute_complete_name', department)
+			department_update = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.department', 'compute_complete_name', department)
 
 			if department_update:
 				count += 1
