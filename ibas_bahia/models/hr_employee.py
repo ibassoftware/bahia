@@ -28,6 +28,15 @@ INT_ID_NOW = 0
 class HrEmployeeExtend(models.Model):
 	_inherit = 'hr.employee'
 
+	# --------------- Validation
+	@api.onchange('mobile_phone','work_phone')
+	def _check_phone_format(self):
+		for record in self:
+			if record.mobile_phone and not record.mobile_phone.isdigit():
+				raise ValidationError("Please enter a valid phone!")
+			if record.work_phone and not record.work_phone.isdigit():
+				raise ValidationError("Please enter a valid phone!")
+
 	#---------------- Functions/Methods
 	def getCheckListId(self):
 		SQL_QUERY ="SELECT id,1 employee_id ,id checklist_template_id"\
