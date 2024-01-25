@@ -1295,25 +1295,41 @@ class hrEmbarkationMenuTreeView(models.Model):
 
     def getPassportNumber(self):
         for record in self:
+            passport = ""
+            passport_date_issued = False
+            passport_date_expiry = False
+
             date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
             query = SQL_QUERY %{'my_date': date, 'employee_id': record.employee_id, 'my_abbrv': PASSPORT_CODE}
             self.env.cr.execute(query)
             passportInfos = self.env.cr.fetchall()
             if len(passportInfos) > 0:
-                record.passport = passportInfos[0][0]
-                record.passport_date_issued = passportInfos[0][1]
-                record.passport_date_expiry = passportInfos[0][2]
+                passport = passportInfos[0][0]
+                passport_date_issued = passportInfos[0][1]
+                passport_date_expiry = passportInfos[0][2]
 
-    # # @api.one
+            record.passport = passport
+            record.passport_date_issued = passport_date_issued
+            record.passport_date_expiry = passport_date_expiry
+
     def getSsribNumber(self):
-        date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
-        query = SQL_QUERY %{'my_date': date, 'employee_id': self.employee_id, 'my_abbrv': SSRIB_CODE}
-        self.env.cr.execute(query)
-        ssribInfos = self.env.cr.fetchall()
-        if len(ssribInfos) > 0:
-            self.ssrib = ssribInfos[0][0]
-            self.ssrib_date_issued = ssribInfos[0][1]
-            self.ssrib_date_expiry = ssribInfos[0][2]
+        for record in self:
+            ssrib = ""
+            ssrib_date_issued = False
+            ssrib_date_expiry = False
+            
+            date = datetime.datetime.strftime(DATE_NOW, "%Y-%m-%d")
+            query = SQL_QUERY %{'my_date': date, 'employee_id': record.employee_id, 'my_abbrv': SSRIB_CODE}
+            self.env.cr.execute(query)
+            ssribInfos = self.env.cr.fetchall()
+            if len(ssribInfos) > 0:
+                ssrib = ssribInfos[0][0]
+                ssrib_date_issued = ssribInfos[0][1]
+                ssrib_date_expiry = ssribInfos[0][2]
+
+            record.ssrib = ssrib
+            record.ssrib_date_issued = ssrib_date_issued
+            record.ssrib_date_expiry = ssrib_date_expiry
 
     active_id = fields.Many2one('hr.embarkation.main', 'Employee')
     employee_number = fields.Char("Employee Number", readonly=True)
