@@ -50,7 +50,7 @@
                                                     <div class="col-sm">
                                                         <select class="form-control s_website_form_input" name="job_id" required="">
                                                             <t t-foreach="job_rec" t-as="job">
-                                                                <option t-esc="job.name" t-att-value="job.id"/>
+                                                                <option t-esc="job.name" value="job.id"/>
                                                             </t>
                                                         </select>
                                                     </div>
@@ -116,7 +116,7 @@
                                                 <div class="col-sm">
                                                     <select class="form-control link-style" name="nationality_id">
                                                         <t t-foreach="nationality_rec" t-as="nationality">
-                                                            <option t-esc="nationality.name" t-att-value="nationality.id"/>
+                                                            <option t-esc="nationality.name" value="nationality.id"/>
                                                         </t>
                                                     </select>
                                                 </div>
@@ -413,7 +413,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="relationship"> 
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation"> 
-                                                                                    <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
+                                                                                    <option t-esc="familyrelation.name" value="familyrelation.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -446,7 +446,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="relationship">
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation">
-                                                                                    <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
+                                                                                    <option t-esc="familyrelation.name" value="familyrelation.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -596,7 +596,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="schooltype">
                                                                                 <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
+                                                                                    <option t-esc="level.name" value="level.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -646,7 +646,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="schooltype">
                                                                                 <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
+                                                                                    <option t-esc="level.name" value="level.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -757,7 +757,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="document">
                                                                                 <t t-foreach="documenttype_rec" t-as="documenttype">
-                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
+                                                                                    <option t-esc="documenttype.name" value="documenttype.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -807,7 +807,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="document">
                                                                                 <t t-foreach="documenttype_rec" t-as="documenttype">
-                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
+                                                                                    <option t-esc="documenttype.name" value="documenttype.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -891,7 +891,26 @@
                                                     <div class="col-sm">
                                                         <input id="reference_1_name_person" type="tel" class="form-control s_website_form_input" name="reference_1_name_person" data-fill-with="reference_1_name_person"/>
                                                     </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_1_address">
+                                                        <span class="s_website_form_label_content">Address</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_1_address" type="tel" class="form-control s_website_form_input" name="reference_1_address" data-fill-with="reference_1_address"/>
+                                                    </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_1_contact_no">
+                                                        <span class="s_website_form_label_content">Contact Number</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_1_contact_no" type="tel" class="form-control s_website_form_input" name="reference_1_contact_no" data-fill-with="reference_1_contact_no"/>
+                                                    </div>
                                                 </div>
+
                                                 <div class="form-group col-6">
                                                     <h6> Reference 2 </h6><br/>
 
@@ -910,45 +929,29 @@
                                                     <div class="col-sm">
                                                         <input id="reference_2_name_person" type="tel" class="form-control s_website_form_input" name="reference_2_name_person" data-fill-with="reference_2_name_person"/>
                                                     </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_2_address">
+                                                        <span class="s_website_form_label_content">Address</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_2_address" type="tel" class="form-control s_website_form_input" name="reference_2_address" data-fill-with="reference_2_address"/>
+                                                    </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_2_contact_no">
+                                                        <span class="s_website_form_label_content">Contact Number</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_2_contact_no" type="tel" class="form-control s_website_form_input" name="reference_2_contact_no" data-fill-with="reference_2_contact_no"/>
+                                                    </div>
+
                                                 </div>
                                                 
                                             </div>
                                         </div>
-
-                                        <!-- <div class="form-group">
-                                            <div class='row ml-1' style="width:99%;">
-                                                <div class="form-group col-6">
-                                                    <h6> Reference 1 </h6><br/>
-
-                                                    <label for="reference_1_company_name" class="control-label">Name of Company</label>
-                                                    <input type="text" name="reference_1_company_name" t-att-value="reference_1_company_name" id="reference_1_company_name" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_1_name_person" class="control-label">Name of Person</label>
-                                                    <input type="text" name="reference_1_name_person" t-att-value="reference_1_name_person" id="reference_1_name_person" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_1_address" class="control-label">Address</label>
-                                                    <input type="text" name="reference_1_address" t-att-value="reference_1_address" id="reference_1_address" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_1_contact_no" class="control-label">Contact Number</label>
-                                                    <input type="text" name="reference_1_contact_no" t-att-value="reference_1_contact_no" id="reference_1_contact_no" class="form-control"/>
-                                                </div>
-                                                <div class="form-group col-6">
-                                                    <h6> Reference 2 </h6><br/>
-
-                                                    <label for="reference_2_company_name" class="control-label">Name of Company</label>
-                                                    <input type="text" name="reference_2_company_name" t-att-value="reference_2_company_name" id="reference_2_company_name" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_2_name_person" class="control-label">Name of Person</label>
-                                                    <input type="text" name="reference_2_name_person" t-att-value="reference_2_name_person" id="reference_2_name_person" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_2_address" class="control-label">Address</label>
-                                                    <input type="text" name="reference_2_address" t-att-value="reference_2_address" id="reference_2_address" class="form-control"/>
-                                                    <br/>
-                                                    <label for="reference_2_contact_no" class="control-label">Contact Number</label>
-                                                    <input type="text" name="reference_2_contact_no" t-att-value="reference_2_contact_no" id="reference_2_contact_no" class="form-control"/>
-                                                </div>
-                                            </div>
-                                        </div> -->
 
                                         <div class="form-group">
                                             <div class='row ml-1' style="width:99%;">
@@ -998,7 +1001,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="relationship">
                                                                                 <t t-foreach="familyrelation_rec" t-as="relationship">
-                                                                                    <option t-esc="relationship.name" t-att-value="relationship.id"/>
+                                                                                    <option t-esc="relationship.name" value="relationship.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1027,7 +1030,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="relationship">
                                                                                 <t t-foreach="familyrelation_rec" t-as="relationship">
-                                                                                    <option t-esc="relationship.name" t-att-value="relationship.id"/>
+                                                                                    <option t-esc="relationship.name" value="relationship.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1090,7 +1093,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="job_applied_id">
                                                                                 <t t-foreach="job_rec" t-as="job">
-                                                                                    <option t-esc="job.name" t-att-value="job.id"/>
+                                                                                    <option t-esc="job.name" value="job.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1113,7 +1116,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="job_applied_id">
                                                                                 <t t-foreach="job_rec" t-as="job">
-                                                                                    <option t-esc="job.name" t-att-value="job.id"/>
+                                                                                    <option t-esc="job.name" value="job.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1471,7 +1474,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="socialmedia_id">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
-                                                                                    <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
+                                                                                    <option t-esc="socialmedia.name" value="socialmedia.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1494,7 +1497,7 @@
                                                                         <td>
                                                                             <select class="form-control" id="socialmedia_id">
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
-                                                                                    <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
+                                                                                    <option t-esc="socialmedia.name" value="socialmedia.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
