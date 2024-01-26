@@ -79,6 +79,10 @@ class BahiasApplicationForm(http.Controller):
 		# Validation: Check for Name, Birthdate and Email Address
 		applicant_name = kw.get('name')
 		applicant_date_of_birth = kw.get('date_of_birth')
+		if applicant_date_of_birth:
+			_logger.info(applicant_date_of_birth)
+			applicant_date_of_birth = datetime.strptime(applicant_date_of_birth, '%m/%d/%Y').date()
+			_logger.info(applicant_date_of_birth)
 		applicant_email_from = kw.get('email_from')
 
 		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
