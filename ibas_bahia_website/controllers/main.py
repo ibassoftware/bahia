@@ -80,9 +80,7 @@ class BahiasApplicationForm(http.Controller):
 		applicant_name = kw.get('name')
 		applicant_date_of_birth = kw.get('date_of_birth')
 		if applicant_date_of_birth:
-			_logger.info(applicant_date_of_birth)
 			applicant_date_of_birth = datetime.strptime(applicant_date_of_birth, '%m/%d/%Y').date()
-			_logger.info(applicant_date_of_birth)
 		applicant_email_from = kw.get('email_from')
 
 		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
@@ -104,6 +102,10 @@ class BahiasApplicationForm(http.Controller):
 				image_data = image_applicant.read()
 				image_value = base64.b64encode(image_data)
 				kw['image_1920'] = image_value.decode('ascii')
+
+			# Applicant Date of Birth
+			if applicant_date_of_birth:
+				kw['date_of_birth'] = applicant_date_of_birth
 
 			# Applicant Family
 			applicant_families = kw.get('applicant_families')
