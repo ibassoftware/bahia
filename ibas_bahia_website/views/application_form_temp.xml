@@ -17,7 +17,7 @@
                         <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
                             <div class="container">
                                 <form id="hr_recruitment_form" action="/jobs/apply/execute/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
-                                    <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                                     <div id="application_form_template" class="s_website_form_rows row s_col_no_bgcolor">
                                         
