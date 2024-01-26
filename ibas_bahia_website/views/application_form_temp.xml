@@ -494,29 +494,59 @@
                                             <h5>Person to Notify in case of Emergency</h5>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="emergency_person_name" class="control-label">Name</label>
-                                            <input type="text" name="emergency_person_name" t-att-value="emergency_person_name" id="emergency_person_name" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="emergency_person_name">
+                                                    <span class="s_website_form_label_content">Name</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="emergency_person_name" type="text" class="form-control s_website_form_input" name="emergency_person_name" data-fill-with="emergency_person_name"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="emergency_relationship_1" class="control-label">Relationship</label>
-                                            <input type="text" name="emergency_relationship_1" t-att-value="emergency_relationship_1" id="emergency_relationship_1" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="emergency_relationship_1">
+                                                    <span class="s_website_form_label_content">Relationship</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="emergency_relationship_1" type="text" class="form-control s_website_form_input" name="emergency_relationship_1" data-fill-with="emergency_relationship_1"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="emergency_address" class="control-label">Address</label>
-                                            <input type="text" name="emergency_address" t-att-value="emergency_address" id="emergency_address" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="emergency_address">
+                                                    <span class="s_website_form_label_content">Address</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="emergency_address" type="text" class="form-control s_website_form_input" name="emergency_address" data-fill-with="emergency_address"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="emergency_zipcode" class="control-label">Zip Code</label>
-                                            <input type="text" name="emergency_zipcode" t-att-value="emergency_zipcode" id="emergency_zipcode" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="emergency_zipcode">
+                                                    <span class="s_website_form_label_content">Zip Code</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="emergency_zipcode" type="text" class="form-control s_website_form_input" name="emergency_zipcode" data-fill-with="emergency_zipcode"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="emergency_contactno" class="control-label">Contact No</label>
-                                            <input type="text" name="emergency_contactno" t-att-value="emergency_contactno" id="emergency_contactno" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="emergency_contactno">
+                                                    <span class="s_website_form_label_content">Contact No</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="emergency_contactno" type="tel" class="form-control s_website_form_input" name="emergency_contactno" data-fill-with="emergency_contactno"/>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group col-12 text-center">
@@ -841,7 +871,51 @@
                                             <h5> References </h5>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <div class="form-group col-6">
+                                                    <h6> Reference 1 </h6><br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_1_company_name">
+                                                        <span class="s_website_form_label_content">Name of Company</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_1_company_name" type="tel" class="form-control s_website_form_input" name="reference_1_company_name" data-fill-with="reference_1_company_name"/>
+                                                    </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_1_name_person">
+                                                        <span class="s_website_form_label_content">Name of Person</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_1_name_person" type="tel" class="form-control s_website_form_input" name="reference_1_name_person" data-fill-with="reference_1_name_person"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <h6> Reference 2 </h6><br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_2_company_name">
+                                                        <span class="s_website_form_label_content">Name of Company</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_2_company_name" type="tel" class="form-control s_website_form_input" name="reference_2_company_name" data-fill-with="reference_2_company_name"/>
+                                                    </div>
+
+                                                    <br/>
+
+                                                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="reference_2_name_person">
+                                                        <span class="s_website_form_label_content">Name of Person</span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="reference_2_name_person" type="tel" class="form-control s_website_form_input" name="reference_2_name_person" data-fill-with="reference_2_name_person"/>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="form-group">
                                             <div class='row ml-1' style="width:99%;">
                                                 <div class="form-group col-6">
                                                     <h6> Reference 1 </h6><br/>
@@ -874,7 +948,7 @@
                                                     <input type="text" name="reference_2_contact_no" t-att-value="reference_2_contact_no" id="reference_2_contact_no" class="form-control"/>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group">
                                             <div class='row ml-1' style="width:99%;">
