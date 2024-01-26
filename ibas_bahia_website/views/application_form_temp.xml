@@ -5,7 +5,7 @@
             <t t-call="website.layout">
                 <t t-set="additional_title">Apply Job</t>
 
-                <div id="wrap"  class="container">
+                <div id="wrap" class="container">
                     <h1 class="text-center mt-2">
                         Job Application Form
                     </h1>
@@ -15,11 +15,12 @@
                     <div id="jobs_section">
                         <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
                             <div class="container">
-                                <form id="hr_recruitment_form" t-attf-action="/jobs/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
+                                <form id="hr_recruitment_form" action="/jobs/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                                     <div id="application_form_template" class="s_website_form_rows row s_col_no_bgcolor">
                                         
+
                                         <div class="form-group col-12 s_website_form_field s_website_form_custom" ata-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <div class="col-sm">
@@ -121,7 +122,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="date" data-name="Field">
+                                        <!-- <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="date" data-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="date_of_birth">
                                                     <span class="s_website_form_label_content">Date of birth</span>
@@ -131,7 +132,7 @@
                                                     <input id="date_of_birth" type="date" class="form-control s_website_form_input o_website_form_date" name="date_of_birth" required="" data-fill-with="date_of_birth"/>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group">
                                             <label for="placeof_birth" class="control-label">Place of Birth</label>
@@ -1355,8 +1356,13 @@
                                             }
                                         </script>
 
-                                        <div class="clearfix oe_login_buttons">
+                                        <!-- <div class="clearfix oe_login_buttons">
                                             <button type="submit" class="btn btn-info pull-left custom_create">Submit</button>
+                                        </div> -->
+                                        <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                            <div style="width: 200px;" class="s_website_form_label"/>
+                                            <a href="#" role="button" class="btn btn-primary btn-lg s_website_form_send custom_create">Submit</a>
+                                            <span id="s_website_form_result"></span>
                                         </div>
                                     </div>
                                 </form>
