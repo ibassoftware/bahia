@@ -84,7 +84,10 @@ class BahiasApplicationForm(http.Controller):
 		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
 		
 		if duplicate_applicant_id:
-			return request.render('ibas_bahia_website.application_duplicate', {})
+			error = _("Duplicate application! One applicant, one application only.")
+			return json.dumps({
+				'error': error,
+			})
 		else:
 			# Applicant Image
 			image_applicant = kw.get('image_1920')
