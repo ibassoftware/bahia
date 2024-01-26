@@ -95,29 +95,6 @@
 								</a>  
 							</span>  
 						</div>
-						<!-- <div class="col-md-4 text-left mb16" style="padding-right:0px;padding-left:0px;"/>
-						<div class="col-md-1 text-center mb16" style="padding-right:0px;padding-left:0px;">
-
-							<t t-if ="with_jobs == 0">
-								<a class="btn btn-default" style="padding:5px;margin-top:25px" t-attf-href="/jobs/apply">
-									ACCEPT
-								</a>                                
-							</t>
-							<t t-if ="with_jobs == 1">
-								<a class="btn btn-default" style="padding:5px;margin-top:25px" t-attf-href="/jobs/apply/#{ slug(job_view) }">
-									ACCEPT
-								</a>                                
-							</t>                            
-
-						</div>
-						<div class="col-md-1 text-center mb16" style="padding-right:0px;padding-left:0px;">
-							<span>
-								<a class="btn btn-default" style="padding:5px;margin-top:25px" t-attf-href="/jobs" target="_self">
-									CANCEL
-								</a>  
-							</span>                          
-						</div>
-						<div class="col-md-2 text-left mb16" style="padding-right:0px;padding-left:0px;"/> -->
 					</div>
 				</div> 
 			</template>
