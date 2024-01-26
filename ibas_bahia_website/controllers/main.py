@@ -161,8 +161,9 @@ class BahiasApplicationForm(http.Controller):
 					kw['job_id'] = job_rec.id
 					kw['department_id'] = False
 
-			request.env['hr.applicant'].sudo().create(kw)
-			return request.render('ibas_bahia_website.application_thanks', {})
+			id_record = request.env['hr.applicant'].sudo().create(kw)
+			# return request.render('ibas_bahia_website.application_thanks', {})
+			return json.dumps({'id': id_record.id})
 
 	@http.route('/jobs/apply/add-family', type='http', auth='public', website=True)
 	def apply_add_family(self, **kw):
