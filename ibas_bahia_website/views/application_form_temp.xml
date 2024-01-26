@@ -50,7 +50,7 @@
                                                         <select class="form-control s_website_form_input" name="job_id" required="">
                                                             <option value="">Select</option>
                                                             <t t-foreach="job_rec" t-as="job">
-                                                                <option t-esc="job.name" value="job.id"/>
+                                                                <option t-esc="job.name" t-att-value="job.id"/>
                                                             </t>
                                                         </select>
                                                     </div>
@@ -58,7 +58,7 @@
                                             </div>
                                         </t>
                                         <t t-else="">
-                                            <input type="hidden" value="job and job.id or False" name="job_id"/>
+                                            <input type="hidden" t-att-value="job and job.id or False" name="job_id"/>
                                         </t>
 
                                         <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
@@ -117,7 +117,7 @@
                                                     <select class="form-control link-style" name="nationality_id">
                                                         <option value="">Select</option>
                                                         <t t-foreach="nationality_rec" t-as="nationality">
-                                                            <option t-esc="nationality.name" value="nationality.id"/>
+                                                            <option t-esc="nationality.name" t-att-value="nationality.id"/>
                                                         </t>
                                                     </select>
                                                 </div>
@@ -414,8 +414,8 @@
                                                                         <td>
                                                                             <select class="form-control" id="relationship"> 
                                                                                 <option value="">Select</option>
-                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation">
-                                                                                    <option t-esc="familyrelation.name" value="familyrelation.id"/>
+                                                                                <t t-foreach="familyrelation_rec" t-as="familyrelation"> 
+                                                                                    <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -449,7 +449,7 @@
                                                                             <select class="form-control" id="relationship">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation">
-                                                                                    <option t-esc="familyrelation.name" value="familyrelation.id"/>
+                                                                                    <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -600,7 +600,7 @@
                                                                             <select class="form-control" id="schooltype">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" value="level.id"/>
+                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -651,7 +651,7 @@
                                                                             <select class="form-control" id="schooltype">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" value="level.id"/>
+                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -763,7 +763,7 @@
                                                                             <select class="form-control" id="document">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="documenttype_rec" t-as="documenttype">
-                                                                                    <option t-esc="documenttype.name" value="documenttype.id"/>
+                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -814,7 +814,7 @@
                                                                             <select class="form-control" id="document">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="documenttype_rec" t-as="documenttype">
-                                                                                    <option t-esc="documenttype.name" value="documenttype.id"/>
+                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1009,7 +1009,7 @@
                                                                             <select class="form-control" id="relationship">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="familyrelation_rec" t-as="relationship">
-                                                                                    <option t-esc="relationship.name" value="relationship.id"/>
+                                                                                    <option t-esc="relationship.name" t-att-value="relationship.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1039,7 +1039,7 @@
                                                                             <select class="form-control" id="relationship">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="familyrelation_rec" t-as="relationship">
-                                                                                    <option t-esc="relationship.name" value="relationship.id"/>
+                                                                                    <option t-esc="relationship.name" t-att-value="relationship.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1103,7 +1103,7 @@
                                                                             <select class="form-control" id="job_applied_id">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="job_rec" t-as="job">
-                                                                                    <option t-esc="job.name" value="job.id"/>
+                                                                                    <option t-esc="job.name" t-att-value="job.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1127,7 +1127,7 @@
                                                                             <select class="form-control" id="job_applied_id">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="job_rec" t-as="job">
-                                                                                    <option t-esc="job.name" value="job.id"/>
+                                                                                    <option t-esc="job.name" t-att-value="job.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1486,7 +1486,7 @@
                                                                             <select class="form-control" id="socialmedia_id">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
-                                                                                    <option t-esc="socialmedia.name" value="socialmedia.id"/>
+                                                                                    <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
@@ -1510,7 +1510,7 @@
                                                                             <select class="form-control" id="socialmedia_id">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="social_media_rec" t-as="socialmedia">
-                                                                                    <option t-esc="socialmedia.name" value="socialmedia.id"/>
+                                                                                    <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
                                                                                 </t>
                                                                             </select>
                                                                         </td>
