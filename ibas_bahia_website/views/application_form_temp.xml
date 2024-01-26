@@ -377,7 +377,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Family Details </h5>
                                         </div>
 
@@ -490,7 +490,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5>Person to Notify in case of Emergency</h5>
                                         </div>
 
@@ -519,7 +519,7 @@
                                             <input type="text" name="emergency_contactno" t-att-value="emergency_contactno" id="emergency_contactno" class="form-control"/>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Educational Background </h5>
                                         </div>
 
@@ -676,7 +676,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Record Books </h5>
                                         </div>
 
@@ -837,7 +837,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> References </h5>
                                         </div>
 
@@ -1066,7 +1066,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Employment History </h5>
                                         </div>
 
@@ -1355,7 +1355,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Social Media </h5>
                                             <p>Do you have a social media presence?</p> <br/>
                                             <p>
@@ -1451,7 +1451,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
 
                                         <script>
                                             function concatenate()
