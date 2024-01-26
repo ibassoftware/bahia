@@ -267,25 +267,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="civil_status" class="control-label"> Civil Status </label>
-                                            <select class="form-control" name="civil_status">
-                                                <option t-attf-value="single">Single</option>
-                                                <option t-attf-value="married">Married</option>
-                                                <option t-attf-value="widower">Widower</option>
-                                                <option t-attf-value="divorced">Divorced</option>
-                                                <option t-attf-value="seperated">Separated</option>
-                                                <option t-attf-value="live_in_partner">Live-in-partner</option>
-                                                <option t-attf-value="annuled">Annulled</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="gender" class="control-label">Gender</label>
-                                            <select class="form-control" name="gender">
-                                                <option t-attf-value="male">Male</option>
-                                                <option t-attf-value="female">Female</option>
-                                            </select>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="gender">
+                                                    <span class="s_website_form_label_content">Civil Status</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select id="gender" class="form-control s_website_form_input" name="gender">
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="text-center">
