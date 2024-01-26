@@ -12,10 +12,11 @@
                     <h2 t-if="job" class="text-center text-muted">
                         <span t-field="job.name"/>
                     </h2>
+                    <span class="hidden" data-for="hr_recruitment_form" t-att-data-values="{'department_id': job and job.department_id.id or '', 'job_id': job and job.id or ''}" />
                     <div id="jobs_section">
                         <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
                             <div class="container">
-                                <form id="hr_recruitment_form" action="/jobs/apply/execute" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
+                                <form id="hr_recruitment_form" action="/jobs/apply/execute/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="hr.applicant" data-success-mode="redirect" data-success-page="/job-thank-you" hide-change-model="true">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                                     <div id="application_form_template" class="s_website_form_rows row s_col_no_bgcolor">
@@ -134,19 +135,38 @@
                                             </div>
                                         </div> -->
 
-                                        <div class="form-group">
-                                            <label for="placeof_birth" class="control-label">Place of Birth</label>
-                                            <input type="text" name="placeof_birth" t-att-value="placeof_birth" id="placeof_birth" class="form-control" required="required"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="placeof_birth">
+                                                    <span class="s_website_form_label_content">Place of birth</span>
+                                                    <span class="s_website_form_mark"> *</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="placeof_birth" type="text" class="form-control s_website_form_input" name="placeof_birth" required="" data-fill-with="placeof_birth"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="height" class="control-label"> Height (cm.)</label>
-                                            <input type="number" name="height" t-att-value="height" id="height" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="height">
+                                                    <span class="s_website_form_label_content">Height (cm.)</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="height" type="number" class="form-control s_website_form_input" name="height" data-fill-with="height"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="weight" class="control-label">Weight (kg.)</label>
-                                            <input type="number" name="weight" t-att-value="weight" id="weight" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="weight">
+                                                    <span class="s_website_form_label_content">Weight (kg.)</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="weight" type="number" class="form-control s_website_form_input" name="weight" data-fill-with="weight"/>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
