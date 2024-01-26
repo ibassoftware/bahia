@@ -124,14 +124,14 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="date" data-name="Field">
+                                        <!-- <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" data-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="date_of_birth">
                                                     <span class="s_website_form_label_content">Date of birth</span>
                                                     <span class="s_website_form_mark"> *</span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <input id="date_of_birth" type="date" class="form-control s_website_form_input o_website_form_date" name="date_of_birth" required="" data-fill-with="date_of_birth"/>
+                                                    <input id="date_of_birth" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control s_website_form_input o_website_form_date" name="date_of_birth" required="" data-fill-with="date_of_birth"/>
                                                 </div>
                                             </div>
                                         </div> -->
@@ -429,7 +429,7 @@
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Date of Birth" type="date" class="form-control" id="date_of_birth"/>
+                                                                            <input placeholder="Enter Date of Birth" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
@@ -464,7 +464,7 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Date of Birth" type="date" class="form-control" id="date_of_birth"/>
+                                                                            <input placeholder="Enter Date of Birth" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" id="date_of_birth"/>
 
                                                                         </td>
                                                                         <td>
@@ -618,14 +618,14 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date From"
-                                                                                    type="date"
+                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                     class="form-control total_cost"
                                                                                     id="date_from"/>
 
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date To"
-                                                                                    type="date"
+                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                     class="form-control total_cost"
                                                                                     id="date_to"/>
 
@@ -669,14 +669,14 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date From"
-                                                                                    type="date"
+                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                     class="form-control total_cost"
                                                                                     id="date_from"/>
 
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date To"
-                                                                                    type="date"
+                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                     class="form-control total_cost"
                                                                                     id="date_to"/>
 
@@ -775,13 +775,13 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date Issued"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_issued"/>
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date Expiry"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_expiry"/>
 
@@ -826,13 +826,13 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date Issued"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_issued"/>
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date Expiry"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_expiry"/>
 
@@ -1094,7 +1094,7 @@
                                                                 <tbody>
                                                                     <tr class="previous_application_line">
                                                                         <td>
-                                                                            <input type="date"
+                                                                            <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control"
                                                                                 placeholder="Enter Date"
                                                                                 id="date_applied"/>
@@ -1118,7 +1118,7 @@
 
                                                                     <tr class="add_extra_previous_application d-none">
                                                                         <td>
-                                                                            <input type="date"
+                                                                            <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control"
                                                                                 placeholder="Enter Date"
                                                                                 id="date_applied"/>
@@ -1297,14 +1297,14 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date From"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_from"/>
 
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date To"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_to"/>
 
@@ -1401,14 +1401,14 @@
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date From"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_from"/>
 
                                                                         </td>
                                                                         <td>
                                                                             <input placeholder="Enter Date To"
-                                                                                type="date"
+                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
                                                                                 class="form-control total_cost"
                                                                                 id="date_to"/>
 
