@@ -215,20 +215,56 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="form-group">
-                                            <label for="sss_no" class="control-label">SSS No.</label>
-                                            <input type="number" name="sss_no" t-att-value="sss_no" id="sss_no" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="sss_no">
+                                                    <span class="s_website_form_label_content">SSS No</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="sss_no" type="text" class="form-control s_website_form_input" name="sss_no" data-fill-with="sss_no"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="philhealth_no" class="control-label">Philhealth No.</label>
-                                            <input type="number" name="philhealth_no" t-att-value="philhealth_no" id="philhealth_no" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="philhealth_no">
+                                                    <span class="s_website_form_label_content">Philhealth No.</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="philhealth_no" type="text" class="form-control s_website_form_input" name="philhealth_no" data-fill-with="philhealth_no"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="pagibig_no" class="control-label"> PAGIBIG No. </label>
-                                            <input type="number" name="pagibig_no" t-att-value="pagibig_no" id="pagibig_no" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="pagibig_no">
+                                                    <span class="s_website_form_label_content">PAGIBIG No.</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="pagibig_no" type="text" class="form-control s_website_form_input" name="pagibig_no" data-fill-with="pagibig_no"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="civil_status">
+                                                    <span class="s_website_form_label_content">Civil Status</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select id="civil_status" class="form-control s_website_form_input" name="civil_status">
+                                                        <option value="single">Single</option>
+                                                        <option value="married">Married</option>
+                                                        <option value="widower">Widower</option>
+                                                        <option value="divorced">Divorced</option>
+                                                        <option value="seperated">Separated</option>
+                                                        <option value="live_in_partner">Live-in-partner</option>
+                                                        <option value="annuled">Annulled</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
