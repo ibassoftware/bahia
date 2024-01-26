@@ -165,7 +165,7 @@ class BahiasApplicationForm(http.Controller):
 				if job_rec:
 					_logger.info(job_rec)
 					kw['job_id'] = job_rec.id
-					kw['department_id'] = False
+					kw['department_id'] = job_rec.department_id.id False
 
 			_logger.info(kw)
 			id_record = request.env['hr.applicant'].sudo().create(kw)
