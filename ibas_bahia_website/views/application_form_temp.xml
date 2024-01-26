@@ -448,7 +448,7 @@
 
                                                                     <tr class="add_extra_family d-none">
                                                                         <td>
-                                                                            <select class="form-control" id="relationship">
+                                                                            <select class="form-control s_website_form_input" id="relationship">
                                                                                 <option value="">Select</option>
                                                                                 <t t-foreach="familyrelation_rec" t-as="familyrelation">
                                                                                     <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
