@@ -256,6 +256,7 @@
                                                 </label>
                                                 <div class="col-sm">
                                                     <select id="civil_status" class="form-control s_website_form_input" name="civil_status">
+                                                        <option value="">Select</option>
                                                         <option value="single">Single</option>
                                                         <option value="married">Married</option>
                                                         <option value="widower">Widower</option>
