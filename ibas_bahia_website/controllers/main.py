@@ -88,10 +88,11 @@ class BahiasApplicationForm(http.Controller):
 		else:
 			# Applicant Image
 			image_applicant = kw.get('image_1920')
-			image_filename = kw.get('image_1920').filename
+			image_filename = False
 			image_data = image_applicant.read()
 			image_value = False
 			if image_applicant:
+				image_filename = kw.get('image_1920').filename
 				image_value = base64.b64encode(image_data)
 				kw['image_1920'] = image_value.decode('ascii')
 
