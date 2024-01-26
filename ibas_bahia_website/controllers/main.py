@@ -126,13 +126,13 @@ class BahiasApplicationForm(http.Controller):
 
 			if applicant_document_ids:
 				record_books_data = json.loads(applicant_document_ids)
+				if not record_books_data:
+					error = _("Record Books is required! Please add Passport and Seamans Book")
+					return json.dumps({
+						'error': error,
+					})
 				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
 				kw['applicant_document_ids'] = record_books_val
-			else:
-				error = _("Record Books is required! Please add Passport and Seamans Book")
-				return json.dumps({
-					'error': error,
-				})
 
 			# References - Employed Relatives
 			applicant_employed_relatives_ids = kw.get('applicant_employed_relatives_ids')
