@@ -70,7 +70,7 @@ class BahiasApplicationForm(http.Controller):
 			'social_media_rec': social_media_rec,
 		})
 
-	@http.route('/jobs/apply/execute', type='http', auth='public', website=True)
+	@http.route('/jobs/apply/execute/<string:model_name>', type='http', auth="public", methods=['POST'], website=True, csrf=False)
 	def apply_execute(self, **kw):
 		_logger.info("Apply execute")
 
