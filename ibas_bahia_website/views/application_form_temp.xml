@@ -131,7 +131,14 @@
                                                     <span class="s_website_form_mark"> *</span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <input id="date_of_birth" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control s_website_form_input o_website_form_date" name="date_of_birth" required="" data-fill-with="date_of_birth"/>
+                                                    <div class="s_website_form_date input-group date" id="DP_date_of_birth" data-target-input="nearest">
+                                                        <input type="text" class="form-control datetimepicker-input s_website_form_input" data-target="#DP_date_of_birth" name="date_of_birth" required="" placeholder="mm/dd/yyyy" id="date_of_birth" data-fill-with="date_of_birth"/>
+                                                        <div class="input-group-append" data-target="#DP_date_of_birth" data-toggle="datetimepicker">
+                                                          <div class="input-group-text">
+                                                            <i class="fa fa-calendar"/>
+                                                          </div>
+                                                        </div>
+                                                      </div>
                                                 </div>
                                             </div>
                                         </div>
