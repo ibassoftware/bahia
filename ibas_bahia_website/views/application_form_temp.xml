@@ -271,10 +271,11 @@
                                         <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="gender">
-                                                    <span class="s_website_form_label_content">Civil Status</span>
+                                                    <span class="s_website_form_label_content">Gender</span>
                                                 </label>
                                                 <div class="col-sm">
                                                     <select id="gender" class="form-control s_website_form_input" name="gender">
+                                                        <option value="">Select</option>
                                                         <option value="male">Male</option>
                                                         <option value="female">Female</option>
                                                     </select>
@@ -424,6 +425,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <select id="applicant_gender" class="form-control" placeholder="Select Sex">
+                                                                                <option value="">Select</option>
                                                                                 <option t-attf-value="male">Male</option>
                                                                                 <option t-attf-value="female">Female</option>
                                                                             </select>
