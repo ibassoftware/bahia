@@ -178,7 +178,8 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			$new_row.addClass('family_line');
 			$new_row.insertBefore($('.add_extra_family'));
 			_.each($new_row.find('td'), function(val) {
-				$(val).find('input').attr('required', 'required');
+				$(val).find('select').attr('required', '');
+				$(val).find('input').attr('required', '');
 			});
 		},
 
