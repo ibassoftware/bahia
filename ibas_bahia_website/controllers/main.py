@@ -161,6 +161,7 @@ class BahiasApplicationForm(http.Controller):
 					kw['job_id'] = job_rec.id
 					kw['department_id'] = False
 
+			_logger.info(kw)
 			id_record = request.env['hr.applicant'].sudo().create(kw)
 			# return request.render('ibas_bahia_website.application_thanks', {})
 			return json.dumps({'id': id_record.id})
@@ -207,6 +208,17 @@ class BahiasApplicationForm(http.Controller):
 			'level_rec': level_rec,
 			'social_media_rec': social_media_rec,
 		})
+
+	def check_date_format(self, date_string):
+		format = "%m/%d/%Y"
+
+		res = True
+		try:
+			res = bool(datetime.strptime(test_str, format))
+		except ValueError:
+			res = False
+
+
 
 
 	
