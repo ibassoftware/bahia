@@ -71,7 +71,7 @@ class BahiasApplicationForm(http.Controller):
 		})
 
 	@http.route('/jobs/apply/execute/<string:model_name>', type='http', auth="public", methods=['POST'], website=True)
-	def apply_execute(self, **kw):
+	def apply_execute(self, model_name, **kw):
 		_logger.info("Apply execute")
 
 		Applicant = request.env['hr.applicant']
