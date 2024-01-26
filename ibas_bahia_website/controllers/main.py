@@ -150,16 +150,17 @@ class BahiasApplicationForm(http.Controller):
 
 			# References - Previous Employment
 			applicant_previous_employment_ids = kw.get('applicant_previous_employment_ids')
-			_logger.info(applicant_previous_employment_ids)
+			
 			if applicant_previous_employment_ids:
 				applicant_previous_employment_data = json.loads(applicant_previous_employment_ids)
+				_logger.info(applicant_previous_employment_data)
+				if not applicant_previous_employment_data:
+					error = _("Employment History is required!")
+					return json.dumps({
+						'error': error,
+					})
 				applicant_previous_employment_val = [(0, 0, applicant_previous_employment_line) for applicant_previous_employment_line in applicant_previous_employment_data]
-				kw['applicant_previous_employment_ids'] = applicant_previous_employment_val
-			else:
-				error = _("Employment History is required!")
-				return json.dumps({
-					'error': error,
-				})
+				kw['applicant_previous_employment_ids'] = applicant_previous_employment_val				
 
 			# Applicant Social Media 
 			applicant_socialmedia_ids = kw.get('applicant_socialmedia_ids')
