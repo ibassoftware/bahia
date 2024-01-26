@@ -123,12 +123,13 @@ class BahiasApplicationForm(http.Controller):
 
 			# Applicant Record Books
 			applicant_document_ids = kw.get('applicant_document_ids')
+
 			if applicant_document_ids:
 				record_books_data = json.loads(applicant_document_ids)
 				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
 				kw['applicant_document_ids'] = record_books_val
 			else:
-				error = _("Employment History is required!")
+				error = _("Record Books is required! Please add Passport and Seamans Book")
 				return json.dumps({
 					'error': error,
 				})
@@ -149,12 +150,13 @@ class BahiasApplicationForm(http.Controller):
 
 			# References - Previous Employment
 			applicant_previous_employment_ids = kw.get('applicant_previous_employment_ids')
+			_logger.info(applicant_previous_employment_ids)
 			if applicant_previous_employment_ids:
 				applicant_previous_employment_data = json.loads(applicant_previous_employment_ids)
 				applicant_previous_employment_val = [(0, 0, applicant_previous_employment_line) for applicant_previous_employment_line in applicant_previous_employment_data]
 				kw['applicant_previous_employment_ids'] = applicant_previous_employment_val
 			else:
-				error = _("Record Books is required! Please add Passport and Seamans Book")
+				error = _("Employment History is required!")
 				return json.dumps({
 					'error': error,
 				})
