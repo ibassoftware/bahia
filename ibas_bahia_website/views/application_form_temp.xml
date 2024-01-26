@@ -281,52 +281,100 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5>Permanent Address</h5>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="permanent_address_adress" class="control-label">Address</label>
-                                            <input type="text" name="permanent_address_adress" t-att-value="permanent_address_adress" id="permanent_address_adress" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_adress">
+                                                    <span class="s_website_form_label_content">Address</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="permanent_address_adress" type="text" class="form-control s_website_form_input" name="permanent_address_adress" data-fill-with="permanent_address_adress"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="permanent_address_city" class="control-label">City</label>
-                                            <input type="text" name="permanent_address_city" t-att-value="permanent_address_city" id="permanent_address_city" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_city">
+                                                    <span class="s_website_form_label_content">City</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="permanent_address_city" type="text" class="form-control s_website_form_input" name="permanent_address_city" data-fill-with="permanent_address_city"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="permanent_address_zipcode" class="control-label"> Zip Code </label>
-                                            <input type="text" name="permanent_address_zipcode" t-att-value="permanent_address_zipcode" id="permanent_address_zipcode" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_zipcode">
+                                                    <span class="s_website_form_label_content">Zip Code</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="permanent_address_zipcode" type="text" class="form-control s_website_form_input" name="permanent_address_zipcode" data-fill-with="permanent_address_zipcode"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="permanent_address_contact_no" class="control-label">Contact No</label>
-                                            <input type="text" name="permanent_address_contact_no" t-att-value="permanent_address_contact_no" id="permanent_address_contact_no" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_contact_no">
+                                                    <span class="s_website_form_label_content">Contact No</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="permanent_address_contact_no" type="text" class="form-control s_website_form_input" name="permanent_address_contact_no" data-fill-with="permanent_address_contact_no"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="text-center">
+                                        <div class="form-group col-12 text-center">
                                             <h5> Alternative Address </h5>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="alternative_address_adress" class="control-label">Address</label>
-                                            <input type="text" name="alternative_address_adress" t-att-value="alternative_address_adress" id="alternative_address_adress" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="alternative_address_adress">
+                                                    <span class="s_website_form_label_content">Address</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="alternative_address_adress" type="text" class="form-control s_website_form_input" name="alternative_address_adress" data-fill-with="alternative_address_adress"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="alternative_address_city" class="control-label">City</label>
-                                            <input type="text" name="alternative_address_city" t-att-value="alternative_address_city" id="alternative_address_city" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="alternative_address_city">
+                                                    <span class="s_website_form_label_content">City</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="alternative_address_city" type="text" class="form-control s_website_form_input" name="alternative_address_city" data-fill-with="alternative_address_city"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="alternative_address_zipcode" class="control-label"> Zip Code </label>
-                                            <input type="text" name="alternative_address_zipcode" t-att-value="alternative_address_zipcode" id="alternative_address_zipcode" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="alternative_address_zipcode">
+                                                    <span class="s_website_form_label_content">Zip Code</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="alternative_address_zipcode" type="text" class="form-control s_website_form_input" name="alternative_address_zipcode" data-fill-with="alternative_address_zipcode"/>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="alternative_address_contact_no" class="control-label">Contact No</label>
-                                            <input type="text" name="alternative_address_contact_no" t-att-value="alternative_address_contact_no" id="alternative_address_contact_no" class="form-control"/>
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="alternative_address_contact_no">
+                                                    <span class="s_website_form_label_content">Contact No</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="alternative_address_contact_no" type="text" class="form-control s_website_form_input" name="alternative_address_contact_no" data-fill-with="alternative_address_contact_no"/>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <!-- <div class="text-center">
