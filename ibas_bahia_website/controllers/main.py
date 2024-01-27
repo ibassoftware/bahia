@@ -171,7 +171,6 @@ class BahiasApplicationForm(http.Controller):
 								'schooltype': schooltype,
 								'name_school': name_school,
 								'description': description,
-								'gender': gender,
 								'date_from': date_from,
 								'date_to': date_to,
 								'school_address': school_address,
