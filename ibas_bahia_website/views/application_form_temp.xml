@@ -434,6 +434,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <select id="applicant_gender" class="form-control" placeholder="Select Sex">
+                                                                                <option t-attf-value="">Select</option>
                                                                                 <option t-attf-value="male">Male</option>
                                                                                 <option t-attf-value="female">Female</option>
                                                                             </select>
