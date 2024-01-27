@@ -252,6 +252,7 @@ class BahiasApplicationForm(http.Controller):
 			if applicant_previous_application_ids:
 				applicant_previous_application_val = []
 				applicant_previous_application_data = json.loads(applicant_previous_application_ids)
+				_logger.info(applicant_previous_application_data)
 				if applicant_previous_application_data:
 					for applicant_previous_application_line in applicant_previous_application_data:
 						date_applied = applicant_previous_application_line.get('date_applied')
