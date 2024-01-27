@@ -133,6 +133,7 @@ class BahiasApplicationForm(http.Controller):
 								'relationship': relationship,
 								'first_name': first_name,
 								'last_name': last_name,
+								'gender': gender,
 								'date_of_birth': date_of_birth,
 								'placeof_birth': placeof_birth,
 							}
@@ -143,8 +144,39 @@ class BahiasApplicationForm(http.Controller):
 			# Applicant Education
 			applicant_education = kw.get('applicant_education')
 			if applicant_education:
+				education_val = []
 				education_data = json.loads(applicant_education)
-				education_val = [(0, 0, education_line) for education_line in education_data]
+				if education_data:
+					for education_line in education_data:
+						schooltype = education_line.get('schooltype')
+						name_school = education_line.get('name_school')
+						description = education_line.get('description')
+						date_from = education_line.get('date_from')
+						date_to = education_line.get('date_to')
+						school_address = education_line.get('school_address')
+
+						if date_from:
+							date_from = datetime.strptime(date_from, '%Y-%m-%d').date()
+
+						if date_to:
+							date_to = datetime.strptime(date_to, '%Y-%m-%d').date()
+
+						if not schooltype or not name_school or not description or not date_from or not date_to or not school_address:
+							error = _("Missing required fields for applicant education details!")
+							return json.dumps({
+								'error': error,
+							})
+						else:
+							education_line_data = {
+								'schooltype': schooltype,
+								'name_school': name_school,
+								'description': description,
+								'gender': gender,
+								'date_from': date_from,
+								'date_to': date_to,
+								'school_address': school_address,
+							}
+							education_val.append((0, 0, education_line_data))
 				kw['applicant_education'] = education_val
 
 			# Applicant Record Books
