@@ -37,14 +37,15 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			var family_rows = $('.applicant_families > tbody > tr.family_line');
 			_.each(family_rows, function(row) {
 				let relationship = $(row).find('select[id="relationship"]').val();
-				let full_name = $(row).find('input[id="full_name"]').val();
+				let first_name = $(row).find('input[id="first_name"]').val();
+				let last_name = $(row).find('input[id="last_name"]').val();
 				let applicant_gender = $(row).find('select[id="applicant_gender"]').val();
 				let date_of_birth = $(row).find('input[id="date_of_birth"]').val();
 				let placeof_birth = $(row).find('input[id="placeof_birth"]').val();
-				console.log(relationship, full_name)
 				family_data.push({
 					'relationship': relationship,
-					'full_name': full_name,
+					'first_name': first_name,
+					'last_name': last_name,
 					'gender': applicant_gender,
 					'date_of_birth': date_of_birth,
 					'placeof_birth': placeof_birth

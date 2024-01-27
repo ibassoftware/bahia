@@ -403,7 +403,10 @@
                                                                         <strong>Relationship *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Name *</strong>
+                                                                        <strong>First Name *</strong>
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong>Last Name *</strong>
                                                                     </td>
                                                                     <td>
                                                                         <strong>Sex *</strong>
@@ -430,7 +433,10 @@
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <input type="text" class="form-control" placeholder="Enter Name" id="full_name"/>
+                                                                            <input type="text" class="form-control" placeholder="Enter First Name" id="first_name"/>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text" class="form-control" placeholder="Enter Last Name" id="last_name"/>
                                                                         </td>
                                                                         <td>
                                                                             <select id="applicant_gender" class="form-control" placeholder="Select Sex">
