@@ -873,36 +873,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="employed_relative_line">
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Name of Crew"
-                                                                                id="name_of_crew"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Position and Principal"
-                                                                                id="position_and_principal"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <select class="form-control" id="relationship">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="familyrelation_rec" t-as="relationship">
-                                                                                    <option t-esc="relationship.name" t-att-value="relationship.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_employed_relative d-none">
                                                                         <td>
                                                                             <input type="text"

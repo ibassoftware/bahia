@@ -83,7 +83,6 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 				let date_expiry = $(row).find('input[id="date_expiry"]').val();
 				let issuing_authority = $(row).find('input[id="issuing_authority"]').val();
 				let place_ofissue = $(row).find('input[id="place_ofissue"]').val();
-				console.log(document, document_number)
 				record_books_data.push({
 					'document': document,
 					'document_number': document_number,
@@ -136,7 +135,6 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 				let date_from = $(row).find('input[id="date_from"]').val();
 				let date_to = $(row).find('input[id="date_to"]').val();
 				let duties_and_responsibility = $(row).find('input[id="duties_and_responsibility"]').val();
-				console.log(date_applied, job_applied_id)
 				previous_employment_data.push({
 					'rank_position': rank_position,
 					'manning_agency': manning_agency,
