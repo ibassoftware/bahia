@@ -103,9 +103,6 @@ class BahiasApplicationForm(http.Controller):
 				kw['image_1920'] = image_value.decode('ascii')
 				kw.pop('image_1920[0][0]')
 
-			_logger.info("image_1920[0][0]")
-			_logger.info(image_applicant)
-
 			# Applicant Date of Birth
 			if applicant_date_of_birth:
 				kw['date_of_birth'] = applicant_date_of_birth
@@ -230,7 +227,6 @@ class BahiasApplicationForm(http.Controller):
 			if applicant_employed_relatives_ids:
 				employed_relatives_val = []
 				employed_relatives_data = json.loads(applicant_employed_relatives_ids)
-				_logger.info(employed_relatives_data)
 				if employed_relatives_data:
 					for employed_relatives_line in employed_relatives_data:
 						name_of_crew = employed_relatives_line.get('name_of_crew')
@@ -256,7 +252,6 @@ class BahiasApplicationForm(http.Controller):
 			if applicant_previous_application_ids:
 				applicant_previous_application_val = []
 				applicant_previous_application_data = json.loads(applicant_previous_application_ids)
-				_logger.info(applicant_previous_application_data)
 				if applicant_previous_application_data:
 					for applicant_previous_application_line in applicant_previous_application_data:
 						date_applied = applicant_previous_application_line.get('date_applied')
@@ -354,16 +349,13 @@ class BahiasApplicationForm(http.Controller):
 
 			# Job ID
 			job_id = kw.get('job_id')
-			_logger.info("HEYY")
-			_logger.info(job_id)
 			if job_id:
 				job_rec = request.env['hr.job'].sudo().search([('id','=',job_id)])
 				if job_rec:
-					_logger.info(job_rec)
 					kw['job_id'] = job_rec.id
 					kw['department_id'] = job_rec.department_id.id or False
 
-			_logger.info(kw)
+			# _logger.info(kw)
 			id_record = request.env['hr.applicant'].sudo().create(kw)
 			return json.dumps({'id': id_record.id})
 
