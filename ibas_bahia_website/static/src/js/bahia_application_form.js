@@ -212,7 +212,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			var $new_row = $('.add_extra_employed_relative').clone(true);
 			$new_row.removeClass('d-none');
 			$new_row.removeClass('add_extra_employed_relative');
-			$new_row.addClass('employeed_relative_line');
+			$new_row.addClass('employed_relative_line');
 			$new_row.insertBefore($('.add_extra_employed_relative'));
 			_.each($new_row.find('td'), function(val) {
 				$(val).find('input').attr('required', 'required');
