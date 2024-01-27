@@ -111,6 +111,11 @@ class BahiasApplicationForm(http.Controller):
 			applicant_families = kw.get('applicant_families')
 			if applicant_families:
 				family_data = json.loads(applicant_families)
+				_logger.info("Applicant Family")
+				_logger.info(family_data)
+				if family_data:
+					for family_line in family_data:
+						_logger.info(family_line)
 				family_val = [(0, 0, family_line) for family_line in family_data]
 				kw['applicant_families'] = family_val
 
