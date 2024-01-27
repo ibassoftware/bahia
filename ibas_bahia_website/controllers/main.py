@@ -226,6 +226,7 @@ class BahiasApplicationForm(http.Controller):
 			if applicant_employed_relatives_ids:
 				employed_relatives_val = []
 				employed_relatives_data = json.loads(applicant_employed_relatives_ids)
+				_logger.info(employed_relatives_data)
 				if employed_relatives_data:
 					for employed_relatives_line in employed_relatives_data:
 						name_of_crew = employed_relatives_line.get('name_of_crew')
