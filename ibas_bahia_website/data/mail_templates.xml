@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+    <template id="applicant_new_template">
+        Congratulations!
+
+        Your application has been posted successfully.
+        <br/>
+        <ul>
+            <li>Application: <a href="#" t-att-data-oe-id="applicant.id" data-oe-model="hr.applicant"><t t-esc="applicant.name"/></a></li>
+        </ul>
+    </template>
+
+</data>
+</odoo>
