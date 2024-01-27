@@ -302,8 +302,8 @@ class BahiasApplicationForm(http.Controller):
 						if date_expiry:
 							date_to = datetime.strptime(date_to, '%Y-%m-%d').date()
 
-						if not rank_position or not manning_agency or not employer_principal / 
-							or not address_contact_info_manning_agen or not vessel_name / 
+						if not rank_position or not manning_agency or not employer_principal 
+							or not address_contact_info_manning_agen or not vessel_name
 							or not vessel_type or not grt or not date_from or not date_to or not duties_and_responsibility:
 							error = _("Missing required fields for applicant employment history!")
 							return json.dumps({
