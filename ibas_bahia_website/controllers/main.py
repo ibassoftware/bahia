@@ -116,7 +116,9 @@ class BahiasApplicationForm(http.Controller):
 				if family_data:
 					for family_line in family_data:
 						_logger.info(family_line)
+						relationship = 
 				family_val = [(0, 0, family_line) for family_line in family_data]
+				_logger.info(family_val)
 				kw['applicant_families'] = family_val
 
 			# Applicant Education
