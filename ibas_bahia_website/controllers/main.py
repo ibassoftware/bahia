@@ -180,15 +180,45 @@ class BahiasApplicationForm(http.Controller):
 
 			# Applicant Record Books
 			applicant_document_ids = kw.get('applicant_document_ids')
-
 			if applicant_document_ids:
+				record_books_val = []
 				record_books_data = json.loads(applicant_document_ids)
-				# if not record_books_data:
-				# 	error = _("Record Books is required! Please add Passport and Seamans Book")
-				# 	return json.dumps({
-				# 		'error': error,
-				# 	})
-				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
+				if not record_books_data:
+					error = _("Record Books is required! Please add Passport and Seamans Book")
+					return json.dumps({
+						'error': error,
+					})
+				else:
+					for record_books_line in record_books_data:
+						document = record_books_line.get('document')
+						document_number = record_books_line.get('document_number')
+						date_issued = record_books_line.get('date_issued')
+						date_expiry = record_books_line.get('date_expiry')
+						issuing_authority = record_books_line.get('issuing_authority')
+						place_ofissue = record_books_line.get('place_ofissue')
+
+						if date_issued:
+							date_issued = datetime.strptime(date_issued, '%Y-%m-%d').date()
+
+						if date_expiry:
+							date_expiry = datetime.strptime(date_expiry, '%Y-%m-%d').date()
+
+						if not document or not document_number or not date_issued or not date_expiry or not issuing_authority or not place_ofissue:
+							error = _("Missing required fields for applicant record books details!")
+							return json.dumps({
+								'error': error,
+							})
+						else:
+							record_books_line_data = {
+								'document': document,
+								'document_number': document_number,
+								'date_issued': date_issued,
+								'date_expiry': date_expiry,
+								'issuing_authority': issuing_authority,
+								'place_ofissue': place_ofissue,
+							}
+							record_books_val.append((0, 0, record_books_line_data))
+
 				kw['applicant_document_ids'] = record_books_val
 
 			# References - Employed Relatives
