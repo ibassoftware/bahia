@@ -571,57 +571,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="education_line">
-                                                                        <td>
-                                                                            <select class="form-control" id="schooltype">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter School Name"
-                                                                                id="name_school"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Description"
-                                                                                id="description"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date From"
-                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_from"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date To"
-                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_to"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Place"
-                                                                                    type="text"
-                                                                                    class="form-control total_cost"
-                                                                                    id="school_address"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                    name="delete"
-                                                                                    aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_education d-none">
                                                                         <td>
                                                                             <select class="form-control" id="schooltype">
@@ -734,57 +683,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="record_books_line">
-                                                                        <td>
-                                                                            <select class="form-control" id="document">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="documenttype_rec" t-as="documenttype">
-                                                                                    <option t-esc="documenttype.name" t-att-value="documenttype.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Document No."
-                                                                                id="document_number"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date Issued"
-                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                class="form-control total_cost"
-                                                                                id="date_issued"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date Expiry"
-                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                class="form-control total_cost"
-                                                                                id="date_expiry"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Issuing Authority"
-                                                                                id="issuing_authority"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Place of Issue"
-                                                                                type="text"
-                                                                                class="form-control total_cost"
-                                                                                id="place_ofissue"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_record_books d-none">
                                                                         <td>
                                                                             <select class="form-control" id="document">
@@ -1197,110 +1095,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="previous_employment_line">
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Rank/Position"
-                                                                                id="rank_position"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Manning Agency"
-                                                                                id="manning_agency"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Employer/Principal"
-                                                                                id="employer_principal"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Address/Contact of Manning Agency"
-                                                                                id="address_contact_info_manning_agen"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Vessel Name"
-                                                                                id="vessel_name"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <select class="form-control" id="vessel_type">
-                                                                                <option value="false" style="">Select</option>
-                                                                                <option value="gcd" style="">GCD - General Cargo</option>
-                                                                                <option value="obo" style="">OBO - Ore/Bulk/Oil Carriers</option>
-                                                                                <option value="gas" style="">GAS - LPG/LNG Gas Carrier</option>
-                                                                                <option value="osv" style="">OSV - Offshore Supply Vessel</option>
-                                                                                <option value="b_c" style="">B/C - Bulk Carrier</option>
-                                                                                <option value="tnc" style="">TNC - Tanker (Crude)</option>
-                                                                                <option value="chm" style="">CHM - Chemical Carriers</option>
-                                                                                <option value="drg" style="">DRG - Dredgers</option>
-                                                                                <option value="con" style="">CON - Cellular Container</option>
-                                                                                <option value="tnp" style="">TNP - Tanker(Product)</option>
-                                                                                <option value="pas" style="">PAS - Passenger Ship</option>
-                                                                                <option value="srv" style="">SRV - Survey Ship</option>
-                                                                                <option value="mlp" style="">MLP - Multipurpose</option>
-                                                                                <option value="tnv" style="">TNV - VLCC/ULCC</option>
-                                                                                <option value="r_o" style="">R/O - Ro/Ro Carriers</option>
-                                                                                <option value="log" style="">LOG - Log/Timber</option>
-                                                                                <option value="o_o" style="">O/O - Ore/Oil Carrier</option>
-                                                                                <option value="tns" style="">TNS - Tanker (Storage)</option>
-                                                                                <option value="c_s" style="">C/S - Car Ship</option>
-                                                                                <option value="rfr" style="">RFR - Reefer</option>
-                                                                                <option value="psv_smc" style="">SEI - Seismic</option>
-                                                                                <option value="psv_pltsprt" style="">PSV - Platform Support</option>
-                                                                                <option value="psv_subsea" style="">SUB - Subsea</option>
-                                                                                <option value="psv_drill" style="">DRL - Drill</option>
-                                                                                <option value="dsv_dsprt" style="">DSV - Diving Support</option>
-                                                                                <option value="dsv_accmd" style="">ACV - Accomodation</option>
-                                                                                <option value="plv_pplying" style="">PLV - Pipe Laying</option>
-                                                                                <option value="ahtv_anchundlingtug" style="">AHTV - Anchor Handling Tug Vessel</option>
-                                                                                <option value="dsv_dpwcons" style="">DCV - Deep Water Construction</option>
-                                                                                <option value="clv_cbllayingvsl" style="">CLV - Cable Laying Vessel</option>
-                                                                                <option value="csv_conssupvessl" style="">CSV - Construction Support Vessels</option>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter GRT"
-                                                                                id="grt"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date From"
-                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                class="form-control total_cost"
-                                                                                id="date_from"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date To"
-                                                                                type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                class="form-control total_cost"
-                                                                                id="date_to"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Duties/Responsibilities"
-                                                                                id="duties_and_responsibility"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_previous_employment d-none">
                                                                         <td>
                                                                             <input type="text"
@@ -1457,30 +1251,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="social_media_line">
-                                                                        <td>
-                                                                            <select class="form-control" id="socialmedia_id">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="social_media_rec" t-as="socialmedia">
-                                                                                    <option t-esc="socialmedia.name" t-att-value="socialmedia.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Personal Link"
-                                                                                id="name"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_social_media d-none">
                                                                         <td>
                                                                             <select class="form-control" id="socialmedia_id">
