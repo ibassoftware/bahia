@@ -391,6 +391,106 @@
                                             <h5> Family Details </h5>
                                         </div>
 
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <table class="table table-bordered mt-3 applicant_families">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="relationship">
+                                                                    <span class="s_website_form_label_content">Relationship</span>
+                                                                    <span class="s_website_form_mark"> *</span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="full_name">
+                                                                    <span class="s_website_form_label_content">Name</span>
+                                                                    <span class="s_website_form_mark"> *</span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="applicant_gender">
+                                                                    <span class="s_website_form_label_content">Sex</span>
+                                                                    <span class="s_website_form_mark"> *</span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="date_of_birth">
+                                                                    <span class="s_website_form_label_content">Date of Birth</span>
+                                                                    <span class="s_website_form_mark"> *</span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="placeof_birth">
+                                                                    <span class="s_website_form_label_content">Place of Birth</span>
+                                                                    <span class="s_website_form_mark"> *</span>
+                                                                </label>
+                                                            </td>
+                                                            <td width="5%"></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <div class="collapse">
+                                                        <tbody>
+                                                            <tr class="add_extra_family d-none">
+                                                                <td>
+                                                                    <select class="form-control s_website_form_input" id="relationship" data-fill-with="relationship">
+                                                                        <option value="">Select</option>
+                                                                        <t t-foreach="familyrelation_rec" t-as="familyrelation">
+                                                                            <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
+                                                                        </t>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" class="form-control s_website_form_input" placeholder="Enter Name" id="full_name" data-fill-with="full_name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <select id="applicant_gender" class="form-control s_website_form_input" placeholder="Select Sex">
+                                                                        <option t-attf-value="">Select</option>
+                                                                        <option t-attf-value="male">Male</option>
+                                                                        <option t-attf-value="female">Female</option>
+                                                                    </select>
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="s_website_form_date input-group date" id="DP_date_of_birth_family" data-target-input="nearest">
+                                                                        <input type="text" class="form-control datetimepicker-input s_website_form_input" data-target="#DP_date_of_birth_family" name="date_of_birth" required="" placeholder="mm/dd/yyyy" id="date_of_birth" data-fill-with="date_of_birth"/>
+                                                                        <div class="input-group-append" data-target="#DP_date_of_birth_family" data-toggle="datetimepicker">
+                                                                          <div class="input-group-text">
+                                                                            <i class="fa fa-calendar"/>
+                                                                          </div>
+                                                                        </div>
+                                                                  </div>
+                                                                </td>
+                                                                <td>
+                                                                    <input placeholder="Enter Place of Birth" type="text" class="form-control s_website_form_input" id="placeof_birth" data-fill-with="placeof_birth"/>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn fa fa-trash-o remove_family_line" 
+                                                                        style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;" 
+                                                                        name="delete" 
+                                                                        aria-label="Delete row 1"></button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </div>
+                                                </table>
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="date_of_birth">
+                                                    <span class="s_website_form_label_content">Date of birth</span>
+                                                    <span class="s_website_form_mark"> *</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <div class="s_website_form_date input-group date" id="DP_date_of_birth" data-target-input="nearest">
+                                                        <input type="text" class="form-control datetimepicker-input s_website_form_input" data-target="#DP_date_of_birth" name="date_of_birth" required="" placeholder="mm/dd/yyyy" id="date_of_birth" data-fill-with="date_of_birth"/>
+                                                        <div class="input-group-append" data-target="#DP_date_of_birth" data-toggle="datetimepicker">
+                                                          <div class="input-group-text">
+                                                            <i class="fa fa-calendar"/>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <div class='row ml-1'
                                                 style="width:99%;">
@@ -605,57 +705,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="education_line">
-                                                                        <td>
-                                                                            <select class="form-control" id="schooltype">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="level_rec" t-as="level">
-                                                                                    <option t-esc="level.name" t-att-value="level.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter School Name"
-                                                                                id="name_school"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input type="text"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Description"
-                                                                                id="description"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date From"
-                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_from"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Date To"
-                                                                                    type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                    class="form-control total_cost"
-                                                                                    id="date_to"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <input placeholder="Enter Place"
-                                                                                    type="text"
-                                                                                    class="form-control total_cost"
-                                                                                    id="school_address"/>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                    style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                    name="delete"
-                                                                                    aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_education d-none">
                                                                         <td>
                                                                             <select class="form-control" id="schooltype">
