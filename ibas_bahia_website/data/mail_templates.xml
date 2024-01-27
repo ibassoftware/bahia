@@ -7,9 +7,9 @@
 
         Your application has been posted successfully.
         <br/>
-        <ul>
+        <!-- <ul>
             <li>Application: <a href="#" t-att-data-oe-id="applicant.id" data-oe-model="hr.applicant"><t t-esc="applicant.name"/></a></li>
-        </ul>
+        </ul> -->
     </template>
 
 </data>
