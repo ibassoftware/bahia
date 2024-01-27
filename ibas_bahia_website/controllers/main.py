@@ -102,6 +102,9 @@ class BahiasApplicationForm(http.Controller):
 				image_value = base64.b64encode(image_data)
 				kw['image_1920'] = image_value.decode('ascii')
 
+			_logger.info("image_1920")
+			_logger.info(image_applicant)
+
 			# Applicant Date of Birth
 			if applicant_date_of_birth:
 				kw['date_of_birth'] = applicant_date_of_birth
@@ -361,7 +364,6 @@ class BahiasApplicationForm(http.Controller):
 
 			_logger.info(kw)
 			id_record = request.env['hr.applicant'].sudo().create(kw)
-			# return request.render('ibas_bahia_website.application_thanks', {})
 			return json.dumps({'id': id_record.id})
 
 	@http.route('/jobs/apply/add-family', type='http', auth='public', website=True)
