@@ -115,20 +115,29 @@ class BahiasApplicationForm(http.Controller):
 				_logger.info(family_data)
 				if family_data:
 					for family_line in family_data:
-						_logger.info(family_line)
 						relationship = family_line.get('relationship')
 						full_name = family_line.get('full_name')
 						gender = family_line.get('gender')
 						date_of_birth = family_line.get('date_of_birth')
 						placeof_birth = family_line.get('date_of_birth')
-						_logger.info(relationship)
+
+						if date_of_birth:
+							date_of_birth = datetime.strptime(date_of_birth, '%m/%d/%Y').date()
+
 						if not relationship or not full_name or not gender:
 							error = _("Missing required fields for applicant family details!")
 							return json.dumps({
 								'error': error,
 							})
-				family_val = [(0, 0, family_line) for family_line in family_data]
-				_logger.info(family_val)
+						else:
+							family_line_data = {
+								'relationship': relationship,
+								'full_name': full_name,
+								'date_of_birth': date_of_birth,
+								'placeof_birth': placeof_birth,
+							}
+							family_val.append((0, 0, family_line_data))
+				# family_val = [(0, 0, family_line) for family_line in family_data]
 				kw['applicant_families'] = family_val
 
 			# Applicant Education
@@ -143,11 +152,11 @@ class BahiasApplicationForm(http.Controller):
 
 			if applicant_document_ids:
 				record_books_data = json.loads(applicant_document_ids)
-				if not record_books_data:
-					error = _("Record Books is required! Please add Passport and Seamans Book")
-					return json.dumps({
-						'error': error,
-					})
+				# if not record_books_data:
+				# 	error = _("Record Books is required! Please add Passport and Seamans Book")
+				# 	return json.dumps({
+				# 		'error': error,
+				# 	})
 				record_books_val = [(0, 0, record_books_line) for record_books_line in record_books_data]
 				kw['applicant_document_ids'] = record_books_val
 
@@ -170,12 +179,11 @@ class BahiasApplicationForm(http.Controller):
 			
 			if applicant_previous_employment_ids:
 				applicant_previous_employment_data = json.loads(applicant_previous_employment_ids)
-				_logger.info(applicant_previous_employment_data)
-				if not applicant_previous_employment_data:
-					error = _("Employment History is required!")
-					return json.dumps({
-						'error': error,
-					})
+				# if not applicant_previous_employment_data:
+				# 	error = _("Employment History is required!")
+				# 	return json.dumps({
+				# 		'error': error,
+				# 	})
 				applicant_previous_employment_val = [(0, 0, applicant_previous_employment_line) for applicant_previous_employment_line in applicant_previous_employment_data]
 				kw['applicant_previous_employment_ids'] = applicant_previous_employment_val				
 
