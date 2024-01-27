@@ -475,6 +475,15 @@
                                                     </div>
                                                 </table>
                                             </div>
+
+                                            <textarea class="d-none" name="applicant_families"></textarea>
+                                                    
+                                            <button type="button"
+                                                class="btn btn-info add_family button-color"
+                                                style="float: right; margin-right: -15px;">
+                                            <i class="fa fa-plus"/>
+                                            </button>
+
                                         </div>
 
                                         <div class="form-group col-12 text-center">
