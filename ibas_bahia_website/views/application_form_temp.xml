@@ -433,7 +433,7 @@
                                                         <tbody>
                                                             <tr class="add_extra_family d-none">
                                                                 <td>
-                                                                    <select class="form-control s_website_form_input" id="relationship" data-fill-with="relationship">
+                                                                    <select class="form-control s_website_form_input" id="relationship" data-fill-with="relationship" required="">
                                                                         <option value="">Select</option>
                                                                         <t t-foreach="familyrelation_rec" t-as="familyrelation">
                                                                             <option t-esc="familyrelation.name" t-att-value="familyrelation.id"/>
@@ -452,14 +452,20 @@
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="s_website_form_date input-group date" id="DP_date_of_birth_family" data-target-input="nearest">
-                                                                        <input type="text" class="form-control datetimepicker-input s_website_form_input" data-target="#DP_date_of_birth_family" name="date_of_birth" required="" placeholder="mm/dd/yyyy" id="date_of_birth" data-fill-with="date_of_birth"/>
-                                                                        <div class="input-group-append" data-target="#DP_date_of_birth_family" data-toggle="datetimepicker">
-                                                                          <div class="input-group-text">
-                                                                            <i class="fa fa-calendar"/>
-                                                                          </div>
+                                                                    <div class="form-group s_website_form_field s_website_form_custom s_website_form_required" data-type="text" data-name="Field">
+                                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                                        <div class="col-sm">
+                                                                            <div class="s_website_form_date input-group date" id="DP_date_of_birth_family" data-target-input="nearest">
+                                                                                <input type="text" class="form-control datetimepicker-input s_website_form_input" data-target="#DP_date_of_birth_family" name="date_of_birth" required="" placeholder="mm/dd/yyyy" id="date_of_birth" data-fill-with="date_of_birth"/>
+                                                                                <div class="input-group-append" data-target="#DP_date_of_birth_family" data-toggle="datetimepicker">
+                                                                                  <div class="input-group-text">
+                                                                                    <i class="fa fa-calendar"/>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
                                                                         </div>
-                                                                  </div>
+                                                                    </div>
+                                                                </div>
                                                                 </td>
                                                                 <td>
                                                                     <input placeholder="Enter Place of Birth" type="text" class="form-control s_website_form_input" id="placeof_birth" data-fill-with="placeof_birth"/>
