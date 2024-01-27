@@ -111,8 +111,6 @@ class BahiasApplicationForm(http.Controller):
 			if applicant_families:
 				family_val = []
 				family_data = json.loads(applicant_families)
-				_logger.info("Applicant Family")
-				_logger.info(family_data)
 				if family_data:
 					for family_line in family_data:
 						relationship = family_line.get('relationship')
@@ -122,7 +120,7 @@ class BahiasApplicationForm(http.Controller):
 						placeof_birth = family_line.get('date_of_birth')
 
 						if date_of_birth:
-							date_of_birth = datetime.strptime(date_of_birth, '%m/%d/%Y').date()
+							date_of_birth = datetime.strptime(date_of_birth, '%Y-%m-%d').date()
 
 						if not relationship or not full_name or not gender:
 							error = _("Missing required fields for applicant family details!")
@@ -137,7 +135,7 @@ class BahiasApplicationForm(http.Controller):
 								'placeof_birth': placeof_birth,
 							}
 							family_val.append((0, 0, family_line_data))
-				# family_val = [(0, 0, family_line) for family_line in family_data]
+
 				kw['applicant_families'] = family_val
 
 			# Applicant Education
