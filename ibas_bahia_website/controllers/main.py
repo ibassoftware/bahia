@@ -86,7 +86,6 @@ class BahiasApplicationForm(http.Controller):
 		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
 		
 		if duplicate_applicant_id:
-			_logger.info("Duplicate application!")
 			error = _("Duplicate application! One applicant, one application only.")
 			return json.dumps({
 				'error': error,
@@ -110,6 +109,7 @@ class BahiasApplicationForm(http.Controller):
 			# Applicant Family
 			applicant_families = kw.get('applicant_families')
 			if applicant_families:
+				family_val = []
 				family_data = json.loads(applicant_families)
 				_logger.info("Applicant Family")
 				_logger.info(family_data)
@@ -117,7 +117,16 @@ class BahiasApplicationForm(http.Controller):
 					for family_line in family_data:
 						_logger.info(family_line)
 						relationship = family_line.get('relationship')
+						full_name = family_line.get('full_name')
+						gender = family_line.get('gender')
+						date_of_birth = family_line.get('date_of_birth')
+						placeof_birth = family_line.get('date_of_birth')
 						_logger.info(relationship)
+						if not relationship or not full_name or not gender:
+							error = _("Missing required fields for applicant family details!")
+							return json.dumps({
+								'error': error,
+							})
 				family_val = [(0, 0, family_line) for family_line in family_data]
 				_logger.info(family_val)
 				kw['applicant_families'] = family_val

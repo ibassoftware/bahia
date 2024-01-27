@@ -409,10 +409,10 @@
                                                                         <strong>Sex *</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Date of Birth *</strong>
+                                                                        <strong>Date of Birth</strong>
                                                                     </td>
                                                                     <td>
-                                                                        <strong>Place of Birth *</strong>
+                                                                        <strong>Place of Birth</strong>
                                                                     </td>
                                                                     <td width="5%"></td>
                                                                 </tr>
@@ -445,7 +445,7 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <input placeholder="Enter Place of Birth" type="text" class="form-control total_cost" id="placeof_birth"/>
+                                                                            <input type="text" class="form-control" placeholder="Enter Place of Birth" id="placeof_birth"/>
                                                                         </td>
                                                                         <td>
                                                                             <button class="btn fa fa-trash-o remove_family_line" 
