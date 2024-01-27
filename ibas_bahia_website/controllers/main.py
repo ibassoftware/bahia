@@ -93,7 +93,12 @@ class BahiasApplicationForm(http.Controller):
 		else:
 			# Is Created From Website
 			kw['is_created_website'] = True
-			
+
+			# Applicant Name
+			name = kw.get('name')
+			if name:
+				kw['partner_name'] = name
+
 			# Applicant Image
 			image_applicant = kw.get('image_1920[0][0]')
 			image_filename = False
