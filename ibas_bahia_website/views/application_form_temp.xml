@@ -458,7 +458,8 @@
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;" 
                                                                                 name="delete" 
                                                                                 aria-label="Delete row 1"></button> -->
-                                                                                <input type="button" class="btn fa fa-trash-o" onClick="$(this).closest('tr').remove();"/>
+                                                                                <input type="button" class="btn" onClick="$(this).closest('tr').remove();"><i class="fa fa-trash-o" style="color: red;"></i>
+                                                                                </input>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
