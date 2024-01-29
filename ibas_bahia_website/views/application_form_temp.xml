@@ -454,7 +454,7 @@
                                                                             <input type="text" class="form-control" placeholder="Enter Place of Birth" id="placeof_birth"/>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_family_line" 
+                                                                            <button type="button" class="btn fa fa-trash-o remove_family_line" 
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;" 
                                                                                 name="delete" 
                                                                                 aria-label="Delete row 1"></button>
