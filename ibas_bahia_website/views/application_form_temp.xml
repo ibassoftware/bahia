@@ -459,6 +459,7 @@
                                                                                 name="delete" 
                                                                                 aria-label="Delete row 1"></button> -->
                                                                             <span class="btn btn-warning"><i class="fa fa-trash-o" style="color: red;"></i><input type="button" class="btn" onClick="$(this).closest('tr').remove();"/></span>
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </div>
