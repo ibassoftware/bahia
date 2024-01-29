@@ -727,10 +727,10 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                            <button type="button" class="btn fa fa-trash-o remove_line"
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
                                                                                 name="delete"
-                                                                                aria-label="Delete row 1"></button>
+                                                                                aria-label="Delete row 1" onClick="$(this).closest('tr').remove();"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -889,10 +889,10 @@
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                            <button type="button" class="btn fa fa-trash-o remove_line"
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
                                                                                 name="delete"
-                                                                                aria-label="Delete row 1"></button>
+                                                                                aria-label="Delete row 1" onClick="$(this).closest('tr').remove();"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -937,30 +937,6 @@
                                                             </thead>
                                                             <div class="collapse">
                                                                 <tbody>
-                                                                    <!-- <tr class="previous_application_line">
-                                                                        <td>
-                                                                            <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Date"
-                                                                                id="date_applied"/>
-                                                                        </td>
-                                                                        <td>
-                                                                            <select class="form-control" id="job_applied_id">
-                                                                                <option value="">Select</option>
-                                                                                <t t-foreach="job_rec" t-as="job">
-                                                                                    <option t-esc="job.name" t-att-value="job.id"/>
-                                                                                </t>
-                                                                            </select>
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
-                                                                                style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
-                                                                                name="delete"
-                                                                                aria-label="Delete row 1"></button>
-                                                                        </td>
-                                                                    </tr> -->
-
-
                                                                     <tr class="add_extra_previous_application d-none">
                                                                         <td>
                                                                             <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
@@ -977,10 +953,10 @@
                                                                             </select>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                            <button type="button" class="btn fa fa-trash-o remove_line"
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
                                                                                 name="delete"
-                                                                                aria-label="Delete row 1"></button>
+                                                                                aria-label="Delete row 1" onClick="$(this).closest('tr').remove();"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -1162,10 +1138,10 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                            <button type="button" class="btn fa fa-trash-o remove_line"
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
                                                                                 name="delete"
-                                                                                aria-label="Delete row 1"></button>
+                                                                                aria-label="Delete row 1" onClick="$(this).closest('tr').remove();"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -1238,10 +1214,10 @@
                                                                                 id="name"/>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn fa fa-trash-o remove_line"
+                                                                            <button type="button" class="btn fa fa-trash-o remove_line"
                                                                                 style="color: red; padding: 0px; margin-left: -6px; margin-top: 6px;margin-bottom:15px;"
                                                                                 name="delete"
-                                                                                aria-label="Delete row 1"></button>
+                                                                                aria-label="Delete row 1" onClick="$(this).closest('tr').remove();"></button>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
