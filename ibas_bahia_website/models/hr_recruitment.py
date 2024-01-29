@@ -30,6 +30,5 @@ class HRApplicant(models.Model):
                 applicant.message_post_with_view(
                     'ibas_bahia_website.applicant_new_template',
                     values={'applicant': applicant},
-                    message_type='email',
                     subtype_id=self.env.ref("ibas_bahia_website.mt_applicant_new_website").id)
         return applicants
