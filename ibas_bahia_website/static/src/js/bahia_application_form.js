@@ -166,12 +166,8 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 		},
 
 		_onClickRemove_family_line: function(ev){
-			console.log("remove_family")
-			var $row = $(this).parent().parent()
-			$(this).closest('tr').find('td').each(function() {
-				var textval = $(this).text()
-				console.log(textval)
-			});
+			console.log("remove_family");
+			$(this).parent().parent().remove();
 		},
 
 		_onClickAdd_family: function(ev){
