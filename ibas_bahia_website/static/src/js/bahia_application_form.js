@@ -18,7 +18,7 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 			'click .add_previous_application': '_onClickAdd_previous_application',
 			'click .add_previous_employment': '_onClickAdd_previous_employment',
 			'click .add_social_media': '_onClickAdd_social_media',
-			'click .remove_family_line': '_onClickRemove_family_line',
+			// 'click .remove_family_line': '_onClickRemove_family_line',
 			'click .custom_create': '_onClickSubmit',
 		},
 
@@ -165,15 +165,10 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 
 		},
 
-		_onClickRemove_family_line: function(ev){
-			console.log("remove_family");
-			$(this).remove();
-			var currentrow = $(this).closest('tr').find('td');
-			_.each(currentrow, function(td) {
-				var textval = $(td).text();
-				console.log(textval);
-			});
-		},
+		// _onClickRemove_family_line: function(ev){
+		// 	console.log("remove_family")
+		// 	$(this).parent().parent().remove();
+		// },
 
 		_onClickAdd_family: function(ev){
 			console.log("add_family")
