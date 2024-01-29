@@ -168,9 +168,8 @@ odoo.define('ibas_bahia_website.apply_template', function(require){
 		_onClickRemove_family_line: function(ev){
 			console.log("remove_family")
 			var $row = $(this).parent().parent()
-			console.log($row)
 			$(this).closest('tr').find('td').each(function() {
-				var textval = $(this).text(); // this will be the text of each <td>
+				var textval = $(this).text()
 				console.log(textval)
 			});
 		},
