@@ -282,8 +282,18 @@
                 
                 <xpath expr="//page[@name='personal_information']" position="replace"/>                
             </field>
-        </record>     
+        </record>  
 
+        <record id="view_tree_hr_employee_extend" model="ir.ui.view">
+            <field name="name">view_tree_hr_employee_extend</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="employee_number"/>
+                </xpath>
+            </field>
+        </record>
 
     </data>
 </odoo>
