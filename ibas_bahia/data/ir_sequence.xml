@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
 
-<!--         <record model="ir.sequence.type" id="hr_employee_code_sequence">
-            <field name="name">Code sequence hr employee</field>
-            <field name="code">hr.employee.sequence</field>
-        </record> -->
         <record model="ir.sequence" id="hr_employee_sequence">
             <field name="name">Sequence For employee</field>
             <field name="code">hr.employee.sequence</field>
             <field name="active">TRUE</field>
-            <field name="prefix"></field>
+            <field name="prefix">%(year)s%(month)s%(day)s</field>
             <field name="number_increment">1</field>
-            <field name="number_next">2295</field>
+            <field name="number_next">1</field>
             <field name="implementation">standard</field>
         </record>
-
-
-<!--         <record model="ir.sequence.type" id="hr_license_type_code_sequence">
-            <field name="name">License Type Class ID</field>
-            <field name="code">hr.licensetype.sequence</field>
-        </record> -->
 
         <record model="ir.sequence" id="hr_license_type_sequence">
             <field name="name">Sequence For License Type Class ID</field>
@@ -28,10 +18,9 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">62</field>
+            <field name="number_next">102</field>
             <field name="implementation">standard</field>
         </record>
-
 
         <record model="ir.sequence" id="hr_applicant_sequence">
             <field name="name">Sequence For Applicant</field>
@@ -39,7 +28,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">29559</field>
+            <field name="number_next">29583</field>
             <field name="padding">5</field>
             <field name="implementation">standard</field>
         </record>
