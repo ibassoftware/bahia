@@ -174,13 +174,6 @@ class hrApplicant(models.Model):
 				applicant.partner_id = new_partner_id
 				address_id = new_partner_id.address_get(['contact'])['contact']
 			if applicant.partner_name or contact_name:
-
-
-
-
-
-
-
 				employee_data = {
 			        'default_name': applicant.partner_name or contact_name,
 			        'default_job_id': applicant.job_id.id,
@@ -197,44 +190,41 @@ class hrApplicant(models.Model):
                     'default_first_name': applicant.first_name,
                     'default_middle_name': applicant.middle_name,
                     'default_last_name': applicant.last_name,
-	                 'default_sss_no': applicant.sss_no or False,
-	                 'default_hdmf_no': applicant.hdmf_no or False,
-	                 'default_philhealth_no': applicant.philhealth_no or False,
-	                 'default_birthday': applicant.date_of_birth,
-	                 'default_placeof_birth': applicant.placeof_birth,
-	                 'default_gender': applicant.gender or False,
-	                 'default_marital': applicant.civil_status or False,
-	                 'default_country_id': applicant.nationality_id and applicant.nationality_id.id or False,
-	                 'default_height': applicant.shoe_size,
-
-                    'default_image_1920': applicant.image,
-
-
-
+	                'default_sss_no': applicant.sss_no or False,
+	                'default_hdmf_no': applicant.hdmf_no or False,
+	                'default_philhealth_no': applicant.philhealth_no or False,
+	                'default_birthday': applicant.date_of_birth,
+	                'default_placeof_birth': applicant.placeof_birth,
+	                'default_gender': applicant.gender or False,
+	                'default_marital': applicant.civil_status or False,
+	                'default_country_id': applicant.nationality_id and applicant.nationality_id.id or False,
+	                'default_height': applicant.shoe_size,
+                    'default_image_1920': applicant.image_1920,
 				}
+
 				#Permament_address
 				laddress = []
 				if applicant.permanent_address_adress and applicant.permanent_address_city and applicant.permanent_address_contact_no:
 					permanent_address_adress = [(0,0,{
-                            'addresstype':1,
-                            'address_1': applicant.permanent_address_adress,
-                            'address_3': applicant.permanent_address_zipcode or False,
-                            'city': applicant.permanent_address_city,
-                            'telephone_number':applicant.permanent_address_contact_no,
-                            'mobile_number':applicant.permanent_address_contact_no,
-                            })]
+                        'addresstype':1,
+                        'address_1': applicant.permanent_address_adress,
+                        'address_3': applicant.permanent_address_zipcode or False,
+                        'city': applicant.permanent_address_city,
+                        'telephone_number':applicant.permanent_address_contact_no,
+                        'mobile_number':applicant.permanent_address_contact_no,
+                    })]
 					laddress = permanent_address_adress
 
 				#Temporary Address
 				if applicant.alternative_address_adress and applicant.alternative_address_city and applicant.alternative_address_contact_no:
 					alternative_address_adress = [(0,0,{
-                            'addresstype':2,
-                            'address_1': applicant.alternative_address_adress,
-                            'address_3': applicant.alternative_address_zipcode or False,
-                            'city': applicant.alternative_address_city,
-                            'telephone_number':applicant.alternative_address_contact_no,
-                            'mobile_number':applicant.alternative_address_contact_no,
-                            })]
+                        'addresstype':2,
+                        'address_1': applicant.alternative_address_adress,
+                        'address_3': applicant.alternative_address_zipcode or False,
+                        'city': applicant.alternative_address_city,
+                        'telephone_number':applicant.alternative_address_contact_no,
+                        'mobile_number':applicant.alternative_address_contact_no,
+                    })]
 					laddress += alternative_address_adress
 				if len(laddress) > 0:
 					employee_data['default_employee_addresses'] = laddress
@@ -243,56 +233,54 @@ class hrApplicant(models.Model):
 				applicant_families_list =[]
 				for family_details in applicant.applicant_families:
 					applicant_families_list.append((0,0,{
-                            'relation_level':1,
-                            'relationship':family_details and family_details.relationship and family_details.relationship.id or False,
-                            'last_name': family_details.last_name,
-                            'first_name':family_details.first_name,
-                            'middle_name':family_details.middle_name,
-                            'birthday':family_details.date_of_birth,
-                            'placeof_birth': family_details.placeof_birth,
-                            'gender': family_details.gender,}))
+                        'relation_level':1,
+                        'relationship':family_details and family_details.relationship and family_details.relationship.id or False,
+                        'last_name': family_details.last_name,
+                        'first_name':family_details.first_name,
+                        'middle_name':family_details.middle_name,
+                        'birthday':family_details.date_of_birth,
+                        'placeof_birth': family_details.placeof_birth,
+                        'gender': family_details.gender,
+                    }))
 
 				#Get Educational Background
 				employee_education = []
 				for educational_background in applicant.applicant_education:
 					employee_education.append((0,0,{
-                            'schooltype':educational_background and educational_background.schooltype and educational_background.schooltype.id or False,
-                            'name_school': educational_background.name_school,
-                            'date_from':educational_background.date_from,
-                            'date_to':educational_background.date_to,
-                            'school_address':educational_background.school_address,
-                            'description': educational_background.description,
-                            })
-					)
+                        'schooltype':educational_background and educational_background.schooltype and educational_background.schooltype.id or False,
+                        'name_school': educational_background.name_school,
+                        'date_from':educational_background.date_from,
+                        'date_to':educational_background.date_to,
+                        'school_address':educational_background.school_address,
+                        'description': educational_background.description,
+                    }))
 
 				#Get Documents
 				applicant_document_ids = []
 				for document in applicant.applicant_document_ids:
 					applicant_document_ids.append((0,0,{
-                            'document':document and document.document and document.document.id or False,
-                            'document_number': document.document_number,
-                            'date_issued':document.date_issued,
-                            'date_expiry':document.date_expiry,
-                            'issuing_authority':document.issuing_authority,
-                            'place_ofissue': document.place_ofissue,
-                            })
-					)
+                        'document':document and document.document and document.document.id or False,
+                        'document_number': document.document_number,
+                        'date_issued':document.date_issued,
+                        'date_expiry':document.date_expiry,
+                        'issuing_authority':document.issuing_authority,
+                        'place_ofissue': document.place_ofissue,
+                    }))
 
 				licenses =[]
 				#For Training
 				for training in applicant.applicant_training_courses_ids:
 					licenses.append((0,0,{
-                            'licensetype':18,
-                            'license': training and training.training_id and training.training_id.id or False,
-                            'doc_number': training.document_no,
-                            'country': 178,
-                            'date_issued': training.issue_date,
-                            'date_expiry': False,
-                            'place_issue':training.training_centers or '',
-                            'authority_issue': False,
-                            'remarks': training.training_name,
-                            })
-					)
+                        'licensetype':18,
+                        'license': training and training.training_id and training.training_id.id or False,
+                        'doc_number': training.document_no,
+                        'country': 178,
+                        'date_issued': training.issue_date,
+                        'date_expiry': False,
+                        'place_issue':training.training_centers or '',
+                        'authority_issue': False,
+                        'remarks': training.training_name,
+                    }))
 
 				#Get License
 				for training in applicant.applicant_license_ids:
@@ -307,17 +295,16 @@ class hrApplicant(models.Model):
 							str_issuing_auth = ISSUING_AUTH[training.issuing_authority]
 
 					licenses.append((0,0,{
-                            'licensetype':17,
-                            'license': training and training.training_id and training.training_id.id or False,
-                            'doc_number': training.document_no,
-                            'country': 178,
-                            'date_issued': training.issue_date,
-                            'date_expiry': training.expiry_date,
-                            'place_issue': '',
-                            'authority_issue': str_issuing_auth,
-                            'remarks': training.training_name,
-                            })
-					)
+                        'licensetype':17,
+                        'license': training and training.training_id and training.training_id.id or False,
+                        'doc_number': training.document_no,
+                        'country': 178,
+                        'date_issued': training.issue_date,
+                        'date_expiry': training.expiry_date,
+                        'place_issue': '',
+                        'authority_issue': str_issuing_auth,
+                        'remarks': training.training_name,
+                    }))
 
 
 				employee_data['default_employee_families'] = applicant_families_list
