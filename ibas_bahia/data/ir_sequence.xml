@@ -8,7 +8,7 @@
             <field name="active">TRUE</field>
             <field name="prefix">%(year)s%(month)s%(day)s</field>
             <field name="number_increment">1</field>
-            <field name="number_next">1</field>
+            <field name="number_next">861</field>
             <field name="implementation">standard</field>
         </record>
 
@@ -18,7 +18,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">102</field>
+            <field name="number_next">103</field>
             <field name="implementation">standard</field>
         </record>
 
@@ -28,7 +28,7 @@
             <field name="active">TRUE</field>
             <field name="prefix"></field>
             <field name="number_increment">1</field>
-            <field name="number_next">29583</field>
+            <field name="number_next">29670</field>
             <field name="padding">5</field>
             <field name="implementation">standard</field>
         </record>
