@@ -11,7 +11,7 @@ import time
 
 # ODOO SERVER CONNECTION
 # SOURCE - PROD
-src_URL = 'http://bahiashipping.ph'
+src_URL = 'http://backoffice.bahiashipping.ph'
 src_DB = 'bck_apr_2020'
 src_USER = 'admin'
 src_PASS = 'P@5word'
