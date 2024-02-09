@@ -25,7 +25,7 @@
 
                 <xpath expr="//field[@name='legend_done']" position="after">
                     <field name="avatar_128" invisible="1"/>
-                    <field name="image_1920" widget='image' class="oe_left" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;avatar_128&quot;}"/>
+                    <field name="image_1920" widget='image' height="250" width="250"/>
                 </xpath>
 
                 <xpath expr="//div[@class='oe_title']" position="replace">
