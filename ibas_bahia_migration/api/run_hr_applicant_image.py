@@ -57,12 +57,15 @@ def update_applicant_image():
 			check_args = [('id', '=', applicant	)]
 			check_dest_applicant = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.applicant', 'search', check_args)
 			if check_dest_applicant:
-				applicant_update = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.applicant', 'write', [applicant, {
-					'image_1920': applicant_data['image'],
-				}])
+				try:
+					applicant_update = dest_models.execute_kw(dest_DB, dest_uid, dest_PASS, 'hr.applicant', 'write', [applicant, {
+						'image_1920': applicant_data['image'],
+					}])
 
-				if applicant_update:
-					count += 1
-					print("[" + str(count) + "]" + "UPDATED applicant: " + str(applicant))
-
+					if applicant_update:
+						count += 1
+						print("[" + str(count) + "]" + "UPDATED applicant: " + str(applicant))
+				except:
+						print("Cannot decode")
+						
 update_applicant_image()
