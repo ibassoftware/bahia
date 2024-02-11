@@ -40,8 +40,6 @@ def update_employee_legacydoc_conf_report():
 	count = 0
 	count_update = 0
 
-	# args = [('id', '=', 32416)]
-	# args = [('id', '=', 50462)]
 	# args = [('id', '=', 50835)]
 	# args = [('name', 'ilike', '')]
 	args = [('is_legacy_doc_mig_1', '=', False)]
