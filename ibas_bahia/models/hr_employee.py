@@ -33,9 +33,11 @@ class HrEmployeeExtend(models.Model):
 	def _check_phone_format(self):
 		for record in self:
 			if record.mobile_phone and not record.mobile_phone.isdigit():
-				raise ValidationError("Please enter a valid phone!")
+				# raise ValidationError("Please enter a valid phone!")
+				_logger.info("Please enter a valid phone!")
 			if record.work_phone and not record.work_phone.isdigit():
-				raise ValidationError("Please enter a valid phone!")
+				# raise ValidationError("Please enter a valid phone!")
+				_logger.info("Please enter a valid phone!")
 
 	#---------------- Functions/Methods
 	def getCheckListId(self):
