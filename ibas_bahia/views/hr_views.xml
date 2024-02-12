@@ -214,7 +214,7 @@
                                     <field name="place_ofissue"/>
                                     <field name="expired" invisible="1" />
                                     <field name="filename" invisible="1"/>
-                                    <field name="file_upload" filename="filename"/>
+                                    <field name="file_upload" filename="filename" widget="binary"/>
                                 </tree>                                 
                             </field>
                        
