@@ -235,7 +235,7 @@
 
                         <page string ="License" name="license_page">    
                             <field name="employee_licenses" string ="">
-                                <tree>
+                                <tree editable="bottom">
                                     <field name="licensetype"/>
                                     <field name="license"/>
                                     <field name="doc_number"/>
