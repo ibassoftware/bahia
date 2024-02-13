@@ -130,7 +130,17 @@ class BahiasApplicationForm(http.Controller):
 						placeof_birth = family_line.get('placeof_birth')
 
 						if date_of_birth:
+							is_valid_date = False
 							date_of_birth = datetime.strptime(date_of_birth, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_of_birth >= start_date and date_of_birth <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Previous Application Family - Date of Birth. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if not relationship or not first_name or not last_name or not gender:
 							error = _("Missing required fields for applicant family details!")
@@ -165,10 +175,30 @@ class BahiasApplicationForm(http.Controller):
 						school_address = education_line.get('school_address')
 
 						if date_from:
+							is_valid_date = False
 							date_from = datetime.strptime(date_from, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_from >= start_date and date_from <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Applicant Education - Date From. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if date_to:
+							is_valid_date = False
 							date_to = datetime.strptime(date_to, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_to >= start_date and date_to <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Applicant Education - Date To. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if not schooltype or not name_school or not description or not date_from or not date_to or not school_address:
 							error = _("Missing required fields for applicant education details!")
@@ -207,10 +237,30 @@ class BahiasApplicationForm(http.Controller):
 						place_ofissue = record_books_line.get('place_ofissue')
 
 						if date_issued:
+							is_valid_date = False
 							date_issued = datetime.strptime(date_issued, '%Y-%m-%d').date()
-
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_issued >= start_date and date_issued <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Applicant Record Books - Date Issued. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
+							
 						if date_expiry:
+							is_valid_date = False
 							date_expiry = datetime.strptime(date_expiry, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_expiry >= start_date and date_expiry <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Applicant Record Books - Date Expiry. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if not document or not document_number or not date_issued or not date_expiry or not issuing_authority or not place_ofissue:
 							error = _("Missing required fields for applicant record books details!")
@@ -266,7 +316,17 @@ class BahiasApplicationForm(http.Controller):
 						job_applied_id = applicant_previous_application_line.get('job_applied_id')
 
 						if date_applied:
+							is_valid_date = False
 							date_applied = datetime.strptime(date_applied, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_applied >= start_date and date_applied <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Previous Application - Date. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 						
 						if not date_applied or not job_applied_id:
 							error = _("Missing required fields for applicant previous application details!")
@@ -306,10 +366,30 @@ class BahiasApplicationForm(http.Controller):
 
 
 						if date_from:
+							is_valid_date = False
 							date_from = datetime.strptime(date_from, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_from >= start_date and date_from <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Employment History - Date From. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if date_to:
+							is_valid_date = False
 							date_to = datetime.strptime(date_to, '%Y-%m-%d').date()
+							start_date = datetime(1900, 1, 1).date()
+							end_date = datetime(2090, 12, 31).date()
+							if date_to >= start_date and date_to <= end_date:
+								is_valid_date = True
+							if not is_valid_date:
+								error = _("Incorrect Data Format for Employment History - Date To. Please use format for dates: mm/dd/yyyy.")
+								return json.dumps({
+									'error': error,
+								})
 
 						if not rank_position or not manning_agency or not employer_principal or not address_contact_info_manning_agen or not vessel_name or not vessel_type or not grt or not date_from or not date_to or not duties_and_responsibility:
 							error = _("Missing required fields for applicant employment history!")
