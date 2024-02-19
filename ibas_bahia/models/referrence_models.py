@@ -286,7 +286,7 @@ class HrEmployeeEmployment(models.Model):
 	def getYearMonthDay(self):
 		for rec in self:
 			_logger.info("=====getYearMonthDay=====")
-			_logger.info(rec.employee_id)
+			_logger.info(rec.employee_employment_id)
 			_logger.info(rec.id)
 
 			no_of_years = 0
