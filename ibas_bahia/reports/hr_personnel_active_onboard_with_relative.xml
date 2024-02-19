@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
 
         <record id="view_crewlist_active_onboard_withrelative_report_form" model="ir.ui.view">
@@ -47,12 +47,13 @@
             <field name="model">hr.personnel.withrelative.main</field>
             <field name="arch" type="xml">  
 
-                <form string="Disembarkation Report" class="oe_form_configuration" create="false" edit="false" delete ="false"> 
+                <form string="Disembarkation Report" class="oe_form_configuration" create="false" edit="false" delete="false"> 
                     <sheet class = "oe_form_sheet_width_bahia_relatives">
                         <group>
                             <field name="vessel"  readonly = "1"/>
                             <field name="date_search"  readonly = "1"/>
-                            <field name="employment_status" readonly = "1"/>    
+                            <field name="employment_status" readonly = "1"/>  
+                            <label for="sort_by" string="Sorted by"/>  
                             <div>
                                 <div>
                                     <field name="sort_by" class="oe_inline" readonly = "1"/>      
@@ -105,4 +106,4 @@
             </field>
         </record>     
     </data>
-</openerp>
+</odoo>

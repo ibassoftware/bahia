@@ -78,7 +78,7 @@
                         <notebook name = "nb_1">
                             <page name = "pg_1">
                                 <field name="personnel_actived_on_board"> <!-- readonly = "1"-->
-                                    <tree string="" editable="top" create="false" edit="false" delete ="false" limit = "10">                                         
+                                    <tree string="" editable="top" create="false" edit="false" delete="false" limit = "10">                                         
                                          <field name="employee_contractNumber" />
                                          <field name="ccl_number" />
                                          <field name="employment_dept_code"/>
