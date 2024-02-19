@@ -26,6 +26,8 @@ HOUR_PER_DAY = 24
 FIFTY_MINUTES_TO_SECOND = 3540
 DATE_NOW = datetime.datetime.now()
 
+import logging
+_logger = logging.getLogger(__name__)
 
 #COLUMNS FOR SORTING
 
@@ -347,6 +349,10 @@ class hrsignonoffReportMenu(models.Model):
         str_view_name = 'Sign Off Report'
         if employee.signonoff_selection == "signon":
             str_view_name = 'Sign On Report'
+
+        _logger.info("TEST")
+        _logger.info(partial_id)
+        _logger.info(str_view_name)
 
         return {
             'name': str_view_name,
