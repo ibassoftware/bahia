@@ -80,7 +80,7 @@ class BahiasApplicationForm(http.Controller):
 		applicant_name = kw.get('name')
 		applicant_date_of_birth = kw.get('date_of_birth')
 		if applicant_date_of_birth:
-			applicant_date_of_birth = datetime.strptime(applicant_date_of_birth, '%m/%d/%Y').date()
+			applicant_date_of_birth = datetime.strptime(applicant_date_of_birth, '%d/%m/%Y').date()
 		applicant_email_from = kw.get('email_from')
 
 		duplicate_applicant_id = request.env['hr.applicant'].sudo().search([('name', '=', applicant_name), ('date_of_birth', '=', applicant_date_of_birth), ('email_from', '=', applicant_email_from)])
