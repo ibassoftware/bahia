@@ -256,12 +256,13 @@ class HrEmployeeExtend(models.Model):
 			for getEmployment in getEmployments:
 				if isinstance(getEmployment.id, models.NewId):
 					if getEmployment.date_servicefrom != False and getEmployment.date_serviceto != False:
-						_logger.info("computeServiceLenght")
-						_logger.info(getEmployment.date_servicefrom)
-						_logger.info(getEmployment.date_serviceto)
 						date_from = datetime.datetime.strptime(getEmployment.date_servicefrom.strftime("%Y-%m-%d"),"%Y-%m-%d")
 						date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
 						no_of_days =(((abs((date_to - date_from).days) * 24) * 60) * 60)
+						_logger.info("computeServiceLenght")
+						_logger.info(getEmployment.date_servicefrom)
+						_logger.info(getEmployment.date_serviceto)
+						_logger.info(no_of_days)
 						rec.service_length = rec.service_length + no_of_days
 
 	def getEmployeeID(self):
