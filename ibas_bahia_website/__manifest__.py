@@ -8,8 +8,8 @@
     'depends': ['ibas_bahia','website','website_hr_recruitment','website_partner'],
     'data': [
              'security/ir.model.access.csv',
-             'data/mail_message_subtype_data.xml',
-             'data/mail_templates.xml',
+             # 'data/mail_message_subtype_data.xml',
+             # 'data/mail_templates.xml',
              'views/privacy_policy.xml',
              'views/hr_recruitment.xml',
              'views/application_form_temp.xml',
