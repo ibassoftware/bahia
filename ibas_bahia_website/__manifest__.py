@@ -5,7 +5,7 @@
     'summary': 'Bahia Website Content Management',
     'description': 'Personnel Management Information for Bahia Website Management odoo v15',
     'author': 'IBAS, Samuel Salvador, Reynaflor Facelo',
-    'depends': ['ibas_bahia','website','website_hr_recruitment','website_partner'],
+    'depends': ['ibas_bahia', 'website', 'website_hr_recruitment', 'website_partner', 'hr_recruitment'],
     'data': [
              'security/ir.model.access.csv',
              # 'data/mail_message_subtype_data.xml',

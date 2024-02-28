@@ -22,13 +22,13 @@ class HRApplicant(models.Model):
 
     is_created_website = fields.Boolean(string="Is Created From Website?")
 
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     applicants = super().create(vals_list)
-    #     for applicant in applicants:
-    #         if applicant.is_created_website:
-    #             applicant.message_post_with_view(
-    #                 'hr_recruitment.email_template_data_applicant_congratulations',
-    #                 values={'applicant': applicant},
-    #                 subtype_id=self.env.ref("hr_recruitment.mt_applicant_new").id)
-    #     return applicants
+    @api.model_create_multi
+    def create(self, vals_list):
+        applicants = super().create(vals_list)
+        for applicant in applicants:
+            if applicant.is_created_website:
+                applicant.message_post_with_view(
+                    'hr_recruitment.email_template_data_applicant_congratulations',
+                    values={'applicant': applicant},
+                    subtype_id=self.env.ref("hr_recruitment.mt_applicant_new").id)
+        return applicants
