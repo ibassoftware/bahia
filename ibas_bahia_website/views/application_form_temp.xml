@@ -1075,7 +1075,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <select class="form-control" id="vessel_type">
-                                                                                <option value="false" style=""></option>
+                                                                                <option value="false" style="">Select</option>
                                                                                 <option value="gcd" style="">GCD - General Cargo</option>
                                                                                 <option value="obo" style="">OBO - Ore/Bulk/Oil Carriers</option>
                                                                                 <option value="gas" style="">GAS - LPG/LNG Gas Carrier</option>
