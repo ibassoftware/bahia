@@ -27,8 +27,10 @@ class HRApplicant(models.Model):
         applicants = super().create(vals_list)
         for applicant in applicants:
             if applicant.is_created_website:
-                applicant.message_post_with_view(
-                    'hr_recruitment.email_template_data_applicant_congratulations',
-                    values={'applicant': applicant},
-                    subtype_id=self.env.ref("hr_recruitment.mt_applicant_new").id)
+                template_id = self.env['ir.model.data']._xmlid_to_res_id('hr_recruitment.email_template_data_applicant_congratulations')
+                applicant.message_post_with_template(template_id.id, **{
+                    'auto_delete_message': True,
+                    'subtype_id': self.env['ir.model.data']._xmlid_to_res_id('mail.mt_note'),
+                    'email_layout_xmlid': 'mail.mail_notification_light'
+                })
         return applicants
