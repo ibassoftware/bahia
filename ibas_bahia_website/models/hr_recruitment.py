@@ -28,7 +28,7 @@ class HRApplicant(models.Model):
         for applicant in applicants:
             if applicant.is_created_website:
                 template_id = self.env['ir.model.data']._xmlid_to_res_id('hr_recruitment.email_template_data_applicant_congratulations')
-                applicant.message_post_with_template(template_id.id, **{
+                applicant.message_post_with_template(template_id, **{
                     'auto_delete_message': True,
                     'subtype_id': self.env['ir.model.data']._xmlid_to_res_id('mail.mt_note'),
                     'email_layout_xmlid': 'mail.mail_notification_light'
