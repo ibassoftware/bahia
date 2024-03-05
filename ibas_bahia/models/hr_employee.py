@@ -248,22 +248,40 @@ class HrEmployeeExtend(models.Model):
 			#rec.name_related = rec.last_name + ", " +  rec.first_name + " " + rec.middle_name
 			rec.name =  rec.last_name + ", " +  rec.first_name + " " + rec.middle_name   
 
-	@api.onchange('employee_employment')
+	# @api.onchange('employee_employment')
+	# def computeServiceLenght(self):		
+	# 	for rec in self:
+	# 		totalyears = 0
+	# 		getEmployments = rec.employee_employment
+	# 		for getEmployment in getEmployments:
+	# 			if isinstance(getEmployment.id, models.NewId):
+	# 				if getEmployment.date_servicefrom != False and getEmployment.date_serviceto != False:
+	# 					date_from = datetime.datetime.strptime(getEmployment.date_servicefrom.strftime("%Y-%m-%d"),"%Y-%m-%d")
+	# 					date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
+	# 					no_of_days =(((abs((date_to - date_from).days) * 24) * 60) * 60)
+	# 					_logger.info("computeServiceLenght")
+	# 					_logger.info(getEmployment.date_servicefrom)
+	# 					_logger.info(getEmployment.date_serviceto)
+	# 					_logger.info(no_of_days)
+	# 					rec.service_length = rec.service_length + no_of_days
+
+	@api.onchange('employee_employment', 'employee_employment.date_servicefrom', 'employee_employment.date_serviceto')
 	def computeServiceLenght(self):		
 		for rec in self:
+			service_length = rec.service_length
 			totalyears = 0
 			getEmployments = rec.employee_employment
 			for getEmployment in getEmployments:
-				if isinstance(getEmployment.id, models.NewId):
-					if getEmployment.date_servicefrom != False and getEmployment.date_serviceto != False:
-						date_from = datetime.datetime.strptime(getEmployment.date_servicefrom.strftime("%Y-%m-%d"),"%Y-%m-%d")
-						date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
-						no_of_days =(((abs((date_to - date_from).days) * 24) * 60) * 60)
-						_logger.info("computeServiceLenght")
-						_logger.info(getEmployment.date_servicefrom)
-						_logger.info(getEmployment.date_serviceto)
-						_logger.info(no_of_days)
-						rec.service_length = rec.service_length + no_of_days
+				if getEmployment.date_servicefrom != False and getEmployment.date_serviceto != False:
+					date_from = datetime.datetime.strptime(getEmployment.date_servicefrom.strftime("%Y-%m-%d"),"%Y-%m-%d")
+					date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
+					no_of_days = (((abs((date_to - date_from).days) * 24) * 60) * 60)
+					_logger.info("computeServiceLenght")
+					_logger.info(getEmployment.date_servicefrom)
+					_logger.info(getEmployment.date_serviceto)
+					_logger.info(no_of_days)
+					service_length += no_of_days
+			rec.service_length = service_length
 
 	def getEmployeeID(self):
 		prim_key = None
