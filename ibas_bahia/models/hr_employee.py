@@ -277,6 +277,7 @@ class HrEmployeeExtend(models.Model):
 					date_to = datetime.datetime.strptime(getEmployment.date_serviceto.strftime("%Y-%m-%d"),"%Y-%m-%d")
 					no_of_days = (((abs((date_to - date_from).days) * 24) * 60) * 60)
 					_logger.info("computeServiceLenght")
+					_logger.info(getEmployment.id)
 					_logger.info(getEmployment.date_servicefrom)
 					_logger.info(getEmployment.date_serviceto)
 					_logger.info(no_of_days)
