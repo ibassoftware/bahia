@@ -268,7 +268,7 @@ class HrEmployeeExtend(models.Model):
 	@api.onchange('employee_employment', 'employee_employment.date_servicefrom', 'employee_employment.date_serviceto')
 	def computeServiceLenght(self):		
 		for rec in self:
-			service_length = rec.service_length
+			service_length = 0
 			totalyears = 0
 			getEmployments = rec.employee_employment
 			for getEmployment in getEmployments:
