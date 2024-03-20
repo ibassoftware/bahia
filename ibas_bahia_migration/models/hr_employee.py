@@ -48,5 +48,5 @@ class HrEmployeeMigration(models.Model):
 				    'name': new_user_fullname,
 				    'login': new_loggin_name,
 				    'password': new_loggin_name,
-				    'groups_id':   [(6,0,[ref('base.group_portal')])],})        
+				    'groups_id':   [(6,0,[self.env.ref('base.group_portal').id])],})        
 				employee.user_id = id_user.id
