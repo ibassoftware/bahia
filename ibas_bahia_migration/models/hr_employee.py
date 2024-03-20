@@ -30,7 +30,7 @@ class HrEmployeeMigration(models.Model):
 				employee.name =  last_name + ", " +  employee.first_name + " " + employee.middle_name
 		return True
 
-	def createEmployeeUser:
+	def createEmployeeUser(self):
 		for employee in self:
 			if not employee.user_id:
 				if employee.employee_contract_number != 'N/A':
