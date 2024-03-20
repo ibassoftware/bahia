@@ -28,6 +28,7 @@
              'views/reference_views.xml',
              'views/socialmedia.xml',             
              'views/hr_checklist_templates.xml',
+             'views/hr_employee_portal_views.xml',
              'reports/application_form_report.xml',
              'reports/checklist_report.xml',
              'reports/hr_applicant_evaluation.xml',
