@@ -19,7 +19,7 @@ dest_URL = 'http://154.26.132.80:8069'
 dest_DB = 'BAHIA'
 
 dest_USER = 'admin'
-dest_PASS = 'admin'
+dest_PASS = 'P@5word'
 
 # STAGING CONNECTION
 dest_common = client.ServerProxy('{}/xmlrpc/2/common'.format(dest_URL))
