@@ -50,3 +50,4 @@ class HrEmployeeMigration(models.Model):
 				    'password': new_loggin_name,
 				    'groups_id':   [(6,0,[self.env.ref('base.group_portal').id])],})        
 				employee.user_id = id_user.id
+		return True
