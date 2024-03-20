@@ -14,7 +14,7 @@
              #'views/hr_recruitment_degree.xml',
 
              'security/security.xml',
-             #'security/rules.xml',
+             'security/rules.xml',
     	     'security/ir.model.access.csv',             
              'data/ir_sequence.xml',
              'data/checklist_template_data.xml',

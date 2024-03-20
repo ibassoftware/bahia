@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <odoo>
     <data>
-        <!-- <record id="view_form_employee_checklist" model="ir.ui.view">
+        <record id="view_form_employee_checklist" model="ir.ui.view">
             <field name="name">My Information</field>
             <field name="model">hr.employee</field>
+            <field name="groups_id" eval="[(6, 0, [ref('ibas_bahia.group_hr_portal') ])]"/>
             <field name="arch" type="xml">
                 <form edit = "false" create ="false" delete = "false">
                     <sheet>
@@ -253,12 +254,12 @@
                     </sheet>
                 </form>
             </field>
-        </record> -->
+        </record>
 
         <menuitem
             id="menu_hr_portal_root"
             name="Portal"
-            groups="base.group_portal"
+            groups="ibas_bahia.group_hr_portal"
             sequence="200"/>
 
         <!-- Action to open To-do Task list -->

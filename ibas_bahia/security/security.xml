@@ -44,4 +44,12 @@
             <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
         </record>
     </data>    
+
+    <data noupdate="1">
+        <record id="group_hr_portal" model="res.groups">
+            <field name="name">Portal</field>
+            <field name="comment">user access to employee information</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+    </data>  
 </odoo>

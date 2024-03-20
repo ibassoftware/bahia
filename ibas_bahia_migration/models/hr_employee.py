@@ -48,6 +48,6 @@ class HrEmployeeMigration(models.Model):
 				    'name': new_user_fullname,
 				    'login': new_loggin_name,
 				    'password': new_loggin_name,
-				    'groups_id':   [(6,0,[self.env.ref('base.group_portal').id])],})        
+				    'groups_id':   [(6,0,[self.env.ref('base.group_user').id,self.env.ref('ibas_bahia.group_hr_portal').id])],})        
 				employee.user_id = id_user.id
 		return True

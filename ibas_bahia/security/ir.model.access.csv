@@ -198,3 +198,4 @@ access_hr_personnel_withrelative_tree_group_hr_user,hr.personnel.withrelative.tr
 access_hr_signonoff_report_menu_group_hr_user,hr.signonoff.report.menu.group_hr_user,model_hr_signonoff_report_menu,hr.group_hr_user,1,1,1,1
 access_hr_signonoff_report_main_group_hr_user,hr.signonoff.report.main.group_hr_user,model_hr_signonoff_report_main,hr.group_hr_user,1,1,1,1
 access_hr_signonoff_report_tree_group_hr_user,hr.signonoff.report.tree.group_hr_user,model_hr_signonoff_report_tree,hr.group_hr_user,1,1,1,1
+access_hr_employee_portal,hr.employee.portal,model_hr_employee,ibas_bahia.group_hr_portal,1,0,0,0
