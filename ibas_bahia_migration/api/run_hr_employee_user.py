@@ -36,8 +36,8 @@ def create_employee_user():
 	count_update = 0
 
 	
-	# args = [('user_id', '=', 'False')]
-	args = [('id', '=', 53931)]
+	args = [('user_id', '=', 'False')]
+	# args = [('id', '=', 53931)]
 	get_employee_name = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'search', args)
 
 	print(get_employee_name)
