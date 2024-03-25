@@ -47,13 +47,13 @@ def create_employee_user():
 			count += 1
 			# UPDATE employee user
 			print("CREATING employee user: " + str(employee_name))
-			try:
-				create_employee_user = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'createEmployeeUser', employee_name)
-				if create_employee_user:
-					print("employee user CREATED: " + str(employee_name))
-					count_update += 1
-			except:
-				print("Cannot create")
+			# try:
+			create_employee_user = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'hr.employee', 'createEmployeeUser', employee_name)
+			if create_employee_user:
+				print("employee user CREATED: " + str(employee_name))
+				count_update += 1
+			# except:
+			# 	print("Cannot create")
 
 	print("DONE! PROCESSED # OF RECORDS: " + str(count_update))
 	end = time.time()
