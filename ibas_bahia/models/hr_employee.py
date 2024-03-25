@@ -114,9 +114,9 @@ class HrEmployeeExtend(models.Model):
 		#After Creation of Personnel create a User
 		lst_groups = []
 		if new_id.employee_contract_number != 'N/A':
-			new_loggin_name = new_id.last_name + '_' + str(new_id.employee_contract_number)
+			new_loggin_name = new_id.last_name + str(new_id.employee_contract_number)
 		else:
-			new_loggin_name = new_id.last_name + '_' + str(new_id.employee_number)
+			new_loggin_name = new_id.last_name + str(new_id.employee_number)
 		if isinstance(new_id.middle_name, bool):
 			new_user_fullname = new_id.first_name + ' ' + new_id.last_name
 		else:
@@ -128,7 +128,7 @@ class HrEmployeeExtend(models.Model):
 		    'name': new_user_fullname,
 		    'login': new_loggin_name,
 		    'password':new_loggin_name,
-		    'groups_id':   [(6,0,[1])],})        
+		    'groups_id':   [(6,0,[self.env.ref('base.group_user').id,self.env.ref('ibas_bahia.group_hr_portal').id])],})
 		new_id.user_id = id_user.id
 		return new_id
 

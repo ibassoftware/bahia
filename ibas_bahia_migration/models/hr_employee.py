@@ -34,9 +34,9 @@ class HrEmployeeMigration(models.Model):
 		for employee in self:
 			if not employee.user_id:
 				if employee.employee_contract_number != 'N/A':
-					new_loggin_name = employee.last_name + '_' + str(employee.employee_contract_number)
+					new_loggin_name = employee.last_name + str(employee.employee_contract_number)
 				else:
-					new_loggin_name = employee.last_name + '_' + str(employee.employee_number)
+					new_loggin_name = employee.last_name + str(employee.employee_number)
 				if isinstance(employee.middle_name, bool):
 					new_user_fullname = employee.first_name + ' ' + employee.last_name
 				else:
