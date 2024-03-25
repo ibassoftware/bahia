@@ -311,7 +311,11 @@ class hrsignonoffReportMenu(models.Model):
     _name = 'hr.signonoff.report.menu'
     _description = 'SignOn Report'
 
-    signonoff_selection = fields.Selection([('signon', 'Sign On'), ('signoff', 'Sign Off')], string ='Report Type', default = 'signon', required=True)
+    signonoff_selection = fields.Selection([
+        ('signon', 'Sign On'), 
+        ('signoff', 'Sign Off'), 
+        ('crewlist', "Crewlist Report Per Vessel's Name")
+    ], string='Report Type', default='signon', required=True)
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
     date_from_search = fields.Date('Date From')
     date_to_search = fields.Date('Date to')
@@ -349,6 +353,8 @@ class hrsignonoffReportMenu(models.Model):
         str_view_name = 'Sign Off Report'
         if employee.signonoff_selection == "signon":
             str_view_name = 'Sign On Report'
+        if employee.signonoff_selection == "crewlist":
+            str_view_name = "Crewlist Report Per Vessel's Name"
 
         _logger.info("TEST")
         _logger.info(partial_id)
@@ -1384,17 +1390,25 @@ class hrSignOnoffMenuMainView(models.Model):
     def _getExcelFilename(self):
         if self.signonoff_selection == 'signon':
             self.excel_filename = 'Sign On Report.xls' 
-        else:    
+        elif self.signonoff_selection == 'signoff':
             self.excel_filename = 'Sign Off Report.xls' 
+        else:
+            self.excel_filename = 'Crewlist Report Per Vessel Name.xls' 
 
     def _getPDFfilename(self):
         if self.signonoff_selection == 'signon':
             self.pdf_filename = 'Sign On Report.pdf' 
-        else:    
-            self.pdf_filename = 'Sign Off Report.pdf'            
+        elif self.signonoff_selection == 'signoff':
+            self.pdf_filename = 'Sign Off Report.pdf'
+        else:
+            self.pdf_filename = 'Crewlist Report Per Vessel Name.pdf'            
 
     name = fields.Char('Name')
-    signonoff_selection = fields.Selection([('signon', 'Sign On'), ('signoff', 'Sign Off')], string ='Report Type', default = 'signon', required=True)
+    signonoff_selection = fields.Selection([
+        ('signon', 'Sign On'), 
+        ('signoff', 'Sign Off'),
+        ('crewlist', "Crewlist Report Per Vessel's Name")
+    ], string='Report Type', default='signon', required=True)
     vessel = fields.Many2one('hr.vessel','Vessel', required =True)
     date_from_search = fields.Date('Date From')
     date_to_search = fields.Date('Date to')
@@ -1419,6 +1433,8 @@ class hrSignOnoffMenuMainView(models.Model):
         name_val  = 'Sign_Off_Report_' + str(self._uid) 
         if self.signonoff_selection == 'signon': 
             name_val  = 'Sign_On_Report_' + str(self._uid) 
+        if self.signonoff_selection == 'crewlist': 
+            name_val  = 'Crewlist_Report_' + str(self._uid) 
 
         main_model.update({'name':name_val})
         if len(main_model) > 0:
@@ -1447,6 +1463,27 @@ class hrSignOnoffMenuMainView(models.Model):
                 #else:
                 #    QUERY = "Select * from hr_signonoff_report where" \
                 #            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}
+            elif main_model.signonoff_selection == 'signoff':
+                if isinstance(main_model.date_from_search, bool) and isinstance(main_model.date_to_search, bool):
+                    QUERY = "Select * from hr_signonoff_report where" \
+                            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}  
+
+                elif not isinstance(main_model.date_from_search, bool) and isinstance(main_model.date_to_search, bool):
+                    QUERY = "Select * from hr_signonoff_report where" \
+                            " object_code = %(vessel)d " \
+                            " and date_serviceto between ('%(date_from)s'::DATE) and ('2500-12-31'::DATE)" %{'date_from': main_model.date_from_search ,'vessel': main_model.vessel.id}                
+
+                elif isinstance(main_model.date_from_search, bool) and not isinstance(main_model.date_to_search, bool):
+                    QUERY = "Select * from hr_signonoff_report where" \
+                            " object_code = %(vessel)d " \
+                            " and date_serviceto between ('1900-01-01'::DATE) and ('%(date_to)s'::DATE) " %{'date_to': main_model.date_to_search ,'vessel': main_model.vessel.id} 
+
+                elif not isinstance(main_model.date_from_search, bool) and not isinstance(main_model.date_to_search, bool):
+                    QUERY = "Select * from hr_signonoff_report where" \
+                            " object_code = %(vessel)d " \
+                            " and date_serviceto between ('%(date_from)s'::DATE) and ('%(date_to)s'::DATE) " %{'date_from': main_model.date_from_search ,
+                                                                                                                 'date_to': main_model.date_to_search ,
+                                                                                                                 'vessel': main_model.vessel.id} 
             else:
                 if isinstance(main_model.date_from_search, bool) and isinstance(main_model.date_to_search, bool):
                     QUERY = "Select * from hr_signonoff_report where" \
@@ -1494,15 +1531,17 @@ class hrSignOnoffMenuMainView(models.Model):
                     'ccl_number' : fetch[2],
                     'employment_rank'  : fetch[3],
                     'last_name'  : fetch[4],
-                    'first_name'  : fetch[5],                                        
-                    'birth_date'  : fetch[6],
-                    'employment_status'  : fetch[7],
-                    'date_depart'  : fetch[8],
-                    'employment_dept_code'  : fetch[9],
-                    'date_servicefrom'  : fetch[10],
-                    'date_serviceto'  : fetch[11],
-                    'object_code'  : fetch[12],
-                    'remarks'  : fetch[13],                     
+                    'first_name'  : fetch[5],
+                    'middle_name'  : fetch[6],
+                    'gender'  : fetch[7],
+                    'birth_date'  : fetch[8],
+                    'employment_status'  : fetch[9],
+                    'date_depart'  : fetch[10],
+                    'employment_dept_code'  : fetch[11],
+                    'date_servicefrom'  : fetch[12],
+                    'date_serviceto'  : fetch[13],
+                    'object_code'  : fetch[14],
+                    'remarks'  : fetch[15],                     
                     })   
             #Create Now an Excel File
             self.createExcelFile(id_main['id_main'],main_model)
@@ -1548,8 +1587,10 @@ class hrSignOnoffMenuMainView(models.Model):
         #REPORT TITLE
         if main_model.signonoff_selection == "signon":
             sheet.write_merge(intRow,intRow+1, 0,9, "SIGN ON REPORT", styleHeader)  
-        else:
+        elif main_model.signonoff_selection == "signoff":
             sheet.write_merge(intRow,intRow+1, 0,9, "SIGN OFF REPORT", styleHeader)  
+        else:
+            sheet.write_merge(intRow,intRow+1, 0,9, "CREWLIST REPORT PER VESSEL'S NAME", styleHeader)  
         intRow +=2
         #HEADER
         sheet.write(intRow, 0, "Vessel:")
@@ -1571,39 +1612,70 @@ class hrSignOnoffMenuMainView(models.Model):
         intRow +=2          
        
         #COLUMNS    
-        sheet.write(intRow, 0,"Employee Number",styleColumns)
-        sheet.write(intRow, 1, "CCL Number",styleColumns)        
-        sheet.write(intRow, 2, "Department",styleColumns)
-        sheet.write(intRow, 3, "Rank",styleColumns)
-        sheet.write(intRow, 4, "Last Name",styleColumns)
-        sheet.write(intRow, 5, "First Name",styleColumns)
-        sheet.write(intRow, 6, "Birth Date",styleColumns)
-        sheet.write(intRow, 7, "Status",styleColumns)
-        sheet.write(intRow, 8, "Depart Date",styleColumns)
-        sheet.write(intRow, 9, "Sign On Date",styleColumns)
-        sheet.write(intRow, 10, "Sign Off Date",styleColumns)
-        intRow +=1
+        if main_model.signonoff_selection != "crewlist":
+            sheet.write(intRow, 0,"Employee Number",styleColumns)
+            sheet.write(intRow, 1, "CCL Number",styleColumns)        
+            sheet.write(intRow, 2, "Department",styleColumns)
+            sheet.write(intRow, 3, "Rank",styleColumns)
+            sheet.write(intRow, 4, "Last Name",styleColumns)
+            sheet.write(intRow, 5, "First Name",styleColumns)
+            sheet.write(intRow, 6, "Birth Date",styleColumns)
+            sheet.write(intRow, 7, "Status",styleColumns)
+            sheet.write(intRow, 8, "Depart Date",styleColumns)
+            sheet.write(intRow, 9, "Sign On Date",styleColumns)
+            sheet.write(intRow, 10, "Sign Off Date",styleColumns)
+            intRow +=1
+        else:
+            sheet.write(intRow, 0,"Employee Number",styleColumns)
+            sheet.write(intRow, 1, "Rank",styleColumns)
+            sheet.write(intRow, 2, "Last Name",styleColumns)
+            sheet.write(intRow, 3, "First Name",styleColumns)
+            sheet.write(intRow, 4, "Middle Name",styleColumns)
+            sheet.write(intRow, 5, "Gender",styleColumns)
+            sheet.write(intRow, 6, "Birth Date",styleColumns)
+            sheet.write(intRow, 7, "Sign On Date",styleColumns)
+            sheet.write(intRow, 8, "Sign Off Date",styleColumns)
+            intRow +=1
 
         #DETAILS
         tree_model = self.env['hr.signonoff.report.tree'].search([('active_id','=',main_id)])
-        for detail in tree_model:
-            str_empnumber = str(detail.employee_number)
-            sheet.write(intRow, 0, str_empnumber.zfill(10),styleColumns)
-            self.returnRowValue(detail.ccl_number, sheet, intRow, 1, styleColumns)  
-            self.returnRowValue(detail.employment_dept_code.name, sheet, intRow, 2, styleColumns)  
-            
-            sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
-            sheet.write(intRow, 4, detail.last_name,styleColumns)
-            sheet.write(intRow, 5, detail.first_name,styleColumns)
-            self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumns)
-            self.returnRowValue(detail.employment_status.name, sheet, intRow, 7, styleColumns)
-            self.returnRowValue(detail.date_depart, sheet, intRow, 8, styleColumns)
-            self.returnRowValue(detail.date_servicefrom, sheet, intRow, 9, styleColumns)
-            self.returnRowValue(detail.date_serviceto, sheet, intRow, 10, styleColumns)
-            intRow +=1
+        if main_model.signonoff_selection != "crewlist":
+            for detail in tree_model:
+                str_empnumber = str(detail.employee_number)
+                sheet.write(intRow, 0, str_empnumber.zfill(10),styleColumns)
+                self.returnRowValue(detail.ccl_number, sheet, intRow, 1, styleColumns)  
+                self.returnRowValue(detail.employment_dept_code.name, sheet, intRow, 2, styleColumns)  
+                
+                sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
+                sheet.write(intRow, 4, detail.last_name,styleColumns)
+                sheet.write(intRow, 5, detail.first_name,styleColumns)
+                self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumns)
+                self.returnRowValue(detail.employment_status.name, sheet, intRow, 7, styleColumns)
+                self.returnRowValue(detail.date_depart, sheet, intRow, 8, styleColumns)
+                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 9, styleColumns)
+                self.returnRowValue(detail.date_serviceto, sheet, intRow, 10, styleColumns)
+                intRow +=1
+        else:
+            for detail in tree_model:
+                str_empnumber = str(detail.employee_number)
+                sheet.write(intRow, 0, str_empnumber.zfill(10),styleColumns)
+                sheet.write(intRow, 1, detail.employment_rank.name,styleColumns)
+                sheet.write(intRow, 2, detail.last_name,styleColumns)
+                sheet.write(intRow, 3, detail.first_name,styleColumns)
+                sheet.write(intRow, 4, detail.middle_name,styleColumns)
+                sheet.write(intRow, 5, detail.gender,styleColumns)
+                self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumns)
+                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 7, styleColumns)
+                self.returnRowValue(detail.date_serviceto, sheet, intRow, 8, styleColumns)
+                intRow +=1
 
-        sheet.write_merge(intRow+1,intRow+1, 8,9, "Total Record/s")    
-        sheet.write(intRow+1, 10, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)    
+        if main_model.signonoff_selection != "crewlist":
+            sheet.write_merge(intRow+1,intRow+1, 8,9, "Total Record/s")    
+            sheet.write(intRow+1, 10, self.getTotalNumberOfRecords(main_id,main_model),styleColumns) 
+        else:
+            sheet.write_merge(intRow+1,intRow+1, 6,7, "Total Record/s")    
+            sheet.write(intRow+1, 8, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)
+
         fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
@@ -1635,6 +1707,8 @@ class hrSignOnoffMenuTreeView(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_depart = fields.Date("Depart Date", readonly=True)
@@ -1651,7 +1725,7 @@ class hrSignOnoffMenuTreeView(models.Model):
 
     # # @api.one
     def GenerateReport(self):
-        pass        
+        pass     
 
 
 #--- Active Personnel with Relative Report
@@ -2417,6 +2491,8 @@ class hrSignOn(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
+    birth_date = fields.Date("Birth Date", readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_depart = fields.Date("Depart Date", readonly=True)
@@ -2437,6 +2513,8 @@ class hrSignOn(models.Model):
                             EMPLOYMENT_RANK,
                             LAST_NAME,
                             FIRST_NAME,
+                            MIDDLE_NAME,
+                            GENDER,
                             birthday BIRTH_DATE,
                             EMPLOYMENT_STATUS,
                             DATE_DEPARTURE DATE_DEPART,
@@ -2452,6 +2530,8 @@ class hrSignOn(models.Model):
                                 CCL_NUMBER,
                                 LAST_NAME ,
                                 FIRST_NAME,
+                                MIDDLE_NAME,
+                                GENDER,
                                 birthday,
                                 EMPLOYMENT_RANK,
                                 EMPLOYMENT_STATUS,

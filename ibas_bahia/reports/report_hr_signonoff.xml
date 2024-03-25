@@ -64,43 +64,76 @@
                         </div>                                
                     </t>
 
-
-
-                    <table class="table table-condensed"  style="width:100%;border-collapse:collapse">
-                        <thead style ="border-bottom: 1px solid black;">
-                            <tr>                                       
-                                <th>Employee Number</th>
-                                <th>CCL Number</th>
-                                <th>Department</th>
-                                <th>Rank</th>
-                                <th>Last Name</th>
-                                <th>First Name</th>  
-                                <th>Birth Date</th>                                                                                                                    
-                                <th>Status</th>
-                                <th>Date Departure</th>
-                                <th>Date Service from</th>
-                                <th>Date Service To</th>
-                            </tr>
-                        </thead>                        
-                        <tbody style ="border-bottom: 1px solid black;">
-                            <t t-foreach="o.detail_id" t-as="aob">
-                                <tr >
-                                    <td><span t-field="aob.employee_number"/></td>
-                                    <td><span t-field="aob.ccl_number"/></td>
-                                    
-                                    <td><span t-field="aob.employment_dept_code"/></td>
-                                    <td><span t-field="aob.employment_rank"/></td>
-                                    <td><span t-field="aob.last_name"/></td>
-                                    <td><span t-field="aob.first_name"/></td>   
-                                    <td><span t-field="aob.birth_date"/></td>                                                                                      
-                                    <td><span t-field="aob.employment_status"/></td>
-                                    <td><span t-field="aob.date_depart"/></td>
-                                    <td><span t-field="aob.date_servicefrom"/></td>
-                                    <td><span t-field="aob.date_serviceto"/></td>
+                    <t t-if = "o.signonoff_selection != 'crewlist'">
+                        <table class="table table-condensed"  style="width:100%;border-collapse:collapse">
+                            <thead style ="border-bottom: 1px solid black;">
+                                <tr>                                       
+                                    <th>Employee Number</th>
+                                    <th>CCL Number</th>
+                                    <th>Department</th>
+                                    <th>Rank</th>
+                                    <th>Last Name</th>
+                                    <th>First Name</th>  
+                                    <th>Birth Date</th>
+                                    <th>Status</th>
+                                    <th>Date Departure</th>
+                                    <th>Date Service From</th>
+                                    <th>Date Service To</th>
                                 </tr>
-                            </t>
-                        </tbody>
-                    </table>                            
+                            </thead>                        
+                            <tbody style ="border-bottom: 1px solid black;">
+                                <t t-foreach="o.detail_id" t-as="aob">
+                                    <tr >
+                                        <td><span t-field="aob.employee_number"/></td>
+                                        <td><span t-field="aob.ccl_number"/></td>
+                                        <td><span t-field="aob.employment_dept_code"/></td>
+                                        <td><span t-field="aob.employment_rank"/></td>
+                                        <td><span t-field="aob.last_name"/></td>
+                                        <td><span t-field="aob.first_name"/></td>   
+                                        <td><span t-field="aob.birth_date"/></td>
+                                        <td><span t-field="aob.employment_status"/></td>
+                                        <td><span t-field="aob.date_depart"/></td>
+                                        <td><span t-field="aob.date_servicefrom"/></td>
+                                        <td><span t-field="aob.date_serviceto"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <t t-else="">
+                        <table class="table table-condensed"  style="width:100%;border-collapse:collapse">
+                            <thead style ="border-bottom: 1px solid black;">
+                                <tr>                                       
+                                    <th>Employee Number</th>
+                                    <th>Rank</th>
+                                    <th>Last Name</th>
+                                    <th>First Name</th> 
+                                    <th>Middle Name</th> 
+                                    <th>Gender</th>  
+                                    <th>Birth Date</th>
+                                    <th>Date Service From</th>
+                                    <th>Date Service To</th>
+                                </tr>
+                            </thead>                        
+                            <tbody style ="border-bottom: 1px solid black;">
+                                <t t-foreach="o.detail_id" t-as="aob">
+                                    <tr >
+                                        <td><span t-field="aob.employee_number"/></td>
+                                        <td><span t-field="aob.employment_rank"/></td>
+                                        <td><span t-field="aob.last_name"/></td>
+                                        <td><span t-field="aob.first_name"/></td>   
+                                        <td><span t-field="aob.middle_name"/></td>   
+                                        <td><span t-field="aob.gender"/></td>   
+                                        <td><span t-field="aob.birth_date"/></td>
+                                        <td><span t-field="aob.date_servicefrom"/></td>
+                                        <td><span t-field="aob.date_serviceto"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                                             
                 </div>
             </t>
         </template>
