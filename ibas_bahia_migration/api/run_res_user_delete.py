@@ -36,7 +36,8 @@ def delete_employee_user():
 	count_update = 0
 
 	
-	args = [('create_date', '<', '12/15/2023')]
+	# args = [('create_date', '<', '12/15/2023')]
+	args = [('name', 'ilike', '')]
 	get_user = dest_models.execute(dest_DB, dest_uid, dest_PASS, 'res.users', 'search', args)
 
 	print(get_user)
