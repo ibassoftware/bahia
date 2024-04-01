@@ -762,7 +762,7 @@
                                                         <span class="s_website_form_label_content">Name of Company</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_1_company_name" type="tel" class="form-control s_website_form_input" name="reference_1_company_name" data-fill-with="reference_1_company_name"/>
+                                                        <input id="reference_1_company_name" type="text" class="form-control s_website_form_input" name="reference_1_company_name" data-fill-with="reference_1_company_name"/>
                                                     </div>
 
                                                     <br/>
@@ -771,7 +771,7 @@
                                                         <span class="s_website_form_label_content">Name of Person</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_1_name_person" type="tel" class="form-control s_website_form_input" name="reference_1_name_person" data-fill-with="reference_1_name_person"/>
+                                                        <input id="reference_1_name_person" type="text" class="form-control s_website_form_input" name="reference_1_name_person" data-fill-with="reference_1_name_person"/>
                                                     </div>
 
                                                     <br/>
@@ -780,7 +780,7 @@
                                                         <span class="s_website_form_label_content">Address</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_1_address" type="tel" class="form-control s_website_form_input" name="reference_1_address" data-fill-with="reference_1_address"/>
+                                                        <input id="reference_1_address" type="text" class="form-control s_website_form_input" name="reference_1_address" data-fill-with="reference_1_address"/>
                                                     </div>
 
                                                     <br/>
@@ -800,7 +800,7 @@
                                                         <span class="s_website_form_label_content">Name of Company</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_2_company_name" type="tel" class="form-control s_website_form_input" name="reference_2_company_name" data-fill-with="reference_2_company_name"/>
+                                                        <input id="reference_2_company_name" type="text" class="form-control s_website_form_input" name="reference_2_company_name" data-fill-with="reference_2_company_name"/>
                                                     </div>
 
                                                     <br/>
@@ -809,7 +809,7 @@
                                                         <span class="s_website_form_label_content">Name of Person</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_2_name_person" type="tel" class="form-control s_website_form_input" name="reference_2_name_person" data-fill-with="reference_2_name_person"/>
+                                                        <input id="reference_2_name_person" type="text" class="form-control s_website_form_input" name="reference_2_name_person" data-fill-with="reference_2_name_person"/>
                                                     </div>
 
                                                     <br/>
@@ -818,7 +818,7 @@
                                                         <span class="s_website_form_label_content">Address</span>
                                                     </label>
                                                     <div class="col-sm">
-                                                        <input id="reference_2_address" type="tel" class="form-control s_website_form_input" name="reference_2_address" data-fill-with="reference_2_address"/>
+                                                        <input id="reference_2_address" type="text" class="form-control s_website_form_input" name="reference_2_address" data-fill-with="reference_2_address"/>
                                                     </div>
 
                                                     <br/>
