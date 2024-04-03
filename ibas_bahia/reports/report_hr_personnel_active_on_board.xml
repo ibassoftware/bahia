@@ -48,7 +48,9 @@
                                 <th>Department</th>                                        
                                 <th>Rank</th>
                                 <th>Last Name</th>
-                                <th>First Name</th>                                        
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Gender</th>
                                 <th>Birth Date</th>
                                 <th>Status</th>
                                 <th>Service from</th>

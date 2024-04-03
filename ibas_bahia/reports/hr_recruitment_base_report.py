@@ -524,15 +524,6 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
 
 
         if len(main_model) > 0:
-
-            #if  isinstance(main_model.date_search, bool):
-            #    if QUERY.find('where') > 0:
-            #       QUERY +=  "where ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto"
-            #    else:
-            #       QUERY +=  "and ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto" 
-            #    QUERY %{'date': main_model.date_search}
-
-
             if not isinstance(main_model.vessel.id, bool) and len(str(main_model.vessel.id)) > 0:
                 QUERY += " where object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
 
@@ -552,20 +543,6 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
                     QUERY += " where employment_status = %(employment_status_id)d"
                 QUERY = QUERY %{'employment_status_id': main_model.employment_status.id}
 
-
-            #if  isinstance(main_model.date_search, bool):
-            #    QUERY = "Select * from hr_personnel_withremrks_report where" \
-            #            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
-            #elif len(main_model.date_search) > 0:
-            #    QUERY = "Select * from hr_personnel_withremrks_report where ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto" \
-            #            " and object_code = %(vessel)d" %{'date': main_model.date_search, 'vessel': main_model.vessel.id}
-            #else:
-            #    QUERY = "Select * from hr_personnel_withremrks_report where" \
-            #            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}
-
-            #if not isinstance(main_model.employment_status, bool) and len(main_model.employment_status) > 0:
-            #    QUERY += " and employment_status = %(employment_status_id)d" %{'employment_status_id': main_model.employment_status.id}
-
             if main_model.is_with_remarks:
                 QUERY += "  and (remarks is not null and length(trim(remarks)) > 0)"
                 
@@ -574,9 +551,6 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
 
                 if not isinstance(main_model.sorting_type, bool) and len(main_model.sorting_type) > 0: 
                     QUERY += " %(sorting_type)s" %{'sorting_type': main_model.sorting_type}
-                    
-
-
 
             #raise Warning(QUERY)
 
@@ -591,14 +565,16 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
                     'employment_rank'  : fetch[3],
                     'last_name'  : fetch[4],
                     'first_name'  : fetch[5],
-                    'birth_date'  : fetch[6],
-                    'employment_status'  : fetch[7],
-                    'date_servicefrom'  : fetch[8],
-                    'date_serviceto'  : fetch[9],
-                    'remarks'  : fetch[10],
-                    'employment_dept_code'  : fetch[11],
-                    'object_code'  : fetch[12],
-                    'employee_id':   fetch[13],                    
+                    'middle_name'  : fetch[6],
+                    'gender'  : fetch[7],
+                    'birth_date'  : fetch[8],
+                    'employment_status'  : fetch[9],
+                    'date_servicefrom'  : fetch[10],
+                    'date_serviceto'  : fetch[11],
+                    'remarks'  : fetch[12],
+                    'employment_dept_code'  : fetch[13],
+                    'object_code'  : fetch[14],
+                    'employee_id':   fetch[15],                    
                     })   
             #Create Now an Excel File
             self.createExcelFile(id_main['id_main'],main_model)
@@ -658,12 +634,14 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
         sheet.write(intRow, 3, "Rank",styleColumns)
         sheet.write(intRow, 4, "Last Name",styleColumns)
         sheet.write(intRow, 5, "First Name",styleColumns)
-        sheet.write(intRow, 6, "Birth Date",styleColumns)
-        sheet.write(intRow, 7, "Status",styleColumns)
-        sheet.write(intRow, 8, "Service from",styleColumns)
-        sheet.write(intRow, 9, "Service to",styleColumns)
-        sheet.write_merge(intRow,intRow, 10,11, "Remarks",styleColumns)
-        sheet.write(intRow, 12, "Total Years of Service",styleColumns)
+        sheet.write(intRow, 6, "Middle Name",styleColumns)
+        sheet.write(intRow, 7, "Gender",styleColumns)
+        sheet.write(intRow, 8, "Birth Date",styleColumns)
+        sheet.write(intRow, 9, "Status",styleColumns)
+        sheet.write(intRow, 10, "Service from",styleColumns)
+        sheet.write(intRow, 11, "Service to",styleColumns)
+        sheet.write_merge(intRow,intRow, 12,13, "Remarks",styleColumns)
+        sheet.write(intRow, 14, "Total Years of Service",styleColumns)
         intRow +=1
 
         #DETAILS
@@ -681,16 +659,18 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
             sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)        
             sheet.write(intRow, 4, detail.last_name,styleColumns)
             sheet.write(intRow, 5, detail.first_name,styleColumns)
-            sheet.write(intRow, 6, detail.birth_date,styleColumns)
-            sheet.write(intRow, 7, detail.employment_status.name,styleColumns)
-            sheet.write(intRow, 8, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 9, detail.date_serviceto,styleColumns)
-            sheet.write_merge(intRow,intRow, 10,11, detail.remarks,styleColumns)
-            sheet.write(intRow,12, detail.total_years_of_service,styleColumns)
+            sheet.write(intRow, 6, detail.middle_name,styleColumns)
+            sheet.write(intRow, 7, detail.gender,styleColumns)
+            sheet.write(intRow, 8, detail.birth_date,styleColumns)
+            sheet.write(intRow, 9, detail.employment_status.name,styleColumns)
+            sheet.write(intRow, 10, detail.date_servicefrom,styleColumns)
+            sheet.write(intRow, 11, detail.date_serviceto,styleColumns)
+            sheet.write_merge(intRow,intRow, 12,13, detail.remarks,styleColumns)
+            sheet.write(intRow,14, detail.total_years_of_service,styleColumns)
             intRow +=1
 
-        sheet.write_merge(intRow+1,intRow+1, 10,11, "Total Record/s")    
-        sheet.write(intRow+1, 12, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)            
+        sheet.write_merge(intRow+1,intRow+1, 12,13, "Total Record/s")    
+        sheet.write(intRow+1, 14, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)            
 
         fp = BytesIO()
         workbook.save(fp)
@@ -711,6 +691,8 @@ class hrPersonnelActiveOnBoardwithRemarksMenuTreeView(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_servicefrom = fields.Date("Service from", readonly=True)
@@ -2070,6 +2052,8 @@ class hrPersonnelActiveOnBoardwithRemarks(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_servicefrom = fields.Date("Service from", readonly=True)
@@ -2091,6 +2075,8 @@ class hrPersonnelActiveOnBoardwithRemarks(models.Model):
                             EMPLOYMENT_RANK,
                             LAST_NAME,
                             FIRST_NAME,
+                            MIDDLE_NAME,
+                            GENDER,
                             BIRTHDAY AS BIRTH_DATE,
                             EMPLOYMENT_STATUS,
                             DATE_SERVICEFROM,
@@ -2108,6 +2094,8 @@ class hrPersonnelActiveOnBoardwithRemarks(models.Model):
                              EMPLOYMENT_RANK,
                              LAST_NAME ,
                              FIRST_NAME,
+                             MIDDLE_NAME,
+                             GENDER,
                              BIRTHDAY,
                              EMPLOYMENT_STATUS,
                              DATE_SERVICEFROM,
