@@ -1246,17 +1246,16 @@ class hrEmbarkationMenuMainView(models.Model):
             str_empnumber = str(detail.employee_contractNumber)
             sheet.write(intRow, 0, str_empnumber.zfill(10),styleColumns)
             self.returnRowValue(detail.ccl_number, sheet, intRow, 1, styleColumns)  
-            sheet.write(intRow, 2, detail.last_name,styleColumns)
-            sheet.write(intRow, 3, detail.first_name,styleColumns)
-            sheet.write(intRow, 4, detail.middle_name,styleColumns)
-            sheet.write(intRow, 5, detail.employment_dept_code.name,styleColumns)
-            sheet.write(intRow, 6, detail.employment_rank.name,styleColumns)
-
+            sheet.write(intRow, 2, detail.last_name or '',styleColumns)
+            sheet.write(intRow, 3, detail.first_name or '',styleColumns)
+            sheet.write(intRow, 4, detail.middle_name or '',styleColumns)
+            sheet.write(intRow, 5, detail.employment_dept_code.name or '',styleColumns)
+            sheet.write(intRow, 6, detail.employment_rank.name or '',styleColumns)
 
             self.returnRowValue(detail.placeof_birth, sheet, intRow, 7, styleColumns)
 
-            sheet.write(intRow, 8, detail.country_id.name,styleColumns)
-            sheet.write(intRow, 9, detail.gender,styleColumns)
+            sheet.write(intRow, 8, detail.country_id.name or '',styleColumns)
+            sheet.write(intRow, 9, detail.gender or '',styleColumns)
 
             self.returnRowValue(detail.passport, sheet, intRow, 10, styleColumns)
             self.returnRowValue(detail.passport_date_issued, sheet, intRow, 11, styleColumnsDate)
@@ -1268,8 +1267,8 @@ class hrEmbarkationMenuMainView(models.Model):
 
             self.returnRowValue(detail.date_depart, sheet, intRow, 16, styleColumnsDate) 
 
-            sheet.write(intRow, 17, detail.date_servicefrom,styleColumnsDate)
-            sheet.write(intRow, 18, detail.date_serviceto,styleColumnsDate) 
+            sheet.write(intRow, 17, detail.date_servicefrom or '',styleColumnsDate)
+            sheet.write(intRow, 18, detail.date_serviceto or '',styleColumnsDate) 
             self.returnRowValue(detail.place_signon.name, sheet, intRow, 19, styleColumns)       
 
             intRow +=1
