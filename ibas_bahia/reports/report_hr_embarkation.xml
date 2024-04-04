@@ -41,7 +41,7 @@
                             <b>Date : All Date</b>
                         </div>                                
                     </t>                           
-                    <table class="table table-condensed" style="width:100%;border-collapse:collapse">
+                    <table class="table table-condensed" style="width:100%;border-collapse:collapse;font-size: 11px;">
                         <thead style ="border-bottom: 1px solid black;">                                  
                             <tr>
                                 <th>Employee Number</th>
