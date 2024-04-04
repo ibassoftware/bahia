@@ -48,13 +48,14 @@
                                 <th>Department</th>
                                 <th>Rank</th>
                                 <th>Last Name</th>
-                                <th>First Name</th>                                        
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Gender</th>
                                 <th>Birth Date</th>
                                 <th>Status</th>
                                 <th>Service from</th>
                                 <th>Service to</th>
                                 <th>Remarks</th>
-
                                 <th>Relative's Name</th>
                                 <th>Relationship</th>
                                 <th>City</th>
@@ -75,12 +76,13 @@
                                     <td><span t-field="aob.employment_rank"/></td>
                                     <td><span t-field="aob.last_name"/></td>
                                     <td><span t-field="aob.first_name"/></td>
+                                    <td><span t-field="aob.middle_name"/></td>
+                                    <td><span t-field="aob.gender"/></td>
                                     <td><span t-field="aob.birth_date"/></td>
                                     <td><span t-field="aob.employment_status"/></td>
                                     <td><span t-field="aob.date_servicefrom"/></td>
                                     <td><span t-field="aob.date_serviceto"/></td>
                                     <td><span t-field="aob.remarks"/></td>
-
                                     <td><span t-field="aob.relative_name"/></td>
                                     <td><span t-field="aob.relationship"/></td>
                                     <td><span t-field="aob.city"/></td>

@@ -1773,20 +1773,6 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
                     QUERY += " where employment_status = %(employment_status_id)d"
                 QUERY = QUERY %{'employment_status_id': main_model.employment_status.id}
 
-
-            #if  isinstance(main_model.date_search, bool):
-            #    QUERY = "Select * from hr_personnel_withrelative_report where" \
-            #            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}                
-            #elif len(main_model.date_search) > 0:
-            #    QUERY = "Select * from hr_personnel_withrelative_report where ('%(date)s'::DATE) BETWEEN date_servicefrom and date_serviceto" \
-            #            " and object_code = %(vessel)d" %{'date': main_model.date_search, 'vessel': main_model.vessel.id}
-            #else:
-            #    QUERY = "Select * from hr_personnel_withrelative_report where" \
-            #            " object_code = %(vessel)d" %{'vessel': main_model.vessel.id}
-            #if not isinstance(main_model.employment_status, bool) and len(main_model.employment_status) > 0:
-            #    QUERY += " and employment_status = %(employment_status_id)d" %{'employment_status_id': main_model.employment_status.id}                        
-
-
             if not isinstance(main_model.sort_by, bool) and len(main_model.sort_by) > 0:
                 QUERY += " ORDER BY %(sort_by)s" %{'sort_by': main_model.sort_by}
 
@@ -1804,25 +1790,27 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
                     'employment_rank'  : fetch[3],
                     'last_name'  : fetch[4],
                     'first_name'  : fetch[5],
-                    'birth_date'  : fetch[6],
-                    'employment_status'  : fetch[7],
-                    'date_servicefrom'  : fetch[8],
-                    'date_serviceto'  : fetch[9],
-                    'remarks'  : fetch[10],
-                    'employment_dept_code'  : fetch[11],
-                    'object_code'  :    fetch[12],
-                    'relative_name':    fetch[13], 
-                    'relationship':     fetch[14], 
-                    'address':          fetch[15], 
-                    'city':             fetch[16], 
-                    'province':         fetch[17], 
-                    'country_id':       fetch[18], 
-                    'telephone_number': fetch[19], 
-                    'mobile_number':    fetch[20], 
-                    'email_number':     fetch[21], 
-                    'is_beneficiary':   fetch[22], 
-                    'is_allottee':      fetch[23],  
-                    'employee_id':      fetch[24],             
+                    'middle_name'  : fetch[6],
+                    'gender'  : fetch[7],
+                    'birth_date'  : fetch[8],
+                    'employment_status'  : fetch[9],
+                    'date_servicefrom'  : fetch[10],
+                    'date_serviceto'  : fetch[11],
+                    'remarks'  : fetch[12],
+                    'employment_dept_code'  : fetch[13],
+                    'object_code'  :    fetch[14],
+                    'relative_name':    fetch[15], 
+                    'relationship':     fetch[16], 
+                    'address':          fetch[17], 
+                    'city':             fetch[18], 
+                    'province':         fetch[19], 
+                    'country_id':       fetch[20], 
+                    'telephone_number': fetch[21], 
+                    'mobile_number':    fetch[22], 
+                    'email_number':     fetch[23], 
+                    'is_beneficiary':   fetch[24], 
+                    'is_allottee':      fetch[25],  
+                    'employee_id':      fetch[26],             
                     })   
             #Create Now an Excel File
             self.createExcelFile(id_main['id_main'],main_model)
@@ -1928,24 +1916,26 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
         sheet.write(intRow, 3, "Rank",styleColumns)
         sheet.write(intRow, 4, "Last Name",styleColumns)
         sheet.write(intRow, 5, "First Name",styleColumns)
-        sheet.write(intRow, 6, "Birth Date",styleColumns)
-        sheet.write(intRow, 7, "Status",styleColumns)
-        sheet.write(intRow, 8, "Service from",styleColumns)
-        sheet.write(intRow, 9, "Service to",styleColumns)
-        sheet.write_merge(intRow,intRow, 10,11, "Remarks",styleColumns)
+        sheet.write(intRow, 6, "Middle Name",styleColumns)
+        sheet.write(intRow, 7, "Gender",styleColumns)
+        sheet.write(intRow, 8, "Birth Date",styleColumns)
+        sheet.write(intRow, 9, "Status",styleColumns)
+        sheet.write(intRow, 10, "Service from",styleColumns)
+        sheet.write(intRow, 11, "Service to",styleColumns)
+        sheet.write_merge(intRow,intRow, 12,13, "Remarks",styleColumns)
 
-        sheet.write(intRow, 12, "Relative's Name",styleColumns)
-        sheet.write(intRow, 13, "Relationship",styleColumns)
-        sheet.write(intRow, 14, "Address",styleColumns)
-        sheet.write(intRow, 15, "City",styleColumns)
+        sheet.write(intRow, 14, "Relative's Name",styleColumns)
+        sheet.write(intRow, 15, "Relationship",styleColumns)
+        sheet.write(intRow, 16, "Address",styleColumns)
+        sheet.write(intRow, 17, "City",styleColumns)
 
-        sheet.write(intRow, 16, "Province",styleColumns)
-        sheet.write(intRow, 17, "Telephone Number",styleColumns)
-        sheet.write(intRow, 18, "Mobile Number",styleColumns)
-        sheet.write(intRow, 19, "E-mail",styleColumns)                
-        sheet.write(intRow, 20, "Beneficiary",styleColumns)                
-        sheet.write(intRow, 21, "Allottee",styleColumns)      
-        sheet.write(intRow, 22, "Total Service Length",styleColumns)                            
+        sheet.write(intRow, 18, "Province",styleColumns)
+        sheet.write(intRow, 19, "Telephone Number",styleColumns)
+        sheet.write(intRow, 20, "Mobile Number",styleColumns)
+        sheet.write(intRow, 21, "E-mail",styleColumns)                
+        sheet.write(intRow, 22, "Beneficiary",styleColumns)                
+        sheet.write(intRow, 23, "Allottee",styleColumns)      
+        sheet.write(intRow, 24, "Total Service Length",styleColumns)                            
         intRow +=1
 
         #DETAILS
@@ -1963,26 +1953,28 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
             sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
             sheet.write(intRow, 4, detail.last_name,styleColumns)
             sheet.write(intRow, 5, detail.first_name,styleColumns)
-            sheet.write(intRow, 6, detail.birth_date,styleColumns)
-            sheet.write(intRow, 7, detail.employment_status.name,styleColumns)
-            sheet.write(intRow, 8, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 9, detail.date_serviceto,styleColumns)
-            sheet.write_merge(intRow,intRow, 10,11, detail.remarks,styleColumns)
-            self.returnRowValue(detail.relative_name, sheet, intRow, 12, styleColumns)
-            self.returnRowValue(detail.relationship.name, sheet, intRow, 13, styleColumns)
-            self.returnRowValue(detail.address, sheet, intRow, 14, styleColumns)
-            self.returnRowValue(detail.city, sheet, intRow, 15, styleColumns)
-            self.returnRowValue(detail.province, sheet, intRow, 16, styleColumns)
-            self.returnRowValue(detail.telephone_number, sheet, intRow, 17, styleColumns)
-            self.returnRowValue(detail.mobile_number, sheet, intRow, 18, styleColumns)
-            self.returnRowValue(detail.email_number, sheet, intRow, 19, styleColumns)
-            self.returnRowValue(detail.is_beneficiary, sheet, intRow, 20, styleColumns)
-            self.returnRowValue(detail.is_allottee, sheet, intRow, 21, styleColumns)  
-            self.returnRowValue(detail.total_years_of_service, sheet, intRow, 22, styleColumns)           
+            sheet.write(intRow, 6, detail.middle_name,styleColumns)
+            sheet.write(intRow, 7, detail.gender,styleColumns)
+            sheet.write(intRow, 8, detail.birth_date,styleColumns)
+            sheet.write(intRow, 9, detail.employment_status.name,styleColumns)
+            sheet.write(intRow, 10, detail.date_servicefrom,styleColumns)
+            sheet.write(intRow, 11, detail.date_serviceto,styleColumns)
+            sheet.write_merge(intRow,intRow, 12,23, detail.remarks,styleColumns)
+            self.returnRowValue(detail.relative_name, sheet, intRow, 14, styleColumns)
+            self.returnRowValue(detail.relationship.name, sheet, intRow, 15, styleColumns)
+            self.returnRowValue(detail.address, sheet, intRow, 16, styleColumns)
+            self.returnRowValue(detail.city, sheet, intRow, 17, styleColumns)
+            self.returnRowValue(detail.province, sheet, intRow, 18, styleColumns)
+            self.returnRowValue(detail.telephone_number, sheet, intRow, 19, styleColumns)
+            self.returnRowValue(detail.mobile_number, sheet, intRow, 20, styleColumns)
+            self.returnRowValue(detail.email_number, sheet, intRow, 21, styleColumns)
+            self.returnRowValue(detail.is_beneficiary, sheet, intRow, 22, styleColumns)
+            self.returnRowValue(detail.is_allottee, sheet, intRow, 23, styleColumns)  
+            self.returnRowValue(detail.total_years_of_service, sheet, intRow, 24, styleColumns)           
             intRow +=1
 
-        sheet.write_merge(intRow+1,intRow+1, 20,21, "Total Service Length")    
-        sheet.write(intRow+1, 22, self.getTotalYearsService(main_id,main_model),styleColumns)                
+        sheet.write_merge(intRow+1,intRow+1, 22,23, "Total Service Length")    
+        sheet.write(intRow+1, 24, self.getTotalYearsService(main_id,main_model),styleColumns)                
 
         fp = BytesIO()
         workbook.save(fp)
@@ -2008,6 +2000,8 @@ class hrPersonnelActiveOnBoardwithRelativeMenuTreeView(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_servicefrom = fields.Date("Service from", readonly=True)
