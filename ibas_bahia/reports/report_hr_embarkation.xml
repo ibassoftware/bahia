@@ -10,6 +10,7 @@
             <field name="report_file">ibas_bahia.report_embarkation</field>
             <field name="binding_model_id" ref="model_hr_embarkation_main"/>
             <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ibas_bahia.paperformat_employee_report_landscape" />
         </record>
 
         <template id="report_embarkation">
@@ -77,7 +78,7 @@
                                     <td><span t-field="aob.last_name"/></td>
                                     <td><span t-field="aob.first_name"/></td>  
                                     <td><span t-field="aob.middle_name"/></td>  
-                                    <td><span t-field="aob.employment_dept_code"/></td>                                          
+                                    <td><span t-field="aob.employment_dept_code"/></td>
                                     <td><span t-field="aob.employment_rank"/></td>
                                     <td><span t-field="aob.placeof_birth"/></td>
                                     <td><span t-field="aob.country_id"/></td>
