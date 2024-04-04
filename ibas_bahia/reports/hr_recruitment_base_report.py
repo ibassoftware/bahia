@@ -895,21 +895,21 @@ class hrDisembarkationMenuMainView(models.Model):
                 sheet.write(intRow, 1, "",styleColumns)
             else:
                 sheet.write(intRow, 1, detail.ccl_number,styleColumns)
-            sheet.write(intRow, 2, detail.last_name,styleColumns)
-            sheet.write(intRow, 3, detail.first_name,styleColumns)
-            sheet.write(intRow, 4, detail.middle_name,styleColumns)
+            sheet.write(intRow, 2, detail.last_name or '',styleColumns)
+            sheet.write(intRow, 3, detail.first_name or '',styleColumns)
+            sheet.write(intRow, 4, detail.middle_name,sty or ''leColumns)
 
             
-            sheet.write(intRow, 5, detail.employment_dept_code.name,styleColumns)
-            sheet.write(intRow, 6, detail.employment_rank.name,styleColumns)
+            sheet.write(intRow, 5, detail.employment_dept_code.name or '',styleColumns)
+            sheet.write(intRow, 6, detail.employment_rank.name or '',styleColumns)
 
             if isinstance(detail.placeof_birth, bool):
                 sheet.write(intRow, 7, "",styleColumns)
             else:
                 sheet.write(intRow, 7, detail.placeof_birth,styleColumns)
 
-            sheet.write(intRow, 8, detail.country_id.name,styleColumns)
-            sheet.write(intRow, 9, detail.gender,styleColumns)
+            sheet.write(intRow, 8, detail.country_id.name or '',styleColumns)
+            sheet.write(intRow, 9, detail.gender or '',styleColumns)
 
             if isinstance(detail.passport, bool):
                 sheet.write(intRow, 10, "",styleColumns)
@@ -954,8 +954,8 @@ class hrDisembarkationMenuMainView(models.Model):
                 sheet.write(intRow, 16, detail.date_depart,styleColumnsDate)
 
             #sheet.write(intRow, 14, detail.date_depart,styleColumns)
-            sheet.write(intRow, 17, detail.date_servicefrom,styleColumnsDate)
-            sheet.write(intRow, 18, detail.date_serviceto,styleColumnsDate) 
+            sheet.write(intRow, 17, detail.date_servicefrom or '',styleColumnsDate)
+            sheet.write(intRow, 18, detail.date_serviceto or '',styleColumnsDate) 
             self.returnRowValue(detail.place_signoff.name, sheet, intRow, 19, styleColumns)       
             #sheet.write(intRow, 17, detail.place_signoff.name,styleColumns)
 
