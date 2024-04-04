@@ -1123,24 +1123,25 @@ class hrEmbarkationMenuMainView(models.Model):
                     'employee_number' : fetch[1],
                     'ccl_number' : fetch[2],
                     'last_name'  : fetch[3],
-                    'first_name'  : fetch[4],                    
-                    'employment_rank'  : fetch[5],
-                    'country_id'  : fetch[6],
-                    'gender'  : fetch[7],
-                    'placeof_birth'  : fetch[8],
-                    'passport'  : fetch[9],
-                    'passport_date_issued'  : fetch[10],
-                    'passport_date_expiry'  : fetch[11],
-                    'ssrib'  : fetch[12],
-                    'ssrib_date_issued'  : fetch[13],
-                    'ssrib_date_expiry'  : fetch[14],
-                    'place_signon'  : fetch[15],
-                    'date_depart'  : fetch[16],
-                    'date_servicefrom'  : fetch[17],
-                    'date_serviceto'  : fetch[18],
-                    'employment_dept_code'  : fetch[19],
-                    'object_code'  : fetch[20],                                                                                                    
-                    'employee_id'  : fetch[21],                     
+                    'first_name'  : fetch[4],
+                    'middle_name'  : fetch[5],
+                    'employment_rank'  : fetch[6],
+                    'country_id'  : fetch[7],
+                    'gender'  : fetch[8],
+                    'placeof_birth'  : fetch[9],
+                    'passport'  : fetch[10],
+                    'passport_date_issued'  : fetch[11],
+                    'passport_date_expiry'  : fetch[12],
+                    'ssrib'  : fetch[13],
+                    'ssrib_date_issued'  : fetch[14],
+                    'ssrib_date_expiry'  : fetch[15],
+                    'place_signon'  : fetch[16],
+                    'date_depart'  : fetch[17],
+                    'date_servicefrom'  : fetch[18],
+                    'date_serviceto'  : fetch[19],
+                    'employment_dept_code'  : fetch[20],
+                    'object_code'  : fetch[21],                                                                                                    
+                    'employee_id'  : fetch[22],                     
                     })   
             #Create Now an Excel File
             self.createExcelFile(id_main['id_main'],main_model)
@@ -1206,23 +1207,23 @@ class hrEmbarkationMenuMainView(models.Model):
         sheet.write(intRow, 1, "CCL Number",styleColumns)
         sheet.write(intRow, 2, "Last Name",styleColumns)
         sheet.write(intRow, 3, "First Name",styleColumns)
-
-        sheet.write(intRow, 4, "Department",styleColumns)
-        sheet.write(intRow, 5, "Rank",styleColumns)
-        sheet.write(intRow, 6, "place of Birth",styleColumns)
-        sheet.write(intRow, 7, "Nationality",styleColumns)
-        sheet.write(intRow, 8, "Gender",styleColumns)
-        sheet.write(intRow, 9, "Passport",styleColumns)
-        sheet.write(intRow, 10,"Date Issued",styleColumns)
-        sheet.write(intRow, 11, "Date Expiry",styleColumns)
-        sheet.write(intRow, 12, "SSIRB",styleColumns)
-        sheet.write(intRow, 13, "Date Issued",styleColumns)
-        sheet.write(intRow, 14, "Date Expiry",styleColumns)
+        sheet.write(intRow, 4, "Middle Name",styleColumns)
+        sheet.write(intRow, 5, "Department",styleColumns)
+        sheet.write(intRow, 6, "Rank",styleColumns)
+        sheet.write(intRow, 7, "Place of Birth",styleColumns)
+        sheet.write(intRow, 8, "Nationality",styleColumns)
+        sheet.write(intRow, 9, "Gender",styleColumns)
+        sheet.write(intRow, 10, "Passport",styleColumns)
+        sheet.write(intRow, 11,"Date Issued",styleColumns)
+        sheet.write(intRow, 12, "Date Expiry",styleColumns)
+        sheet.write(intRow, 13, "SSIRB",styleColumns)
+        sheet.write(intRow, 14, "Date Issued",styleColumns)
+        sheet.write(intRow, 15, "Date Expiry",styleColumns)
        
-        sheet.write(intRow, 15, "Depart Date",styleColumns)
-        sheet.write(intRow, 16, "Sign On Date",styleColumns)
-        sheet.write(intRow, 17, "Sign Off Date",styleColumns)        
-        sheet.write(intRow, 18, "Place Sign On",styleColumns)
+        sheet.write(intRow, 16, "Depart Date",styleColumns)
+        sheet.write(intRow, 17, "Sign On Date",styleColumns)
+        sheet.write(intRow, 18, "Sign Off Date",styleColumns)        
+        sheet.write(intRow, 19, "Place Sign On",styleColumns)
         intRow +=1
 
 
@@ -1235,34 +1236,35 @@ class hrEmbarkationMenuMainView(models.Model):
             self.returnRowValue(detail.ccl_number, sheet, intRow, 1, styleColumns)  
             sheet.write(intRow, 2, detail.last_name,styleColumns)
             sheet.write(intRow, 3, detail.first_name,styleColumns)
-            sheet.write(intRow, 4, detail.employment_dept_code.name,styleColumns)
-            sheet.write(intRow, 5, detail.employment_rank.name,styleColumns)
+            sheet.write(intRow, 4, detail.middle_name,styleColumns)
+            sheet.write(intRow, 5, detail.employment_dept_code.name,styleColumns)
+            sheet.write(intRow, 6, detail.employment_rank.name,styleColumns)
 
 
-            self.returnRowValue(detail.placeof_birth, sheet, intRow, 6, styleColumns)
+            self.returnRowValue(detail.placeof_birth, sheet, intRow, 7, styleColumns)
 
-            sheet.write(intRow, 7, detail.country_id.name,styleColumns)
-            sheet.write(intRow, 8, detail.gender,styleColumns)
+            sheet.write(intRow, 8, detail.country_id.name,styleColumns)
+            sheet.write(intRow, 9, detail.gender,styleColumns)
 
-            self.returnRowValue(detail.passport, sheet, intRow, 9, styleColumns)
-            self.returnRowValue(detail.passport_date_issued, sheet, intRow, 10, styleColumns)
-            self.returnRowValue(detail.passport_date_expiry, sheet, intRow, 11, styleColumns)     
+            self.returnRowValue(detail.passport, sheet, intRow, 10, styleColumns)
+            self.returnRowValue(detail.passport_date_issued, sheet, intRow, 11, styleColumns)
+            self.returnRowValue(detail.passport_date_expiry, sheet, intRow, 12, styleColumns)     
 
-            self.returnRowValue(detail.ssrib, sheet, intRow, 12, styleColumns)
-            self.returnRowValue(detail.ssrib_date_issued, sheet, intRow, 13, styleColumns)
-            self.returnRowValue(detail.ssrib_date_expiry, sheet, intRow, 14, styleColumns)    
+            self.returnRowValue(detail.ssrib, sheet, intRow, 13, styleColumns)
+            self.returnRowValue(detail.ssrib_date_issued, sheet, intRow, 14, styleColumns)
+            self.returnRowValue(detail.ssrib_date_expiry, sheet, intRow, 15, styleColumns)    
 
-            self.returnRowValue(detail.date_depart, sheet, intRow, 15, styleColumns) 
+            self.returnRowValue(detail.date_depart, sheet, intRow, 16, styleColumns) 
 
             #sheet.write(intRow, 14, detail.date_depart,styleColumns)
-            sheet.write(intRow, 16, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 17, detail.date_serviceto,styleColumns) 
-            self.returnRowValue(detail.place_signon.name, sheet, intRow, 18, styleColumns)       
+            sheet.write(intRow, 17, detail.date_servicefrom,styleColumns)
+            sheet.write(intRow, 18, detail.date_serviceto,styleColumns) 
+            self.returnRowValue(detail.place_signon.name, sheet, intRow, 19, styleColumns)       
             #sheet.write(intRow, 17, detail.place_signoff.name,styleColumns)
 
             intRow +=1
-        sheet.write_merge(intRow+1,intRow+1, 16,17, "Total Record/s")    
-        sheet.write(intRow+1, 18, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)        
+        sheet.write_merge(intRow+1,intRow+1, 17,18, "Total Record/s")    
+        sheet.write(intRow+1, 19, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)        
         fp = BytesIO()
         workbook.save(fp)
         fp.seek(0)
@@ -1331,6 +1333,7 @@ class hrEmbarkationMenuTreeView(models.Model):
     ccl_number = fields.Char("CCL Number", readonly=True)
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     country_id = fields.Many2one('res.country', 'Nationality',readonly=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], readonly=True, string ='Gender')
