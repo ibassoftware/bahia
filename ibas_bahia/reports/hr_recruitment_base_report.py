@@ -1607,11 +1607,13 @@ class hrSignOnoffMenuMainView(models.Model):
             sheet.write(intRow, 3, "Rank",styleColumns)
             sheet.write(intRow, 4, "Last Name",styleColumns)
             sheet.write(intRow, 5, "First Name",styleColumns)
-            sheet.write(intRow, 6, "Birth Date",styleColumns)
-            sheet.write(intRow, 7, "Status",styleColumns)
-            sheet.write(intRow, 8, "Depart Date",styleColumns)
-            sheet.write(intRow, 9, "Sign On Date",styleColumns)
-            sheet.write(intRow, 10, "Sign Off Date",styleColumns)
+            sheet.write(intRow, 6, "Middle Name",styleColumns)
+            sheet.write(intRow, 7, "Gender",styleColumns)
+            sheet.write(intRow, 8, "Birth Date",styleColumns)
+            sheet.write(intRow, 9, "Status",styleColumns)
+            sheet.write(intRow, 10, "Depart Date",styleColumns)
+            sheet.write(intRow, 11, "Sign On Date",styleColumns)
+            sheet.write(intRow, 12, "Sign Off Date",styleColumns)
             intRow +=1
         else:
             sheet.write(intRow, 0,"Employee Number",styleColumns)
@@ -1637,11 +1639,13 @@ class hrSignOnoffMenuMainView(models.Model):
                 sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
                 sheet.write(intRow, 4, detail.last_name,styleColumns)
                 sheet.write(intRow, 5, detail.first_name,styleColumns)
-                self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumns)
-                self.returnRowValue(detail.employment_status.name, sheet, intRow, 7, styleColumns)
-                self.returnRowValue(detail.date_depart, sheet, intRow, 8, styleColumns)
-                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 9, styleColumns)
-                self.returnRowValue(detail.date_serviceto, sheet, intRow, 10, styleColumns)
+                sheet.write(intRow, 6, detail.middle_name,styleColumns)
+                sheet.write(intRow, 7, detail.gender,styleColumns)
+                self.returnRowValue(detail.birth_date, sheet, intRow, 8, styleColumns)
+                self.returnRowValue(detail.employment_status.name, sheet, intRow, 9, styleColumns)
+                self.returnRowValue(detail.date_depart, sheet, intRow, 10, styleColumns)
+                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 11, styleColumns)
+                self.returnRowValue(detail.date_serviceto, sheet, intRow, 12, styleColumns)
                 intRow +=1
         else:
             for detail in tree_model:
@@ -1658,8 +1662,8 @@ class hrSignOnoffMenuMainView(models.Model):
                 intRow +=1
 
         if main_model.signonoff_selection != "crewlist":
-            sheet.write_merge(intRow+1,intRow+1, 8,9, "Total Record/s")    
-            sheet.write(intRow+1, 10, self.getTotalNumberOfRecords(main_id,main_model),styleColumns) 
+            sheet.write_merge(intRow+1,intRow+1, 10,11, "Total Record/s")    
+            sheet.write(intRow+1, 12, self.getTotalNumberOfRecords(main_id,main_model),styleColumns) 
         else:
             sheet.write_merge(intRow+1,intRow+1, 6,7, "Total Record/s")    
             sheet.write(intRow+1, 8, self.getTotalNumberOfRecords(main_id,main_model),styleColumns)

@@ -84,8 +84,8 @@
                                         <field name="employment_rank" />
                                         <field name="last_name" />
                                         <field name="first_name" />
-                                        <field name="middle_name" attrs="{'column_invisible': [('parent.signonoff_selection', '!=', 'crewlist')]}"/>
-                                        <field name="gender" attrs="{'column_invisible': [('parent.signonoff_selection', '!=', 'crewlist')]}"/>
+                                        <field name="middle_name" />
+                                        <field name="gender" />
                                         <field name="birth_date" />
                                         <field name="employment_status" attrs="{'column_invisible': [('parent.signonoff_selection', '=', 'crewlist')]}"/>
                                         <field name="date_depart" attrs="{'column_invisible': [('parent.signonoff_selection', '=', 'crewlist')]}"/>
