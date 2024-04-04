@@ -597,6 +597,8 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
         styleColumns = xlwt.XFStyle()
         styleSpecificRow = xlwt.XFStyle()
         styleSpecificRow.num_format_str = "#,##0.00"
+        styleColumnsDate = xlwt.XFStyle()
+        styleColumnsDate.num_format_str = 'dd/mm/yyyy'
         #font
         font  = xlwt.Font()
         font.name = 'Arial'
@@ -604,6 +606,8 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
         styleTitleMain.font = font
         styleColumns.font = font
         styleColumns.borders = border
+        styleColumnsDate.font = font 
+        styleColumnsDate.borders = border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -661,10 +665,10 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
             sheet.write(intRow, 5, detail.first_name,styleColumns)
             sheet.write(intRow, 6, detail.middle_name,styleColumns)
             sheet.write(intRow, 7, detail.gender,styleColumns)
-            sheet.write(intRow, 8, detail.birth_date,styleColumns)
+            sheet.write(intRow, 8, detail.birth_date,styleColumnsDate)
             sheet.write(intRow, 9, detail.employment_status.name,styleColumns)
-            sheet.write(intRow, 10, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 11, detail.date_serviceto,styleColumns)
+            sheet.write(intRow, 10, detail.date_servicefrom,styleColumnsDate)
+            sheet.write(intRow, 11, detail.date_serviceto,styleColumnsDate)
             sheet.write_merge(intRow,intRow, 12,13, detail.remarks,styleColumns)
             sheet.write(intRow,14, detail.total_years_of_service,styleColumns)
             intRow +=1
