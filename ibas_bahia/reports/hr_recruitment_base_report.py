@@ -659,8 +659,8 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
             else:
                 sheet.write(intRow, 1, detail.ccl_number,styleColumns)
 
-            sheet.write(intRow, 2, detail.employment_dept_code.name,styleColumns)
-            sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)        
+            sheet.write(intRow, 2, detail.employment_dept_code.name or '',styleColumns)
+            sheet.write(intRow, 3, detail.employment_rank.name or '',styleColumns)        
             sheet.write(intRow, 4, detail.last_name,styleColumns)
             sheet.write(intRow, 5, detail.first_name,styleColumns)
             sheet.write(intRow, 6, detail.middle_name,styleColumns)
@@ -669,7 +669,7 @@ class hrPersonnelActiveOnBoardwithRemarksMenuMainView(models.Model):
             sheet.write(intRow, 9, detail.employment_status.name,styleColumns)
             sheet.write(intRow, 10, detail.date_servicefrom,styleColumnsDate)
             sheet.write(intRow, 11, detail.date_serviceto,styleColumnsDate)
-            sheet.write_merge(intRow,intRow, 12,13, detail.remarks,styleColumns)
+            sheet.write_merge(intRow,intRow, 12,13, detail.remarks or '',styleColumns)
             sheet.write(intRow,14, detail.total_years_of_service,styleColumns)
             intRow +=1
 
