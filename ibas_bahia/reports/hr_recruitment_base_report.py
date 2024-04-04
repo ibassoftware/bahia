@@ -2749,7 +2749,7 @@ class hrEmbarkationReport(models.Model):
                                 CCL_NUMBER,
                                 LAST_NAME ,
                                 FIRST_NAME,
-                                MIDDLE_NAME
+                                MIDDLE_NAME,
                                 EMPLOYMENT_RANK,
                                 EMPLOYMENT_STATUS,
                                 EMPLOYMENT_DEPT_CODE,
