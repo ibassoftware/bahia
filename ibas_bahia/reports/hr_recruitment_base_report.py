@@ -2129,6 +2129,8 @@ class hrPersonnelActiveonBoardwithRelatives(models.Model):
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', readonly=True)
     birth_date = fields.Date("Birth Date", readonly=True)
     employment_status = fields.Many2one("hr.employment.status", readonly=True, string="Status")
     date_servicefrom = fields.Date("Service from", readonly=True)
@@ -2161,6 +2163,8 @@ class hrPersonnelActiveonBoardwithRelatives(models.Model):
                             EMPLOYMENT_RANK,
                             LAST_NAME,
                             FIRST_NAME,
+                            MIDDLE_NAME,
+                            GENDER,
                             BIRTHDAY AS BIRTH_DATE,
                             EMPLOYMENT_STATUS,
                             DATE_SERVICEFROM,
@@ -2208,6 +2212,8 @@ class hrPersonnelActiveonBoardwithRelatives(models.Model):
                                 EMPLOYMENT_RANK,
                                 LAST_NAME ,
                                 FIRST_NAME,
+                                MIDDLE_NAME,
+                                GENDER,
                                 BIRTHDAY,
                                 EMPLOYMENT_STATUS,
                                 DATE_SERVICEFROM,
