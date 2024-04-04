@@ -1480,17 +1480,17 @@ class hrSignOnoffMenuMainView(models.Model):
                 elif not isinstance(main_model.date_from_search, bool) and isinstance(main_model.date_to_search, bool):
                     QUERY = "Select * from hr_signonoff_report where" \
                             " object_code = %(vessel)d " \
-                            " and date_serviceto between ('%(date_from)s'::DATE) and ('2500-12-31'::DATE)" %{'date_from': main_model.date_from_search ,'vessel': main_model.vessel.id}                
+                            " and date_servicefrom between ('%(date_from)s'::DATE) and ('2500-12-31'::DATE)" %{'date_from': main_model.date_from_search ,'vessel': main_model.vessel.id}                
 
                 elif isinstance(main_model.date_from_search, bool) and not isinstance(main_model.date_to_search, bool):
                     QUERY = "Select * from hr_signonoff_report where" \
                             " object_code = %(vessel)d " \
-                            " and date_serviceto between ('1900-01-01'::DATE) and ('%(date_to)s'::DATE) " %{'date_to': main_model.date_to_search ,'vessel': main_model.vessel.id} 
+                            " and date_servicefrom between ('1900-01-01'::DATE) and ('%(date_to)s'::DATE) " %{'date_to': main_model.date_to_search ,'vessel': main_model.vessel.id} 
 
                 elif not isinstance(main_model.date_from_search, bool) and not isinstance(main_model.date_to_search, bool):
                     QUERY = "Select * from hr_signonoff_report where" \
                             " object_code = %(vessel)d " \
-                            " and date_serviceto between ('%(date_from)s'::DATE) and ('%(date_to)s'::DATE) " %{'date_from': main_model.date_from_search ,
+                            " and date_servicefrom between ('%(date_from)s'::DATE) and ('%(date_to)s'::DATE) " %{'date_from': main_model.date_from_search ,
                                                                                                                  'date_to': main_model.date_to_search ,
                                                                                                                  'vessel': main_model.vessel.id} 
 
