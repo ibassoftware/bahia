@@ -41,7 +41,7 @@
                         </div>                                
                     </t>  
                     <div class="row">                         
-                        <table class="table table-condensed" style="word-wrap:break-word;table-layout:fixed;width:100%;border-collapse:collapse;font-size: 10px;">
+                        <table class="table table-condensed" style="word-wrap:break-word;table-layout:fixed;width:100%;border-collapse:collapse;font-size: 9px;">
                             <thead style ="border-bottom: 1px solid black;">
                                 <tr>
                                     <th>Employee Number</th>
