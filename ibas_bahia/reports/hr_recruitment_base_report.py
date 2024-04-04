@@ -835,7 +835,7 @@ class hrDisembarkationMenuMainView(models.Model):
         styleColumns.font = font
         styleColumns.borders = border
         styleColumnsDate.font = font 
-        styleColumnsDate.borders border
+        styleColumnsDate.borders = border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -1178,6 +1178,8 @@ class hrEmbarkationMenuMainView(models.Model):
         styleColumns = xlwt.XFStyle()
         styleSpecificRow = xlwt.XFStyle()
         styleSpecificRow.num_format_str = "#,##0.00"
+        styleColumnsDate = xlwt.XFStyle()
+        styleColumnsDate.num_format_str = 'dd/mm/yyyy'
         #font
         font  = xlwt.Font()
         font.name = 'Arial'
@@ -1185,6 +1187,8 @@ class hrEmbarkationMenuMainView(models.Model):
         styleTitleMain.font = font
         styleColumns.font = font
         styleColumns.borders = border
+        styleColumnsDate.font = font
+        styleColumnsDate.borders = border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -1255,20 +1259,18 @@ class hrEmbarkationMenuMainView(models.Model):
             sheet.write(intRow, 9, detail.gender,styleColumns)
 
             self.returnRowValue(detail.passport, sheet, intRow, 10, styleColumns)
-            self.returnRowValue(detail.passport_date_issued, sheet, intRow, 11, styleColumns)
-            self.returnRowValue(detail.passport_date_expiry, sheet, intRow, 12, styleColumns)     
+            self.returnRowValue(detail.passport_date_issued, sheet, intRow, 11, styleColumnsDate)
+            self.returnRowValue(detail.passport_date_expiry, sheet, intRow, 12, styleColumnsDate)     
 
             self.returnRowValue(detail.ssrib, sheet, intRow, 13, styleColumns)
-            self.returnRowValue(detail.ssrib_date_issued, sheet, intRow, 14, styleColumns)
-            self.returnRowValue(detail.ssrib_date_expiry, sheet, intRow, 15, styleColumns)    
+            self.returnRowValue(detail.ssrib_date_issued, sheet, intRow, 14, styleColumnsDate)
+            self.returnRowValue(detail.ssrib_date_expiry, sheet, intRow, 15, styleColumnsDate)    
 
-            self.returnRowValue(detail.date_depart, sheet, intRow, 16, styleColumns) 
+            self.returnRowValue(detail.date_depart, sheet, intRow, 16, styleColumnsDate) 
 
-            #sheet.write(intRow, 14, detail.date_depart,styleColumns)
-            sheet.write(intRow, 17, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 18, detail.date_serviceto,styleColumns) 
+            sheet.write(intRow, 17, detail.date_servicefrom,styleColumnsDate)
+            sheet.write(intRow, 18, detail.date_serviceto,styleColumnsDate) 
             self.returnRowValue(detail.place_signon.name, sheet, intRow, 19, styleColumns)       
-            #sheet.write(intRow, 17, detail.place_signoff.name,styleColumns)
 
             intRow +=1
         sheet.write_merge(intRow+1,intRow+1, 17,18, "Total Record/s")    
