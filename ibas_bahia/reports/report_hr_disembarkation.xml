@@ -10,6 +10,7 @@
             <field name="report_file">ibas_bahia.report_disembarkation</field>
             <field name="binding_model_id" ref="model_hr_disembarkation_main"/>
             <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ibas_bahia.paperformat_employee_report_landscape" />
         </record>
 
         <template id="report_disembarkation">
@@ -40,7 +41,7 @@
                             <b>Date : All Date</b>
                         </div>                                
                     </t>                           
-                    <table class="table table-condensed"  style="width:100%;border-collapse:collapse">
+                    <table class="table table-condensed"  style="width:100%;border-collapse:collapse;font-size: 11px;">
                         <thead style ="border-bottom: 1px solid black;">
                             <tr>                                       
                                 <th>Employee Number</th>
