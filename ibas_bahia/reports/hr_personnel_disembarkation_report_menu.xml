@@ -75,10 +75,10 @@
                                          <field name="employee_number" />
                                          <field name="ccl_number" />
                                          <field name="last_name" />
-                                         <field name="first_name" />                                         
+                                         <field name="first_name" />
+                                         <field name="middle_name" />                                         
                                          <field name="employment_dept_code" />
                                          <field name="employment_rank" />
-
                                          <field name="placeof_birth" />
                                          <field name="country_id" />
                                          <field name="gender" />
