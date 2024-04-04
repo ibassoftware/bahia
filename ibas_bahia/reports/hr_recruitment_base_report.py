@@ -825,6 +825,8 @@ class hrDisembarkationMenuMainView(models.Model):
         styleColumns = xlwt.XFStyle()
         styleSpecificRow = xlwt.XFStyle()
         styleSpecificRow.num_format_str = "#,##0.00"
+        styleColumnsDate = xlwt.XFStyle()
+        styleColumnsDate.num_format_str = 'dd/mm/yyyy'
         #font
         font  = xlwt.Font()
         font.name = 'Arial'
@@ -832,6 +834,8 @@ class hrDisembarkationMenuMainView(models.Model):
         styleTitleMain.font = font
         styleColumns.font = font
         styleColumns.borders = border
+        styleColumnsDate.font = font 
+        styleColumnsDate.borders border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -913,14 +917,14 @@ class hrDisembarkationMenuMainView(models.Model):
                 sheet.write(intRow, 10, detail.passport,styleColumns)
 
             if isinstance(detail.passport_date_expiry, bool):
-                sheet.write(intRow, 11, "",styleColumns)
+                sheet.write(intRow, 11, "",styleColumnsDate)
             else:
-                sheet.write(intRow, 11, detail.passport_date_expiry,styleColumns)
+                sheet.write(intRow, 11, detail.passport_date_expiry,styleColumnsDate)
 
             if isinstance(detail.passport_date_expiry, bool):
-                sheet.write(intRow, 12, "",styleColumns)
+                sheet.write(intRow, 12, "",styleColumnsDate)
             else:
-                sheet.write(intRow, 12, detail.passport_date_expiry,styleColumns)
+                sheet.write(intRow, 12, detail.passport_date_expiry,styleColumnsDate)
 
             #sheet.write(intRow, 9, detail.passport_date_issued,styleColumns)
             #sheet.write(intRow, 10, detail.passport_date_expiry ,styleColumns)
@@ -931,27 +935,27 @@ class hrDisembarkationMenuMainView(models.Model):
                 sheet.write(intRow, 13, detail.ssrib,styleColumns)
 
             if isinstance(detail.ssrib_date_issued, bool):
-                sheet.write(intRow, 14, "",styleColumns)
+                sheet.write(intRow, 14, "",styleColumnsDate)
             else:
-                sheet.write(intRow, 14, detail.ssrib_date_issued,styleColumns)
+                sheet.write(intRow, 14, detail.ssrib_date_issued,styleColumnsDate)
 
             if isinstance(detail.ssrib_date_expiry, bool):
-                sheet.write(intRow, 15, "",styleColumns)
+                sheet.write(intRow, 15, "",styleColumnsDate)
             else:
-                sheet.write(intRow, 15, detail.ssrib_date_expiry,styleColumns)
+                sheet.write(intRow, 15, detail.ssrib_date_expiry,styleColumnsDate)
 
 
             #sheet.write(intRow, 11, detail.ssrib,styleColumns)
             #sheet.write(intRow, 12, detail.ssrib_date_issued,styleColumns)
             #sheet.write(intRow, 13, detail.ssrib_date_expiry,styleColumns)
             if isinstance(detail.date_depart, bool):
-                sheet.write(intRow, 16, "",styleColumns)
+                sheet.write(intRow, 16, "",styleColumnsDate)
             else:
-                sheet.write(intRow, 16, detail.date_depart,styleColumns)
+                sheet.write(intRow, 16, detail.date_depart,styleColumnsDate)
 
             #sheet.write(intRow, 14, detail.date_depart,styleColumns)
-            sheet.write(intRow, 17, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 18, detail.date_serviceto,styleColumns) 
+            sheet.write(intRow, 17, detail.date_servicefrom,styleColumnsDate)
+            sheet.write(intRow, 18, detail.date_serviceto,styleColumnsDate) 
             self.returnRowValue(detail.place_signoff.name, sheet, intRow, 19, styleColumns)       
             #sheet.write(intRow, 17, detail.place_signoff.name,styleColumns)
 
@@ -2576,6 +2580,7 @@ class hrDisembarkationReport(models.Model):
     ccl_number = fields.Char("CCL Number", readonly=True)
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     country_id = fields.Many2one('res.country', 'Nationality',readonly=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], readonly=True, string ='Gender')
@@ -2608,6 +2613,7 @@ class hrDisembarkationReport(models.Model):
                             CCL_NUMBER,
                             LAST_NAME,
                             FIRST_NAME,
+                            MIDDLE_NAME,
                             EMPLOYMENT_RANK,
                             COUNTRY_ID,
                             GENDER,
@@ -2632,6 +2638,7 @@ class hrDisembarkationReport(models.Model):
                                 CCL_NUMBER,
                                 LAST_NAME ,
                                 FIRST_NAME,
+                                MIDDLE_NAME,
                                 EMPLOYMENT_RANK,
                                 EMPLOYMENT_STATUS,
                                 EMPLOYMENT_DEPT_CODE,
@@ -2682,6 +2689,7 @@ class hrEmbarkationReport(models.Model):
     ccl_number = fields.Char("CCL Number", readonly=True)
     last_name = fields.Char("Last Name", readonly=True)
     first_name = fields.Char("First Name", readonly=True)
+    middle_name = fields.Char("Middle Name", readonly=True)
     employment_rank = fields.Many2one("hr.rank", readonly=True, string="Rank")
     country_id = fields.Many2one('res.country', 'Nationality',readonly=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], readonly=True, string ='Gender')
@@ -2714,6 +2722,7 @@ class hrEmbarkationReport(models.Model):
                             CCL_NUMBER,
                             LAST_NAME,
                             FIRST_NAME,
+                            MIDDLE_NAME,
                             EMPLOYMENT_RANK,
                             COUNTRY_ID,
                             GENDER,
@@ -2738,6 +2747,7 @@ class hrEmbarkationReport(models.Model):
                                 CCL_NUMBER,
                                 LAST_NAME ,
                                 FIRST_NAME,
+                                MIDDLE_NAME
                                 EMPLOYMENT_RANK,
                                 EMPLOYMENT_STATUS,
                                 EMPLOYMENT_DEPT_CODE,
