@@ -1566,6 +1566,8 @@ class hrSignOnoffMenuMainView(models.Model):
         styleColumns = xlwt.XFStyle()
         styleSpecificRow = xlwt.XFStyle()
         styleSpecificRow.num_format_str = "#,##0.00"
+        styleColumnsDate = xlwt.XFStyle()
+        styleColumnsDate.num_format_str = 'dd/mm/yyyy'
         #font
         font  = xlwt.Font()
         font.name = 'Arial'
@@ -1573,6 +1575,8 @@ class hrSignOnoffMenuMainView(models.Model):
         styleTitleMain.font = font
         styleColumns.font = font
         styleColumns.borders = border
+        styleColumnsDate.font = font
+        styleColumnsDate.borders = border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -1645,29 +1649,29 @@ class hrSignOnoffMenuMainView(models.Model):
                 self.returnRowValue(detail.ccl_number, sheet, intRow, 1, styleColumns)  
                 self.returnRowValue(detail.employment_dept_code.name, sheet, intRow, 2, styleColumns)  
                 
-                sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
-                sheet.write(intRow, 4, detail.last_name,styleColumns)
-                sheet.write(intRow, 5, detail.first_name,styleColumns)
-                sheet.write(intRow, 6, detail.middle_name,styleColumns)
-                sheet.write(intRow, 7, detail.gender,styleColumns)
-                self.returnRowValue(detail.birth_date, sheet, intRow, 8, styleColumns)
+                sheet.write(intRow, 3, detail.employment_rank.name or '',styleColumns)
+                sheet.write(intRow, 4, detail.last_name or '',styleColumns)
+                sheet.write(intRow, 5, detail.first_name or '',styleColumns)
+                sheet.write(intRow, 6, detail.middle_name or '',styleColumns)
+                sheet.write(intRow, 7, detail.gender or '',styleColumns)
+                self.returnRowValue(detail.birth_date, sheet, intRow, 8, styleColumnsDate)
                 self.returnRowValue(detail.employment_status.name, sheet, intRow, 9, styleColumns)
-                self.returnRowValue(detail.date_depart, sheet, intRow, 10, styleColumns)
-                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 11, styleColumns)
-                self.returnRowValue(detail.date_serviceto, sheet, intRow, 12, styleColumns)
+                self.returnRowValue(detail.date_depart, sheet, intRow, 10, styleColumnsDate)
+                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 11, styleColumnsDate)
+                self.returnRowValue(detail.date_serviceto, sheet, intRow, 12, styleColumnsDate)
                 intRow +=1
         else:
             for detail in tree_model:
                 str_empnumber = str(detail.employee_number)
                 sheet.write(intRow, 0, str_empnumber.zfill(10),styleColumns)
-                sheet.write(intRow, 1, detail.employment_rank.name,styleColumns)
-                sheet.write(intRow, 2, detail.last_name,styleColumns)
-                sheet.write(intRow, 3, detail.first_name,styleColumns)
-                sheet.write(intRow, 4, detail.middle_name,styleColumns)
-                sheet.write(intRow, 5, detail.gender,styleColumns)
-                self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumns)
-                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 7, styleColumns)
-                self.returnRowValue(detail.date_serviceto, sheet, intRow, 8, styleColumns)
+                sheet.write(intRow, 1, detail.employment_rank.name or '',styleColumns)
+                sheet.write(intRow, 2, detail.last_name or '',styleColumns)
+                sheet.write(intRow, 3, detail.first_name or '',styleColumns)
+                sheet.write(intRow, 4, detail.middle_name or '',styleColumns)
+                sheet.write(intRow, 5, detail.gender or '',styleColumns)
+                self.returnRowValue(detail.birth_date, sheet, intRow, 6, styleColumnsDate)
+                self.returnRowValue(detail.date_servicefrom, sheet, intRow, 7, styleColumnsDate)
+                self.returnRowValue(detail.date_serviceto, sheet, intRow, 8, styleColumnsDate)
                 intRow +=1
 
         if main_model.signonoff_selection != "crewlist":
@@ -1892,6 +1896,8 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
         styleColumns = xlwt.XFStyle()
         styleSpecificRow = xlwt.XFStyle()
         styleSpecificRow.num_format_str = "#,##0.00"
+        styleColumnsDate = xlwt.XFStyle()
+        styleColumnsDate.num_format_str = 'dd/mm/yyyy'
         #font
         font  = xlwt.Font()
         font.name = 'Arial'
@@ -1899,6 +1905,8 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
         styleTitleMain.font = font
         styleColumns.font = font
         styleColumns.borders = border
+        styleColumnsDate.font = font
+        styleColumnsDate.borders = border
         #styleHeader.font = font
         styleHeader.alignment = alignment
 
@@ -1962,17 +1970,17 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
             else:
                 sheet.write(intRow, 1, detail.ccl_number,styleColumns)
 
-            sheet.write(intRow, 2, detail.employment_dept_code.name,styleColumns)
-            sheet.write(intRow, 3, detail.employment_rank.name,styleColumns)
-            sheet.write(intRow, 4, detail.last_name,styleColumns)
-            sheet.write(intRow, 5, detail.first_name,styleColumns)
-            sheet.write(intRow, 6, detail.middle_name,styleColumns)
-            sheet.write(intRow, 7, detail.gender,styleColumns)
-            sheet.write(intRow, 8, detail.birth_date,styleColumns)
-            sheet.write(intRow, 9, detail.employment_status.name,styleColumns)
-            sheet.write(intRow, 10, detail.date_servicefrom,styleColumns)
-            sheet.write(intRow, 11, detail.date_serviceto,styleColumns)
-            sheet.write_merge(intRow,intRow, 12,23, detail.remarks,styleColumns)
+            sheet.write(intRow, 2, detail.employment_dept_code.name or '',styleColumns)
+            sheet.write(intRow, 3, detail.employment_rank.name or '',styleColumns)
+            sheet.write(intRow, 4, detail.last_name or '',styleColumns)
+            sheet.write(intRow, 5, detail.first_name or '',styleColumns)
+            sheet.write(intRow, 6, detail.middle_name or '',styleColumns)
+            sheet.write(intRow, 7, detail.gender or '',styleColumns)
+            sheet.write(intRow, 8, detail.birth_date or '',styleColumnsDate)
+            sheet.write(intRow, 9, detail.employment_status.name or '',styleColumns)
+            sheet.write(intRow, 10, detail.date_servicefrom or '',styleColumnsDate)
+            sheet.write(intRow, 11, detail.date_serviceto or '',styleColumnsDate)
+            sheet.write_merge(intRow,intRow, 12,23, detail.remarks or '',styleColumns)
             self.returnRowValue(detail.relative_name, sheet, intRow, 14, styleColumns)
             self.returnRowValue(detail.relationship.name, sheet, intRow, 15, styleColumns)
             self.returnRowValue(detail.address, sheet, intRow, 16, styleColumns)
