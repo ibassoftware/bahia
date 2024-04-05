@@ -897,7 +897,7 @@ class hrDisembarkationMenuMainView(models.Model):
                 sheet.write(intRow, 1, detail.ccl_number,styleColumns)
             sheet.write(intRow, 2, detail.last_name or '',styleColumns)
             sheet.write(intRow, 3, detail.first_name or '',styleColumns)
-            sheet.write(intRow, 4, detail.middle_name,sty or ''leColumns)
+            sheet.write(intRow, 4, detail.middle_name or '',styleColumns)
 
             
             sheet.write(intRow, 5, detail.employment_dept_code.name or '',styleColumns)
