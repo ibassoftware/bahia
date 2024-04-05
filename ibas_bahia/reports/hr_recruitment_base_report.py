@@ -1980,7 +1980,7 @@ class hrPersonnelActiveOnBoardwithRelativeMenuMainView(models.Model):
             sheet.write(intRow, 9, detail.employment_status.name or '',styleColumns)
             sheet.write(intRow, 10, detail.date_servicefrom or '',styleColumnsDate)
             sheet.write(intRow, 11, detail.date_serviceto or '',styleColumnsDate)
-            sheet.write_merge(intRow,intRow, 12,23, detail.remarks or '',styleColumns)
+            sheet.write_merge(intRow,intRow, 12,13, detail.remarks or '',styleColumns)
             self.returnRowValue(detail.relative_name, sheet, intRow, 14, styleColumns)
             self.returnRowValue(detail.relationship.name, sheet, intRow, 15, styleColumns)
             self.returnRowValue(detail.address, sheet, intRow, 16, styleColumns)
