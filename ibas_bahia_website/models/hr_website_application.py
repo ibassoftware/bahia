@@ -27,6 +27,12 @@ class recruitment_application(models.Model):
     gender = fields.Char()
     permanent_address_adress = fields.Char()
     permanent_address_city = fields.Char()
+    permanent_address_home_airport = fields.Selection([
+        ('manila', 'Manila'),
+        ('clarke', 'Clarke'),
+        ('cebu', 'Cebu'),
+        ('davao', 'Davao City')
+    ], string='Home Airport')
     permanent_address_zipcode = fields.Char()
     permanent_address_contact_no = fields.Char()
 

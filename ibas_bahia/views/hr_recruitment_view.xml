@@ -94,6 +94,7 @@
                                     <group string ="Permanent Address">
                                         <field name="permanent_address_adress"/>
                                         <field name="permanent_address_city"/>
+                                        <field name="permanent_address_home_airport"/>
                                         <field name="permanent_address_zipcode"/>  
                                         <field name="permanent_address_contact_no"/>  
                                     </group>

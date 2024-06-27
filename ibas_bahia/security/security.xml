@@ -30,7 +30,7 @@
         </record>
     </data>    
 
-    <data noupdate="0">
+    <!-- <data noupdate="0">
         <record id="group_hr_user_all" model="res.groups">
             <field name="name">Officer</field>
             <field name="category_id" ref="base.module_category_human_resources_employees"/>
@@ -43,7 +43,7 @@
             <field name="category_id" ref="base.module_category_human_resources_recruitment"/>
             <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
         </record>
-    </data>    
+    </data>     -->
 
     <data noupdate="1">
         <record id="group_hr_portal" model="res.groups">

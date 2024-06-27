@@ -319,6 +319,23 @@
 
                                         <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_home_airport">
+                                                    <span class="s_website_form_label_content">Home Airport</span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select id="permanent_address_home_airport" class="form-control s_website_form_input" name="permanent_address_home_airport">
+                                                        <option value="">Select</option>
+                                                        <option value="manila">Manila</option>
+                                                        <option value="clarke">Clarke</option>
+                                                        <option value="cebu">Cebu</option>
+                                                        <option value="davao">Davao City</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="permanent_address_zipcode">
                                                     <span class="s_website_form_label_content">Zip Code</span>
                                                 </label>

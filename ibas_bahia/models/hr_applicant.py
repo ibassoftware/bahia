@@ -58,6 +58,12 @@ class hrApplicant(models.Model):
 
 	permanent_address_adress = fields.Char('Address')
 	permanent_address_city = fields.Char('City')
+	permanent_address_home_airport = fields.Selection([
+        ('manila', 'Manila'),
+        ('clarke', 'Clarke'),
+        ('cebu', 'Cebu'),
+        ('davao', 'Davao City')
+    ], string='Home Airport')
 	permanent_address_zipcode = fields.Char('Zipcode')
 	permanent_address_contact_no = fields.Char('Contact No')
 
