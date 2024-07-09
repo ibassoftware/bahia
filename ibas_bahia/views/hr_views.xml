@@ -167,6 +167,7 @@
                                     <field name="address_1"/>
                                     <field name="address_2"/>
                                     <field name="address_3"/>
+                                    <field name="home_airport"/>
                                     <field name="city"/>
                                     <field name="province"/>
                                     <field name="country"/>

@@ -215,6 +215,7 @@ class hrApplicant(models.Model):
                         'addresstype':1,
                         'address_1': applicant.permanent_address_adress,
                         'address_3': applicant.permanent_address_zipcode or False,
+                        'home_airport': applicant.permanent_address_home_airport,
                         'city': applicant.permanent_address_city,
                         'telephone_number':applicant.permanent_address_contact_no,
                         'mobile_number':applicant.permanent_address_contact_no,

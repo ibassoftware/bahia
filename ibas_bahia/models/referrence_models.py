@@ -70,6 +70,12 @@ class HrEmployeeAddresses(models.Model):
 	address_2 = fields.Char('Address 2')
 	address_3 = fields.Char('Address 3')
 	city = fields.Char('City')
+	home_airport = fields.Selection([
+        ('manila', 'Manila'),
+        ('clarke', 'Clarke'),
+        ('cebu', 'Cebu'),
+        ('davao', 'Davao City')
+    ], string='Home Airport')
 	province = fields.Char('Province')
 	country = fields.Many2one('res.country', 'Country')
 	telephone_number = fields.Char('Landline number')
